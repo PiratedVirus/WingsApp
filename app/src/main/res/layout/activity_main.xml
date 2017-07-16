@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:layout_gravity="center"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:context="com.test.myapplication.MainActivity">
+
+
+
+    <LinearLayout
+
+        android:id="@+id/holder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="16dp">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="270dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:elevation="15dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/SliderDots"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_below="@+id/holder"
+        android:gravity="center"
+        android:orientation="horizontal"></LinearLayout>
+
+    <ScrollView
+        android:id="@+id/btnHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/holder"
+
+        android:elevation="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <Button
+                android:id="@+id/brainBtn"
+                android:layout_width="match_parent"
+                android:layout_height="83dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/braindrill"
+                android:elevation="3dp" />
+
+            <Button
+                android:id="@+id/civilBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="83dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/civil"
+                android:elevation="4dp" />
+
+            <Button
+                android:id="@+id/codeBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="83dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/code"
+                android:elevation="4dp" />
+
+            <Button
+                android:id="@+id/minigameBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="83dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/fungames"
+                android:elevation="4dp" />
+
+            <Button
+                android:id="@+id/gamingBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="83dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/gaming"
+                android:elevation="4dp" />
+
+            <Button
+                android:id="@+id/roboBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="83dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/robotics"
+                android:elevation="4dp" />
+
+            <Button
+                android:id="@+id/talentBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="83dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/talent"
+                android:elevation="4dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
