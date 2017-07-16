@@ -1,11 +1,14 @@
 package com.saurabh.wings2017;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -13,7 +16,12 @@ import java.util.List;
  * Created by saurabh on 16/07/17.
  */
 
-public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
+
+
+
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> implements View.OnClickListener {
+
+
 
 
     private List<ListItem> listItems;
@@ -48,6 +56,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return listItems.size();
     }
 
+
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView textViewHead;
@@ -55,11 +65,16 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         public ViewHolder(View itemView) {
             super(itemView);
-
+//            itemView.setOnClickListener(this);
             textViewHead = (TextView) itemView.findViewById(R.id.textViewHeading);
             textViewDesc = (TextView) itemView.findViewById(R.id.textViewDesc);
 
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+//        Toast.makeText(context, "Slide 1 Clicked", Toast.LENGTH_SHORT).show();
     }
 
 }
