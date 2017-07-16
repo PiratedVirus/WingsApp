@@ -32,7 +32,13 @@ import java.util.Objects;
 public class CivilHome extends AppCompatActivity {
 
 
+    RecyclerView civilRecylerHome;
+    RecyclerView.Adapter civilAdapter;
+    RecyclerView.LayoutManager civilLayoutManager;
 
+    ArrayList<CivilEventList> list = new ArrayList<CivilEventList>();
+
+    String[] name,excerpt,location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +51,32 @@ public class CivilHome extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Elegance", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+
+        name = getResources().getStringArray(R.array.CivilEventName);
+        excerpt = getResources().getStringArray(R.array.CivilEventExcerpt);
+        location = getResources().getStringArray(R.array.CivilEventLocation);
+        int count = 0;
+
+         for(String Name : name)
+         {
+             CivilEventList EventList = new CivilEventList(Name, excerpt[count],location[count]);
+             count++;
+             list.add(EventList);
+
+         }
+
+        civilRecylerHome = (RecyclerView) findViewById(R.id.CivilRecyler);
+        civilLayoutManager = new LinearLayoutManager(this);
+        civilRecylerHome.setLayoutManager(civilLayoutManager);
+        civilRecylerHome.setHasFixedSize(true);
+        civilAdapter = new CivilEventAdapter(list);
+        civilRecylerHome.setAdapter(civilAdapter);
+
+
 
 
     }

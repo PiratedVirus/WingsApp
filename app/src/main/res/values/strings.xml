@@ -96,18 +96,28 @@
 
     <!--Civil Strings-->
     <string-array name="CivilEventName">
-
         <item>"Bridge"</item>
         <item>"Counter Strike"</item>
         <item>"Bridge Making"</item>
         <item>"Plannifica"</item>
         <item>"Poster Presentation"</item>
-
+        <item>"Bridge"</item>
+        <item>"Counter Strike"</item>
+        <item>"Bridge Making"</item>
+        <item>"Plannifica"</item>
+        <item>"Poster Presentation"</item>
     </string-array>
+
+
 
 
     <string-array name="CivilEventExcerpt">
 
+        <item>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt."</item>
+        <item>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, error."</item>
+        <item>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, error."</item>
+        <item>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, error."</item>
+        <item>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, error."</item>
         <item>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt."</item>
         <item>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, error."</item>
         <item>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis, error."</item>
@@ -122,9 +132,19 @@
         <item>"Boys Hostel"</item>
         <item>"Workshop"</item>
         <item>"CC"</item>
+        <item>"ClassRoom Complex"</item>
+        <item>"The Grounds"</item>
+        <item>"Boys Hostel"</item>
+        <item>"Workshop"</item>
+        <item>"CC"</item>
     </string-array>
 
     <string-array name="CivilEventPrice">
+        <item>"50"</item>
+        <item>"25"</item>
+        <item>"35"</item>
+        <item>"50"</item>
+        <item>"50"</item>
         <item>"50"</item>
         <item>"25"</item>
         <item>"35"</item>
