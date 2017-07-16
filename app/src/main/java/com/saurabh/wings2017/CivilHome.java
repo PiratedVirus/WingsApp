@@ -32,12 +32,7 @@ import java.util.Objects;
 public class CivilHome extends AppCompatActivity {
 
 
-    private RecyclerView recyclerView;
-    private  RecyclerView.Adapter adapter;
-    private List<ListItem> listItems;
-    private ListView lvEvent;
-    private Context context;
-    public static final String URL_DATA = "https://api.myjson.com/bins/cxrbn";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,61 +49,6 @@ public class CivilHome extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        listItems = new ArrayList<>();
-
-        loadRecyclerViewData();
-    }
-
-    private void loadRecyclerViewData(){
-        final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Loading Data....");
-        progressDialog.show();
-
-
-        StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                URL_DATA,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String s) {
-                        progressDialog.dismiss();
-
-                        try {
-                            JSONObject jsonObject = new JSONObject(s);
-                            JSONArray array = jsonObject.getJSONArray("users");
-
-                            for(int i =0; i<array.length(); i++) {
-                                JSONObject o = array.getJSONObject(i);
-                                ListItem item = new ListItem(
-                                        o.getString("name"),
-                                        o.getString("work"),
-                                        o.getString("image")
-                                );
-                                listItems.add(item);
-                            }
-
-                            adapter = new ListAdapter(listItems, getApplicationContext());
-                            recyclerView.setAdapter(adapter);
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(getApplicationContext(), volleyError.getMessage(), )
-
-                    }
-                });
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
 
 
     }
