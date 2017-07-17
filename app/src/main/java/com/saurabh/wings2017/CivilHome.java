@@ -9,8 +9,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,6 +33,8 @@ import java.util.Objects;
 
 public class CivilHome extends AppCompatActivity {
 
+    public static String TAG ="PV";
+
 
     RecyclerView civilRecylerHome;
     RecyclerView.Adapter civilAdapter;
@@ -38,10 +42,13 @@ public class CivilHome extends AppCompatActivity {
 
     ArrayList<CivilEventList> list = new ArrayList<CivilEventList>();
 
-    String[] name,excerpt,location;
+    String[] name,excerpt,location,rules,criteria,price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        Log.i(TAG, "onCreate: CIVIL");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_civil_home);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -56,14 +63,27 @@ public class CivilHome extends AppCompatActivity {
             }
         });
 
+//        Button btn = (Button) findViewById(R.id.testBtn);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Yep", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
+
         name = getResources().getStringArray(R.array.CivilEventName);
         excerpt = getResources().getStringArray(R.array.CivilEventExcerpt);
         location = getResources().getStringArray(R.array.CivilEventLocation);
+        rules = getResources().getStringArray(R.array.CivilEventRules);
+        criteria = getResources().getStringArray(R.array.CivilEventCriteria);
+        price = getResources().getStringArray(R.array.CivilEventPrice);
+
         int count = 0;
 
          for(String Name : name)
          {
-             CivilEventList EventList = new CivilEventList(Name, excerpt[count],location[count]);
+             CivilEventList EventList = new CivilEventList(Name, excerpt[count],location[count],rules[count],criteria[count],price[count]);
              count++;
              list.add(EventList);
 
@@ -73,7 +93,7 @@ public class CivilHome extends AppCompatActivity {
         civilLayoutManager = new LinearLayoutManager(this);
         civilRecylerHome.setLayoutManager(civilLayoutManager);
         civilRecylerHome.setHasFixedSize(true);
-        civilAdapter = new CivilEventAdapter(list);
+        civilAdapter = new CivilEventAdapter(list, this);
         civilRecylerHome.setAdapter(civilAdapter);
 
 

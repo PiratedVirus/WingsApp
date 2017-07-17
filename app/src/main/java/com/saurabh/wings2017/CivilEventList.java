@@ -9,20 +9,48 @@ package com.saurabh.wings2017;
 public class CivilEventList {
 
 //    Declare constructor to get values
-    public CivilEventList(String CVName,String CVExcerpt,String CVLocation){
+    public CivilEventList(String CVName,String CVExcerpt,String CVLocation, String CVPrice, String CVRules, String CVCriteria){
 
 //        Getting values
         this.setlCivilEventName(CVName);
         this.setlCivilEventExcerpt(CVExcerpt);
         this.setlCivilEventLocation(CVLocation);
+        this.setlCivilEventPrice(CVPrice);
+        this.setlCivilEventRules(CVRules);
+        this.setlCivilEventCriteria(CVCriteria);
 
     }
 
-    private String lCivilEventName,lCivilEventExcerpt,lCivilEventLocation;
+    private String lCivilEventName,lCivilEventExcerpt,lCivilEventLocation,lCivilEventPrice,lCivilEventRules,lCivilEventCriteria;
 
 
-//    Getter and Setter methods for vars
+    public String getlCivilEventPrice() {
+        return lCivilEventPrice;
+    }
+
+    public void setlCivilEventPrice(String lCivilEventPrice) {
+        this.lCivilEventPrice = lCivilEventPrice;
+    }
+
+    public String getlCivilEventRules() {
+        return lCivilEventRules;
+    }
+
+    public void setlCivilEventRules(String lCivilEventRules) {
+        this.lCivilEventRules = lCivilEventRules;
+    }
+
+    public String getlCivilEventCriteria() {
+        return lCivilEventCriteria;
+    }
+
+    public void setlCivilEventCriteria(String lCivilEventCriteria) {
+        this.lCivilEventCriteria = lCivilEventCriteria;
+    }
+
+    //    Getter and Setter methods for vars
     public String getlCivilEventName() {
+
         return lCivilEventName;
     }
 
