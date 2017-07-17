@@ -5,6 +5,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -43,6 +45,7 @@ public class CivilHome extends AppCompatActivity {
     ArrayList<CivilEventList> list = new ArrayList<CivilEventList>();
 
     String[] name,excerpt,location,rules,criteria,price;
+    private ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +75,11 @@ public class CivilHome extends AppCompatActivity {
 
         }
 
+
+
+
+
+
         civilRecylerHome = (RecyclerView) findViewById(R.id.CivilRecyler);
         civilLayoutManager = new LinearLayoutManager(this);
         civilRecylerHome.setLayoutManager(civilLayoutManager);
@@ -79,10 +87,24 @@ public class CivilHome extends AppCompatActivity {
         civilAdapter = new CivilEventAdapter(list, this);
         civilRecylerHome.setAdapter(civilAdapter);
 
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        setupViewPager(mViewPager);
+
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+
 
 
 
     }
+
+     private void setupViewPager(ViewPager viewPager){
+         SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager());
+         adapter.addFragment(new InfoFragment(),"INFO");
+         adapter.addFragment(new RulesFragment(),"RULES");
+         adapter.addFragment(new CriteriaFrag(),"CRITERIA");
+         viewPager.setAdapter(adapter);
+     }
 
 
 }
