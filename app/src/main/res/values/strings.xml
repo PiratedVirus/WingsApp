@@ -138,16 +138,16 @@
     </string-array>
 
     <string-array name="CivilEventPrice">
-        <item>"50"</item>
-        <item>"25"</item>
-        <item>"35"</item>
-        <item>"50"</item>
-        <item>"50"</item>
-        <item>"50"</item>
-        <item>"25"</item>
-        <item>"35"</item>
-        <item>"50"</item>
-        <item>"50"</item>
+        <item>"₹50"</item>
+        <item>"₹25"</item>
+        <item>"₹35"</item>
+        <item>"₹50"</item>
+        <item>"₹50"</item>
+        <item>"₹50"</item>
+        <item>"₹25"</item>
+        <item>"₹35"</item>
+        <item>"₹50"</item>
+        <item>"₹50"</item>
     </string-array>
 
     <string-array name="CivilEventRules">

@@ -26,8 +26,12 @@ public class GenericEventHome extends AppCompatActivity {
         gen_Location.setText(getIntent().getStringExtra("EventLocation"));
         gen_Info.setText(getIntent().getStringExtra("EventInfo"));
         gen_Rules.setText(getIntent().getStringExtra("EventRules"));
-        gen_Criteria.setText(getIntent().getStringExtra("EventCriteria"));
-        gen_Price.setText(getIntent().getStringExtra("EventPrice"));
+        gen_Criteria.setText(getIntent().getStringExtra("EventPrice"));
+        gen_Price.setText(getIntent().getStringExtra("EventCriteria"));
+
+//        EventCriteria = Price
+//        EventPrice = Rules
+//        EventInfo = Info -- All others are same
 
 
 

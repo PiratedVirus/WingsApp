@@ -51,14 +51,14 @@
         <!--Upper half ends here-->
 
     <!--<include layout="@layout/content_civil_home" />-->
-    <include layout="@layout/layout_holder_civil"/>
+    <!--<include layout="@layout/layout_holder_civil"/>-->
 
-    <!--<android.support.v7.widget.RecyclerView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/CivilRecyler">-->
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/CivilRecyler">
 
-    <!--</android.support.v7.widget.RecyclerView>-->
+    </android.support.v7.widget.RecyclerView>
 
 
 

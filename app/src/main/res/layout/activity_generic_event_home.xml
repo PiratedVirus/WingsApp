@@ -69,7 +69,7 @@
 
         <TabHost
             android:id="@+id/genTabView"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="300dip"
             android:layout_below="@+id/genEventSecondaryText"
             android:layout_marginTop="35dp"
