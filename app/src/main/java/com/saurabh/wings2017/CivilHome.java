@@ -35,7 +35,7 @@ import java.util.Objects;
 
 public class CivilHome extends AppCompatActivity {
 
-    public static String TAG ="PV";
+
 
 
     RecyclerView civilRecylerHome;
@@ -45,12 +45,12 @@ public class CivilHome extends AppCompatActivity {
     ArrayList<CivilEventList> list = new ArrayList<CivilEventList>();
 
     String[] name,excerpt,location,rules,criteria,price;
-    private ViewPager mViewPager;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        Log.i(TAG, "onCreate: CIVIL");
+
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_civil_home);
@@ -76,10 +76,6 @@ public class CivilHome extends AppCompatActivity {
         }
 
 
-
-
-
-
         civilRecylerHome = (RecyclerView) findViewById(R.id.CivilRecyler);
         civilLayoutManager = new LinearLayoutManager(this);
         civilRecylerHome.setLayoutManager(civilLayoutManager);
@@ -87,24 +83,9 @@ public class CivilHome extends AppCompatActivity {
         civilAdapter = new CivilEventAdapter(list, this);
         civilRecylerHome.setAdapter(civilAdapter);
 
-        mViewPager = (ViewPager) findViewById(R.id.container);
-        setupViewPager(mViewPager);
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(mViewPager);
-
-
-
-
     }
 
-     private void setupViewPager(ViewPager viewPager){
-         SectionPageAdapter adapter = new SectionPageAdapter(getSupportFragmentManager());
-         adapter.addFragment(new InfoFragment(),"INFO");
-         adapter.addFragment(new RulesFragment(),"RULES");
-         adapter.addFragment(new CriteriaFrag(),"CRITERIA");
-         viewPager.setAdapter(adapter);
-     }
+
 
 
 }
