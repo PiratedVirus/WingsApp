@@ -109,8 +109,6 @@
     </string-array>
 
 
-
-
     <string-array name="CivilEventExcerpt">
 
         <item>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt."</item>
@@ -151,6 +149,91 @@
         <item>"50"</item>
         <item>"50"</item>
     </string-array>
-    <!--Civil Strings ends here-->
 
+    <string-array name="CivilEventRules">
+        <item>
+              "1. Lorem ipsum dolor sit amet, consectetur.
+               2. Lorem ipsum dolor sit.
+               3. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        </item>
+
+        <item>
+              "1. Lorem ipsum dolor sit amet, consectetur.
+               2. Lorem ipsum dolor sit.
+               3. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        </item>
+
+        <item>
+              "1. Lorem ipsum dolor sit amet, consectetur.
+               2. Lorem ipsum dolor sit.
+               3. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        </item>
+
+        <item>
+              "1. Lorem ipsum dolor sit amet, consectetur.
+               2. Lorem ipsum dolor sit.
+               3. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        </item>
+
+        <item>
+              "1. Lorem ipsum dolor sit amet, consectetur.
+               2. Lorem ipsum dolor sit.
+               3. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        </item>
+
+        <item>
+              "1. Lorem ipsum dolor sit amet, consectetur.
+               2. Lorem ipsum dolor sit.
+               3. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        </item>
+
+        <item>
+              "1. Lorem ipsum dolor sit amet, consectetur.
+               2. Lorem ipsum dolor sit.
+               3. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        </item>
+
+        <item>
+              "1. Lorem ipsum dolor sit amet, consectetur.
+               2. Lorem ipsum dolor sit.
+               3. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        </item>
+
+        <item>
+              "1. Lorem ipsum dolor sit amet, consectetur.
+               2. Lorem ipsum dolor sit.
+               3. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        </item>
+
+        <item>
+              "1. Lorem ipsum dolor sit amet, consectetur.
+               2. Lorem ipsum dolor sit.
+               3. Lorem ipsum dolor sit amet, consectetur adipisicing elit."
+        </item>
+
+    </string-array>
+
+    <string-array name="CivilEventCriteria">
+        <item>"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam aliquam, illo nesciunt atque doloribus placeat."
+        </item>
+        <item>"Pariatur voluptate, sapiente modi dolore cum laborum tenetur enim perspiciatis mollitia quaerat, laboriosam aut animi."
+        </item>
+        <item>"Vel quos eum ad. Mollitia voluptate velit minus impedit, aperiam sequi sint nobis possimus consequuntur."
+        </item>
+        <item>"Blanditiis unde architecto magnam, aliquam deleniti, ipsa doloremque perspiciatis consectetur itaque alias esse pariatur cum."
+        </item>
+        <item>"Officia atque sit nemo ab est ullam recusandae, ut. Voluptatibus aliquid perferendis expedita pariatur officiis."
+        </item>
+        <item>"Quam, voluptas! Quidem asperiores, sequi a accusamus vel nihil. Sed quae praesentium possimus magnam blanditiis?"
+        </item>
+        <item>"Natus quam quidem odio, officiis non nostrum sint labore quod eius aut modi delectus vitae!"
+        </item>
+        <item>"Itaque optio nemo fugit veritatis laboriosam quisquam iste possimus, aliquid a. Molestiae amet illum perferendis."
+        </item>
+        <item>"Officiis qui dicta repellendus facilis, in fugiat sunt, exercitationem voluptatem quibusdam molestiae, laudantium voluptate! Sit."
+        </item>
+        <item>"Sunt, tempore sint, nobis natus ab alias sapiente asperiores consequuntur facere, vitae totam aliquid consequatur!"
+        </item>
+    </string-array>
+    <!--Civil Strings ends here-->
 </resources>
