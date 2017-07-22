@@ -54,8 +54,6 @@ public class CivilHome extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_civil_home);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
 
         name = getResources().getStringArray(R.array.CivilEventName);

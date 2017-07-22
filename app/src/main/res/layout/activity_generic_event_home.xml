@@ -1,188 +1,172 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+
+
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.saurabh.wings2017.GenericEventHome">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/genEventName"
-            android:text="Web Quest"
-            android:padding="@dimen/text_margin"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="#E40046"
-            android:textAllCaps="true" />
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/genEventName"
-            android:id="@+id/genEventSecondaryText"
-            android:gravity="center">
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F4A105"
+            android:gravity="bottom"
+            android:paddingBottom="20dp"
+            android:paddingLeft="52dp"
+            android:orientation="vertical">
 
-            <LinearLayout
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
-                android:gravity="right"
-                android:layout_gravity="right">
+                android:id="@+id/genEventName"
+                android:text="EventName"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="#FFF"/>
 
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="4" />
-
-                <ImageView
-                    android:id="@+id/LocationIcon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/location" />
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <TextView
-                    android:id="@+id/genEventLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Computer Lab" />
-            </LinearLayout>
-
+                android:layout_below="@id/genEventName"
+                android:text="EventDate"/>
 
 
         </LinearLayout>
 
-        <TabHost
-            android:id="@+id/genTabView"
-            android:layout_width="0dp"
-            android:layout_height="300dip"
-            android:layout_below="@+id/genEventSecondaryText"
-            android:layout_marginTop="35dp"
-            >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            android:paddingLeft="52dp"
+            android:paddingTop="52dp"
+            android:background="#FFF"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="EVENT VENUE"
+                android:textColor="#E40046"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Classroom Complex"
+                android:id="@+id/genEventLocation"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="34dp"
+                android:text="TICKET PRICE"
+                android:textColor="#E40046"/>
 
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TabWidget
-                    android:id="@android:id/tabs"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <FrameLayout
-                    android:id="@android:id/tabcontent"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:id="@+id/tab1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/genEventInfo"
-                            android:text="@string/large_text"
-                            android:padding="8dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/genEventPrice"
+                    android:text="₹50.00"
+                    android:layout_weight="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
 
-                    </LinearLayout>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="ADD TO CART"
+                    android:layout_marginRight="5dp"
+                    android:textColor="#FFFFFF"
+                    android:background="#E40046"/>
 
-                    <LinearLayout
-                        android:id="@+id/tab2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/genEventRules"
-                            android:text="@string/large_text"
-                            android:padding="8dp"/>
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/tab3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/genEventCriteria"
-                            android:text="@string/large_text"
-                            android:padding="8dp"/>
-
-                    </LinearLayout>
-                </FrameLayout>
             </LinearLayout>
-        </TabHost>
 
 
-        <LinearLayout
-            android:id="@+id/imageholder"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/genTabView"
-            android:gravity="center">
+
 
 
 
             <TextView
-                android:id="@+id/genEventPrice"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/oval_shape"
-                android:layout_margin="1dp"
-                android:gravity="center"
-                android:text="$50" />
+                android:text="CONTACT PERSON"
+                android:textColor="#E40046"
+                android:paddingTop="34dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:text="Mr. Jon Snow"
+                android:id="@+id/genEventContactPerson"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="87865 45678"
+                android:textColor="#3498db"
+                android:id="@+id/genEventContactMob"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ABOUT EVENT"
+                android:paddingTop="34dp"
+                android:textColor="#E40046"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="thth"
+                android:id="@+id/genEventInfo"/>
+
 
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imageholder"
-            android:paddingTop="@dimen/text_margin">
+        </ScrollView>
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/genEventPrice"
-                android:layout_weight="1"
-                android:background="#E40046"
-                android:text="ADD TO CART"
-                android:textColor="#FFF" />
-
-        </LinearLayout>
+    </LinearLayout>
 
 
-    </RelativeLayout>
-</ScrollView>
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
+

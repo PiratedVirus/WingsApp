@@ -235,5 +235,6 @@
         <item>"Sunt, tempore sint, nobis natus ab alias sapiente asperiores consequuntur facere, vitae totam aliquid consequatur!"
         </item>
     </string-array>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
     <!--Civil Strings ends here-->
 </resources>

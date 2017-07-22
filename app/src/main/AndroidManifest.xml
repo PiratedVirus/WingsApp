@@ -26,7 +26,7 @@
             android:name=".BrainHome"
             android:label="@string/title_activity_brain_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".GenericEventHome"></activity>
+        <activity android:name=".GenericEventHome" />
     </application>
 
 </manifest>
