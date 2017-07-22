@@ -24,7 +24,6 @@
             android:paddingLeft="52dp"
             android:orientation="vertical">
 
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -107,10 +106,6 @@
             </LinearLayout>
 
 
-
-
-
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -152,21 +147,7 @@
 
 
         </LinearLayout>
-
         </ScrollView>
-
     </LinearLayout>
-
-
-
-
-
-
-
-
-
-
-
-
 </RelativeLayout>
 

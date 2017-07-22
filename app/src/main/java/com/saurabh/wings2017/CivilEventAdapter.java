@@ -76,7 +76,7 @@ public class CivilEventAdapter extends RecyclerView.Adapter<CivilEventAdapter.Ci
 
             this.CVCtx = CVCtx;
 
-//            Initiating arraylist from constructor
+//            Initiating Array list from constructor
             this.civilList = civilList;
 
 

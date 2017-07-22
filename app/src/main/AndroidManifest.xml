@@ -23,6 +23,11 @@
             android:label="@string/title_activity_civil_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
+            android:name=".signIn"
+            android:label="@string/title_activity_civil_home"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
             android:name=".BrainHome"
             android:label="@string/title_activity_brain_home"
             android:theme="@style/AppTheme.NoActionBar" />
