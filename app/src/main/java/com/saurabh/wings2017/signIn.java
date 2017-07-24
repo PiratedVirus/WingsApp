@@ -40,6 +40,8 @@ public class signIn extends AppCompatActivity {
 
     private GoogleApiClient mGoogleApiClient;
 
+    public static String fUserName;
+
 
     @Override
     protected void onStart() {
@@ -70,7 +72,15 @@ public class signIn extends AppCompatActivity {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() != null){
 
-                    startActivity(new Intent(signIn.this, MainActivity.class));
+                    Intent fireBaseIntent = new Intent(signIn.this, MainActivity.class);
+
+                    fireBaseIntent.putExtra("USERNAME",fUserName);
+
+                    startActivity(fireBaseIntent);
+
+
+
+
                 }
             }
         };
@@ -121,7 +131,7 @@ public class signIn extends AppCompatActivity {
         }
     }
 
-    private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
+    private void firebaseAuthWithGoogle(final GoogleSignInAccount account) {
 
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential)
@@ -129,9 +139,23 @@ public class signIn extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            fUserName = account.getDisplayName();
+
+                            Intent fireBaseIntent = new Intent(signIn.this, MainActivity.class);
+
+                            fireBaseIntent.putExtra("USERNAME",fUserName);
+
+                            startActivity(fireBaseIntent);
+
+
+
+                            Toast.makeText(signIn.this, fUserName,
+                                    Toast.LENGTH_SHORT).show();
+
 //                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.

@@ -24,6 +24,7 @@ import android.view.View;
 import android.widget.AdapterView;
 
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -31,6 +32,8 @@ import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -38,25 +41,40 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    ViewPager viewPager;
-    LinearLayout sliderDotspanel;
+    public ViewPager viewPager;
+    public LinearLayout sliderDotspanel;
+    public Button CivilBtn;
+    public Button BrainBtn;
+    public Button signOutBtn;
     private int dotscount;
     private ImageView[] dots;
 
-    FirebaseAuth mAuth;
-    FirebaseAuth.AuthStateListener mAuthListener;
+    //  Printing Details
+    TextView fireName;
+    TextView fireMail;
+    ImageView fireImage;
+
+    // Firebase instance variables
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    FirebaseAuth mFirebaseAuth;
+    FirebaseUser mFirebaseUser;
+
+    // Firebase Detail holders
+    String mUsername;
+    String mPhotoUrl;
+    String mUsermail;
 
     public static final String URL_DATA = "https://api.myjson.com/bins/cxrbn";
 
-    @Override
+
+//    Method for checking auth state
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
 
-
 //    Method for opening Civil activity
-    public Button CivilBtn;
     public void CivilIntent(){
         CivilBtn = (Button) findViewById(R.id.civilBtn);
         CivilBtn.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +88,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //   Method for opening Brain
-    public Button BrainBtn;
     public void BrainIntent(){
         BrainBtn = (Button) findViewById(R.id.brainBtn);
         BrainBtn.setOnClickListener(new View.OnClickListener() {
@@ -82,9 +99,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
-    //   Method for  SignOut
-    public Button signOutBtn;
+//    Method for  SignOut
     public void LogOut(){
         signOutBtn = (Button) findViewById(R.id.signOUT);
         mAuth = FirebaseAuth.getInstance();
@@ -110,22 +125,46 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+//    Printing Details
+    public void printUserDetails(){
+
+        //        Fetching Details
+
+        fireName = (TextView) findViewById(R.id.displayName);
+        fireMail = (TextView) findViewById(R.id.displayMail);
+        fireImage = (ImageView) findViewById(R.id.displayImage);
 
 
+        // Initialize Firebase Auth
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        if (mFirebaseUser == null) {
+            // Not signed in, launch the Sign In activity
+            startActivity(new Intent(this, signIn.class));
+            finish();
+            return;
+        } else {
+            mUsername = mFirebaseUser.getDisplayName();
+            mUsermail = mFirebaseUser.getEmail();
+            mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
+            Toast.makeText(MainActivity.this,mUsername,Toast.LENGTH_SHORT).show();
 
+            fireName.setText(mUsername);
+            fireMail.setText(mUsermail);
+            Picasso.with(MainActivity.this).load(mPhotoUrl).into(fireImage);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        }
 
+    }
+
+//    Count Dots
+    private void countDots(){
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-
         sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
-
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-
         viewPager.setAdapter(viewPagerAdapter);
+
+
 
 
 //        Dots count start
@@ -173,24 +212,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-//        Timer for changing Slides
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new MyTimerTask(), 2000, 4000);
-//        Timer ends here
-
-
-
-//        Calling User methods
-        CivilIntent();
-        BrainIntent();
-        LogOut();
-
-
     }
 
-
-//    Timer method
+//    Timer class
     public class MyTimerTask extends TimerTask{
 
         @Override
@@ -214,6 +238,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        printUserDetails();
+        countDots();
+
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new MyTimerTask(), 2000, 4000);
+
+        CivilIntent();
+        BrainIntent();
+        LogOut();
+
+    }
 }
 
 
