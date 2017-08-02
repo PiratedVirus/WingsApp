@@ -4,7 +4,7 @@ package com.saurabh.wings2017;
  * Created by saurabh on 16/07/17.
  */
 
-//This class is behind the sence for CivilEventAdapter class
+//This class is behind the scenes for CivilEventAdapter class
 
 public class CivilEventList {
 

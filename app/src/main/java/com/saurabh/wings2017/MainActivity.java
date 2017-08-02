@@ -1,36 +1,18 @@
 package com.saurabh.wings2017;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.widget.ArrayAdapter;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.List;
-import android.app.Activity;
-
-import android.view.View;
-import android.widget.AdapterView;
-
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
@@ -46,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public Button CivilBtn;
     public Button BrainBtn;
     public Button signOutBtn;
+    public Button viewCartBtn;
     private int dotscount;
     private ImageView[] dots;
 
@@ -66,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     String mUsermail;
 
     public static final String URL_DATA = "https://api.myjson.com/bins/cxrbn";
+
 
 
 //    Method for checking auth state
@@ -214,6 +198,25 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+//    View Cart
+    private void viewCart(){
+        viewCartBtn = (Button) findViewById(R.id.ViewCart);
+        viewCartBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFirebaseAuth = FirebaseAuth.getInstance();
+                mFirebaseUser = mFirebaseAuth.getCurrentUser();
+                Intent cartIntent = new Intent(MainActivity.this,Cart.class);
+                cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
+                cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
+                startActivity(cartIntent);
+
+            }
+        });
+
+    }
+
 //    Timer class
     public class MyTimerTask extends TimerTask{
 
@@ -254,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
         CivilIntent();
         BrainIntent();
         LogOut();
+        viewCart();
 
     }
 }

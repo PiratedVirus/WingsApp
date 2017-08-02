@@ -26,7 +26,7 @@ public class GenericEventHome extends AppCompatActivity {
 
     TextView gen_Name, gen_Location, gen_Info, gen_Rules, gen_Criteria, gen_Price;
     Button add_to_cart;
-    public static final String PHP_URL = "http://192.168.0.103:8888/Wings/fillData.php";
+    public static final String PHP_URL = "http://192.168.0.103:8888/Wings/sendEventData.php";
 
     // Firebase instance variables
     private FirebaseAuth mAuth;
@@ -42,10 +42,7 @@ public class GenericEventHome extends AppCompatActivity {
     String eventprice;
 
     //    Printing Details
-    public void printUserDetails(){
-
-
-
+    public void getUserDetails(){
 
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
@@ -86,7 +83,7 @@ public class GenericEventHome extends AppCompatActivity {
 
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                printUserDetails();
+                getUserDetails();
                 mobNum = 878654352;
                 eventprice = getIntent().getStringExtra("EventCriteria");
                 Log.d(TAG, "price: " + eventprice);
@@ -127,7 +124,7 @@ public class GenericEventHome extends AppCompatActivity {
         gen_Price.setText("₹" + getIntent().getStringExtra("EventCriteria"));
 
 
-//        OnClick Listner
+//        OnClick Listner. Adding data to Database.
         add_to_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
