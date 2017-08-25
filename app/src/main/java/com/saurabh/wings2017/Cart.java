@@ -1,5 +1,6 @@
 package com.saurabh.wings2017;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,25 +8,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.HashMap;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class Cart extends AppCompatActivity {
     private static final String TAG = "PV";
@@ -44,8 +47,26 @@ public class Cart extends AppCompatActivity {
     String mUsername;
     String mPhotoUrl;
     String mUsermail;
+    HttpPost httppost;
+    HttpResponse response;
+    HttpClient httpclient;
+    HttpEntity httpentity;
+    List<NameValuePair> nameValuePairs;
+    InputStream isr;
+    JSONObject jsonobj1;
+    ProgressDialog dialog;
+    JSONArray stu = null;
+    String serverUrl = "http://cseapp.16mb.com/notification.php";
+    String result;
+    JSONObject jso;
+    JSONArray cart_user_list;
+    String 	userName, eventName, eventID, eventPrice;
+    ArrayList<String> userName_list = new ArrayList<String>();
+    ArrayList<String> eventName_list = new ArrayList<String>();
+    ArrayList<String> eventID_list = new ArrayList<String>();
+    ArrayList<String> eventPrice_list = new ArrayList<String>();
 
-    //    Printing Details
+    //    Getting Details
     public void getUserDetails(){
 
         // Initialize Firebase Auth
@@ -65,76 +86,90 @@ public class Cart extends AppCompatActivity {
 
     }
 
+
     public void fetchData(){
 
         getUserDetails();
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Wait a moment, Fetching messages...");
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.show();
+            Thread t = new Thread(new Runnable() {
+                public void run() {
 
-//        Getting UNIQUE Key, this value to be passed in PHP and retrive results according to it.
-        final String reqno = getIntent().getStringExtra("userMail");
-        Log.e(TAG, "fetchData: " + reqno);
+                    try {
+                        httpclient = new DefaultHttpClient();
+                        httppost = new HttpPost(PHP_GET_CART); // make sure the url is correct.
+                        //add your data
+                        nameValuePairs = new ArrayList<NameValuePair>(1);
+                        // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
+                        nameValuePairs.add(new BasicNameValuePair("fuserMail", mUsermail));
+
+                        // $Edittext_value = $_POST['Edittext_value'];
+                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                        Log.d("andro", "1" + mUsermail);
+                        //Execute HTTP Post Requ
+                        response = httpclient.execute(httppost);
+                        Log.d("andro", "2");
+                        httpentity = response.getEntity();
+                        isr = httpentity.getContent();
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(isr, "UTF-8"), 8);
+                        StringBuilder sb = new StringBuilder();
+                        String line = null;
+                        while ((line = reader.readLine()) != null) {
+                            sb.append(line + "\n");
+                        }
+                        result = sb.toString();
 
 
-//        Using Volley Lib.
-        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                        runOnUiThread(new Runnable() {
+                            public void run() {
+                       // tv.setText("Response from PHP : " + response);
+                                dialog.dismiss();
+                            }
+                        });
 
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, PHP_GET_CART, null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
+                        if (!(result.startsWith("F"))) {
+                            Log.i("andro", result);
+                            try {
+                                jso = new JSONObject(result);
+                                cart_user_list = jso.getJSONArray("result");
+                                for (int i = 0; i < cart_user_list.length(); i++) {
+                                    JSONObject c = cart_user_list.getJSONObject(i);
+                                    userName = c.getString("userName");
+                                    eventName = c.getString("eventName");
+                                    eventID = c.getString("eventID");
+                                    eventPrice = c.getString("eventPrice");
+                                    Log.e("result",userName+eventName+eventID+eventPrice);
+                                    userName_list.add(userName);
+                                    eventName_list.add(eventName);
+                                    eventID_list.add(eventID);
+                                    eventPrice_list.add(eventPrice);
+                                }
 
-                try {
-                    JSONArray requests = response.getJSONArray("result");
-
-                    for(int i = 0; i < requests.length(); i++){
-                        JSONObject request = requests.getJSONObject(i);
-                        String no1 = request.getString("userMail");
-                        String desc1 = request.getString("userName");
-                        String date1 = request.getString("eventName");
-                        String status1 = request.getString("eventID");
-
-                        Log.e(TAG, "onResponse: EventName" +  date1 + "EventID" + status1 );
-                        Toast.makeText(Cart.this, "Display all: " +no1+desc1+date1+status1, Toast.LENGTH_SHORT).show();
+                                Cart.this.runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        CustomList ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list);
+                                        ListView cart = (ListView)findViewById(R.id.cart_list_show);
+                                        cart.setAdapter(ad);
+                                    }
+                                });
 
 
-
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        } else {
+                            Log.e("PV", "else_case_failed");
+                        }
+                    } catch (Exception e) {
                     }
 
-
-                } catch (JSONException e) {
-                    Toast.makeText(Cart.this, e.toString(), Toast.LENGTH_SHORT).show();
-                    Log.e(TAG,"Json error: " + e.toString());
-                    e.printStackTrace();
                 }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(Cart.this, error.toString(), Toast.LENGTH_SHORT).show();
-                Log.e(TAG, "Response error: "+error.toString() );
-
-            }
-        })
-        {
-//            passing reqno:the unique key through this method.
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> parameters = new HashMap<String, String>();
-                parameters.put("fuserMail", reqno);
-                Log.e(TAG, "getParams: " + reqno );
-                return parameters;
-            }
-        };
-
-
-        requestQueue.add(request);
-
-        Toast.makeText(Cart.this, "It's working", Toast.LENGTH_SHORT).show();
-
-
+            });
+            t.start();
     };
-
-
-
 
 
     @Override

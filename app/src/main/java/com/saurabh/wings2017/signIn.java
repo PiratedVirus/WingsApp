@@ -45,7 +45,6 @@ public class signIn extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         mAuth.addAuthStateListener(mAuthListner);
     }
 
