@@ -1,14 +1,27 @@
 package com.saurabh.wings2017;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -28,7 +41,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 
 public class Cart extends AppCompatActivity {
     private static final String TAG = "PV";
@@ -39,6 +55,7 @@ public class Cart extends AppCompatActivity {
     private Context context;
 
     public static final String PHP_GET_CART = "https://scouncilgeca.com/WingsApp/getCartData.php";
+    public static final String PHP_DELETE_CART = "https://scouncilgeca.com/WingsApp/deleteEventCart.php";
 
     FirebaseAuth mFirebaseAuth;
     FirebaseUser mFirebaseUser;
@@ -47,6 +64,8 @@ public class Cart extends AppCompatActivity {
     String mUsername;
     String mPhotoUrl;
     String mUsermail;
+    String uniqueID;
+    String EventNum;
     HttpPost httppost;
     HttpResponse response;
     HttpClient httpclient;
@@ -59,12 +78,17 @@ public class Cart extends AppCompatActivity {
     String serverUrl = "http://cseapp.16mb.com/notification.php";
     String result;
     JSONObject jso;
+    ListView cart;
+    CustomList ad;
+    int positionlist,cart_sum;
+    Button total;
     JSONArray cart_user_list;
     String 	userName, eventName, eventID, eventPrice;
     ArrayList<String> userName_list = new ArrayList<String>();
     ArrayList<String> eventName_list = new ArrayList<String>();
     ArrayList<String> eventID_list = new ArrayList<String>();
     ArrayList<String> eventPrice_list = new ArrayList<String>();
+    ArrayList<String> uniqueID_list = new ArrayList<String>();
 
     //    Getting Details
     public void getUserDetails(){
@@ -86,12 +110,49 @@ public class Cart extends AppCompatActivity {
 
     }
 
+    public void DeleteEvent(final String uniqueID){
+
+        Log.e("PV","BOcha is " +uniqueID);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                PHP_DELETE_CART,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                    }
+                },
+                new Response.ErrorListener(){
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Cart.this,error.getMessage(),Toast.LENGTH_LONG).show();
+
+                    }
+                }){
+            public static final String TAG = "PV";
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> params = new HashMap<>();
+                params.put("uniqueId", "3");
+
+                return params;
+            }
+
+
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+
+    }
+
 
     public void fetchData(){
 
         getUserDetails();
         dialog = new ProgressDialog(this);
-        dialog.setMessage("Wait a moment, Fetching messages...");
+        dialog.setMessage("Wait a moment, Fetching your events...");
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.show();
             Thread t = new Thread(new Runnable() {
@@ -136,6 +197,7 @@ public class Cart extends AppCompatActivity {
                                 cart_user_list = jso.getJSONArray("result");
                                 for (int i = 0; i < cart_user_list.length(); i++) {
                                     JSONObject c = cart_user_list.getJSONObject(i);
+                                    uniqueID = c.getString("uniqueID");
                                     userName = c.getString("userName");
                                     eventName = c.getString("eventName");
                                     eventID = c.getString("eventID");
@@ -145,14 +207,23 @@ public class Cart extends AppCompatActivity {
                                     eventName_list.add(eventName);
                                     eventID_list.add(eventID);
                                     eventPrice_list.add(eventPrice);
+                                    uniqueID_list.add(uniqueID);
                                 }
 
                                 Cart.this.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
-                                        CustomList ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list);
-                                        ListView cart = (ListView)findViewById(R.id.cart_list_show);
+                                        ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list);
+                                        cart = (ListView)findViewById(R.id.cart_list_show);
                                         cart.setAdapter(ad);
+                                        total = (Button) findViewById(R.id.total);
+                                        for(int i=0;i<eventPrice_list.size();i++)
+                                        {
+                                            Log.e("PV","sum="+eventPrice_list.get(i));
+                                            cart_sum+=Integer.parseInt(eventPrice_list.get(i));
+                                        }
+                                        Log.e("PV","sum="+cart_sum);
+                                        total.setText("Total Price = "+String.valueOf(cart_sum));
                                     }
                                 });
 
@@ -169,6 +240,56 @@ public class Cart extends AppCompatActivity {
                 }
             });
             t.start();
+
+            try {
+                cart = (ListView)findViewById(R.id.cart_list_show);
+                cart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                        positionlist = position;
+                        Log.e("PV","Dabla maza jorat");
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(Cart.this);
+                        builder.setTitle("Cancel Event!");
+                        builder.setMessage("Do your really want to cancel this event?")
+                                .setCancelable(false)
+                                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        eventName_list.remove(positionlist);
+                                        eventID_list.remove(positionlist);
+                                        eventPrice_list.remove(positionlist);
+                                        userName_list.remove(positionlist);
+                                        uniqueID_list.remove(positionlist);
+                                        ad.notifyDataSetChanged();
+                                        EventNum = String.valueOf(uniqueID_list.get(positionlist));
+                                        Toast.makeText(Cart.this, "deleted"+EventNum, Toast.LENGTH_SHORT).show();
+                                        Log.e("PV", "onClick: " + uniqueID_list.get(positionlist));
+
+                                        DeleteEvent(EventNum);
+                                        cart_sum = cart_sum - Integer.parseInt(eventPrice_list.get(positionlist));
+                                        total.setText("Total Price = "+String.valueOf(cart_sum));
+
+                                    }
+                                });
+                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                return;
+                            }
+                        });
+                        builder.show();
+
+
+                        return true;
+
+                    }
+                });
+            }
+            catch(NullPointerException e)
+            {
+                e.printStackTrace();
+            }
+
+
     };
 
 
@@ -178,5 +299,6 @@ public class Cart extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
 
         fetchData();
+
     }
 }

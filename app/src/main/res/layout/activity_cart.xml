@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.saurabh.wings2017.Cart">
 
-<ListView
-    android:layout_width="304dp"
-    android:layout_height="437dp"
-    android:id="@+id/cart_list_show"
-    android:padding="0dp"
-    tools:layout_editor_absoluteY="8dp"
-    tools:layout_editor_absoluteX="8dp">
+    <ListView
+        android:id="@+id/cart_list_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
-</ListView>
+    </ListView>
 
+    <Button android:id="@+id/total"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Get more"
+        android:layout_alignParentBottom="true" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

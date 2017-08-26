@@ -20,17 +20,18 @@ public class CustomList extends ArrayAdapter<String> {
     private final ArrayList eventName_list;
     private final ArrayList eventID_list;
     private final ArrayList eventPrice_list;
-
+    private final ArrayList uniqueID_list;
 
 
     public CustomList(Activity context,
-                        ArrayList userName_list, ArrayList eventName_list, ArrayList eventID_list, ArrayList eventPrice_list) {
+                      ArrayList userName_list, ArrayList eventName_list, ArrayList eventID_list, ArrayList eventPrice_list, ArrayList uniqueID_list) {
         super(context, R.layout.cart_list, userName_list);
         this.context = context;
         this.userName_list = userName_list;
         this.eventName_list = eventName_list;
         this.eventID_list = eventID_list;
         this.eventPrice_list = eventPrice_list;
+        this.uniqueID_list = uniqueID_list;
         Log.e("PV","bochya"+userName_list+eventName_list);
     }
 

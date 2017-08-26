@@ -1,5 +1,7 @@
 package com.saurabh.wings2017;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -128,8 +130,23 @@ public class GenericEventHome extends AppCompatActivity {
         add_to_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(GenericEventHome.this,"Added to cart",Toast.LENGTH_LONG).show();
-                fetchData();
+                AlertDialog.Builder builder = new AlertDialog.Builder(GenericEventHome.this);
+                builder.setTitle("Add Event!");
+                builder.setMessage("Do your really want to add this event?")
+                        .setCancelable(false)
+                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                fetchData();
+                                Toast.makeText(GenericEventHome.this, "Event added", Toast.LENGTH_SHORT).show();
+
+                            }
+                        });
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        return;
+                    }
+                });
+                builder.show();
 
             }
         });
