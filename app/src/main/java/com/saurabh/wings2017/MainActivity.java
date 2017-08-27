@@ -1,5 +1,7 @@
 package com.saurabh.wings2017;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -85,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-//    Method for  SignOut
+//
+////    Method for  SignOut
     public void LogOut(){
         signOutBtn = (Button) findViewById(R.id.signOUT);
         mAuth = FirebaseAuth.getInstance();
@@ -267,12 +269,53 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setClipToPadding(false);
         viewPager.setPadding(170, 60, 170, 0);
         viewPager.setPageMargin(90);
-        viewPager.setCurrentItem(1);
+        viewPager.setCurrentItem(0);
 
         CivilIntent();
         BrainIntent();
         LogOut();
         viewCart();
+
+    }
+    public void logout (View v) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("Logout!");
+        builder.setMessage("Are you sure to Logout?")
+                .setCancelable(false)
+                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        mAuth = FirebaseAuth.getInstance();
+                        mAuthListener = new FirebaseAuth.AuthStateListener() {
+                            @Override
+                            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                                if (firebaseAuth.getCurrentUser() == null) {
+
+                                    startActivity(new Intent(MainActivity.this, signIn.class));
+                                    finish();
+                                }
+                            }
+                        };
+                        mAuth.getInstance().signOut();
+                        Toast.makeText(MainActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                return;
+            }
+        });
+        builder.show();
+    }
+
+    public void openCart(View v)
+    {
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        Intent cartIntent = new Intent(MainActivity.this,Cart.class);
+        cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
+        cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
+        startActivity(cartIntent);
 
     }
 }

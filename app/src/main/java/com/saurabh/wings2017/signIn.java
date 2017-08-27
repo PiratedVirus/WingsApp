@@ -85,6 +85,7 @@ public class signIn extends AppCompatActivity {
                     fireBaseIntent.putExtra("USERNAME",fUserName);
 
                     startActivity(fireBaseIntent);
+                    finish();
 
 
 

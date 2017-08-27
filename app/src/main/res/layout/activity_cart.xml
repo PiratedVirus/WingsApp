@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.saurabh.wings2017.Cart">
+    tools:context="com.saurabh.wings2017.Cart"
+    android:layout_marginBottom="48sp"
+    android:layout_marginTop="20sp"
+     android:background="@drawable/bg">
 
     <ListView
         android:id="@+id/cart_list_show"
