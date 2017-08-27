@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -13,7 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +35,7 @@ public class signIn extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListner;
 
-    private SignInButton button;
+    private Button button;
     private final static int RC_SIGN_IN = 2;
 
     private GoogleApiClient mGoogleApiClient;
@@ -52,8 +53,17 @@ public class signIn extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
+        Window window = signIn.this.getWindow();
 
-        button = (SignInButton) findViewById(R.id.googleBtn);
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+//window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//// finally change the color
+//window.setStatusBarColor(Color.TRANSPARENT);
+//}
+
+        button = (Button) findViewById(R.id.googleBtn);
         mAuth = FirebaseAuth.getInstance();
 
 

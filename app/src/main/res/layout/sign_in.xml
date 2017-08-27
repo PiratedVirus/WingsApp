@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    android:fitsSystemWindows="true">
 
-
-    <com.google.android.gms.common.SignInButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/googleBtn">
-
-    </com.google.android.gms.common.SignInButton>
+    <ImageView
+        android:layout_width="253sp"
+        android:layout_height="152sp"
+        android:src="@drawable/wings_logo"
+        android:layout_below="@+id/mStatusTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-5sp" />
 
 
     <TextView
@@ -17,4 +19,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/mStatusTextView"/>
 
-</LinearLayout>
+
+
+    <Button
+        android:layout_width="300sp"
+        android:layout_height="60sp"
+        android:id="@+id/googleBtn"
+        android:background="@drawable/signin_button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="94dp" />
+
+</RelativeLayout>

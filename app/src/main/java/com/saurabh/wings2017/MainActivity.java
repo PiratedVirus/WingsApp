@@ -1,12 +1,16 @@
 package com.saurabh.wings2017;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,7 +21,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
-import java.util.Timer;
 import java.util.TimerTask;
 
 
@@ -234,7 +237,6 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         viewPager.setCurrentItem(0);
                     }
-
                 }
             });
 
@@ -247,12 +249,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Window window = MainActivity.this.getWindow();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+// finally change the color
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
 
         printUserDetails();
         countDots();
 
-        Timer timer = new Timer();
-        timer.scheduleAtFixedRate(new MyTimerTask(), 2000, 4000);
+//        Timer timer = new Timer();
+//        timer.scheduleAtFixedRate(new MyTimerTask(), 2000, 4000);
+        viewPager.setClipToPadding(false);
+        viewPager.setPadding(170, 60, 170, 0);
+        viewPager.setPageMargin(90);
+        viewPager.setCurrentItem(1);
 
         CivilIntent();
         BrainIntent();

@@ -36,7 +36,8 @@
             android:label="@string/title_activity_brain_home"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".GenericEventHome" />
-        <activity android:name=".Cart"></activity>
+        <activity android:name=".Cart" />
+        <activity android:name=".Checkout"></activity>
     </application>
 
 </manifest>

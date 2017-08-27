@@ -75,6 +75,10 @@
                         android:layout_height="wrap_content"
                         android:text="Classroom Complex" />
 
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:id="@+id/uniqueID"/>
 
                 </LinearLayout>
 

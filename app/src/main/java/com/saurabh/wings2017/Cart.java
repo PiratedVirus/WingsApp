@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -66,6 +67,7 @@ public class Cart extends AppCompatActivity {
     String mUsermail;
     String uniqueID;
     String EventNum;
+    TextView unique;
     HttpPost httppost;
     HttpResponse response;
     HttpClient httpclient;
@@ -134,7 +136,7 @@ public class Cart extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String,String> params = new HashMap<>();
-                params.put("uniqueId", "3");
+                params.put("uniqueId", EventNum);
 
                 return params;
             }
@@ -155,6 +157,7 @@ public class Cart extends AppCompatActivity {
         dialog.setMessage("Wait a moment, Fetching your events...");
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.show();
+        //total.setVisibility(View.VISIBLE);
             Thread t = new Thread(new Runnable() {
                 public void run() {
 
@@ -223,7 +226,7 @@ public class Cart extends AppCompatActivity {
                                             cart_sum+=Integer.parseInt(eventPrice_list.get(i));
                                         }
                                         Log.e("PV","sum="+cart_sum);
-                                        total.setText("Total Price = "+String.valueOf(cart_sum));
+                                        total.setText(String.valueOf(cart_sum));
                                     }
                                 });
 
@@ -245,30 +248,57 @@ public class Cart extends AppCompatActivity {
                 cart = (ListView)findViewById(R.id.cart_list_show);
                 cart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
-                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                         positionlist = position;
-                        Log.e("PV","Dabla maza jorat");
+                        Log.e("PV","Dabla maza jorat"+positionlist);
 
+                        for(int i=0;i<uniqueID_list.size();i++)
+                        {
+                            Log.e("PV","gdsjh="+uniqueID_list.get(i));
+                        }
                         AlertDialog.Builder builder = new AlertDialog.Builder(Cart.this);
                         builder.setTitle("Cancel Event!");
                         builder.setMessage("Do your really want to cancel this event?")
                                 .setCancelable(false)
                                 .setPositiveButton("YES", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {
-                                        eventName_list.remove(positionlist);
-                                        eventID_list.remove(positionlist);
-                                        eventPrice_list.remove(positionlist);
-                                        userName_list.remove(positionlist);
-                                        uniqueID_list.remove(positionlist);
-                                        ad.notifyDataSetChanged();
-                                        EventNum = String.valueOf(uniqueID_list.get(positionlist));
-                                        Toast.makeText(Cart.this, "deleted"+EventNum, Toast.LENGTH_SHORT).show();
-                                        Log.e("PV", "onClick: " + uniqueID_list.get(positionlist));
+                                       try {
+                                           eventName_list.remove(positionlist);
+                                           eventID_list.remove(positionlist);
+                                           eventPrice_list.remove(positionlist);
+                                           userName_list.remove(positionlist);
 
-                                        DeleteEvent(EventNum);
-                                        cart_sum = cart_sum - Integer.parseInt(eventPrice_list.get(positionlist));
-                                        total.setText("Total Price = "+String.valueOf(cart_sum));
+                                           // uniqueID_list.remove(positionlist);
+                                           unique = (TextView) cart.getChildAt(positionlist).findViewById(R.id.uniqueID);
 
+                                           ad.notifyDataSetChanged();
+
+                                           EventNum = (String) unique.getText();
+                                           Toast.makeText(Cart.this, "deleted" + EventNum, Toast.LENGTH_SHORT).show();
+
+//                                            cart_sum = Integer.parseInt((String)total.getText());
+                                           DeleteEvent(EventNum);
+                                           TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
+                                           Log.e("PV",(String)temp_price.getText());
+                                           cart_sum = cart_sum - Integer.parseInt((String)temp_price.getText());
+                                           total.setText(String.valueOf(cart_sum));
+                                       }
+                                       catch (IndexOutOfBoundsException r)
+                                       {
+                                           if(positionlist!=0)
+                                           {
+                                               cart_sum = Integer.parseInt((String)total.getText());
+                                               total.setVisibility(View.VISIBLE);
+                                               TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
+                                               cart_sum = cart_sum-Integer.parseInt((String)temp_price.getText());
+                                               total.setText(String.valueOf(cart_sum));
+
+                                           }
+                                           else{
+                                           total.setVisibility(View.GONE);
+                                           Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+                                           r.printStackTrace();}
+                                       }
                                     }
                                 });
                         builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {

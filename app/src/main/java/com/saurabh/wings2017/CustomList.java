@@ -49,6 +49,8 @@ public class CustomList extends ArrayAdapter<String> {
         TextView CartEventInfo = (TextView) rowView.findViewById(R.id.CartEventInfo);
         TextView CartEventLocation = (TextView) rowView.findViewById(R.id.CartEventLocation);
         TextView pricetag = (TextView) rowView.findViewById(R.id.PriceTag);
+        TextView uniqueID = (TextView) rowView.findViewById(R.id.uniqueID);
+
 
 
 
@@ -57,6 +59,7 @@ public class CustomList extends ArrayAdapter<String> {
         CartEventName.setText((CharSequence)eventName_list.get(position));
         CartEventLocation.setText((CharSequence)eventID_list.get(position));
         pricetag.setText((CharSequence)eventPrice_list.get(position));
+        uniqueID.setText((CharSequence)uniqueID_list.get(position));
 
         Log.e("PV", "yes"+userName_list.get(position)+eventName_list.get(position));
         return rowView;
