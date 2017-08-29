@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F4"
     tools:context="com.saurabh.wings2017.Checkout">
 
     <TextView
@@ -12,6 +13,141 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="168dp" />
+        tools:layout_editor_absoluteY="168dp"
+        android:visibility="invisible"/>
+
+    <ImageView
+        android:id="@+id/discountImg"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="91sp"
+        android:layout_centerHorizontal="true"
+        android:foregroundGravity="center_horizontal"
+        app:srcCompat="@drawable/discount" />
+
+    <ImageView
+        android:id="@+id/discountText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/discount_text"
+        android:layout_below="@+id/discountImg"
+        android:layout_marginLeft="5sp"
+        android:layout_marginRight="5sp"
+        android:layout_marginTop="15sp"/>
+
+    <TextView
+        android:id="@+id/priceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Total Price"
+        android:textAlignment="viewStart"
+        android:textColor="#9B9B9B"
+        android:textSize="18sp"
+        android:layout_below="@+id/discountText"
+        android:layout_toEndOf="@+id/FinalChkSum" />
+
+    <TextView
+        android:id="@+id/TotalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/priceLabel"
+        android:layout_toEndOf="@+id/discountImg"
+        android:text="Rs. 235"
+        android:textAlignment="viewEnd"
+        android:textColor="#434242"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/discountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/priceLabel"
+        android:layout_below="@+id/priceLabel"
+        android:layout_marginTop="19dp"
+        android:text="Discount"
+        android:textColor="#9B9B9B"
+        android:textAlignment="viewStart"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/discountPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rs.12"
+        android:textAlignment="viewEnd"
+        android:textColor="#43A047"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_above="@+id/billLine"
+        android:layout_alignEnd="@+id/TotalPrice" />
+
+    <ImageView
+        android:id="@+id/billLine"
+        android:layout_width="270sp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/discountLabel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="14dp"
+        android:foregroundGravity="center_horizontal"
+        app:srcCompat="@drawable/bill_line" />
+
+    <TextView
+        android:id="@+id/netPriceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/discountLabel"
+        android:layout_below="@+id/billLine"
+        android:layout_marginTop="7dp"
+        android:text="Net Price"
+        android:textAlignment="viewStart"
+        android:textColor="#434242"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/netPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rs.233"
+        android:textAlignment="viewEnd"
+        android:textColor="#434242"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/netPriceLabel"
+        android:layout_alignBottom="@+id/netPriceLabel"
+        android:layout_alignEnd="@+id/discountPrice" />
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:weightSum="10">
+        <ImageView
+            android:layout_weight="5"
+            android:id="@+id/imageView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="51dp"
+            android:layout_toStartOf="@+id/TotalPrice"
+            app:srcCompat="@drawable/back_btn"
+            android:onClick="goBack"/>
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/confirm_btn"
+            android:onClick="confirmCart"/>
+
+    </LinearLayout>
+
 
 </RelativeLayout>
