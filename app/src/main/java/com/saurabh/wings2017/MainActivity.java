@@ -326,7 +326,9 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void coinFirebase(View v){
+    public void viewTickets(View v){
+        Intent TicketIntent = new Intent(MainActivity.this,tickets.class);
+        startActivity(TicketIntent);
 
     }
 

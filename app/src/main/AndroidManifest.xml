@@ -41,7 +41,8 @@
         <activity android:name=".Cart" />
         <activity android:name=".Checkout" />
         <activity android:name=".paytm" />
-        <activity android:name=".confirmOrder"></activity>
+        <activity android:name=".confirmOrder" />
+        <activity android:name=".tickets"></activity>
     </application>
 
 </manifest>
