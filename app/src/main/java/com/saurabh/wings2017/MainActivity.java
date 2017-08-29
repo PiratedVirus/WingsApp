@@ -1,7 +1,5 @@
 package com.saurabh.wings2017;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -25,6 +23,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.TimerTask;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public Button viewCartBtn;
     private int dotscount;
     private ImageView[] dots;
+
 
     //  Printing Details
     TextView fireName;
@@ -255,9 +256,9 @@ public class MainActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-// finally change the color
+            // finally change the color
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
@@ -277,13 +278,34 @@ public class MainActivity extends AppCompatActivity {
         viewCart();
 
     }
-    public void logout (View v) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setTitle("Logout!");
-        builder.setMessage("Are you sure to Logout?")
-                .setCancelable(false)
-                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
+
+    public void openCart(View v) {
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        Intent cartIntent = new Intent(MainActivity.this,Cart.class);
+        cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
+        cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
+        startActivity(cartIntent);
+
+    }
+
+    public void logout(View v){
+
+        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Are you sure?")
+                .setContentText("You are about to log out from the app")
+                .setCancelText("No")
+                .showCancelButton(true)
+                .setConfirmText("Logout")
+                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
+                    }
+                })
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
 
                         mAuth = FirebaseAuth.getInstance();
                         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -299,25 +321,15 @@ public class MainActivity extends AppCompatActivity {
                         mAuth.getInstance().signOut();
                         Toast.makeText(MainActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
                     }
-                });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                return;
-            }
-        });
-        builder.show();
+
+                })
+                .show();
     }
 
-    public void openCart(View v)
-    {
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        Intent cartIntent = new Intent(MainActivity.this,Cart.class);
-        cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
-        cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
-        startActivity(cartIntent);
+    public void coinFirebase(View v){
 
     }
+
 }
 
 

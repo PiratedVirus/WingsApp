@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -62,11 +63,7 @@ public class Cart extends AppCompatActivity {
     FirebaseUser mFirebaseUser;
 
     // Firebase Detail holders
-    String mUsername;
-    String mPhotoUrl;
-    String mUsermail;
-    String uniqueID;
-    String EventNum;
+    String mUsername, mPhotoUrl, mUsermail, uniqueID, EventNum;
     TextView unique;
     HttpPost httppost;
     HttpResponse response;
@@ -84,6 +81,8 @@ public class Cart extends AppCompatActivity {
     CustomList ad;
     int positionlist,cart_sum;
     Button total;
+    ImageView emptyCart,exploreBtn;
+    TextView cartText,secText;
     JSONArray cart_user_list;
     String 	userName, eventName, eventID, eventPrice;
     ArrayList<String> userName_list = new ArrayList<String>();
@@ -157,6 +156,13 @@ public class Cart extends AppCompatActivity {
         dialog.setMessage("Wait a moment, Fetching your events...");
         dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         dialog.show();
+
+        emptyCart = (ImageView) findViewById(R.id.emptyCart);
+        cartText = (TextView) findViewById(R.id.cart_text);
+        exploreBtn = (ImageView) findViewById(R.id.exploreBtn);
+        secText = (TextView) findViewById(R.id.cart_sec_text);
+
+
         //total.setVisibility(View.VISIBLE);
             Thread t = new Thread(new Runnable() {
                 public void run() {
@@ -216,6 +222,7 @@ public class Cart extends AppCompatActivity {
                                 Cart.this.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
+
                                         ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list);
                                         cart = (ListView)findViewById(R.id.cart_list_show);
                                         cart.setAdapter(ad);
@@ -227,6 +234,14 @@ public class Cart extends AppCompatActivity {
                                         }
                                         Log.e("PV","sum="+cart_sum);
                                         total.setText(String.valueOf(cart_sum));
+                                        if(cart_sum==0){
+                                            emptyCart.setVisibility(View.VISIBLE);
+                                            cartText.setVisibility(View.VISIBLE);
+                                            exploreBtn.setVisibility(View.VISIBLE);
+                                            secText.setVisibility(View.VISIBLE);
+                                            total.setVisibility(View.GONE);
+                                            Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
                                 });
 
@@ -282,6 +297,16 @@ public class Cart extends AppCompatActivity {
                                            Log.e("PV",(String)temp_price.getText());
                                            cart_sum = cart_sum - Integer.parseInt((String)temp_price.getText());
                                            total.setText(String.valueOf(cart_sum));
+                                           Toast.makeText(Cart.this,"Cart_sum = " + cart_sum,Toast.LENGTH_LONG).show();
+
+                                           if(cart_sum==0){
+                                               emptyCart.setVisibility(View.VISIBLE);
+                                               cartText.setVisibility(View.VISIBLE);
+                                               exploreBtn.setVisibility(View.VISIBLE);
+                                               secText.setVisibility(View.VISIBLE);
+                                               total.setVisibility(View.GONE);
+                                               Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+                                           }
                                        }
                                        catch (IndexOutOfBoundsException r)
                                        {
@@ -296,6 +321,7 @@ public class Cart extends AppCompatActivity {
                                            }
                                            else{
                                            total.setVisibility(View.GONE);
+
                                            Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
                                            r.printStackTrace();}
                                        }
@@ -331,4 +357,17 @@ public class Cart extends AppCompatActivity {
         fetchData();
 
     }
+
+    public void explore(View v){
+        Intent exploreIntent = new Intent(Cart.this,MainActivity.class);
+        startActivity(exploreIntent);
+    }
+
+    public void checkOut(View v){
+        Intent chkOutIntent = new Intent(Cart.this,Checkout.class);
+        chkOutIntent.putExtra("TotalSum",total.getText());
+        startActivity(chkOutIntent);
+    }
+
+
 }

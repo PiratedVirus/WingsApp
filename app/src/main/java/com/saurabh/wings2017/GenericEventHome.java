@@ -1,7 +1,5 @@
 package com.saurabh.wings2017;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class GenericEventHome extends AppCompatActivity {
 
@@ -62,6 +62,7 @@ public class GenericEventHome extends AppCompatActivity {
         }
 
     }
+
 
     public void fetchData(){
 
@@ -130,23 +131,40 @@ public class GenericEventHome extends AppCompatActivity {
         add_to_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(GenericEventHome.this);
-                builder.setTitle("Add Event!");
-                builder.setMessage("Do your really want to add this event?")
-                        .setCancelable(false)
-                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                fetchData();
-                                Toast.makeText(GenericEventHome.this, "Event added", Toast.LENGTH_SHORT).show();
 
+
+                new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                        .setTitleText("Are you sure to add event?")
+//                        .setContentText("Events later can be changed through cart.")
+                        .setConfirmText("Yeah")
+                        .setCancelText("No")
+                        .showCancelButton(true)
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.cancel();
                             }
-                        });
-                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        return;
-                    }
-                });
-                builder.show();
+                        })
+                        .setCustomImage(R.drawable.dialoge_cart)
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                fetchData();
+                                sDialog
+                                        .setTitleText("Success!")
+                                        .setContentText("Event added to Cart!")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+//                                sDialog.findViewById(R.id.confirm_button).setVisibility(View.GONE);
+                            }
+
+
+
+
+                        })
+                        .show();
+
 
             }
         });
