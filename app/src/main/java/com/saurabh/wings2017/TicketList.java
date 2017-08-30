@@ -8,10 +8,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
-public class CustomList extends ArrayAdapter<String> {
-
+/**
+ * Created by saurabh on 29/08/17.
+ */
+public class TicketList extends ArrayAdapter<String> {
 
     private final Activity context;
     private final ArrayList userName_list;
@@ -21,7 +24,7 @@ public class CustomList extends ArrayAdapter<String> {
     private final ArrayList uniqueID_list;
 
 
-    public CustomList(Activity context,
+    public TicketList(Activity context,
                       ArrayList userName_list, ArrayList eventName_list, ArrayList eventID_list, ArrayList eventPrice_list, ArrayList uniqueID_list) {
         super(context, R.layout.cart_list, userName_list);
         this.context = context;
@@ -51,7 +54,6 @@ public class CustomList extends ArrayAdapter<String> {
 
 
 
-
         rowView.setBackgroundColor(Color.WHITE);
         CartEventInfo.setText((CharSequence)userName_list.get(position));
         CartEventName.setText((CharSequence)eventName_list.get(position));
@@ -62,5 +64,6 @@ public class CustomList extends ArrayAdapter<String> {
         Log.e("PV", "yes"+userName_list.get(position)+eventName_list.get(position));
         return rowView;
     }
+
 
 }

@@ -74,6 +74,8 @@ window.setStatusBarColor(Color.TRANSPARENT);
             @Override
             public void onClick(View v) {
                 signIn();
+
+
             }
         });
 
@@ -122,6 +124,7 @@ window.setStatusBarColor(Color.TRANSPARENT);
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        //finish();
     }
 
 
@@ -159,16 +162,16 @@ window.setStatusBarColor(Color.TRANSPARENT);
                             FirebaseUser user = mAuth.getCurrentUser();
                             fUserName = account.getDisplayName();
 
-                            Intent fireBaseIntent = new Intent(signIn.this, MainActivity.class);
-
-                            fireBaseIntent.putExtra("USERNAME",fUserName);
-
-                            startActivity(fireBaseIntent);
-
-
-
-                            Toast.makeText(signIn.this, fUserName,
-                                    Toast.LENGTH_SHORT).show();
+//                            Intent fireBaseIntent = new Intent(signIn.this, MainActivity.class);
+//
+//                            fireBaseIntent.putExtra("USERNAME",fUserName);
+//
+//                            startActivity(fireBaseIntent);
+//
+//                            finish();
+//
+//                            Toast.makeText(signIn.this, fUserName,
+//                                    Toast.LENGTH_SHORT).show();
 
 //                            updateUI(user);
                         } else {
@@ -182,6 +185,18 @@ window.setStatusBarColor(Color.TRANSPARENT);
                         // ...
                     }
                 });
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+        startActivity(intent);
+        finish();
+        System.exit(0);
 
     }
 

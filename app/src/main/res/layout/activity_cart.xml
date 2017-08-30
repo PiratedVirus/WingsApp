@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="48sp"
+    android:id="@+id/cart_layout"
     android:layout_marginTop="20sp"
+    android:layout_marginBottom="48sp"
     android:background="#F5F5F4"
     tools:context="com.saurabh.wings2017.Cart">
 
@@ -15,20 +16,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="0dp"
+
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteY="8dp"
+
+        android:layout_above="@+id/linearLayout">
 
     </ListView>
 
 
 
-    <Button
-        android:id="@+id/total"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="Chekout"
-        />
+    <!--<Button-->
+        <!--android:id="@+id/total"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:text="Chekout"-->
+        <!--/>-->
 
     <ImageView
         android:id="@+id/emptyCart"
@@ -72,13 +76,40 @@
         app:srcCompat="@drawable/explore_btn"
         android:onClick="explore"/>
 
-    <Button
-        android:id="@+id/chkOutBtn"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        android:onClick="checkOut"
-        android:layout_above="@+id/total"/>
+        android:layout_alignParentBottom="true"
+        android:weightSum="10"
+        android:id="@+id/linearLayout"
+        android:background="@drawable/list_item">
+
+        <TextView
+            android:id="@+id/total"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_toStartOf="@+id/TotalPrice"
+            android:gravity="center"
+            android:layout_weight="5"
+
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:srcCompat="@drawable/back_btn" />
+
+        <ImageView
+            android:id="@+id/chkOutBtn"
+            android:layout_weight="5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/checkout"
+            android:onClick="checkOut"/>
+
+    </LinearLayout>
+
 
 
 </RelativeLayout>

@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public LinearLayout sliderDotspanel;
     public Button CivilBtn;
     public Button BrainBtn;
-    public Button signOutBtn;
+    public ImageView signOutBtn;
     public Button viewCartBtn;
     private int dotscount;
     private ImageView[] dots;
@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-//    Method for checking auth state
-    protected void onStart() {
+ //   Method for checking auth state
+    public void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListener);
     }
@@ -90,17 +90,18 @@ public class MainActivity extends AppCompatActivity {
     }
 //
 ////    Method for  SignOut
-    public void LogOut(){
-        signOutBtn = (Button) findViewById(R.id.signOUT);
+    public void LogOut() {
+        signOutBtn = (ImageView) findViewById(R.id.logout);
         mAuth = FirebaseAuth.getInstance();
 
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() == null){
+                if (firebaseAuth.getCurrentUser() == null) {
 
                     startActivity(new Intent(MainActivity.this, signIn.class));
+                    finish();
                 }
             }
         };
@@ -109,8 +110,26 @@ public class MainActivity extends AppCompatActivity {
         signOutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mAuth.getInstance().signOut();
-                Toast.makeText(MainActivity.this,"Logged Out",Toast.LENGTH_SHORT).show();
+
+                new SweetAlertDialog(MainActivity.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Are you sure?")
+                        .setContentText("You are about to log out from the app")
+                        .setCancelText("No")
+                        .showCancelButton(true)
+                        .setConfirmText("Logout")
+                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.cancel();
+                            }
+                        })
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                mAuth.getInstance().signOut();
+                                Toast.makeText(MainActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
+                            }
+                        }).show();
             }
         });
     }
@@ -253,12 +272,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Window window = MainActivity.this.getWindow();
+      //  mAuth = FirebaseAuth.getInstance();
+//        mAuth.addAuthStateListener(mAuthListener);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             // finally change the color
+           // window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
             window.setStatusBarColor(Color.TRANSPARENT);
         }
 
@@ -285,50 +307,31 @@ public class MainActivity extends AppCompatActivity {
         Intent cartIntent = new Intent(MainActivity.this,Cart.class);
         cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
         cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
+        Toast.makeText(this, "Long press on event to delete!", Toast.LENGTH_LONG).show();
         startActivity(cartIntent);
+        finish();
 
     }
 
-    public void logout(View v){
 
-        new SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
-                .setTitleText("Are you sure?")
-                .setContentText("You are about to log out from the app")
-                .setCancelText("No")
-                .showCancelButton(true)
-                .setConfirmText("Logout")
-                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.cancel();
-                    }
-                })
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-
-                        mAuth = FirebaseAuth.getInstance();
-                        mAuthListener = new FirebaseAuth.AuthStateListener() {
-                            @Override
-                            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                                if (firebaseAuth.getCurrentUser() == null) {
-
-                                    startActivity(new Intent(MainActivity.this, signIn.class));
-                                    finish();
-                                }
-                            }
-                        };
-                        mAuth.getInstance().signOut();
-                        Toast.makeText(MainActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
-                    }
-
-                })
-                .show();
-    }
 
     public void viewTickets(View v){
         Intent TicketIntent = new Intent(MainActivity.this,tickets.class);
         startActivity(TicketIntent);
+        finish();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        super.onBackPressed();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+        startActivity(intent);
+        finish();
+        System.exit(0);
 
     }
 

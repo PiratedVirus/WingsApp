@@ -5,13 +5,16 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -78,10 +81,11 @@ public class Cart extends AppCompatActivity {
     String result;
     JSONObject jso;
     ListView cart;
+    int total_cart_sum;
     CustomList ad;
     int positionlist,cart_sum;
-    Button total;
-    ImageView emptyCart,exploreBtn;
+    TextView total;
+    ImageView emptyCart,exploreBtn,checkout;
     TextView cartText,secText;
     JSONArray cart_user_list;
     String 	userName, eventName, eventID, eventPrice;
@@ -161,6 +165,7 @@ public class Cart extends AppCompatActivity {
         cartText = (TextView) findViewById(R.id.cart_text);
         exploreBtn = (ImageView) findViewById(R.id.exploreBtn);
         secText = (TextView) findViewById(R.id.cart_sec_text);
+        checkout = (ImageView) findViewById(R.id.chkOutBtn);
 
 
         //total.setVisibility(View.VISIBLE);
@@ -226,19 +231,20 @@ public class Cart extends AppCompatActivity {
                                         ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list);
                                         cart = (ListView)findViewById(R.id.cart_list_show);
                                         cart.setAdapter(ad);
-                                        total = (Button) findViewById(R.id.total);
+                                        total = (TextView) findViewById(R.id.total);
                                         for(int i=0;i<eventPrice_list.size();i++)
                                         {
                                             Log.e("PV","sum="+eventPrice_list.get(i));
                                             cart_sum+=Integer.parseInt(eventPrice_list.get(i));
                                         }
                                         Log.e("PV","sum="+cart_sum);
-                                        total.setText(String.valueOf(cart_sum));
+                                        total.setText("Amount   ₹"+String.valueOf(cart_sum));
                                         if(cart_sum==0){
                                             emptyCart.setVisibility(View.VISIBLE);
                                             cartText.setVisibility(View.VISIBLE);
                                             exploreBtn.setVisibility(View.VISIBLE);
                                             secText.setVisibility(View.VISIBLE);
+                                            checkout.setVisibility(View.GONE);
                                             total.setVisibility(View.GONE);
                                             Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
                                         }
@@ -296,7 +302,7 @@ public class Cart extends AppCompatActivity {
                                            TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
                                            Log.e("PV",(String)temp_price.getText());
                                            cart_sum = cart_sum - Integer.parseInt((String)temp_price.getText());
-                                           total.setText(String.valueOf(cart_sum));
+                                           total.setText("Amount   ₹"+String.valueOf(cart_sum));
                                            Toast.makeText(Cart.this,"Cart_sum = " + cart_sum,Toast.LENGTH_LONG).show();
 
                                            if(cart_sum==0){
@@ -305,6 +311,7 @@ public class Cart extends AppCompatActivity {
                                                exploreBtn.setVisibility(View.VISIBLE);
                                                secText.setVisibility(View.VISIBLE);
                                                total.setVisibility(View.GONE);
+                                               checkout.setVisibility(View.GONE);
                                                Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
                                            }
                                        }
@@ -316,7 +323,7 @@ public class Cart extends AppCompatActivity {
                                                total.setVisibility(View.VISIBLE);
                                                TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
                                                cart_sum = cart_sum-Integer.parseInt((String)temp_price.getText());
-                                               total.setText(String.valueOf(cart_sum));
+                                               total.setText("Amount   ₹"+String.valueOf(cart_sum));
 
                                            }
                                            else{
@@ -353,6 +360,19 @@ public class Cart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
+        Window window = Cart.this.getWindow();
+        //  mAuth = FirebaseAuth.getInstance();
+//        mAuth.addAuthStateListener(mAuthListener);
+
+
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            // finally change the color
+            window.setStatusBarColor(R.color.colorAccent);
+        }
 
         fetchData();
 
@@ -361,12 +381,38 @@ public class Cart extends AppCompatActivity {
     public void explore(View v){
         Intent exploreIntent = new Intent(Cart.this,MainActivity.class);
         startActivity(exploreIntent);
+        finish();
     }
 
     public void checkOut(View v){
         Intent chkOutIntent = new Intent(Cart.this,Checkout.class);
-        chkOutIntent.putExtra("TotalSum",total.getText());
+        StringBuilder sb = new StringBuilder(total.getText());
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(0);
+        sb.deleteCharAt(0);
+        chkOutIntent.putExtra("TotalSum",sb.toString());
         startActivity(chkOutIntent);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(Cart.this,MainActivity.class);
+        startActivity(i);
+        finish();
+
+    }
+
+    public boolean hasNavBar (Resources resources)
+    {
+        int id = resources.getIdentifier("config_showNavigationBar", "bool", "android");
+        return id > 0 && resources.getBoolean(id);
     }
 
 

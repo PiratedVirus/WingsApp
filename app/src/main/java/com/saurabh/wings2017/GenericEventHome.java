@@ -1,7 +1,11 @@
 package com.saurabh.wings2017;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -132,42 +136,72 @@ public class GenericEventHome extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if (!isNetworkAvailable()) {
+                    Log.e("PV", "not connected");
 
-                new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
-                        .setTitleText("Are you sure to add event?")
+
+                    new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.WARNING_TYPE)
+                            .setTitleText("You are not connected to Internet")
+                            .setContentText("You are about to log out from the app")
+                            .setConfirmText("Go to Settings")
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    final Context ctx = getApplicationContext();
+                                    Intent i = new Intent(Settings.ACTION_SETTINGS);
+                                    // i.setClassName("com.android.phone","com.android.phone.NetworkSetting");
+                                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    ctx.startActivity(i);
+
+                                }
+
+                            })
+                            .show();
+
+                } else {
+
+
+                    new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                            .setTitleText("Are you sure to add event?")
 //                        .setContentText("Events later can be changed through cart.")
-                        .setConfirmText("Yeah")
-                        .setCancelText("No")
-                        .showCancelButton(true)
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.cancel();
-                            }
-                        })
-                        .setCustomImage(R.drawable.dialoge_cart)
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                fetchData();
-                                sDialog
-                                        .setTitleText("Success!")
-                                        .setContentText("Event added to Cart!")
-                                        .setConfirmText("OK")
-                                        .setConfirmClickListener(null)
-                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            .setConfirmText("Yeah")
+                            .setCancelText("No")
+                            .showCancelButton(true)
+                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    sDialog.cancel();
+                                }
+                            })
+                            .setCustomImage(R.drawable.dialoge_cart)
+                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                @Override
+                                public void onClick(SweetAlertDialog sDialog) {
+                                    fetchData();
+                                    sDialog
+                                            .setTitleText("Success!")
+                                            .setContentText("Event added to Cart!")
+                                            .setConfirmText("OK")
+                                            .setConfirmClickListener(null)
+                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
 //                                sDialog.findViewById(R.id.confirm_button).setVisibility(View.GONE);
-                            }
+                                }
 
 
+                            })
+                            .show();
 
 
-                        })
-                        .show();
-
-
+                }
             }
         });
 
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

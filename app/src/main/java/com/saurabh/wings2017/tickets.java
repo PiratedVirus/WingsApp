@@ -284,4 +284,13 @@ public class tickets extends AppCompatActivity {
         setContentView(R.layout.activity_tickets);
         printTickets();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(tickets.this,MainActivity.class);
+        startActivity(i);
+        finish();
+
+    }
 }
