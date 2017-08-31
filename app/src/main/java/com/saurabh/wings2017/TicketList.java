@@ -7,61 +7,87 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 /**
- * Created by saurabh on 29/08/17.
+ * Created by saurabh on 29/08/17.gandu
  */
 public class TicketList extends ArrayAdapter<String> {
 
     private final Activity context;
-    private final ArrayList userName_list;
-    private final ArrayList eventName_list;
-    private final ArrayList eventID_list;
-    private final ArrayList eventPrice_list;
-    private final ArrayList uniqueID_list;
+    private final ArrayList userName_ticket;
+    private final ArrayList eventName_ticket;
+    private final ArrayList eventID_ticket;
+    private final ArrayList eventPrice_ticket;
+   // private final ArrayList uniqueID_ticket;
+    private final ArrayList played;
+    private final ArrayList paid;
 
 
     public TicketList(Activity context,
-                      ArrayList userName_list, ArrayList eventName_list, ArrayList eventID_list, ArrayList eventPrice_list, ArrayList uniqueID_list) {
-        super(context, R.layout.cart_list, userName_list);
+                      ArrayList userName_ticket, ArrayList eventName_ticket, ArrayList eventID_ticket, ArrayList eventPrice_ticket, ArrayList played, ArrayList paid) {
+        super(context, R.layout.ticket_list, userName_ticket);
         this.context = context;
-        this.userName_list = userName_list;
-        this.eventName_list = eventName_list;
-        this.eventID_list = eventID_list;
-        this.eventPrice_list = eventPrice_list;
-        this.uniqueID_list = uniqueID_list;
-        Log.e("PV","bochya"+userName_list+eventName_list);
+        this.userName_ticket = userName_ticket;
+        this.eventName_ticket = eventName_ticket;
+        this.eventID_ticket = eventID_ticket;
+        this.eventPrice_ticket = eventPrice_ticket;
+       // this.uniqueID_ticket = uniqueID_ticket;
+        this.played = played;
+        this.paid = paid;
+
+        Log.e("PV","bochya"+userName_ticket+eventName_ticket);
     }
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
-        Log.e("PV","xyz");
+        Log.e("PV","TicketList");
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView= inflater.inflate(R.layout.cart_list, null, true);
+        View rowView= inflater.inflate(R.layout.ticket_list, null, true);
+        // ithe barobar dile ahe me tari pan ti cart walach ghetoy e
         rowView.setMinimumHeight(80);
         rowView.setBackgroundColor(Color.WHITE);
-
+        ImageView unpaid =(ImageView) rowView.findViewById(R.id.unpaid);
+        ImageView unplayed = (ImageView) rowView.findViewById(R.id.unplayed);
 
 
         TextView CartEventName = (TextView) rowView.findViewById(R.id.CartEventName);
         TextView CartEventInfo = (TextView) rowView.findViewById(R.id.CartEventInfo);
         TextView CartEventLocation = (TextView) rowView.findViewById(R.id.CartEventLocation);
         TextView pricetag = (TextView) rowView.findViewById(R.id.PriceTag);
-        TextView uniqueID = (TextView) rowView.findViewById(R.id.uniqueID);
+       // TextView uniqueID = (TextView) rowView.findViewById(R.id.uniqu
+
+        Log.e("PV", "paid bochesh = "+paid.get(position));
+
+        if(paid.get(position).equals("0")) {
+            unpaid.setImageResource(R.drawable.unpaid);
+            pricetag.setText("Chutya");
+        }
+        else
+            unpaid.setImageResource(R.drawable.unplayed);
+
+        if(played.get(position).equals("0")) {
+            unplayed.setImageResource(R.drawable.unplayed);
+        }
+        else
+            unplayed.setImageResource(R.drawable.unplayed);
+
 
 
 
         rowView.setBackgroundColor(Color.WHITE);
-        CartEventInfo.setText((CharSequence)userName_list.get(position));
-        CartEventName.setText((CharSequence)eventName_list.get(position));
-        CartEventLocation.setText((CharSequence)eventID_list.get(position));
-        pricetag.setText((CharSequence)eventPrice_list.get(position));
-        uniqueID.setText((CharSequence)uniqueID_list.get(position));
+        CartEventInfo.setText((CharSequence)userName_ticket.get(position));
+        CartEventName.setText((CharSequence)eventName_ticket.get(position));
+        CartEventLocation.setText((CharSequence)eventID_ticket.get(position));
+        pricetag.setText((CharSequence)eventPrice_ticket.get(position));
+        //uniqueID.setText((CharSequence)uniqueID_ticket.get(position));
+//        unpaid.setImageResource(R.drawable.unpaid);
+//        unplayed.setImageResource(R.drawable.unplayed);
 
-        Log.e("PV", "yes"+userName_list.get(position)+eventName_list.get(position));
+        Log.e("PV", "yes"+userName_ticket.get(position)+eventName_ticket.get(position));
         return rowView;
     }
 

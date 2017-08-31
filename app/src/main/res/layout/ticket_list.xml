@@ -1,111 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F5F4">
 
 
+    <TextView
+        android:id="@+id/CartEventName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="40dp"
+        android:text="Jay Hind"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="#E40046" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:paddingLeft="16dp"
-            android:paddingRight="0dp">
+    <TextView
+        android:id="@+id/CartEventInfo"
+        android:layout_width="250sp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/CartEventName"
+        android:layout_below="@+id/CartEventName"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam cumque dignissimos eligendi, aut facilis fuga." />
 
-            <LinearLayout
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:srcCompat="@drawable/location"
+        android:layout_below="@+id/CartEventInfo"
+        android:layout_alignStart="@+id/CartEventInfo" />
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:padding="@dimen/text_margin">
+    <TextView
+        android:id="@+id/CartEventLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView5"
+        android:layout_marginStart="13dp"
+        android:layout_toEndOf="@+id/imageView5"
+        android:text="Classroom Complex"
+        android:layout_alignTop="@+id/imageView5" />
 
+    <ImageView
+        android:id="@+id/unpaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        app:srcCompat="@drawable/unpaid"
+        android:layout_below="@+id/imageView5"
+        android:layout_alignParentStart="true" />
 
-                <!-- Sub Linear layout for Heading and Button -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/unplayed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/unpaid"
+        android:layout_marginStart="29dp"
+        android:layout_toEndOf="@+id/unpaid"
+        app:srcCompat="@drawable/unplayed" />
 
-                    <TextView
-                        android:id="@+id/CartEventName"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:elevation="2dp"
-                        android:paddingRight="85dp"
-                        android:text="Jay Hind"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                        android:textColor="#E40046" />
+    <TextView
+        android:id="@+id/PriceTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/CartEventInfo"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="9dp"
+        android:text="₹ 50"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
 
-
-                </LinearLayout>
-                <!-- Sub Linear Layout ends here -->
-
-
-                <TextView
-                    android:id="@+id/CartEventDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam cumque dignissimos eligendi, aut facilis fuga."
-                    android:textAppearance="@style/Base.TextAppearance.AppCompat" />
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:paddingTop="5dp">
-
-
-                    <ImageView
-                        android:id="@+id/locationIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingRight="6dp"
-                        app:srcCompat="@drawable/location" />
-
-                    <TextView
-                        android:id="@+id/CartEventLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Classroom Complex" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:id="@+id/uniqueID"/>
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:layout_gravity="center"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/PriceTag"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="50"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-    </LinearLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

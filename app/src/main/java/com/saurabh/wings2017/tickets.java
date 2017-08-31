@@ -1,14 +1,10 @@
 package com.saurabh.wings2017;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -40,7 +36,7 @@ public class tickets extends AppCompatActivity {
 
     public static final String PHP_GET_TICKETS = "https://scouncilgeca.com/WingsApp/getTickets.php";
 
-    String mUsername, mPhotoUrl, mUsermail, uniqueID, EventNum;
+    String mUsername, mPhotoUrl, mUsermail, uniqueID, EventNum, paid, played;
     TextView unique;
     HttpPost httppost;
     HttpResponse response;
@@ -52,21 +48,24 @@ public class tickets extends AppCompatActivity {
     ProgressDialog dialog;
     JSONArray stu = null;
 
+
     String result;
     JSONObject jso;
-    ListView cart;
-    CustomList ad;
+    ListView ticket;
+    TicketList ad;
     int positionlist,cart_sum;
     Button total;
     ImageView emptyCart,exploreBtn;
     TextView cartText,secText;
-    JSONArray cart_user_list;
+    JSONArray cart_user_ticket;
     String 	userName, eventName, eventID, eventPrice;
-    ArrayList<String> userName_list = new ArrayList<String>();
-    ArrayList<String> eventName_list = new ArrayList<String>();
-    ArrayList<String> eventID_list = new ArrayList<String>();
-    ArrayList<String> eventPrice_list = new ArrayList<String>();
-    ArrayList<String> uniqueID_list = new ArrayList<String>();
+    ArrayList<String> userName_ticket = new ArrayList<String>();
+    ArrayList<String> eventName_ticket = new ArrayList<String>();
+    ArrayList<String> eventID_ticket = new ArrayList<String>();
+    ArrayList<String> eventPrice_ticket = new ArrayList<String>();
+    ArrayList<String> uniqueID_ticket = new ArrayList<String>();
+    ArrayList<String> paid_ticket = new ArrayList<String>();
+    ArrayList<String> played_ticket = new ArrayList<String>();
 
     FirebaseAuth mFirebaseAuth;
     FirebaseUser mFirebaseUser;
@@ -135,43 +134,47 @@ public class tickets extends AppCompatActivity {
                         Log.i("andro", result);
                         try {
                             jso = new JSONObject(result);
-                            cart_user_list = jso.getJSONArray("result");
-                            for (int i = 0; i < cart_user_list.length(); i++) {
-                                JSONObject c = cart_user_list.getJSONObject(i);
-                                uniqueID = c.getString("uniqueID");
+                            cart_user_ticket = jso.getJSONArray("result");
+                            for (int i = 0; i < cart_user_ticket.length(); i++) {
+                                JSONObject c = cart_user_ticket.getJSONObject(i);
+                               // uniqueID = c.getString("uniqueID");
                                 userName = c.getString("userName");
                                 eventName = c.getString("eventName");
                                 eventID = c.getString("eventID");
                                 eventPrice = c.getString("eventPrice");
-                                Log.e("result",userName+eventName+eventID+eventPrice);
-                                userName_list.add(userName);
-                                eventName_list.add(eventName);
-                                eventID_list.add(eventID);
-                                eventPrice_list.add(eventPrice);
-                                uniqueID_list.add(uniqueID);
+                                paid = c.getString("paid");
+                                played = c.getString("played");
+                                Log.e("result",userName+eventName+eventID+eventPrice+"paid_php"+paid);
+                                userName_ticket.add(userName);
+                                eventName_ticket.add(eventName);
+                                eventID_ticket.add(eventID);
+                                eventPrice_ticket.add(eventPrice);
+                                //uniqueID_ticket.add(uniqueID);
+                                paid_ticket.add(paid);
+                                played_ticket.add(played);
                             }
 
                             tickets.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
 
-                                    ad = new CustomList(tickets.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list);
-                                    cart = (ListView)findViewById(R.id.ticket_list_show);
-                                    cart.setAdapter(ad);
+                                    ad = new TicketList(tickets.this, userName_ticket, eventName_ticket, eventID_ticket, eventPrice_ticket,  played_ticket, paid_ticket);
+                                    ticket = (ListView)findViewById(R.id.ticket_list_show);
+                                    ticket.setAdapter(ad);
                                     total = (Button) findViewById(R.id.total);
-                                    for(int i=0;i<eventPrice_list.size();i++)
+                                    for(int i=0;i<eventPrice_ticket.size();i++)
                                     {
-                                        Log.e("PV","sum="+eventPrice_list.get(i));
-                                        cart_sum+=Integer.parseInt(eventPrice_list.get(i));
+                                        Log.e("PV","sum="+eventPrice_ticket.get(i));
+                                        cart_sum+=Integer.parseInt(eventPrice_ticket.get(i));
                                     }
                                     Log.e("PV","sum="+cart_sum);
                                     total.setText(String.valueOf(cart_sum));
                                     if(cart_sum==0){
-                                        emptyCart.setVisibility(View.VISIBLE);
-                                        cartText.setVisibility(View.VISIBLE);
-                                        exploreBtn.setVisibility(View.VISIBLE);
-                                        secText.setVisibility(View.VISIBLE);
-                                        total.setVisibility(View.GONE);
+//                                        emptyCart.setVisibility(View.VISIBLE);
+//                                        cartText.setVisibility(View.VISIBLE);
+//                                        exploreBtn.setVisibility(View.VISIBLE);
+//                                        secText.setVisibility(View.VISIBLE);
+//                                        total.setVisibility(View.GONE);
                                         Toast.makeText(tickets.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
                                     }
                                 }
@@ -191,91 +194,7 @@ public class tickets extends AppCompatActivity {
         });
         t.start();
 
-        try {
-            cart = (ListView)findViewById(R.id.cart_list_show);
-            cart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                @Override
-                public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                    positionlist = position;
-                    Log.e("PV","Dabla maza jorat"+positionlist);
 
-                    for(int i=0;i<uniqueID_list.size();i++)
-                    {
-                        Log.e("PV","gdsjh="+uniqueID_list.get(i));
-                    }
-                    AlertDialog.Builder builder = new AlertDialog.Builder(tickets.this);
-                    builder.setTitle("Cancel Event!");
-                    builder.setMessage("Do your really want to cancel this event?")
-                            .setCancelable(false)
-                            .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    try {
-                                        eventName_list.remove(positionlist);
-                                        eventID_list.remove(positionlist);
-                                        eventPrice_list.remove(positionlist);
-                                        userName_list.remove(positionlist);
-
-                                        // uniqueID_list.remove(positionlist);
-                                        unique = (TextView) cart.getChildAt(positionlist).findViewById(R.id.uniqueID);
-
-                                        ad.notifyDataSetChanged();
-
-                                        EventNum = (String) unique.getText();
-                                        Toast.makeText(tickets.this, "deleted" + EventNum, Toast.LENGTH_SHORT).show();
-
-//                                            cart_sum = Integer.parseInt((String)total.getText());
-//                                        DeleteEvent(EventNum);
-                                        TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
-                                        Log.e("PV",(String)temp_price.getText());
-                                        cart_sum = cart_sum - Integer.parseInt((String)temp_price.getText());
-                                        total.setText(String.valueOf(cart_sum));
-                                        Toast.makeText(tickets.this,"Cart_sum = " + cart_sum,Toast.LENGTH_LONG).show();
-
-                                        if(cart_sum==0){
-                                            emptyCart.setVisibility(View.VISIBLE);
-                                            cartText.setVisibility(View.VISIBLE);
-                                            exploreBtn.setVisibility(View.VISIBLE);
-                                            secText.setVisibility(View.VISIBLE);
-                                            total.setVisibility(View.GONE);
-                                            Toast.makeText(tickets.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                    catch (IndexOutOfBoundsException r)
-                                    {
-                                        if(positionlist!=0)
-                                        {
-                                            cart_sum = Integer.parseInt((String)total.getText());
-                                            total.setVisibility(View.VISIBLE);
-                                            TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
-                                            cart_sum = cart_sum-Integer.parseInt((String)temp_price.getText());
-                                            total.setText(String.valueOf(cart_sum));
-
-                                        }
-                                        else{
-                                            total.setVisibility(View.GONE);
-
-                                            Toast.makeText(tickets.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
-                                            r.printStackTrace();}
-                                    }
-                                }
-                            });
-                    builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            return;
-                        }
-                    });
-                    builder.show();
-
-
-                    return true;
-
-                }
-            });
-        }
-        catch(NullPointerException e)
-        {
-            e.printStackTrace();
-        }
     }
 
     @Override

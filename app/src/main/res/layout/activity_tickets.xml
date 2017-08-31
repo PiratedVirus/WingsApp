@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:text="Chekout"
+        android:visibility="invisible"
         />
 
     <ImageView
@@ -79,6 +80,7 @@
         android:layout_height="wrap_content"
         android:text="Button"
         android:onClick="checkOut"
+        android:visibility="invisible"
         android:layout_above="@+id/total"/>
 
 </RelativeLayout>

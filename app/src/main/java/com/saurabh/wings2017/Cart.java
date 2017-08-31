@@ -2,14 +2,12 @@ package com.saurabh.wings2017;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -52,12 +50,12 @@ import java.util.Map;
 
 
 public class Cart extends AppCompatActivity {
-    private static final String TAG = "PV";
-    private RecyclerView recyclerView;
-    private  RecyclerView.Adapter adapter;
-    private List<ListItem> listItems;
-    private ListView lvEvent;
-    private Context context;
+//    private static final String TAG = "PV";
+//    private RecyclerView recyclerView;
+//    private  RecyclerView.Adapter adapter;
+//    private List<ListItem> listItems;
+//    private ListView lvEvent;
+//    private Context context;
 
     public static final String PHP_GET_CART = "https://scouncilgeca.com/WingsApp/getCartData.php";
     public static final String PHP_DELETE_CART = "https://scouncilgeca.com/WingsApp/deleteEventCart.php";

@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView[] dots;
 
 
+
     //  Printing Details
     TextView fireName;
     TextView fireMail;
@@ -76,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+
 
 //   Method for opening Brain
     public void BrainIntent(){
