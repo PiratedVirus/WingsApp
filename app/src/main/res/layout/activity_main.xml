@@ -12,7 +12,7 @@
     android:layout_gravity="center"
     android:clipChildren="false"
     android:clipToPadding="false"
-android:paddingBottom="48sp"
+
     tools:context="com.test.myapplication.MainActivity">
 
 <RelativeLayout

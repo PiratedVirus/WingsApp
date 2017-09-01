@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginBottom="48sp"
+
             android:layout_toStartOf="@+id/TotalPrice"
             app:srcCompat="@drawable/back_btn"
             android:onClick="goBack"/>
