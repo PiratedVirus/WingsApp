@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * Created by saurabh on 29/08/17.gandu
+ * Created by saurabh on 29/08/17
  */
 public class TicketList extends ArrayAdapter<String> {
 
@@ -22,7 +22,6 @@ public class TicketList extends ArrayAdapter<String> {
     private final ArrayList eventName_ticket;
     private final ArrayList eventID_ticket;
     private final ArrayList eventPrice_ticket;
-   // private final ArrayList uniqueID_ticket;
     private final ArrayList played;
     private final ArrayList paid;
 
@@ -58,22 +57,22 @@ public class TicketList extends ArrayAdapter<String> {
         TextView CartEventInfo = (TextView) rowView.findViewById(R.id.CartEventInfo);
         TextView CartEventLocation = (TextView) rowView.findViewById(R.id.CartEventLocation);
         TextView pricetag = (TextView) rowView.findViewById(R.id.PriceTag);
-       // TextView uniqueID = (TextView) rowView.findViewById(R.id.uniqu
+
 
         Log.e("PV", "paid bochesh = "+paid.get(position));
 
         if(paid.get(position).equals("0")) {
             unpaid.setImageResource(R.drawable.unpaid);
-            pricetag.setText("Chutya");
+
         }
         else
-            unpaid.setImageResource(R.drawable.unplayed);
+            unpaid.setImageResource(R.drawable.paid);
 
         if(played.get(position).equals("0")) {
             unplayed.setImageResource(R.drawable.unplayed);
         }
         else
-            unplayed.setImageResource(R.drawable.unplayed);
+            unplayed.setImageResource(R.drawable.played);
 
 
 
@@ -83,9 +82,7 @@ public class TicketList extends ArrayAdapter<String> {
         CartEventName.setText((CharSequence)eventName_ticket.get(position));
         CartEventLocation.setText((CharSequence)eventID_ticket.get(position));
         pricetag.setText((CharSequence)eventPrice_ticket.get(position));
-        //uniqueID.setText((CharSequence)uniqueID_ticket.get(position));
-//        unpaid.setImageResource(R.drawable.unpaid);
-//        unplayed.setImageResource(R.drawable.unplayed);
+
 
         Log.e("PV", "yes"+userName_ticket.get(position)+eventName_ticket.get(position));
         return rowView;

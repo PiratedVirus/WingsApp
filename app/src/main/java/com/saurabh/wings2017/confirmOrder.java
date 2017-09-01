@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class confirmOrder extends AppCompatActivity {
 
     @Override
@@ -31,6 +33,22 @@ public class confirmOrder extends AppCompatActivity {
         Intent m = new Intent(confirmOrder.this,MainActivity.class);
         startActivity(m);
         finish();
+    }
+
+    public void showReceipt(View v){
+        new SweetAlertDialog(confirmOrder.this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Receipt")
+                .setContentText("Visit PAYBOOTH in GECA to get final Receipt. ")
+                .setConfirmText("Sounds nice !")
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.cancel();
+                    }
+
+                })
+                .show();
+
     }
 
     @Override
