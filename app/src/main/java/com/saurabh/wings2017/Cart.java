@@ -86,6 +86,7 @@ public class Cart extends AppCompatActivity {
     ImageView emptyCart,exploreBtn,checkout;
     TextView cartText,secText;
     JSONArray cart_user_list;
+
     String 	userName, eventName, eventID, eventPrice;
     ArrayList<String> userName_list = new ArrayList<String>();
     ArrayList<String> eventName_list = new ArrayList<String>();

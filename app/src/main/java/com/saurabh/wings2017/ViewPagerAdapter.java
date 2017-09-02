@@ -14,7 +14,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private Integer [] images = {R.drawable.card,R.drawable.card_modi,R.drawable.card_trump};
+    private Integer [] images = {R.drawable.card,R.drawable.card_modi,R.drawable.elegance_card};
 
     public ViewPagerAdapter(Context context) {
         this.context = context;

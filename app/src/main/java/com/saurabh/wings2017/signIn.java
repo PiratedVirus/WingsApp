@@ -1,5 +1,6 @@
 package com.saurabh.wings2017;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -35,6 +37,7 @@ public class signIn extends AppCompatActivity {
 
     private static final String TAG = "Firebase";
 
+
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListner;
 
@@ -42,6 +45,9 @@ public class signIn extends AppCompatActivity {
     private final static int RC_SIGN_IN = 2;
 
     private GoogleApiClient mGoogleApiClient;
+    private ProgressBar progressBar;
+    ProgressDialog dialog;
+
 
     public static String fUserName;
 
@@ -54,17 +60,18 @@ public class signIn extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        progressBar = (ProgressBar) findViewById(R.id.progressBar1);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
         Window window = signIn.this.getWindow();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-// add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-// finally change the color
-window.setStatusBarColor(Color.TRANSPARENT);
-}
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            // finally change the color
+            window.setStatusBarColor(Color.TRANSPARENT);
+        }
 
         button = (Button) findViewById(R.id.googleBtn);
         mAuth = FirebaseAuth.getInstance();
@@ -73,9 +80,10 @@ window.setStatusBarColor(Color.TRANSPARENT);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 signIn();
-
-
+               // progressBar.setVisibility(View.VISIBLE);
+               // dialog.dismiss();
             }
         });
 
@@ -84,21 +92,13 @@ window.setStatusBarColor(Color.TRANSPARENT);
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() != null){
-
                     Intent fireBaseIntent = new Intent(signIn.this, MainActivity.class);
-
                     fireBaseIntent.putExtra("USERNAME",fUserName);
-
                     startActivity(fireBaseIntent);
                     finish();
-
-
-
-
                 }
             }
         };
-
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -122,9 +122,15 @@ window.setStatusBarColor(Color.TRANSPARENT);
 
 
     private void signIn() {
+        dialog = new ProgressDialog(signIn.this);
+        dialog.setMessage("Wait a moment, Logging In");
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.show();
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
         //finish();
+        dialog.dismiss();
+
     }
 
 
@@ -137,7 +143,6 @@ window.setStatusBarColor(Color.TRANSPARENT);
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             Log.e(TAG, "onActivityResult: " + String.valueOf(result.isSuccess()) );
             if (result.isSuccess()) {
-
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();
                 firebaseAuthWithGoogle(account);
@@ -155,6 +160,7 @@ window.setStatusBarColor(Color.TRANSPARENT);
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                       // progressBar.setVisibility(View.GONE);
                         if (task.isSuccessful()) {
 
                             // Sign in success, update UI with the signed-in user's information
@@ -162,27 +168,12 @@ window.setStatusBarColor(Color.TRANSPARENT);
                             FirebaseUser user = mAuth.getCurrentUser();
                             fUserName = account.getDisplayName();
 
-//                            Intent fireBaseIntent = new Intent(signIn.this, MainActivity.class);
-//
-//                            fireBaseIntent.putExtra("USERNAME",fUserName);
-//
-//                            startActivity(fireBaseIntent);
-//
-//                            finish();
-//
-//                            Toast.makeText(signIn.this, fUserName,
-//                                    Toast.LENGTH_SHORT).show();
-
-//                            updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
                             Toast.makeText(signIn.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
-//                            updateUI(null);
                         }
-
-                        // ...
                     }
                 });
 
@@ -198,6 +189,11 @@ window.setStatusBarColor(Color.TRANSPARENT);
         finish();
         System.exit(0);
 
+    }
+
+    public void skip(View v){
+        Intent skipI = new Intent(signIn.this,MainActivity.class);
+        startActivity(skipI);
     }
 
 

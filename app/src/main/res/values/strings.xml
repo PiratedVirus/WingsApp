@@ -250,5 +250,6 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_mobile_num">mobileNum</string>
     <!--Civil Strings ends here-->
 </resources>

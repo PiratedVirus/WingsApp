@@ -23,8 +23,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.TimerTask;
 
-import cn.pedant.SweetAlert.SweetAlertDialog;
-
 
 public class MainActivity extends AppCompatActivity {
 
@@ -93,8 +91,8 @@ public class MainActivity extends AppCompatActivity {
     }
 //
 ////    Method for  SignOut
-    public void LogOut() {
-        signOutBtn = (ImageView) findViewById(R.id.logout);
+    public void LogOutNew() {
+//        signOutBtn = (ImageView) findViewById(R.id.logout);
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -110,31 +108,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
 
-        signOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                new SweetAlertDialog(MainActivity.this, SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("Are you sure?")
-                        .setContentText("You are about to log out from the app")
-                        .setCancelText("No")
-                        .showCancelButton(true)
-                        .setConfirmText("Logout")
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.cancel();
-                            }
-                        })
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                mAuth.getInstance().signOut();
-                                Toast.makeText(MainActivity.this, "Logged Out", Toast.LENGTH_SHORT).show();
-                            }
-                        }).show();
-            }
-        });
     }
 
 //    Printing Details
@@ -275,8 +249,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Window window = MainActivity.this.getWindow();
-      //  mAuth = FirebaseAuth.getInstance();
-//        mAuth.addAuthStateListener(mAuthListener);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -299,7 +272,7 @@ public class MainActivity extends AppCompatActivity {
 
         CivilIntent();
         BrainIntent();
-        LogOut();
+        LogOutNew();
         viewCart();
 
     }
@@ -323,6 +296,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(TicketIntent);
         finish();
 
+    }
+
+    public void viewProfile(View v){
+        Intent viewProIntnet = new Intent(MainActivity.this,Profile.class);
+        startActivity(viewProIntnet);
+        finish();
     }
 
     @Override

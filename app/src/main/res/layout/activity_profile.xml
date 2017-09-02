@@ -1,0 +1,111 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <ImageView
+        android:id="@+id/profileImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="135dp"
+        app:srcCompat="@drawable/dialoge_cart"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="82dp"
+        android:text="Saurabh Kulkarni"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/profileImg"
+        android:layout_alignStart="@+id/profileImg" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/userName"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="45dp"
+        app:srcCompat="@drawable/mail" />
+
+    <TextView
+        android:id="@+id/mailLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/userName"
+        android:layout_alignTop="@+id/imageView10"
+        android:text="Mail Address"
+        android:textColor="#006DF0"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/mailAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView10"
+        android:layout_alignStart="@+id/mailLabel"
+        android:text="saurabhk201@gmail.com"
+        android:textColor="#4A4A4A"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/imageView10"
+        android:layout_below="@+id/imageView10"
+        android:layout_marginTop="35dp"
+        app:srcCompat="@drawable/phone" />
+
+    <TextView
+        android:id="@+id/phoneLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/mailAddress"
+        android:layout_alignTop="@+id/imageView12"
+        android:text="Mobile Number"
+        android:textColor="#006DF0"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/mobileNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView12"
+        android:layout_alignStart="@+id/phoneLabel"
+        android:layout_marginBottom="7dp"
+        android:text="81493063224"
+        android:textColor="#4A4A4A"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView12"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:srcCompat="@drawable/shadow_line" />
+
+    <ImageView
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/imageView13"
+        android:layout_marginBottom="12dp"
+        app:srcCompat="@drawable/logout_btn"
+        android:onClick="logout"/>
+
+
+</RelativeLayout>
+

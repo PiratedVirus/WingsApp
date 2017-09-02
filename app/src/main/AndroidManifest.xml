@@ -42,7 +42,12 @@
         <activity android:name=".Checkout" />
         <activity android:name=".paytm" />
         <activity android:name=".confirmOrder" />
-        <activity android:name=".tickets"></activity>
+        <activity android:name=".tickets" />
+        <activity
+            android:name=".mobileNum"
+            android:label="@string/title_activity_mobile_num"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Profile"></activity>
     </application>
 
 </manifest>
