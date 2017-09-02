@@ -1,9 +1,16 @@
 package com.saurabh.wings2017;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Path;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -13,6 +20,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -23,6 +31,7 @@ public class Profile extends AppCompatActivity {
     TextView fireMail;
     ImageView fireImage;
     public ImageView signOutBtn;
+    Bitmap image;
 
     // Firebase instance variables
     private FirebaseAuth mAuth;
@@ -62,7 +71,25 @@ public class Profile extends AppCompatActivity {
 
             fireName.setText(mUsername);
             fireMail.setText(mUsermail);
-            Picasso.with(Profile.this).load(mPhotoUrl).into(fireImage);
+            Picasso.with(Profile.this).
+                    load(mPhotoUrl).
+                    into( new Target() {
+                        @Override
+                        public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
+                /* Save the bitmap or do something with it here */
+
+                            image = getRoundedShape(bitmap);
+                            fireImage.setImageBitmap(image);
+                        }
+
+                        @Override
+                        public void onPrepareLoad(Drawable placeHolderDrawable) {}
+
+                        @Override
+                        public void onBitmapFailed(Drawable errorDrawable) {}
+                    });
+
+
 
         }
 
@@ -118,10 +145,48 @@ public class Profile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().setStatusBarColor(Color.RED);
+        }
         printUserDetails();
     }
 
     public void logout(View v){
         LogOut();
+    }
+
+    public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
+        int targetWidth = 300;
+        int targetHeight = 250;
+        Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,
+                targetHeight,Bitmap.Config.ARGB_8888);
+
+        Canvas canvas = new Canvas(targetBitmap);
+        Path path = new Path();
+        path.addCircle(((float) targetWidth - 1) / 2,
+                ((float) targetHeight - 1) / 2,
+                (Math.min(((float) targetWidth),
+                        ((float) targetHeight)) / 2),
+                Path.Direction.CCW);
+
+        canvas.clipPath(path);
+        Bitmap sourceBitmap = scaleBitmapImage;
+        canvas.drawBitmap(sourceBitmap,
+                new Rect(0, 0, sourceBitmap.getWidth(),
+                        sourceBitmap.getHeight()),
+                new Rect(0, 0, targetWidth, targetHeight), null);
+        return targetBitmap;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(Profile.this, MainActivity.class);
+        startActivity(i);
+        finish();
     }
 }

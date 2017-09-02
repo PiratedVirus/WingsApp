@@ -6,13 +6,12 @@
 
     <ImageView
         android:id="@+id/profileImg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
-        android:layout_marginTop="135dp"
+        android:layout_width="100sp"
+        android:layout_height="100sp"
+        android:layout_marginTop="132dp"
         app:srcCompat="@drawable/dialoge_cart"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/userName"
@@ -28,38 +27,38 @@
 
     <ImageView
         android:id="@+id/imageView10"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
+        android:layout_width="27sp"
+        android:layout_height="20sp"
+        android:layout_marginTop="37dp"
+        app:srcCompat="@drawable/mail"
         android:layout_below="@+id/userName"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="45dp"
-        app:srcCompat="@drawable/mail" />
+        android:layout_alignStart="@+id/imageView13" />
 
     <TextView
         android:id="@+id/mailLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/userName"
-        android:layout_alignTop="@+id/imageView10"
         android:text="Mail Address"
         android:textColor="#006DF0"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_above="@+id/mailAddress"
+        android:layout_alignStart="@+id/userName"
+        android:layout_marginBottom="10dp" />
 
     <TextView
         android:id="@+id/mailAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView10"
-        android:layout_alignStart="@+id/mailLabel"
         android:text="saurabhk201@gmail.com"
         android:textColor="#4A4A4A"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/imageView10"
+        android:layout_alignStart="@+id/mailLabel" />
 
     <ImageView
         android:id="@+id/imageView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="27sp"
+        android:layout_height="27sp"
         android:layout_alignStart="@+id/imageView10"
         android:layout_below="@+id/imageView10"
         android:layout_marginTop="35dp"

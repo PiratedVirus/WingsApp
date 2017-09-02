@@ -5,13 +5,13 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -47,6 +47,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
 
 
 public class Cart extends AppCompatActivity {
@@ -86,7 +88,7 @@ public class Cart extends AppCompatActivity {
     ImageView emptyCart,exploreBtn,checkout;
     TextView cartText,secText;
     JSONArray cart_user_list;
-
+    FabSpeedDial fab;
     String 	userName, eventName, eventID, eventPrice;
     ArrayList<String> userName_list = new ArrayList<String>();
     ArrayList<String> eventName_list = new ArrayList<String>();
@@ -366,11 +368,10 @@ public class Cart extends AppCompatActivity {
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            // finally change the color
-            window.setStatusBarColor(R.color.colorAccent);
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().setStatusBarColor(Color.RED);
         }
 
         fetchData();

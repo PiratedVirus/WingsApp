@@ -2,10 +2,13 @@ package com.saurabh.wings2017;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
 
 public class GenericEventHome extends AppCompatActivity {
 
@@ -39,6 +43,8 @@ public class GenericEventHome extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthListener;
     FirebaseAuth mFirebaseAuth;
     FirebaseUser mFirebaseUser;
+
+    FabSpeedDial fab;
 
     // Firebase Detail holders
     String mUsername;
@@ -117,6 +123,13 @@ public class GenericEventHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generic_event_home);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().setStatusBarColor(Color.RED);
+        }
+
 
         gen_Name = (TextView) findViewById(R.id.genEventName);
         gen_Location = (TextView) findViewById(R.id.genEventLocation);
@@ -129,6 +142,54 @@ public class GenericEventHome extends AppCompatActivity {
         gen_Location.setText(getIntent().getStringExtra("EventLocation"));
         gen_Info.setText(getIntent().getStringExtra("EventInfo"));
         gen_Price.setText("₹" + getIntent().getStringExtra("EventCriteria"));
+
+
+        fab  = (FabSpeedDial) findViewById(R.id.fab);
+
+        fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
+            @Override
+            public void onStateChange(boolean open) {
+                // do something
+            }
+        });
+
+        fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
+            @Override
+            public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
+                Toast.makeText(GenericEventHome.this, "Itemid = "+itemId, Toast.LENGTH_SHORT).show();
+                Log.e("PV", "itemID: " + itemId);
+
+                switch(itemId){
+                    case 2131624251:
+                        Intent iticket = new Intent(getApplicationContext(),tickets.class);
+                        startActivity(iticket);
+                        finish();
+                        break;
+                    case 2131624250:
+                        Intent iCart = new Intent(getApplicationContext(),Cart.class);
+                        startActivity(iCart);
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+        });fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
+            @Override
+            public void onStateChange(boolean open) {
+
+            }
+        });
+
+//        fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
+//            @Override
+//            public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
+//                // do something
+//            }
+//        });
+
 
 
 //        OnClick Listner. Adding data to Database.

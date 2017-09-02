@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context="com.saurabh.wings2017.Details">
+
+    <EditText
+        android:id="@+id/nameInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mobileInput"
+        android:layout_alignStart="@+id/mobileInput"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/name_input_box"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/mobileInput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/updateInfo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="74dp"
+        android:background="@drawable/name_input_box"
+        android:ems="10"
+        android:hint="Enter Mobile number"
+        android:inputType="phone"
+        android:phoneNumber="true"
+        android:soundEffectsEnabled="true"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#c1c1c1"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/updateInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="83dp"
+        app:srcCompat="@drawable/update_info"
+        android:onClick="updateInfo"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="104dp"
+        app:srcCompat="@drawable/details_text"
+        android:layout_marginStart="43dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
