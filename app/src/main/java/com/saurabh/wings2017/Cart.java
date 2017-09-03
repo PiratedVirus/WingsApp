@@ -104,19 +104,14 @@ public class Cart extends AppCompatActivity {
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        if (mFirebaseUser == null) {
-            // Not signed in, launch the Sign In activity
-            startActivity(new Intent(this, signIn.class));
-            finish();
-            return;
-        } else {
+
             mUsername = mFirebaseUser.getDisplayName();
             mUsermail = mFirebaseUser.getEmail();
             mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
 
         }
 
-    }
+
 
     public void DeleteEvent(final String uniqueID){
 
@@ -410,6 +405,7 @@ public class Cart extends AppCompatActivity {
         sb.deleteCharAt(0);
         chkOutIntent.putExtra("TotalSum",sb.toString());
         startActivity(chkOutIntent);
+        finish();
     }
     @Override
     public void onBackPressed() {

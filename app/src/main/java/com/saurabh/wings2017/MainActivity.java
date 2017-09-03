@@ -250,6 +250,14 @@ public class MainActivity extends AppCompatActivity {
         Window window = MainActivity.this.getWindow();
 
 
+        if(SaveSharedPreferences.getUserPhone(getApplicationContext()).isEmpty())
+        {
+            Intent TicketIntent = new Intent(MainActivity.this,Details.class);
+            startActivity(TicketIntent);
+            finish();
+
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 //            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 //            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window

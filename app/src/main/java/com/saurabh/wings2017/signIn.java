@@ -101,8 +101,8 @@ public class signIn extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 if(firebaseAuth.getCurrentUser() != null){
-                    Intent fireBaseIntent = new Intent(signIn.this, Details.class);
-                    fireBaseIntent.putExtra("USERNAME",fUserName);
+                    Intent fireBaseIntent = new Intent(signIn.this, MainActivity.class);
+                   // fireBaseIntent.putExtra("USERNAME",fUserName);
                     startActivity(fireBaseIntent);
                     finish();
                 }

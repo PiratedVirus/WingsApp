@@ -9,8 +9,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -33,8 +33,8 @@ public class Details extends AppCompatActivity {
     public static final String MYPREFERENCES = "MyPrefs";
 
     //  Printing Details
-    TextView fireName;
-    TextView mobileNum,userNameInput;
+    EditText fireName;
+    EditText mobileNum,userNameInput;
     public ImageView updateInfo;
     String savedUserName, savedMobileNumber;
 
@@ -51,7 +51,7 @@ public class Details extends AppCompatActivity {
 
 
 
-
+    int flag=0;
 
 
     //    Printing Details
@@ -59,8 +59,8 @@ public class Details extends AppCompatActivity {
 
         //        Fetching Details
 
-        fireName = (TextView) findViewById(R.id.nameInput);
-        mobileNum = (TextView) findViewById(R.id.mobileInput);
+        fireName = (EditText) findViewById(R.id.nameInput);
+        mobileNum = (EditText) findViewById(R.id.mobileInput);
         updateInfo = (ImageView) findViewById(R.id.updateInfo);
 
 
@@ -80,16 +80,19 @@ public class Details extends AppCompatActivity {
             Log.e("PV", "printUserDetails: " + mUsername + mUsermail);
 
             fireName.setText(mUsername);
-
-
-
-
         }
 
     }
 
     public void fetchData(){
 
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        mUsermail = mFirebaseUser.getEmail();
+        mobileNum = (EditText) findViewById(R.id.mobileInput);
+        userNameInput = (EditText) findViewById(R.id.nameInput);
+        savedUserName = userNameInput.getText().toString();
+        savedMobileNumber = mobileNum.getText().toString();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 PHP_SAVE_USER,
@@ -109,16 +112,13 @@ public class Details extends AppCompatActivity {
                 }){
             public static final String TAG = "PV";
 
+
+
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                mFirebaseAuth = FirebaseAuth.getInstance();
-                mFirebaseUser = mFirebaseAuth.getCurrentUser();
 
-                mUsermail = mFirebaseUser.getEmail();
-                mobileNum = (TextView) findViewById(R.id.mobileInput);
-                userNameInput = (TextView) findViewById(R.id.nameInput);
-                savedUserName = userNameInput.getText().toString();
-                savedMobileNumber = mobileNum.getText().toString();
+
+
 
 
 
@@ -142,7 +142,7 @@ public class Details extends AppCompatActivity {
         SaveSharedPreferences.setUserName(getApplicationContext(),savedUserName);
         SaveSharedPreferences.setUserPhone(getApplicationContext(), savedMobileNumber);
 
-        Log.e("PV", "fetchData: " + mUsermail + mUsername + mobileNum );
+        Log.e("PV", "fetchDataSavedSharedPref: " + mUsermail + savedUserName + savedMobileNumber );
 
     }
 
@@ -166,10 +166,41 @@ public class Details extends AppCompatActivity {
     }
 
     public void updateInfo(View v){
-        fetchData();
-        Intent updateInfoIntent  = new Intent(Details.this,MainActivity.class);
-        startActivity(updateInfoIntent);
-        finish();
+        if(!validate())
+            Toast.makeText(getBaseContext(), "Your've entered incorrect credentials!", Toast.LENGTH_LONG).show();
+
+        else{
+            fetchData();
+            Intent updateInfoIntent  = new Intent(Details.this,MainActivity.class);
+            startActivity(updateInfoIntent);
+            finish();
+        }
+
+    }
+
+    public boolean validate()
+    {
+        boolean valid = true;
+
+        fireName = (EditText) findViewById(R.id.nameInput);
+        mobileNum = (EditText) findViewById(R.id.mobileInput);
+        updateInfo = (ImageView) findViewById(R.id.updateInfo);
+
+
+        if(mobileNum.getText().toString().length()!=10)
+        {
+            valid=false;
+            mobileNum.setError("Please Enter a valid Phone Number");
+        }
+
+
+        if(fireName.getText().toString().isEmpty() || fireName.getText().toString().length() < 3)
+        {
+            valid = false;
+            fireName.setError("Please Enter a  good name for your certificate");
+        }
+
+        return valid;
 
     }
 }

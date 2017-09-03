@@ -62,12 +62,14 @@ public class Checkout extends AppCompatActivity {
                 }){
             public static final String TAG = "PV";
 
+
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
                 Map<String,String> params = new HashMap<>();
                 params.put("fuserName", mUsername);
                 params.put("fuserMail", mUsermail);
+                params.put("cartSum",getIntent().getStringExtra("TotalSum"));
 
                 return params;
             }
