@@ -1,10 +1,15 @@
 package com.saurabh.wings2017;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +20,8 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
+
 public class CivilHome extends AppCompatActivity  {
 
     private String fromConst;
@@ -23,6 +30,8 @@ public class CivilHome extends AppCompatActivity  {
     TextView fireName;
     TextView fireMail;
     ImageView fireImage;
+
+    FabSpeedDial fab;
 
     // Firebase instance variables
     private FirebaseAuth mAuth;
@@ -80,10 +89,56 @@ public class CivilHome extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_civil_home);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            getWindow().setStatusBarColor(Color.RED);
+        }
+
+
+        fab  = (FabSpeedDial) findViewById(R.id.fab);
+
+
+        fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
+            @Override
+            public void onStateChange(boolean open) {
+                // do something
+            }
+        });
+
+        fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
+            @Override
+            public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
+                Toast.makeText(getApplicationContext(), "Itemid = "+itemId, Toast.LENGTH_SHORT).show();
+                Log.e("PV", "itemID: " + itemId);
+
+                switch(itemId){
+                    case 2131624251:
+                        Intent iticket = new Intent(getApplicationContext(),tickets.class);
+                        startActivity(iticket);
+                        finish();
+                        break;
+                    case 2131624250:
+                        Intent iCart = new Intent(getApplicationContext(),Cart.class);
+                        startActivity(iCart);
+                        finish();
+                        break;
+                    default:
+                        break;
+                }
+
+
+            }
+        });fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
+            @Override
+            public void onStateChange(boolean open) {
+
+            }
+        });
 
 
         name = getResources().getStringArray(R.array.CivilEventName);

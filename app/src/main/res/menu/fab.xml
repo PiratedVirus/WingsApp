@@ -4,11 +4,11 @@
         android:id="@+id/one"
         android:title="Cart"
         android:icon="@drawable/empty_cart"
-        android:orderInCategory="1"/>
+        android:orderInCategory="2"/>
     <item
         android:id="@+id/two"
         android:title="Tickets"
         android:icon="@drawable/map_btn"
-        android:orderInCategory="2"/>
+        android:orderInCategory="1"/>
 
 </menu>

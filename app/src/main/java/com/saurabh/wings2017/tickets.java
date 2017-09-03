@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -58,7 +59,7 @@ public class tickets extends AppCompatActivity {
     TicketList ad;
     int positionlist,cart_sum;
     Button total;
-    ImageView emptyCart,exploreBtn;
+    ImageView noTickets;
     TextView cartText,secText;
     JSONArray cart_user_ticket;
     String 	userName, eventName, eventID, eventPrice;
@@ -175,12 +176,9 @@ public class tickets extends AppCompatActivity {
                                     }
                                     Log.e("PV","sum="+cart_sum);
                                     total.setText(String.valueOf(cart_sum));
+                                    noTickets = (ImageView) findViewById(R.id.noTicket);
                                     if(cart_sum==0){
-//                                        emptyCart.setVisibility(View.VISIBLE);
-//                                        cartText.setVisibility(View.VISIBLE);
-//                                        exploreBtn.setVisibility(View.VISIBLE);
-//                                        secText.setVisibility(View.VISIBLE);
-//                                        total.setVisibility(View.GONE);
+                                        noTickets.setVisibility(View.VISIBLE);
                                         Toast.makeText(tickets.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
                                     }
                                 }

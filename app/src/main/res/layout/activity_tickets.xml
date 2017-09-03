@@ -4,14 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    android:layout_marginTop="20sp"
     android:background="#F5F5F4"
     tools:context="com.saurabh.wings2017.Cart">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="JayHind"/>
+
 
     <ListView
         android:id="@+id/ticket_list_show"
@@ -32,14 +28,6 @@
         android:visibility="invisible"
         />
 
-    <ImageView
-        android:id="@+id/emptyCart"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:visibility="invisible"
-        app:srcCompat="@drawable/empty_cart" />
 
     <TextView
         android:id="@+id/cart_text"
@@ -82,5 +70,14 @@
         android:onClick="checkOut"
         android:visibility="invisible"
         android:layout_above="@+id/total"/>
+
+    <ImageView
+        android:id="@+id/noTicket"
+        android:layout_width="300sp"
+        android:layout_height="500sp"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/no_tickets"
+        android:layout_above="@+id/total"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

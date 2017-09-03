@@ -183,12 +183,7 @@ public class GenericEventHome extends AppCompatActivity {
             }
         });
 
-//        fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
-//            @Override
-//            public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
-//                // do something
-//            }
-//        });
+
 
 
 
