@@ -52,9 +52,9 @@ public class Profile extends AppCompatActivity {
         //        Fetching Details
 
         fireName = (TextView) findViewById(R.id.userName);
-        fireMail = (TextView) findViewById(R.id.mailAddress);
-        mobileNumber = (TextView) findViewById(R.id.mobileNumber);
-        fireImage = (ImageView) findViewById(R.id.profileImg);
+        fireMail = (TextView) findViewById(R.id.userMail);
+        mobileNumber = (TextView) findViewById(R.id.userMobile);
+        fireImage = (ImageView) findViewById(R.id.userImage);
 
 
         // Initialize Firebase Auth
@@ -101,7 +101,7 @@ public class Profile extends AppCompatActivity {
 
     //   Method for  SignOut
     public void LogOut() {
-        signOutBtn = (ImageView) findViewById(R.id.logout);
+        signOutBtn = (ImageView) findViewById(R.id.logoutBtn);
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -163,6 +163,11 @@ public class Profile extends AppCompatActivity {
     public void logout(View v){
         LogOut();
     }
+    public void home(View v){
+        Intent iHome = new Intent(Profile.this, MainActivity.class);
+        startActivity(iHome);
+        finish();
+    }
 
     public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
         int targetWidth = 300;
@@ -187,6 +192,8 @@ public class Profile extends AppCompatActivity {
         return targetBitmap;
     }
 
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -194,4 +201,6 @@ public class Profile extends AppCompatActivity {
         startActivity(i);
         finish();
     }
+
+
 }
