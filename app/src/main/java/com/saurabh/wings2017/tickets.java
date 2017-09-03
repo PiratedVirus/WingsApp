@@ -2,6 +2,7 @@ package com.saurabh.wings2017;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -32,6 +33,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
+
 public class tickets extends AppCompatActivity {
 
     public static final String PHP_GET_TICKETS = "https://scouncilgeca.com/WingsApp/getTickets.php";
@@ -47,7 +50,7 @@ public class tickets extends AppCompatActivity {
     JSONObject jsonobj1;
     ProgressDialog dialog;
     JSONArray stu = null;
-
+    SweetAlertDialog pDialog;
 
     String result;
     JSONObject jso;
@@ -91,10 +94,12 @@ public class tickets extends AppCompatActivity {
     public void printTickets(){
 
         getUserDetails();
-        dialog = new ProgressDialog(this);
-        dialog.setMessage("Wait a moment, Fetching your events...");
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.show();
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("Please wait!");
+        pDialog.setContentText("Waiting for more ink to print your Tickets !");
+        pDialog.setCancelable(false);
+        pDialog.show();
         Thread t = new Thread(new Runnable() {
             public void run() {
 
@@ -126,7 +131,8 @@ public class tickets extends AppCompatActivity {
                     runOnUiThread(new Runnable() {
                         public void run() {
                             // tv.setText("Response from PHP : " + response);
-                            dialog.dismiss();
+                           // dialog.dismiss();
+                            pDialog.dismissWithAnimation();
                         }
                     });
 

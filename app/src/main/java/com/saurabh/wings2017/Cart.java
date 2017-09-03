@@ -48,6 +48,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
 
 
@@ -85,6 +86,7 @@ public class Cart extends AppCompatActivity {
     CustomList ad;
     int positionlist,cart_sum;
     TextView total;
+    SweetAlertDialog pDialog;
     ImageView emptyCart,exploreBtn,checkout;
     TextView cartText,secText;
     JSONArray cart_user_list;
@@ -157,10 +159,17 @@ public class Cart extends AppCompatActivity {
     public void fetchData(){
 
         getUserDetails();
-        dialog = new ProgressDialog(this);
-        dialog.setMessage("Wait a moment, Fetching your events...");
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.show();
+//        dialog = new ProgressDialog(this);
+//        dialog.setMessage("Wait a moment, Fetching your events...");
+//        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        dialog.show();
+
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("Please wait!");
+        pDialog.setContentText("We're building the buildings as fast as possible");
+        pDialog.setCancelable(false);
+        pDialog.show();
 
         emptyCart = (ImageView) findViewById(R.id.emptyCart);
         cartText = (TextView) findViewById(R.id.cart_text);
@@ -201,7 +210,9 @@ public class Cart extends AppCompatActivity {
                         runOnUiThread(new Runnable() {
                             public void run() {
                        // tv.setText("Response from PHP : " + response);
-                                dialog.dismiss();
+//                                dialog.dismiss();
+                                pDialog.dismissWithAnimation();
+
                             }
                         });
 

@@ -1,6 +1,8 @@
 package com.saurabh.wings2017;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,11 +29,14 @@ import java.util.Map;
 public class Details extends AppCompatActivity {
 
     public static final String PHP_SAVE_USER = "https://scouncilgeca.com/WingsApp/saveDetails.php";
+    SharedPreferences sharedpreferences;
+    public static final String MYPREFERENCES = "MyPrefs";
 
     //  Printing Details
     TextView fireName;
     TextView mobileNum,userNameInput;
     public ImageView updateInfo;
+    String savedUserName, savedMobileNumber;
 
     // Firebase instance variables
     private FirebaseAuth mAuth;
@@ -77,6 +82,8 @@ public class Details extends AppCompatActivity {
             fireName.setText(mUsername);
 
 
+
+
         }
 
     }
@@ -110,15 +117,17 @@ public class Details extends AppCompatActivity {
                 mUsermail = mFirebaseUser.getEmail();
                 mobileNum = (TextView) findViewById(R.id.mobileInput);
                 userNameInput = (TextView) findViewById(R.id.nameInput);
-                String userName = userNameInput.getText().toString();
-                String mobileNumber = mobileNum.getText().toString();
+                savedUserName = userNameInput.getText().toString();
+                savedMobileNumber = mobileNum.getText().toString();
 
 
 
                 Map<String,String> params = new HashMap<>();
-                params.put("fuserName", userName);
+                params.put("fuserName", savedUserName);
                 params.put("fuserMail", mUsermail);
-                params.put("fuserMob", String.valueOf(mobileNumber));
+                params.put("fuserMob", String.valueOf(savedMobileNumber));
+
+
 
                 return params;
             }
@@ -129,6 +138,12 @@ public class Details extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
+        SaveSharedPreferences.setUserEmail(getApplicationContext(),mUsermail);
+        SaveSharedPreferences.setUserName(getApplicationContext(),savedUserName);
+        SaveSharedPreferences.setUserPhone(getApplicationContext(), savedMobileNumber);
+
+        Log.e("PV", "fetchData: " + mUsermail + mUsername + mobileNum );
+
     }
 
 
@@ -136,6 +151,8 @@ public class Details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        sharedpreferences = getSharedPreferences(MYPREFERENCES, Context.MODE_PRIVATE);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(

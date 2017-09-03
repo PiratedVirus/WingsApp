@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -27,6 +26,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by saurabh on 22/07/17.
@@ -44,9 +45,13 @@ public class signIn extends AppCompatActivity {
     private final static int RC_SIGN_IN = 2;
 
     private GoogleApiClient mGoogleApiClient;
-    private ProgressBar progressBar;
-    ProgressDialog dialog;
 
+
+    SweetAlertDialog pDialog;
+
+
+
+    private ProgressDialog mConnectionProgressDialog;
 
     public static String fUserName;
 
@@ -55,11 +60,13 @@ public class signIn extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         mAuth.addAuthStateListener(mAuthListner);
+
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        progressBar = (ProgressBar) findViewById(R.id.progressBar1);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_in);
         Window window = signIn.this.getWindow();
@@ -81,10 +88,11 @@ public class signIn extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                mConnectionProgressDialog.show();
 
+                pDialog.show();
                 signIn();
-               // progressBar.setVisibility(View.VISIBLE);
-               // dialog.dismiss();
+
             }
         });
 
@@ -119,18 +127,24 @@ public class signIn extends AppCompatActivity {
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
 
+        mConnectionProgressDialog = new ProgressDialog(this);
+        mConnectionProgressDialog.setMessage("Signing in...");
+
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("Please Wait! ");
+        pDialog.setContentText("Tell Google to build faster Computers!");
+        pDialog.setCancelable(false);
+
     }
 
 
     private void signIn() {
-        dialog = new ProgressDialog(signIn.this);
-        dialog.setMessage("Wait a moment, Logging In");
-        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        dialog.show();
+
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
         //finish();
-        dialog.dismiss();
+
 
     }
 
@@ -143,6 +157,8 @@ public class signIn extends AppCompatActivity {
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             Log.e(TAG, "onActivityResult: " + String.valueOf(result.isSuccess()) );
+//            mConnectionProgressDialog.dismiss();
+            pDialog.dismissWithAnimation();
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();

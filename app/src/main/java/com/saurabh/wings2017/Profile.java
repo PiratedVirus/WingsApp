@@ -28,7 +28,7 @@ public class Profile extends AppCompatActivity {
 
     //  Printing Details
     TextView fireName;
-    TextView fireMail;
+    TextView fireMail,mobileNumber;
     ImageView fireImage;
     public ImageView signOutBtn;
     Bitmap image;
@@ -42,7 +42,8 @@ public class Profile extends AppCompatActivity {
     // Firebase Detail holders
     String mUsername;
     String mPhotoUrl;
-    String mUsermail;
+    String mUsermail,mUserMobileNum;
+
 
 
     //    Printing Details
@@ -52,6 +53,7 @@ public class Profile extends AppCompatActivity {
 
         fireName = (TextView) findViewById(R.id.userName);
         fireMail = (TextView) findViewById(R.id.mailAddress);
+        mobileNumber = (TextView) findViewById(R.id.mobileNumber);
         fireImage = (ImageView) findViewById(R.id.profileImg);
 
 
@@ -64,13 +66,15 @@ public class Profile extends AppCompatActivity {
             finish();
             return;
         } else {
-            mUsername = mFirebaseUser.getDisplayName();
-            mUsermail = mFirebaseUser.getEmail();
+            mUsername = SaveSharedPreferences.getUserName(getApplicationContext());
+            mUsermail = SaveSharedPreferences.getUserEmail(getApplicationContext());
+            mUserMobileNum = SaveSharedPreferences.getUserPhone(getApplicationContext());
             mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
             Log.e("PV", "printUserDetails: " + mUsername + mUsermail);
 
             fireName.setText(mUsername);
             fireMail.setText(mUsermail);
+            mobileNumber.setText(mUserMobileNum);
             Picasso.with(Profile.this).
                     load(mPhotoUrl).
                     into( new Target() {
@@ -119,7 +123,7 @@ public class Profile extends AppCompatActivity {
 
                 new SweetAlertDialog(Profile.this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Are you sure?")
-                        .setContentText("You are about to log out from the app")
+                        .setContentText("We know it's hard to say Goodbye!")
                         .setCancelText("No")
                         .showCancelButton(true)
                         .setConfirmText("Logout")
@@ -134,6 +138,7 @@ public class Profile extends AppCompatActivity {
                             public void onClick(SweetAlertDialog sDialog) {
                                 mAuth.getInstance().signOut();
                                 Toast.makeText(Profile.this, "Logged Out", Toast.LENGTH_SHORT).show();
+                                SaveSharedPreferences.clearUserName(getApplicationContext());
                             }
                         }).show();
             }
