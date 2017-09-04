@@ -40,7 +40,6 @@
         <activity android:name=".GenericEventHome" />
         <activity android:name=".Cart" />
         <activity android:name=".Checkout" />
-        <activity android:name=".paytm" />
         <activity android:name=".confirmOrder" />
         <activity android:name=".tickets" />
         <activity android:name=".Profile" />

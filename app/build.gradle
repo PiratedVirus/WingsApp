@@ -26,7 +26,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile files('libs/PGSDK_V2.0.jar')
+
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.github.kobakei:MaterialFabSpeedDial:1.1.6'
     compile 'com.dynamitechetan.flowinggradient:flowinggradient:1.1'
