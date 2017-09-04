@@ -29,7 +29,7 @@ public class Profile extends AppCompatActivity {
     //  Printing Details
     TextView fireName;
     TextView fireMail,mobileNumber;
-    ImageView fireImage;
+    ImageView fireImage,alterImg;
     public ImageView signOutBtn;
     Bitmap image;
 
@@ -40,9 +40,8 @@ public class Profile extends AppCompatActivity {
     FirebaseUser mFirebaseUser;
 
     // Firebase Detail holders
-    String mUsername;
-    String mPhotoUrl;
-    String mUsermail,mUserMobileNum;
+    String mUsername, mUsermail, mUserMobileNum, mPhotoUrl, mPhotoUrlLarge;
+
 
 
 
@@ -55,6 +54,7 @@ public class Profile extends AppCompatActivity {
         fireMail = (TextView) findViewById(R.id.userMail);
         mobileNumber = (TextView) findViewById(R.id.userMobile);
         fireImage = (ImageView) findViewById(R.id.userImage);
+
 
 
         // Initialize Firebase Auth
@@ -70,13 +70,17 @@ public class Profile extends AppCompatActivity {
             mUsermail = SaveSharedPreferences.getUserEmail(getApplicationContext());
             mUserMobileNum = SaveSharedPreferences.getUserPhone(getApplicationContext());
             mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
+            mPhotoUrlLarge = mPhotoUrl.replace("/s96-c/","/s200-c/");
+            mPhotoUrlLarge = mPhotoUrlLarge.toString();
+            Log.e("PV", "mPhotoURL " + mPhotoUrlLarge );
             Log.e("PV", "printUserDetails: " + mUsername + mUsermail);
-
+            Picasso.with(getApplicationContext()).load(mPhotoUrlLarge).into(fireImage);
             fireName.setText(mUsername);
             fireMail.setText(mUsermail);
             mobileNumber.setText(mUserMobileNum);
+//            Fix this issue, big images not being dislayed either converted into circular shape.
             Picasso.with(Profile.this).
-                    load(mPhotoUrl).
+                    load(mPhotoUrlLarge).
                     into( new Target() {
                         @Override
                         public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {

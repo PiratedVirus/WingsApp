@@ -113,16 +113,16 @@ public class CivilHome extends AppCompatActivity  {
         fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
             @Override
             public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
-                Toast.makeText(getApplicationContext(), "Itemid = "+itemId, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Itemid = "+textView.getText().toString(), Toast.LENGTH_SHORT).show();
                 Log.e("PV", "itemID: " + itemId);
 
-                switch(itemId){
-                    case 2131624251:
+                switch(textView.getText().toString()){
+                    case "Tickets":
                         Intent iticket = new Intent(getApplicationContext(),tickets.class);
                         startActivity(iticket);
                         finish();
                         break;
-                    case 2131624250:
+                    case "Cart":
                         Intent iCart = new Intent(getApplicationContext(),Cart.class);
                         startActivity(iCart);
                         finish();

@@ -9,4 +9,40 @@
     <color name="shadow">#d4d4d4</color>
     <color name="upper">#EC4444</color>
     <color name="bg_upper">#ca4b3d</color>
+
+    <color name="color1">#f799f3</color>
+    <color name ="color2">#d90ee0</color>
+    <color name ="color3">#9c2fa0</color>
+    <color name ="color31">#3f2a84</color>
+    <color name ="color4">#1b0858</color>
+    <color name ="color5">#081558</color>
+    <color name ="color6">#1d2f8e</color>
+    <color name ="color7">#3c47b7</color>
+    <color name ="color8">#1d33ac</color>
+    <color name ="color9">#1d5fac</color>
+    <color name ="color10">#1a68c3</color>
+    <color name ="color11">#04909b</color>
+    <color name ="color12">#049b67</color>
+    <color name ="color13">#749a2e</color>
+    <color name ="color14">#d4c23b</color>
+    <color name ="color15">#a8981e</color>
+    <color name ="color16">#bca914</color>
+    <color name ="color17">#bc8814</color>
+    <color name ="color18">#9b6d05</color>
+    <color name ="color19">#b53711</color>
+    <color name ="color20">#e64848</color>
+    <color name ="color21">#ba0e5e</color>
+    <color name ="color22">#6e2374</color>
+    <color name ="color23">#4c2374</color>
+    <color name ="color24">#2f2374</color>
+    <color name ="color25">#1c144a</color>
+    <color name ="color26">#3f2a84</color>
+    <color name ="color27">#f731d8</color>
+
+    <color name="purple_500">#9C27B0</color>
+    <color name="deep_purple_500">#673AB7</color>
+    <color name="indigo_500">#3F51B5</color>
+    <color name="blue_500">#2196F3</color>
+    <color name="cyan_500">#00BCD4</color>
+    <color name="light_blue_500">#03A9F4</color>
 </resources>

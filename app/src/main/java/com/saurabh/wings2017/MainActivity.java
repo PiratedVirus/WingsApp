@@ -1,25 +1,34 @@
 package com.saurabh.wings2017;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.Window;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dynamitechetan.flowinggradient.FlowingGradientClass;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
+import java.util.Random;
 import java.util.TimerTask;
 
 
@@ -34,7 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private int dotscount;
     private ImageView[] dots;
 
-
+    AnimationDrawable animationDrawable;
+    RelativeLayout relativeLayout;
 
     //  Printing Details
     TextView fireName;
@@ -247,7 +257,56 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Window window = MainActivity.this.getWindow();
+
+
+        // relativeLayout = (RelativeLayout)findViewById(R.id.activity_main);
+
+//        animationDrawable = (AnimationDrawable) relativeLayout.getRootView()
+//        .getBackground();
+//        animationDrawable.setEnterFadeDuration(5000);
+//        animationDrawable.setExitFadeDuration(2000);
+
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.activity_main);
+        FlowingGradientClass grad = new FlowingGradientClass();
+        grad.setBackgroundResource(R.drawable.translate)
+                .onRelativeLayout(rl)
+                .setTransitionDuration(4000)
+                .start();
+//        View xyz = getWindow().getDecorView();
+//        BackgroundPainter backgroundPainter = new BackgroundPainter();
+
+
+        int color1 = ContextCompat.getColor(getApplicationContext(), R.color.color1);
+        int color2 = ContextCompat.getColor(getApplicationContext(), R.color.color2);
+        int color3 = ContextCompat.getColor(getApplicationContext(), R.color.color3);
+        int color31 = ContextCompat.getColor(getApplicationContext(), R.color.color31);
+        int color4 = ContextCompat.getColor(getApplicationContext(), R.color.color4);
+        int color5 = ContextCompat.getColor(getApplicationContext(), R.color.color5);
+        int color6 = ContextCompat.getColor(getApplicationContext(), R.color.color6);
+        int color7 = ContextCompat.getColor(getApplicationContext(), R.color.color7);
+        int color8 = ContextCompat.getColor(getApplicationContext(), R.color.color8);
+        int color9 = ContextCompat.getColor(getApplicationContext(), R.color.color9);
+        int color10 = ContextCompat.getColor(getApplicationContext(), R.color.color10);
+        int color11 = ContextCompat.getColor(getApplicationContext(), R.color.color11);
+        int color12 = ContextCompat.getColor(getApplicationContext(), R.color.color12);
+        int color13 = ContextCompat.getColor(getApplicationContext(), R.color.color13);
+        int color14 = ContextCompat.getColor(getApplicationContext(), R.color.color14);
+        int color15 = ContextCompat.getColor(getApplicationContext(), R.color.color15);
+        int color16 = ContextCompat.getColor(getApplicationContext(), R.color.color16);
+        int color17 = ContextCompat.getColor(getApplicationContext(), R.color.color17);
+        int color18 = ContextCompat.getColor(getApplicationContext(), R.color.color18);
+        int color19 = ContextCompat.getColor(getApplicationContext(), R.color.color19);
+        int color20 = ContextCompat.getColor(getApplicationContext(), R.color.color20);
+        int color21 = ContextCompat.getColor(getApplicationContext(), R.color.color21);
+        int color22 = ContextCompat.getColor(getApplicationContext(), R.color.color22);
+        int color23 = ContextCompat.getColor(getApplicationContext(), R.color.color23);
+        int color24 = ContextCompat.getColor(getApplicationContext(), R.color.color24);
+        int color25 = ContextCompat.getColor(getApplicationContext(), R.color.color25);
+        int color26 = ContextCompat.getColor(getApplicationContext(), R.color.color26);
+        int color27 = ContextCompat.getColor(getApplicationContext(), R.color.color27);
+
+//        backgroundPainter.animate(xyz, color20, color21, color22, color23, color24, color31, color6, color7, color10, color11, color12, color13, color14, color16, color18, color20);
+
 
 
         if(SaveSharedPreferences.getUserPhone(getApplicationContext()).isEmpty())
@@ -335,6 +394,48 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+
+    public static class BackgroundPainter {
+
+        private static final int MIN = 20000;
+        private static final int MAX = 73000;
+
+        private final Random random;
+
+        public BackgroundPainter() {
+            random = new Random();
+        }
+
+        public void animate(@NonNull final View target, @ColorInt final int color1,
+                            @ColorInt final int color2, @ColorInt final int color3,@ColorInt final int color4,@ColorInt final int color5,@ColorInt final int color6,@ColorInt final int color7,@ColorInt final int color8,@ColorInt final int color9,@ColorInt final int color10,@ColorInt final int color11,@ColorInt final int color12,@ColorInt final int color13,
+                            @ColorInt final int color14,@ColorInt final int color15,@ColorInt final int color16) {
+//            ,@ColorInt final int color18,@ColorInt final int color19,@ColorInt final int color20,@ColorInt final int color21,@ColorInt final int color22,@ColorInt final int color23,@ColorInt final int color24,@ColorInt final int color25,@ColorInt final int color26,@ColorInt final int color27,@ColorInt final int color28
+            final ValueAnimator valueAnimator = ValueAnimator.ofObject(new ArgbEvaluator(), color1, color2,color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15,color16);
+//            ,color18,color19,color20,color21,color22,color23,color24,color25,color26,color27,color28
+            valueAnimator.setDuration(randInt(MIN, MAX));
+
+            valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override public void onAnimationUpdate(ValueAnimator animation) {
+                    target.setBackgroundColor((int) animation.getAnimatedValue());
+                }
+            });
+            valueAnimator.addListener(new AnimatorListenerAdapter() {
+                @Override public void onAnimationEnd(Animator animation) {
+                    //reverse animation
+                    animate(target, color1, color2, color3,color4,color5,color6,color7,color8,color9,color10,color11,color12,color13,color14,color15,color16);
+                }
+            });
+
+            valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+            valueAnimator.start();
+        }
+
+        private int randInt(int min, int max) {
+            return random.nextInt((max - min) + 1) + min;
+        }
+    }
+//
 
 }
 
