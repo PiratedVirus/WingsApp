@@ -2,12 +2,14 @@ package com.saurabh.wings2017;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -284,71 +286,69 @@ public class Cart extends AppCompatActivity {
                         {
                             Log.e("PV","gdsjh="+uniqueID_list.get(i));
                         }
-                        AlertDialog.Builder builder = new AlertDialog.Builder(Cart.this);
-                        builder.setTitle("Cancel Event!");
-                        builder.setMessage("Do your really want to cancel this event?")
-                                .setCancelable(false)
-                                .setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                       try {
-                                           eventName_list.remove(positionlist);
-                                           eventID_list.remove(positionlist);
-                                           eventPrice_list.remove(positionlist);
-                                           userName_list.remove(positionlist);
+                        new SweetAlertDialog(Cart.this, SweetAlertDialog.WARNING_TYPE)
+                                .setTitleText("Cancel Event !")
+                                .setContentText("Do your really want to cancel this event?")
+                                .setConfirmText("DELETE")
+                                .setCancelText("Go back")
+                                .setCancelClickListener(null)
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        try {
+                                            eventName_list.remove(positionlist);
+                                            eventID_list.remove(positionlist);
+                                            eventPrice_list.remove(positionlist);
+                                            userName_list.remove(positionlist);
 
-                                           // uniqueID_list.remove(positionlist);
-                                           unique = (TextView) cart.getChildAt(positionlist).findViewById(R.id.uniqueID);
+                                            // uniqueID_list.remove(positionlist);
+                                            unique = (TextView) cart.getChildAt(positionlist).findViewById(R.id.uniqueID);
 
-                                           ad.notifyDataSetChanged();
+                                            ad.notifyDataSetChanged();
 
-                                           EventNum = (String) unique.getText();
-                                           Toast.makeText(Cart.this, "deleted" + EventNum, Toast.LENGTH_SHORT).show();
+                                            EventNum = (String) unique.getText();
+                                            Toast.makeText(Cart.this, "deleted" + EventNum, Toast.LENGTH_SHORT).show();
 
 //                                            cart_sum = Integer.parseInt((String)total.getText());
-                                           DeleteEvent(EventNum);
-                                           TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
-                                           Log.e("PV",(String)temp_price.getText());
-                                           cart_sum = cart_sum - Integer.parseInt((String)temp_price.getText());
-                                           total.setText("Amount   ₹"+String.valueOf(cart_sum));
-                                           Toast.makeText(Cart.this,"Cart_sum = " + cart_sum,Toast.LENGTH_LONG).show();
+                                            DeleteEvent(EventNum);
+                                            TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
+                                            Log.e("PV",(String)temp_price.getText());
+                                            cart_sum = cart_sum - Integer.parseInt((String)temp_price.getText());
+                                            total.setText("Amount   ₹"+String.valueOf(cart_sum));
+                                            Toast.makeText(Cart.this,"Cart_sum = " + cart_sum,Toast.LENGTH_LONG).show();
 
-                                           if(cart_sum==0){
-                                               emptyCart.setVisibility(View.VISIBLE);
-                                               cartText.setVisibility(View.VISIBLE);
-                                               exploreBtn.setVisibility(View.VISIBLE);
-                                               secText.setVisibility(View.VISIBLE);
-                                               total.setVisibility(View.GONE);
-                                               checkout.setVisibility(View.GONE);
-                                               Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
-                                           }
-                                       }
-                                       catch (IndexOutOfBoundsException r)
-                                       {
-                                           if(positionlist!=0)
-                                           {
-                                               cart_sum = Integer.parseInt((String)total.getText());
-                                               total.setVisibility(View.VISIBLE);
-                                               TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
-                                               cart_sum = cart_sum-Integer.parseInt((String)temp_price.getText());
-                                               total.setText("Amount   ₹"+String.valueOf(cart_sum));
+                                            if(cart_sum==0){
+                                                emptyCart.setVisibility(View.VISIBLE);
+                                                cartText.setVisibility(View.VISIBLE);
+                                                exploreBtn.setVisibility(View.VISIBLE);
+                                                secText.setVisibility(View.VISIBLE);
+                                                total.setVisibility(View.GONE);
+                                                checkout.setVisibility(View.GONE);
+                                                Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                        catch (IndexOutOfBoundsException r)
+                                        {
+                                            if(positionlist!=0)
+                                            {
+                                                cart_sum = Integer.parseInt((String)total.getText());
+                                                total.setVisibility(View.VISIBLE);
+                                                TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
+                                                cart_sum = cart_sum-Integer.parseInt((String)temp_price.getText());
+                                                total.setText("Amount   ₹"+String.valueOf(cart_sum));
 
-                                           }
-                                           else{
-                                           total.setVisibility(View.GONE);
+                                            }
+                                            else{
+                                                total.setVisibility(View.GONE);
 
-                                           Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
-                                           r.printStackTrace();}
-                                       }
+                                                Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+                                                r.printStackTrace();}
+                                        }
+
                                     }
-                                });
-                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                return;
-                            }
-                        });
-                        builder.show();
 
-
+                                })
+                                .show();
                         return true;
 
                     }
