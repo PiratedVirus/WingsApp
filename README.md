@@ -7,6 +7,8 @@ An Android App for Techno-cultural event Wings.
 
 - [x] Google sign In and Logout
 
+- [x] Phone number input
+
 - [ ] Phone number verification using Firebase
 
 - [ ] select WINGS / ELEGANCE [It will be Launching activity from second instance]
@@ -21,20 +23,26 @@ An Android App for Techno-cultural event Wings.
 
 - [x] Add to Cart
 
-- [ ] View Cart
+- [x] View Cart
 
-- [ ] Total Bill
+- [x] Total Bill
 
 - [ ] PayTm integration 
 
-- [ ] Coin / virtual Money 
+- [x] Coin / virtual Money / Discount
 
-- [ ] Final Receipt ( UNPAID tag )
+- [x] Final Receipt ( UNPAID tag )
 
 - [ ] Notifications one day prior to event
 
 - [ ] Adding events to Google Calender 
 
 - [ ] Admin app
+
+- [x] Mailing receipt to buyer
+
+- [x] Paid and Unplayed tags 
+
+- [ ] About us
 
 
