@@ -6,11 +6,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,6 +21,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class CivilHome extends AppCompatActivity  {
 
@@ -42,6 +43,17 @@ public class CivilHome extends AppCompatActivity  {
     String mUsername;
     String mPhotoUrl;
     String mUsermail;
+
+
+
+    ArrayList<String>  eventName_list = new ArrayList<>();
+    ArrayList<String>  eventDetails_list = new ArrayList<>();
+    ArrayList<String>  eventLocation = new ArrayList<>();
+    ArrayList<String>  eventContactPerson_list = new ArrayList<>();
+    ArrayList<String>  eventContactNum_list = new ArrayList<>();
+    ArrayList<String>  eventDate = new ArrayList<>();
+    ArrayList<Integer> back = new ArrayList<>();
+
 
 
     public void printUserDetails(){
@@ -92,11 +104,14 @@ public class CivilHome extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_civil_home);
 
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "fonts/mont.ttf", true);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            getWindow().setStatusBarColor(Color.RED);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
 
@@ -141,31 +156,39 @@ public class CivilHome extends AppCompatActivity  {
         });
 
 
-        name = getResources().getStringArray(R.array.CivilEventName);
-        excerpt = getResources().getStringArray(R.array.CivilEventExcerpt);
-        location = getResources().getStringArray(R.array.CivilEventLocation);
-        rules = getResources().getStringArray(R.array.CivilEventRules);
-        criteria = getResources().getStringArray(R.array.CivilEventCriteria);
-        price = getResources().getStringArray(R.array.CivilEventPrice);
+       eventName_list.add("Bridge");
+        eventName_list.add("Paper Bridge");
+        eventName_list.add("Building");
 
-        int count = 0;
+        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
+        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
+        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
 
-        for(String Name : name)
-        {
-            CivilEventList EventList = new CivilEventList(Name, excerpt[count],location[count],rules[count],criteria[count],price[count]);
-            count++;
-            list.add(EventList);
+        eventLocation.add("Classroom Complex");
+        eventLocation.add("Classroom Complex");
+        eventLocation.add("Classroom Complex");
 
-        }
+        eventContactPerson_list.add("Ashwin Kulkarni");
+        eventContactPerson_list.add("Ashwin Kulkarni");
+        eventContactPerson_list.add("Ashwin Kulkarni");
 
-        printUserDetails();
+        eventContactNum_list.add("7798080437");
+        eventContactNum_list.add("7798080437");
+        eventContactNum_list.add("7798080437");
 
-        civilRecylerHome = (RecyclerView) findViewById(R.id.CivilRecyler);
-        civilLayoutManager = new LinearLayoutManager(this);
-        civilRecylerHome.setLayoutManager(civilLayoutManager);
-        civilRecylerHome.setHasFixedSize(true);
-        civilAdapter = new CivilEventAdapter(list, this);
-        civilRecylerHome.setAdapter(civilAdapter);
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+
+        back.add(R.drawable.card_bg_5_rounded);
+        back.add(R.drawable.card_bg_5_rounded);
+        back.add(R.drawable.card_bg_5_rounded);
+
+        CivilEventAdapter ad = new CivilEventAdapter(CivilHome.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, back);
+        ListView civil = (ListView)findViewById(R.id.cart_list_show);
+        civil.setAdapter(ad);
+
+
 
     }
 

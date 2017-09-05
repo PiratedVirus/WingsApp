@@ -1,18 +1,27 @@
 package com.saurabh.wings2017;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.dynamitechetan.flowinggradient.FlowingGradientClass;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -28,6 +37,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 /**
  * Created by saurabh on 22/07/17.
@@ -71,6 +81,13 @@ public class signIn extends AppCompatActivity {
         setContentView(R.layout.sign_in);
         Window window = signIn.this.getWindow();
 
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "fonts/mont.ttf", true);
+
+        ImageView wings = (ImageView)findViewById(R.id.wings_logo);
+        button = (Button) findViewById(R.id.googleBtn);
+        mAuth = FirebaseAuth.getInstance();
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(
@@ -79,62 +96,105 @@ public class signIn extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
+        Animation zoom = AnimationUtils.loadAnimation(signIn.this, R.anim.fadein);
+        wings.setAnimation(zoom);
+
+        Animation zoom1 = AnimationUtils.loadAnimation(signIn.this, R.anim.zoomin);
+        button.setAnimation(zoom1);
+
+//        YoYo.with(Techniques.ZoomInUp)
+//                .duration(1000)
+//                .playOn(findViewById(R.id.wings_logo));
+
+//        YoYo.with(Techniques.ZoomIn)
+//                .duration(1000)
+//                .playOn(findViewById(R.id.text_login));
 
 
-        button = (Button) findViewById(R.id.googleBtn);
-        mAuth = FirebaseAuth.getInstance();
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.relative_layout);
+        FlowingGradientClass grad = new FlowingGradientClass();
+        grad.setBackgroundResource(R.drawable.translate)
+                .onRelativeLayout(rl)
+                .setTransitionDuration(4000)
+                .start();
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                mConnectionProgressDialog.show();
-
-                pDialog.show();
-                signIn();
-
-            }
-        });
 
 
-        mAuthListner = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                if(firebaseAuth.getCurrentUser() != null){
-                    Intent fireBaseIntent = new Intent(signIn.this, MainActivity.class);
-                   // fireBaseIntent.putExtra("USERNAME",fUserName);
-                    startActivity(fireBaseIntent);
-                    finish();
-                }
-            }
-        };
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
-                .requestEmail()
-                .build();
+                    if (!isNetworkAvailable()) {
+                        Log.e("PV", "not connected");
 
 
-        // Build a GoogleApiClient with access to the Google Sign-In API and the
-        // options specified by gso.
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                        Toast.makeText(signIn.this,"Something went wrong",Toast.LENGTH_SHORT).show();
+                        new SweetAlertDialog(signIn.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                                .setTitleText("No Internet")
+                                .setContentText("Let's fix the satellites !")
+                                .setCustomImage(R.drawable.no_internet)
+                                .setConfirmText("FIX")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+
+                                        Intent i = new Intent(Settings.ACTION_SETTINGS);
+                                        // i.setClassName("com.android.phone","com.android.phone.NetworkSetting");
+                                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        startActivity(i);
+                                        finish();
+
+                                    }
+                                })
+                                .show();
+
+                    } else {
+                        pDialog.show();
+                        signIn();
                     }
-                })
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
 
-        mConnectionProgressDialog = new ProgressDialog(this);
-        mConnectionProgressDialog.setMessage("Signing in...");
+                }
+            });
 
-        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("Please Wait! ");
-        pDialog.setContentText("Tell Google to build faster Computers!");
-        pDialog.setCancelable(false);
+
+            mAuthListner = new FirebaseAuth.AuthStateListener() {
+                @Override
+                public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                    if (firebaseAuth.getCurrentUser() != null) {
+                        Intent fireBaseIntent = new Intent(signIn.this, MainActivity.class);
+                        startActivity(fireBaseIntent);
+                        finish();
+                    }
+                }
+            };
+
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken(getString(R.string.default_web_client_id))
+                    .requestEmail()
+                    .build();
+
+
+            // Build a GoogleApiClient with access to the Google Sign-In API and the
+            // options specified by gso.
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .enableAutoManage(this /* FragmentActivity */, new GoogleApiClient.OnConnectionFailedListener() {
+                        @Override
+                        public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                            Toast.makeText(signIn.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build();
+
+            mConnectionProgressDialog = new ProgressDialog(this);
+            mConnectionProgressDialog.setMessage("Signing in...");
+
+            pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+            pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+            pDialog.setTitleText("Please Wait! ");
+            pDialog.setContentText("Tell Google to build faster Computers!");
+            pDialog.setCancelable(false);
+
 
     }
 
@@ -211,6 +271,13 @@ public class signIn extends AppCompatActivity {
     public void skip(View v){
         Intent skipI = new Intent(signIn.this,MainActivity.class);
         startActivity(skipI);
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 

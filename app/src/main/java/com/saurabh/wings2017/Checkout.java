@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.HashMap;
 import java.util.Map;
 
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 
 public class Checkout extends AppCompatActivity {
@@ -36,6 +37,7 @@ public class Checkout extends AppCompatActivity {
     FirebaseUser mFirebaseUser;
     String mUsername;
     String mUsermail;
+//    Typeface face= Typeface.createFromAsset(getAssets(), "fonts/mont.ttf");
 
 
     public void sendMail(){
@@ -89,6 +91,9 @@ public class Checkout extends AppCompatActivity {
         Window window = Checkout.this.getWindow();
         //  mAuth = FirebaseAuth.getInstance();
 //        mAuth.addAuthStateListener(mAuthListener);
+
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "fonts/mont.ttf", true);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(

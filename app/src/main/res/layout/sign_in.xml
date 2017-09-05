@@ -3,21 +3,25 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
+    android:id="@+id/relative_layout"
     android:fitsSystemWindows="true">
 
     <ImageView
-        android:layout_width="253sp"
-        android:layout_height="152sp"
+        android:layout_width="290sp"
+        android:layout_height="190sp"
         android:src="@drawable/wings_logo"
         android:layout_below="@+id/mStatusTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-5sp" />
+        android:layout_marginTop="5sp"
+        android:id="@+id/wings_logo"/>
 
 
     <ImageView
         android:layout_width="253sp"
         android:layout_height="152sp"
+        android:layout_marginTop="-20sp"
         android:src="@drawable/text_login"
+        android:id="@+id/text_login"
         android:layout_above="@+id/googleBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="53dp" />
@@ -38,13 +42,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="94dp" />
-    <ProgressBar
-        android:id="@+id/progressBar1"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="20dp"
-        android:visibility="gone" />
+
 
 
 </RelativeLayout>

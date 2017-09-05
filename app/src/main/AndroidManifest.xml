@@ -45,7 +45,7 @@
         <activity android:name=".Profile" />
         <activity android:name=".Details" />
         <activity android:name=".Team" />
-        <activity android:name=".Developer"></activity>
+        <activity android:name=".Developer" />
     </application>
 
 </manifest>

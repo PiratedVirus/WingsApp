@@ -1,13 +1,18 @@
 package com.saurabh.wings2017;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,6 +25,8 @@ import com.dynamitechetan.flowinggradient.FlowingGradientClass;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -268,9 +275,34 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void viewProfile(View v){
-        Intent viewProIntnet = new Intent(MainActivity.this,Profile.class);
-        startActivity(viewProIntnet);
-        finish();
+
+        if (!isNetworkAvailable()) {
+            Log.e("PV", "not connected");
+
+
+            new SweetAlertDialog(MainActivity.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    .setTitleText("No Internet")
+                    .setContentText("Let's fix the satellites !")
+                    .setCustomImage(R.drawable.no_internet)
+                    .setConfirmText("FIX")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+
+                            Intent i = new Intent(Settings.ACTION_SETTINGS);
+                            // i.setClassName("com.android.phone","com.android.phone.NetworkSetting");
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(i);
+                        }
+                    })
+                    .show();
+        } else {
+
+
+            Intent viewProIntnet = new Intent(MainActivity.this, Profile.class);
+            startActivity(viewProIntnet);
+            finish();
+        }
     }
 
     @Override
@@ -289,6 +321,13 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, Team.class);
         startActivity(intent);
         finish();
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 

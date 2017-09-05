@@ -1,5 +1,6 @@
 package com.saurabh.wings2017;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -7,6 +8,8 @@ import android.graphics.Color;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,6 +26,7 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class Profile extends AppCompatActivity {
 
@@ -41,8 +45,6 @@ public class Profile extends AppCompatActivity {
 
     // Firebase Detail holders
     String mUsername, mUsermail, mUserMobileNum, mPhotoUrl, mPhotoUrlLarge;
-
-
 
 
     //    Printing Details
@@ -70,7 +72,7 @@ public class Profile extends AppCompatActivity {
             mUsermail = SaveSharedPreferences.getUserEmail(getApplicationContext());
             mUserMobileNum = SaveSharedPreferences.getUserPhone(getApplicationContext());
             mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
-            mPhotoUrlLarge = mPhotoUrl.replace("/s96-c/","/s200-c/");
+            mPhotoUrlLarge = mPhotoUrl.replace("/s96-c/","/s800-c/");
             mPhotoUrlLarge = mPhotoUrlLarge.toString();
             Log.e("PV", "mPhotoURL " + mPhotoUrlLarge );
             Log.e("PV", "printUserDetails: " + mUsername + mUsermail);
@@ -143,6 +145,7 @@ public class Profile extends AppCompatActivity {
                                 mAuth.getInstance().signOut();
                                 Toast.makeText(Profile.this, "Logged Out", Toast.LENGTH_SHORT).show();
                                 SaveSharedPreferences.clearUserName(getApplicationContext());
+                                finish();
                             }
                         }).show();
             }
@@ -155,6 +158,9 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "fonts/mont.ttf", true);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -162,6 +168,7 @@ public class Profile extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.RED);
         }
         printUserDetails();
+
     }
 
     public void logout(View v){
@@ -174,8 +181,8 @@ public class Profile extends AppCompatActivity {
     }
 
     public Bitmap getRoundedShape(Bitmap scaleBitmapImage) {
-        int targetWidth = 300;
-        int targetHeight = 250;
+        int targetWidth = 700;
+        int targetHeight = 550;
         Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,
                 targetHeight,Bitmap.Config.ARGB_8888);
 
@@ -204,6 +211,13 @@ public class Profile extends AppCompatActivity {
         Intent i = new Intent(Profile.this, MainActivity.class);
         startActivity(i);
         finish();
+    }
+
+    private boolean isNetworkAvailable() {
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 

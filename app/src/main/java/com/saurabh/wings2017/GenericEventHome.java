@@ -31,6 +31,7 @@ import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class GenericEventHome extends AppCompatActivity {
 
@@ -123,6 +124,9 @@ public class GenericEventHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generic_event_home);
 
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "fonts/mont.ttf", true);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
@@ -156,16 +160,15 @@ public class GenericEventHome extends AppCompatActivity {
         fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
             @Override
             public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
-                Toast.makeText(GenericEventHome.this, "Itemid = "+itemId, Toast.LENGTH_SHORT).show();
                 Log.e("PV", "itemID: " + itemId);
 
-                switch(itemId){
-                    case 2131624251:
+                switch(textView.getText().toString()){
+                    case "Tickets":
                         Intent iticket = new Intent(getApplicationContext(),tickets.class);
                         startActivity(iticket);
                         finish();
                         break;
-                    case 2131624250:
+                    case "Cart":
                         Intent iCart = new Intent(getApplicationContext(),Cart.class);
                         startActivity(iCart);
                         finish();
@@ -196,10 +199,11 @@ public class GenericEventHome extends AppCompatActivity {
                     Log.e("PV", "not connected");
 
 
-                    new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.WARNING_TYPE)
-                            .setTitleText("You are not connected to Internet")
-                            .setContentText("You are about to log out from the app")
-                            .setConfirmText("Go to Settings")
+                    new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                            .setTitleText("No Internet")
+                            .setContentText("Let's fix the satellites !")
+                            .setCustomImage(R.drawable.no_internet)
+                            .setConfirmText("FIX")
                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
@@ -208,9 +212,7 @@ public class GenericEventHome extends AppCompatActivity {
                                     // i.setClassName("com.android.phone","com.android.phone.NetworkSetting");
                                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     ctx.startActivity(i);
-
                                 }
-
                             })
                             .show();
 
@@ -238,7 +240,15 @@ public class GenericEventHome extends AppCompatActivity {
                                             .setTitleText("Success!")
                                             .setContentText("Event added to Cart!")
                                             .setConfirmText("OK")
+                                            .setCancelText("View Cart")
                                             .setConfirmClickListener(null)
+                                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                @Override
+                                                public void onClick(SweetAlertDialog sDialog) {
+                                                    Intent i = new Intent(getApplicationContext(),Cart.class);
+                                                    startActivity(i);
+                                                }
+                                            })
                                             .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
 //                                sDialog.findViewById(R.id.confirm_button).setVisibility(View.GONE);
                                 }

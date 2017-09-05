@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
+    android:id="@+id/relative_layout_details"
     tools:context="com.saurabh.wings2017.Details">
 
     <EditText

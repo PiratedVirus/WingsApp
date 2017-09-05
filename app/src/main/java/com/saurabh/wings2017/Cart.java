@@ -50,6 +50,7 @@ import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 
 public class Cart extends AppCompatActivity {
@@ -97,6 +98,7 @@ public class Cart extends AppCompatActivity {
     ArrayList<String> eventID_list = new ArrayList<String>();
     ArrayList<String> eventPrice_list = new ArrayList<String>();
     ArrayList<String> uniqueID_list = new ArrayList<String>();
+
 
     //    Getting Details
     public void getUserDetails(){
@@ -154,10 +156,7 @@ public class Cart extends AppCompatActivity {
     public void fetchData(){
 
         getUserDetails();
-//        dialog = new ProgressDialog(this);
-//        dialog.setMessage("Wait a moment, Fetching your events...");
-//        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//        dialog.show();
+
 
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
@@ -171,6 +170,7 @@ public class Cart extends AppCompatActivity {
         exploreBtn = (ImageView) findViewById(R.id.exploreBtn);
         secText = (TextView) findViewById(R.id.cart_sec_text);
         checkout = (ImageView) findViewById(R.id.chkOutBtn);
+
 
 
         //total.setVisibility(View.VISIBLE);
@@ -370,6 +370,9 @@ public class Cart extends AppCompatActivity {
         Window window = Cart.this.getWindow();
         //  mAuth = FirebaseAuth.getInstance();
 //        mAuth.addAuthStateListener(mAuthListener);
+
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "fonts/mont.ttf", true);
 
 
 

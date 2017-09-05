@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -20,11 +21,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.dynamitechetan.flowinggradient.FlowingGradientClass;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class Details extends AppCompatActivity {
 
@@ -153,6 +159,9 @@ public class Details extends AppCompatActivity {
         setContentView(R.layout.activity_details);
         sharedpreferences = getSharedPreferences(MYPREFERENCES, Context.MODE_PRIVATE);
 
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "fonts/mont.ttf", true);
+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(
@@ -161,6 +170,13 @@ public class Details extends AppCompatActivity {
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
         printUserDetails();
+
+        RelativeLayout rl = (RelativeLayout) findViewById(R.id.relative_layout_details);
+        FlowingGradientClass grad = new FlowingGradientClass();
+        grad.setBackgroundResource(R.drawable.translate)
+                .onRelativeLayout(rl)
+                .setTransitionDuration(4000)
+                .start();
 
 
     }
@@ -191,6 +207,9 @@ public class Details extends AppCompatActivity {
         {
             valid=false;
             mobileNum.setError("Please Enter a valid Phone Number");
+            YoYo.with(Techniques.Shake)
+                    .duration(500)
+                .playOn(mobileNum);
         }
 
 

@@ -43,6 +43,10 @@ public class TicketList extends ArrayAdapter<String> {
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
+
+
+
+
         Log.e("PV","TicketList");
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView= inflater.inflate(R.layout.ticket_list, null, true);
