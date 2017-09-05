@@ -163,9 +163,13 @@ public class Brain extends AppCompatActivity  {
         eventName_list.add("Paper Bridge");
         eventName_list.add("Building");
         eventName_list.add("Paper Bridge");
-        eventName_list.add("Paper Bridge");
+        eventName_list.add("Paper Rasta");
+        eventName_list.add("Pach Pach Rasta");
+        eventName_list.add("Pattal zali mala");
 
 
+        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt lskddjasli fjsdfljdfiods jsjhfkdsjhflkjsahesNV OIV OeifjfNSDJ NODISHENFNJSAF sdvds vldskvn slknsdlndsiv disVldnvlds knlsVD LSDK");
+        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
@@ -177,68 +181,102 @@ public class Brain extends AppCompatActivity  {
         eventLocation.add("Workshop");
         eventLocation.add("The Grounds");
         eventLocation.add("Classroom Complex");
+        eventLocation.add("Qwerty Complex");
+        eventLocation.add("Qwerty Complex");
 
         eventContactPerson_list.add("Ashwin Kulkarni");
         eventContactPerson_list.add("Saurabh Kulkarni");
         eventContactPerson_list.add("Daru Kulkarni");
         eventContactPerson_list.add("Ashwin Kulkarni");
         eventContactPerson_list.add("Saurabh Kulkarni");
+        eventContactPerson_list.add("Bochya Kulkarni");
+        eventContactPerson_list.add("Ashwin Kulkarni");
 
         eventContactNum_list.add("7798080437");
         eventContactNum_list.add("7798080437");
         eventContactNum_list.add("7798080437");
         eventContactNum_list.add("7798080437");
         eventContactNum_list.add("7798080437");
+        eventContactNum_list.add("1798080437");
+        eventContactNum_list.add("1798080437");
 
         eventDate.add("1 OCT 2017");
         eventDate.add("2 OCT 2017");
         eventDate.add("3 OCT 2017");
         eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
+        eventDate.add("9 OCT 2017");
+        eventDate.add("19 OCT 2017");
 
         eventprice.add("35");
         eventprice.add("45");
         eventprice.add("50");
         eventprice.add("25");
         eventprice.add("50");
+        eventprice.add("90");
+        eventprice.add("90");
 
 
         BrainAdapter ad = new BrainAdapter(Brain.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice);
         civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 
-        civil.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                    long arg3) {
-                // For Long Duration Toast
-                TextView  name = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventName);
-                TextView location = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventLocation);
-                TextView desc = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventExcerpt);
-                TextView price = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventPrice);
-                TextView date = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventDate);
-                TextView person_name = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventContactPerson);
-                TextView person_num = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventContactNum);
+        try {
+
+            civil.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                        long arg3) {
+                    // For Long Duration Toast
+//                    https://stackoverflow.com/questions/6766625/listview-getchildat-returning-null-for-visible-children
 
 
-                Toast.makeText(getApplicationContext(), name.getText().toString() , Toast.LENGTH_LONG).show();
-
-                Intent eventi = new Intent(Brain.this, GenericEventHome.class);
-                eventi.putExtra("name", name.getText().toString());
-                eventi.putExtra("location",location.getText().toString());
-                eventi.putExtra("desc",desc.getText().toString());
-                eventi.putExtra("price",price.getText().toString());
-                eventi.putExtra("date",date.getText().toString());
-                eventi.putExtra("person_name",person_name.getText().toString());
-                eventi.putExtra("person_num",person_num.getText().toString());
-
-                startActivity(eventi);
-                finish();
-                // For Long Short Toast
 
 
-            }
-        });
+                    try {
+
+                        TextView name = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventName);
+                        TextView location = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventLocation);
+                        TextView desc = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventExcerpt);
+                        TextView price = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventPrice);
+                        TextView date = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventDate);
+                        TextView person_name = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventContactPerson);
+                        TextView person_num = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventContactNum);
+
+
+
+
+                        Toast.makeText(getApplicationContext(), name.getText().toString(), Toast.LENGTH_LONG).show();
+
+                        Intent eventi = new Intent(Brain.this, GenericEventHome.class);
+                        eventi.putExtra("name", name.getText().toString());
+                        eventi.putExtra("location", location.getText().toString());
+                        eventi.putExtra("desc", desc.getText().toString());
+                        eventi.putExtra("price", price.getText().toString());
+                        eventi.putExtra("date", date.getText().toString());
+                        eventi.putExtra("person_name", person_name.getText().toString());
+                        eventi.putExtra("person_num", person_num.getText().toString());
+
+                        startActivity(eventi);
+                        finish();
+                        // For Long Short Toast
+                        Log.e("PV","pachkan hagla + wanted child" +arg2);
+
+                    }
+                    catch (NullPointerException n)
+                    {
+                        Log.e("PV","pachkan hagla catch madhye "+arg2);
+                        n.printStackTrace();
+                    }
+
+                }
+            });
+
+        } catch (NullPointerException n)
+        {
+            n.printStackTrace();
+        }
 
 
 

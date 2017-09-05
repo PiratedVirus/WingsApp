@@ -21,9 +21,22 @@ import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
 
@@ -38,6 +51,13 @@ public class Checkout extends AppCompatActivity {
     FirebaseUser mFirebaseUser;
     String mUsername;
     String mUsermail;
+    HttpPost httppost;
+    SweetAlertDialog pDialog;
+    HttpResponse response;
+    HttpClient httpclient;
+    HttpEntity httpentity;
+    List<NameValuePair> nameValuePairs;
+    InputStream isr;
 //    Typeface face= Typeface.createFromAsset(getAssets(), "fonts/mont.ttf");
 
 
@@ -129,38 +149,80 @@ public class Checkout extends AppCompatActivity {
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
+//
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+//                PHP_TRANSFER_CART,
+//                new Response.Listener<String>() {
+//                    @Override
+//                    public void onResponse(String response) {
+//
+//                    }
+//                },
+//                new Response.ErrorListener(){
+//                    @Override
+//                    public void onErrorResponse(VolleyError error) {
+//                        Toast.makeText(Checkout.this,error.getMessage(),Toast.LENGTH_LONG).show();
+//
+//                    }
+//                }){
+//            public static final String TAG = "PV";
+//
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String,String> params = new HashMap<>();
+//                params.put("fuserMail", mFirebaseUser.getEmail());
+//                Log.e("PV", "getParams: The userMail is" + mFirebaseUser.getEmail() );
+//                return params;
+//            }
+//
+//
+//        };
+//
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        requestQueue.add(stringRequest);
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                PHP_TRANSFER_CART,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
+        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+        pDialog.setTitleText("Please wait!");
+        pDialog.setContentText("We're building the buildings as fast as possible");
+        pDialog.setCancelable(false);
+        pDialog.show();
 
-                    }
-                },
-                new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Checkout.this,error.getMessage(),Toast.LENGTH_LONG).show();
+        Thread t = new Thread(new Runnable() {
+            public void run() {
 
-                    }
-                }){
-            public static final String TAG = "PV";
+                try {
+                    httpclient = new DefaultHttpClient();
+                    httppost = new HttpPost(PHP_TRANSFER_CART); // make sure the url is correct.
+                    //add your data
+                    nameValuePairs = new ArrayList<NameValuePair>(1);
+                    // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
+                    nameValuePairs.add(new BasicNameValuePair("fuserMail", mFirebaseUser.getEmail()));
 
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String> params = new HashMap<>();
-                params.put("fuserMail", mFirebaseUser.getEmail());
-                Log.e("PV", "getParams: The userMail is" + mFirebaseUser.getEmail() );
-                return params;
+                    // $Edittext_value = $_POST['Edittext_value'];
+                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    Log.d("andro", "1" + mUsermail);
+                    //Execute HTTP Post Requ
+                    response = httpclient.execute(httppost);
+                    Log.d("andro", "2");
+                    httpentity = response.getEntity();
+                    isr = httpentity.getContent();
+
+
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            // tv.setText("Response from PHP : " + response);
+//                                dialog.dismiss();
+                            pDialog.dismissWithAnimation();
+
+                        }
+                    });
+                } catch (Exception e) {
+                }
+
             }
-
-
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-
+        });
+        t.start();
         sendMail();
 
 

@@ -27,7 +27,7 @@
         android:id="@+id/cart_list_show"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:dividerHeight="30dp"
+        android:dividerHeight="3dp"
         android:divider="@null"
         android:scrollbars="none"
         android:scrollbarSize="0dp"
