@@ -47,10 +47,10 @@ public class GenericEventHome extends AppCompatActivity {
     FabSpeedDial fab;
 
     // Firebase Detail holders
-    String mUsername;
+    String mUsername, mobNum;
     String mPhotoUrl;
     String mUsermail;
-    int mobNum;
+
     String eventprice;
 
 
@@ -100,16 +100,16 @@ public class GenericEventHome extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 getUserDetails();
-                mobNum = Integer.parseInt(gen_person_num.getText().toString());
+                mobNum = SaveSharedPreferences.getUserPhone(GenericEventHome.this);
                 eventprice = getIntent().getStringExtra("EventCriteria");
                 Log.d(TAG, "price: " + eventprice);
                 Map<String,String> params = new HashMap<>();
                 params.put("fuserName", mUsername);
                 params.put("fuserMail", mUsermail);
-                params.put("fuserMob", String.valueOf(mobNum));
-                params.put("eventName", getIntent().getStringExtra("EventName"));
+                params.put("fuserMob", mobNum);
+                params.put("eventName", getIntent().getStringExtra("name"));
                 params.put("eventID", "CSG101");
-                params.put("eventPrice",eventprice);
+                params.put("eventPrice",getIntent().getStringExtra("price"));
                 return params;
             }
 

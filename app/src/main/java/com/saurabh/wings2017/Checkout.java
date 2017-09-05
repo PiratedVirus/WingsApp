@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
@@ -150,6 +151,7 @@ public class Checkout extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
                 params.put("fuserMail", mFirebaseUser.getEmail());
+                Log.e("PV", "getParams: The userMail is" + mFirebaseUser.getEmail() );
                 return params;
             }
 
