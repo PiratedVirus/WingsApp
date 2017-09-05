@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 
-public class CivilEventAdapter extends ArrayAdapter<String> {
+public class RobotAdapter extends ArrayAdapter<String> {
 
 
     private final Activity context;
@@ -22,12 +22,11 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
     private final ArrayList eventContactPerson_list;
     private final ArrayList eventContactNum_list;
     private final ArrayList eventDate;
-    private final ArrayList eventprice;
 
 
 
-    public CivilEventAdapter(Activity context,
-                             ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice) {
+    public RobotAdapter(Activity context,
+                        ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate) {
         super(context, R.layout.content_civil_home, eventName_list);
         this.context = context;
         this.eventName_list = eventName_list;
@@ -36,7 +35,6 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
         this.eventContactPerson_list = eventContactPerson_list;
         this.eventContactNum_list = eventContactNum_list;
         this.eventDate = eventDate;
-        this.eventprice = eventprice;
 
 
         Log.e("PV","bochya"+eventName_list);
@@ -58,7 +56,6 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
         TextView EventDate = (TextView) rowView.findViewById(R.id.eventDate);
         TextView EventPerson = (TextView) rowView.findViewById(R.id.eventContactPerson);
         TextView Eventcontact = (TextView) rowView.findViewById(R.id.eventContactNum);
-        TextView EventPrice = (TextView) rowView.findViewById(R.id.eventPrice);
 
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont((Activity) getContext(), "fonts/mont.ttf", true);
@@ -71,8 +68,6 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
         EventDate.setText((CharSequence)eventDate.get(position));
         EventPerson.setText((CharSequence)eventContactPerson_list.get(position));
         Eventcontact.setText((CharSequence)eventContactNum_list.get(position));
-        EventPrice.setText((CharSequence)eventprice.get(position));
-
 
         Log.e("PV", "yes"+eventName_list.get(position));
         return rowView;

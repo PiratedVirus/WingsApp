@@ -76,16 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 //   Method for opening Brain
-    public void BrainIntent(){
-        BrainBtn = (Button) findViewById(R.id.brainBtn);
-        BrainBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent BrainIntent = new Intent(MainActivity.this,BrainHome.class);
-                startActivity(BrainIntent);
-            }
-        });
-    }
+
 
 //    Method for  SignOut
     public void LogOutNew() {
@@ -251,7 +242,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setCurrentItem(0);
 
         CivilIntent();
-        BrainIntent();
+
         LogOutNew();
         viewCart();
 
@@ -305,6 +296,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void brain(View v)
+    {
+        Intent brainintent = new Intent(getApplicationContext(),Brain.class);
+        startActivity(brainintent);
+        finish();
+    }
+
+    public void code(View v)
+    {
+        Intent brainintent = new Intent(getApplicationContext(),Code.class);
+        startActivity(brainintent);
+        finish();
+    }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -319,6 +324,25 @@ public class MainActivity extends AppCompatActivity {
 
     public void team(View v) {
         Intent intent = new Intent(MainActivity.this, Team.class);
+        startActivity(intent);
+        finish();
+    }
+
+
+    public void robot(View v) {
+        Intent intent = new Intent(MainActivity.this, Robotics.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void talent(View v) {
+        Intent intent = new Intent(MainActivity.this, Talent.class);
+        startActivity(intent);
+        finish();
+    }
+
+    public void mini(View v) {
+        Intent intent = new Intent(MainActivity.this, Mini.class);
         startActivity(intent);
         finish();
     }

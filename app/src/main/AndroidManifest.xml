@@ -46,6 +46,11 @@
         <activity android:name=".Details" />
         <activity android:name=".Team" />
         <activity android:name=".Developer" />
+        <activity android:name=".Brain" />
+        <activity android:name=".Code" />
+        <activity android:name=".Mini" />
+        <activity android:name=".Talent" />
+        <activity android:name=".Robotics"></activity>
     </application>
 
 </manifest>

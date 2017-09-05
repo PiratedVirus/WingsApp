@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
-public class CivilHome extends AppCompatActivity  {
+public class Code extends AppCompatActivity  {
 
     private String fromConst;
 
@@ -77,11 +77,11 @@ public class CivilHome extends AppCompatActivity  {
             mUsername = mFirebaseUser.getDisplayName();
             mUsermail = mFirebaseUser.getEmail();
             mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
-            Toast.makeText(CivilHome.this,mUsername,Toast.LENGTH_SHORT).show();
+            Toast.makeText(Code.this,mUsername,Toast.LENGTH_SHORT).show();
 
             fireName.setText(mUsername);
             fireMail.setText(mUsermail);
-            Picasso.with(CivilHome.this).load(mPhotoUrl).into(fireImage);
+            Picasso.with(Code.this).load(mPhotoUrl).into(fireImage);
 
         }
 
@@ -102,7 +102,7 @@ public class CivilHome extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_civil_home);
+        setContentView(R.layout.activity_code);
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/mont.ttf", true);
@@ -156,7 +156,7 @@ public class CivilHome extends AppCompatActivity  {
         });
 
 
-       eventName_list.add("Bridge");
+        eventName_list.add("Bridge");
         eventName_list.add("Paper Bridge");
         eventName_list.add("Building");
         eventName_list.add("Paper Bridge");
@@ -170,16 +170,16 @@ public class CivilHome extends AppCompatActivity  {
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
 
         eventLocation.add("Classroom Complex");
-        eventLocation.add("CSE Department");
-        eventLocation.add("Workshop");
-        eventLocation.add("The Grounds");
+        eventLocation.add("Classroom Complex");
+        eventLocation.add("Classroom Complex");
+        eventLocation.add("Classroom Complex");
         eventLocation.add("Classroom Complex");
 
         eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Saurabh Kulkarni");
-        eventContactPerson_list.add("Daru Kulkarni");
         eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Saurabh Kulkarni");
+        eventContactPerson_list.add("Ashwin Kulkarni");
+        eventContactPerson_list.add("Ashwin Kulkarni");
+        eventContactPerson_list.add("Ashwin Kulkarni");
 
         eventContactNum_list.add("7798080437");
         eventContactNum_list.add("7798080437");
@@ -187,10 +187,10 @@ public class CivilHome extends AppCompatActivity  {
         eventContactNum_list.add("7798080437");
         eventContactNum_list.add("7798080437");
 
-        eventDate.add("1 OCT 2017");
-        eventDate.add("2 OCT 2017");
-        eventDate.add("3 OCT 2017");
-        eventDate.add("4 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
 
         eventprice.add("35");
@@ -200,21 +200,22 @@ public class CivilHome extends AppCompatActivity  {
         eventprice.add("50");
 
 
-        CivilEventAdapter ad = new CivilEventAdapter(CivilHome.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice);
+
+        CodeAdapter ad = new CodeAdapter(Code.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice);
         ListView civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 
 
 
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(CivilHome.this, MainActivity.class);
+        Intent i = new Intent(Code.this, MainActivity.class);
         startActivity(i);
         finish();
     }
+
 
 
 

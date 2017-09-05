@@ -1,174 +1,273 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:id="@+id/linearlayout1"
+    android:background="@drawable/civil">
 
-
-
-
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_gravity="top"
+        android:layout_weight="3.5"
+        android:textAlignment="center">
 
+        <TextView
+            android:id="@+id/genEventName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Counter Strike"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="36dp"
+            android:textStyle="bold" />
+        <TextView
+            android:id="@+id/EventDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Oct 5,2017"
+            android:textColor="@color/cardview_light_background"
+            android:layout_below="@+id/genEventName"
+            android:layout_centerHorizontal="true"/>
 
+    </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#F4A105"
-            android:gravity="bottom"
-            android:paddingBottom="20dp"
-            android:paddingLeft="52dp"
-            android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_weight="2.4">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/genEventName"
-                android:text="EventName"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:textColor="#FFF"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/genEventName"
-                android:text="EventDate"/>
-
-
-        </LinearLayout>
-
-
-        <ScrollView
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.2"
-            android:paddingLeft="52dp"
-            android:paddingTop="52dp"
-            android:background="#FFF"
-            android:orientation="vertical">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="EVENT VENUE"
-                android:textColor="#E40046"/>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Classroom Complex"
-                android:id="@+id/genEventLocation"/>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="34dp"
-                android:text="TICKET PRICE"
-                android:textColor="#E40046"/>
-
-
-
             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/dateLocHolder"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="5"
+                    android:gravity="center_horizontal"
+                    android:padding="20dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@color/cardview_light_background">
+
+                    <ImageView
+                        android:id="@+id/locationIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/bell"
+                        android:layout_margin="10dp"/>
+
+                    <TextView
+                        android:id="@+id/genEventLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Classroom Complex"
+                        android:textColor="@color/yellow"
+                        android:layout_below="@+id/locationIcon"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="1dp"/>
+
+                </RelativeLayout>
+
+
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:gravity="center_horizontal"
+                    android:padding="20dp"
+                    android:layout_marginRight="1dp"
+                    android:background="@color/cardview_light_background">
+
+                    <ImageView
+                        android:id="@+id/calednerIcon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:src="@drawable/bell"
+                        android:layout_margin="10dp"/>
+
+                    <TextView
+                        android:id="@+id/dateTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/calednerIcon"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="1dp"
+                        android:text="Oct 3, 2017 1 PM onwards"
+                        android:textAlignment="center"
+                        android:textColor="@color/yellow" />
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
+                android:layout_below="@+id/dateLocHolder"
+                android:id="@+id/contactHolder"
+                android:padding="10dp"
+                android:layout_marginTop="1dp"
+                android:background="@color/cardview_light_background">
 
                 <TextView
+                    android:id="@+id/cnctLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/genEventPrice"
-                    android:text="₹50.00"
-                    android:layout_weight="1"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Display1"/>
+                    android:text="Contact"
+                    android:textColor="@color/yellow"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="22dp"/>
 
-                <Button
+                <TextView
+                    android:id="@+id/genEventContactPerson"
                     android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/cnctLabel"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="13sp"
+                    android:text="Ashwin Kulkarni 8987654312"
+                    android:textColor="@color/yellow"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_below="@+id/contactHolder"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/cartPriceHolder"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:layout_marginTop="1dp"
+
+                android:background="@color/cardview_light_background"
+                >
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="top"
+                    android:layout_weight="5"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ticket Price"
+                            android:textStyle="bold"
+                            android:paddingBottom="18dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:id="@+id/priceLabel"
+                            android:textColor="@color/yellow"/>
+
+                        <TextView
+                            android:id="@+id/genEventPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Rs.50"
+                            android:textSize="18dp"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@+id/priceLabel"
+                            android:textColor="@color/yellow"/>
+
+                    </RelativeLayout>
+
+
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/addToCart"
-                    android:layout_weight="1"
-                    android:text="ADD TO CART"
-                    android:layout_marginRight="5dp"
-                    android:textColor="#FFFFFF"
-                    android:background="#E40046"/>
+                    android:layout_gravity="bottom"
+                    android:layout_weight="5"
+                    >
+
+                    <Button
+                        android:id="@+id/addToCart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:background="@color/yellow"
+                        android:padding="10dp"
+                        android:text="Add to Cart"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="#FFF"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
 
             </LinearLayout>
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="CONTACT PERSON"
-                android:textColor="#E40046"
-                android:paddingTop="34dp"/>
 
+        </RelativeLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:text="Mr. Jon Snow"
-                android:id="@+id/genEventContactPerson"/>
+    </RelativeLayout>
 
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="87865 45678"
-                android:textColor="#3498db"
-                android:id="@+id/genEventContactMob"/>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="ABOUT EVENT"
-                android:paddingTop="34dp"
-                android:textColor="#E40046"/>
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="thth"
-                android:id="@+id/genEventInfo"/>
-
-
-
-        </LinearLayout>
-
-        </ScrollView>
-
-
-    </LinearLayout>
-    <io.github.kobakei.materialfabspeeddial.FabSpeedDial
-        android:id="@+id/fab"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        app:fab_menu="@menu/fab"
-        app:useCompatPadding="true"
-        app:fab_extraMargin="-10sp"
-        app:fab_fabBackgroundColor="@color/colorAccent"
-        app:fab_miniFabBackgroundColor="@color/colorAccent"
-        app:fab_miniFabTextColor="@color/cardview_light_background"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_marginTop="1dp"
+        android:background="@color/cardview_light_background"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Event Description"
+            android:textColor="@color/yellow"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="13dp"
+            android:id="@+id/eventDescriptionLabel" />
+        <TextView
+            android:id="@+id/genEventInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/eventDescriptionLabel"
+            android:text="@string/large_text"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/yellow"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="31dp"/>
 
-        />
-</RelativeLayout>
 
+    </RelativeLayout>
+
+</LinearLayout>

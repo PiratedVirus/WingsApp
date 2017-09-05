@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,7 +24,7 @@ import java.util.ArrayList;
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
-public class CivilHome extends AppCompatActivity  {
+public class Robotics extends AppCompatActivity  {
 
     private String fromConst;
 
@@ -43,6 +44,7 @@ public class CivilHome extends AppCompatActivity  {
     String mUsername;
     String mPhotoUrl;
     String mUsermail;
+    ListView civil;
 
 
 
@@ -52,7 +54,8 @@ public class CivilHome extends AppCompatActivity  {
     ArrayList<String>  eventContactPerson_list = new ArrayList<>();
     ArrayList<String>  eventContactNum_list = new ArrayList<>();
     ArrayList<String>  eventDate = new ArrayList<>();
-    ArrayList<String> eventprice = new ArrayList<>();
+    ArrayList<String>  eventprice = new ArrayList<>();
+    ArrayList<Integer> back = new ArrayList<>();
 
 
 
@@ -77,11 +80,11 @@ public class CivilHome extends AppCompatActivity  {
             mUsername = mFirebaseUser.getDisplayName();
             mUsermail = mFirebaseUser.getEmail();
             mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
-            Toast.makeText(CivilHome.this,mUsername,Toast.LENGTH_SHORT).show();
+            Toast.makeText(Robotics.this,mUsername,Toast.LENGTH_SHORT).show();
 
             fireName.setText(mUsername);
             fireMail.setText(mUsermail);
-            Picasso.with(CivilHome.this).load(mPhotoUrl).into(fireImage);
+            Picasso.with(Robotics.this).load(mPhotoUrl).into(fireImage);
 
         }
 
@@ -102,7 +105,7 @@ public class CivilHome extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_civil_home);
+        setContentView(R.layout.activity_robotics);
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/mont.ttf", true);
@@ -156,7 +159,7 @@ public class CivilHome extends AppCompatActivity  {
         });
 
 
-       eventName_list.add("Bridge");
+        eventName_list.add("Bridge");
         eventName_list.add("Paper Bridge");
         eventName_list.add("Building");
         eventName_list.add("Paper Bridge");
@@ -170,16 +173,16 @@ public class CivilHome extends AppCompatActivity  {
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
 
         eventLocation.add("Classroom Complex");
-        eventLocation.add("CSE Department");
-        eventLocation.add("Workshop");
-        eventLocation.add("The Grounds");
+        eventLocation.add("Classroom Complex");
+        eventLocation.add("Classroom Complex");
+        eventLocation.add("Classroom Complex");
         eventLocation.add("Classroom Complex");
 
         eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Saurabh Kulkarni");
-        eventContactPerson_list.add("Daru Kulkarni");
         eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Saurabh Kulkarni");
+        eventContactPerson_list.add("Ashwin Kulkarni");
+        eventContactPerson_list.add("Ashwin Kulkarni");
+        eventContactPerson_list.add("Ashwin Kulkarni");
 
         eventContactNum_list.add("7798080437");
         eventContactNum_list.add("7798080437");
@@ -187,10 +190,10 @@ public class CivilHome extends AppCompatActivity  {
         eventContactNum_list.add("7798080437");
         eventContactNum_list.add("7798080437");
 
-        eventDate.add("1 OCT 2017");
-        eventDate.add("2 OCT 2017");
-        eventDate.add("3 OCT 2017");
-        eventDate.add("4 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
 
         eventprice.add("35");
@@ -200,21 +203,56 @@ public class CivilHome extends AppCompatActivity  {
         eventprice.add("50");
 
 
-        CivilEventAdapter ad = new CivilEventAdapter(CivilHome.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice);
-        ListView civil = (ListView)findViewById(R.id.cart_list_show);
+
+        RoboticsAdapter ad = new RoboticsAdapter(Robotics.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice);
+        civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
+
+        civil.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                                    long arg3) {
+                // For Long Duration Toast
+                TextView  name = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventName);
+                TextView location = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventLocation);
+                TextView desc = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventExcerpt);
+                TextView price = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventPrice);
+                TextView date = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventDate);
+                TextView person_name = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventContactPerson);
+                TextView person_num = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventContactNum);
+
+
+                Toast.makeText(getApplicationContext(), name.getText().toString() , Toast.LENGTH_LONG).show();
+
+                Intent eventi = new Intent(Robotics.this, GenericEventHome.class);
+                eventi.putExtra("name", name.getText().toString());
+                eventi.putExtra("location",location.getText().toString());
+                eventi.putExtra("desc",desc.getText().toString());
+                eventi.putExtra("price",price.getText().toString());
+                eventi.putExtra("date",date.getText().toString());
+                eventi.putExtra("person_name",person_name.getText().toString());
+                eventi.putExtra("person_num",person_num.getText().toString());
+
+                startActivity(eventi);
+                finish();
+                // For Long Short Toast
+
+
+            }
+        });
+
 
 
 
     }
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(CivilHome.this, MainActivity.class);
+        Intent i = new Intent(Robotics.this, MainActivity.class);
         startActivity(i);
         finish();
     }
+
 
 
 

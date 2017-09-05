@@ -8,7 +8,6 @@ import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -35,7 +34,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class GenericEventHome extends AppCompatActivity {
 
-    TextView gen_Name, gen_Location, gen_Info, gen_Rules, gen_Criteria, gen_Price;
+    TextView gen_Name, gen_Location, gen_Info, gen_Date, gen_person_name, gen_Price, gen_person_num ;
     Button add_to_cart;
     public static final String PHP_URL = "https://scouncilgeca.com/WingsApp/sendEventData.php";
 
@@ -53,6 +52,9 @@ public class GenericEventHome extends AppCompatActivity {
     String mUsermail;
     int mobNum;
     String eventprice;
+
+
+
 
     //    Printing Details
     public void getUserDetails(){
@@ -98,7 +100,7 @@ public class GenericEventHome extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 getUserDetails();
-                mobNum = 878654352;
+                mobNum = Integer.parseInt(gen_person_num.getText().toString());
                 eventprice = getIntent().getStringExtra("EventCriteria");
                 Log.d(TAG, "price: " + eventprice);
                 Map<String,String> params = new HashMap<>();
@@ -127,11 +129,13 @@ public class GenericEventHome extends AppCompatActivity {
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/mont.ttf", true);
 
+
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().getDecorView().setSystemUiVisibility(
                     View.SYSTEM_UI_FLAG_LAYOUT_STABLE
                             | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            getWindow().setStatusBarColor(Color.RED);
+            getWindow().setStatusBarColor(Color.TRANSPARENT);
         }
 
 
@@ -139,52 +143,59 @@ public class GenericEventHome extends AppCompatActivity {
         gen_Location = (TextView) findViewById(R.id.genEventLocation);
         gen_Info = (TextView) findViewById(R.id.genEventInfo);
         gen_Price = (TextView) findViewById(R.id.genEventPrice);
+        gen_person_name = (TextView) findViewById(R.id.genEventContactPerson);
+//        gen_person_num = (TextView) findViewById(R.id.genEventContactMob) ;
+        gen_Date = (TextView)findViewById(R.id.EventDate);
         add_to_cart = (Button) findViewById(R.id.addToCart);
 
 //        Getting data from Intent of respective activities
-        gen_Name.setText(getIntent().getStringExtra("EventName"));
-        gen_Location.setText(getIntent().getStringExtra("EventLocation"));
-        gen_Info.setText(getIntent().getStringExtra("EventInfo"));
-        gen_Price.setText("₹" + getIntent().getStringExtra("EventCriteria"));
+        String contactDetails = getIntent().getStringExtra("person_name") +"   "+ getIntent().getStringExtra("person_num");
+        gen_Name.setText(getIntent().getStringExtra("name"));
+        gen_Location.setText(getIntent().getStringExtra("location"));
+        gen_Info.setText(getIntent().getStringExtra("desc"));
+        gen_Price.setText("₹" + getIntent().getStringExtra("price"));
+        gen_person_name.setText(contactDetails);
+//        gen_person_num.setText(getIntent().getStringExtra("person_num"));
+        gen_Date.setText(getIntent().getStringExtra("date"));
 
 
-        fab  = (FabSpeedDial) findViewById(R.id.fab);
-
-        fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
-            @Override
-            public void onStateChange(boolean open) {
-                // do something
-            }
-        });
-
-        fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
-            @Override
-            public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
-                Log.e("PV", "itemID: " + itemId);
-
-                switch(textView.getText().toString()){
-                    case "Tickets":
-                        Intent iticket = new Intent(getApplicationContext(),tickets.class);
-                        startActivity(iticket);
-                        finish();
-                        break;
-                    case "Cart":
-                        Intent iCart = new Intent(getApplicationContext(),Cart.class);
-                        startActivity(iCart);
-                        finish();
-                        break;
-                    default:
-                        break;
-                }
-
-
-            }
-        });fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
-            @Override
-            public void onStateChange(boolean open) {
-
-            }
-        });
+//        fab  = (FabSpeedDial) findViewById(R.id.fab);
+//
+//        fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
+//            @Override
+//            public void onStateChange(boolean open) {
+//                // do something
+//            }
+//        });
+//
+//        fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
+//            @Override
+//            public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
+//                Log.e("PV", "itemID: " + itemId);
+//
+//                switch(textView.getText().toString()){
+//                    case "Tickets":
+//                        Intent iticket = new Intent(getApplicationContext(),tickets.class);
+//                        startActivity(iticket);
+//                        finish();
+//                        break;
+//                    case "Cart":
+//                        Intent iCart = new Intent(getApplicationContext(),Cart.class);
+//                        startActivity(iCart);
+//                        finish();
+//                        break;
+//                    default:
+//                        break;
+//                }
+//
+//
+//            }
+//        });fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
+//            @Override
+//            public void onStateChange(boolean open) {
+//
+//            }
+//        });
 
 
 
@@ -269,5 +280,13 @@ public class GenericEventHome extends AppCompatActivity {
                 = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(GenericEventHome.this, Brain.class);
+        startActivity(i);
+        finish();
     }
 }
