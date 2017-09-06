@@ -1,15 +1,13 @@
 package com.saurabh.wings2017;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.Settings;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -167,6 +165,7 @@ public class Cart extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.show();
 
+
         emptyCart = (ImageView) findViewById(R.id.emptyCart);
         cartText = (TextView) findViewById(R.id.cart_text);
         exploreBtn = (ImageView) findViewById(R.id.exploreBtn);
@@ -176,6 +175,7 @@ public class Cart extends AppCompatActivity {
 
 
         //total.setVisibility(View.VISIBLE);
+        final Handler handler  = new Handler();
             Thread t = new Thread(new Runnable() {
                 public void run() {
 
@@ -210,7 +210,24 @@ public class Cart extends AppCompatActivity {
 //                                dialog.dismiss();
                                 pDialog.dismissWithAnimation();
 
+                                pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                    @Override
+                                    public void onDismiss(DialogInterface dialog) {
+                                        handler.removeCallbacks(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Toast.makeText(Cart.this, "Ghusla aat", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }
+                                });
+
+                                handler.postDelayed(this, 5000);
+
                             }
+
+
+
                         });
 
                         if (!(result.startsWith("F"))) {
@@ -358,6 +375,8 @@ public class Cart extends AppCompatActivity {
             {
                 e.printStackTrace();
             }
+
+
 
 
     };

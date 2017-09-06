@@ -17,10 +17,9 @@
         android:background="@drawable/civil">
 
 
-
         <RelativeLayout
             android:layout_width="fill_parent"
-            android:layout_height="170sp"
+            android:layout_height="250sp"
             android:layout_gravity="top"
             android:layout_weight="3.5"
             android:textAlignment="center">
@@ -35,15 +34,16 @@
                 android:textColor="@color/cardview_light_background"
                 android:textSize="36dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/EventDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/genEventName"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
                 android:text="Oct 5,2017"
-                android:textColor="@color/cardview_light_background"
-                android:layout_below="@+id/genEventName"
-                android:layout_centerHorizontal="true"/>
+                android:textColor="@color/cardview_light_background" />
 
         </RelativeLayout>
 
@@ -86,12 +86,13 @@
                             android:id="@+id/genEventLocation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Classroom Complex"
-                            android:textColor="@color/yellow"
                             android:layout_below="@+id/locationIcon"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:layout_marginTop="1dp"/>
+                            android:layout_marginTop="1dp"
+                            android:text="Classroom Complex"
+                            android:textAlignment="center"
+                            android:textColor="@color/yellow" />
 
                     </RelativeLayout>
 

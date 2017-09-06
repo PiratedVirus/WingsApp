@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
-<ScrollView
+
+    <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/scroll">
@@ -179,24 +180,27 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/list_item"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/list_item">
+        android:layout_alignParentStart="true">
 
         <ImageView
             android:id="@+id/home_btn"
             android:layout_width="170dp"
             android:layout_height="50dp"
+            android:layout_marginTop="5sp"
+            android:layout_alignStart="@+id/imageView10"
+            android:layout_alignTop="@+id/logoutBtn"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
+            android:layout_toStartOf="@+id/logoutBtn"
             android:onClick="home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/logoutBtn"
-            app:srcCompat="@drawable/home"
-            android:layout_alignTop="@+id/logoutBtn"
-            android:layout_alignStart="@+id/imageView10"
-            android:layout_toStartOf="@+id/logoutBtn" />
+            app:srcCompat="@drawable/home" />
+
         <ImageView
             android:id="@+id/logoutBtn"
             android:layout_width="170dp"
