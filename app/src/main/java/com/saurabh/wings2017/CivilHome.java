@@ -35,8 +35,7 @@ public class CivilHome extends AppCompatActivity  {
     FabSpeedDial fab;
 
     // Firebase instance variables
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+
     FirebaseAuth mFirebaseAuth;
     FirebaseUser mFirebaseUser;
     // Firebase Detail holders

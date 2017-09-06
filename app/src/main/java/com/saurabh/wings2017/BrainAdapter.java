@@ -52,7 +52,7 @@ public class BrainAdapter extends ArrayAdapter<String> {
         View rowView= inflater.inflate(R.layout.content_brain_single_list, null, true);
         rowView.setMinimumHeight(80);
 
-        RelativeLayout rel = (RelativeLayout) rowView.findViewById(R.id.civilRel);
+        RelativeLayout rel = (RelativeLayout) rowView.findViewById(R.id.brainRel);
 
 
         final TextView EventName = (TextView) rowView.findViewById(R.id.CivilEventName);

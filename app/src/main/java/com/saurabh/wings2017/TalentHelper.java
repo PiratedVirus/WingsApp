@@ -1,6 +1,5 @@
 package com.saurabh.wings2017;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -33,15 +32,14 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
-public class GenericEventHome extends AppCompatActivity {
+public class TalentHelper extends AppCompatActivity {
 
     TextView gen_Name, gen_Location, gen_Info, gen_Date, gen_person_name, gen_Price, gen_person_num ;
     Button add_to_cart;
     public static final String PHP_URL = "https://scouncilgeca.com/WingsApp/sendEventData.php";
 
     // Firebase instance variables
-    private FirebaseAuth mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+
     FirebaseAuth mFirebaseAuth;
     FirebaseUser mFirebaseUser;
     SweetAlertDialog pDialog;
@@ -55,7 +53,7 @@ public class GenericEventHome extends AppCompatActivity {
 
     String eventprice;
 
-    ProgressDialog progressDialog;
+
 
 
 
@@ -101,7 +99,7 @@ public class GenericEventHome extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(GenericEventHome.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
 
                     }
                 }) {
@@ -110,7 +108,7 @@ public class GenericEventHome extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 getUserDetails();
-                mobNum = SaveSharedPreferences.getUserPhone(GenericEventHome.this);
+                mobNum = SaveSharedPreferences.getUserPhone(TalentHelper.this);
                 eventprice = getIntent().getStringExtra("EventCriteria");
                 Log.d(TAG, "price: " + eventprice);
                 Map<String, String> params = new HashMap<>();
@@ -140,7 +138,7 @@ public class GenericEventHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_generic_event_home);
+        setContentView(R.layout.activity_talent_helper);
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/mont.ttf", true);
@@ -175,46 +173,6 @@ public class GenericEventHome extends AppCompatActivity {
         gen_Date.setText(getIntent().getStringExtra("date"));
 
 
-//        fab  = (FabSpeedDial) findViewById(R.id.fab);
-//
-//        fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
-//            @Override
-//            public void onStateChange(boolean open) {
-//                // do something
-//            }
-//        });
-//
-//        fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
-//            @Override
-//            public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
-//                Log.e("PV", "itemID: " + itemId);
-//
-//                switch(textView.getText().toString()){
-//                    case "Tickets":
-//                        Intent iticket = new Intent(getApplicationContext(),tickets.class);
-//                        startActivity(iticket);
-//                        finish();
-//                        break;
-//                    case "Cart":
-//                        Intent iCart = new Intent(getApplicationContext(),Cart.class);
-//                        startActivity(iCart);
-//                        finish();
-//                        break;
-//                    default:
-//                        break;
-//                }
-//
-//
-//            }
-//        });fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
-//            @Override
-//            public void onStateChange(boolean open) {
-//
-//            }
-//        });
-
-
-
 
 
 //        OnClick Listner. Adding data to Database.
@@ -226,7 +184,7 @@ public class GenericEventHome extends AppCompatActivity {
                     Log.e("PV", "not connected");
 
 
-                    new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    new SweetAlertDialog(TalentHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                             .setTitleText("No Internet")
                             .setContentText("Let's fix the satellites !")
                             .setCustomImage(R.drawable.no_internet)
@@ -246,7 +204,7 @@ public class GenericEventHome extends AppCompatActivity {
                 } else {
 
 
-                    new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    new SweetAlertDialog(TalentHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                             .setTitleText("Are you sure to add event?")
 //                        .setContentText("Events later can be changed through cart.")
                             .setConfirmText("Yeah")
@@ -277,7 +235,6 @@ public class GenericEventHome extends AppCompatActivity {
                                                 }
                                             })
                                             .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-//                                sDialog.findViewById(R.id.confirm_button).setVisibility(View.GONE);
                                 }
 
 
@@ -299,7 +256,7 @@ public class GenericEventHome extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(GenericEventHome.this, Brain.class);
+        Intent i = new Intent(TalentHelper.this, Talent.class);
         startActivity(i);
         finish();
     }

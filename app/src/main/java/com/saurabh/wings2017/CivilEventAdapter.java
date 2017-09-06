@@ -1,11 +1,14 @@
 package com.saurabh.wings2017;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -48,17 +51,16 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView= inflater.inflate(R.layout.content_civil_home, null, true);
         rowView.setMinimumHeight(80);
+        RelativeLayout rel = (RelativeLayout) rowView.findViewById(R.id.civilRel);
 
 
-
-
-        TextView EventName = (TextView) rowView.findViewById(R.id.CivilEventName);
-        TextView EventInfo = (TextView) rowView.findViewById(R.id.CivilEventExcerpt);
-        TextView EventLocation = (TextView) rowView.findViewById(R.id.CivilEventLocation);
-        TextView EventDate = (TextView) rowView.findViewById(R.id.eventDate);
-        TextView EventPerson = (TextView) rowView.findViewById(R.id.eventContactPerson);
-        TextView Eventcontact = (TextView) rowView.findViewById(R.id.eventContactNum);
-        TextView EventPrice = (TextView) rowView.findViewById(R.id.eventPrice);
+        final TextView EventName = (TextView) rowView.findViewById(R.id.CivilEventName);
+        final TextView EventInfo = (TextView) rowView.findViewById(R.id.CivilEventExcerpt);
+        final TextView EventLocation = (TextView) rowView.findViewById(R.id.CivilEventLocation);
+        final TextView EventDate = (TextView) rowView.findViewById(R.id.eventDate);
+        final TextView EventPerson = (TextView) rowView.findViewById(R.id.eventContactPerson);
+        final TextView Eventcontact = (TextView) rowView.findViewById(R.id.eventContactNum);
+        final TextView EventPrice = (TextView)  rowView.findViewById(R.id.eventPrice);
 
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont((Activity) getContext(), "fonts/mont.ttf", true);
@@ -73,6 +75,27 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
         Eventcontact.setText((CharSequence)eventContactNum_list.get(position));
         EventPrice.setText((CharSequence)eventprice.get(position));
 
+
+        rel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "AdapterClick"+EventName.getText().toString(), Toast.LENGTH_SHORT).show();
+
+                Intent eventi = new Intent(getContext(), CivilHelper.class);
+                eventi.putExtra("name", EventName.getText().toString());
+                eventi.putExtra("location", EventLocation.getText().toString());
+                eventi.putExtra("desc", EventInfo.getText().toString());
+                eventi.putExtra("price", EventPrice.getText().toString());
+                eventi.putExtra("date", EventDate.getText().toString());
+                eventi.putExtra("person_name", EventPerson.getText().toString());
+                eventi.putExtra("person_num", Eventcontact.getText().toString());
+//
+
+                ((Activity)getContext()).startActivity(eventi);
+                ((Activity) getContext()).finish();
+
+            }
+        });
 
         Log.e("PV", "yes"+eventName_list.get(position));
         return rowView;

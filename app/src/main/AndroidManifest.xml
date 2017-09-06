@@ -33,10 +33,6 @@
             android:name=".signIn"
             android:label="@string/title_activity_civil_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".BrainHome"
-            android:label="@string/title_activity_brain_home"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".GenericEventHome" />
         <activity android:name=".Cart" />
         <activity android:name=".Checkout" />
@@ -50,7 +46,12 @@
         <activity android:name=".Code" />
         <activity android:name=".Mini" />
         <activity android:name=".Talent" />
-        <activity android:name=".Robotics"></activity>
+        <activity android:name=".Robotics" />
+        <activity android:name=".CivilHelper" />
+        <activity android:name=".CodeHelper" />
+        <activity android:name=".TalentHelper" />
+        <activity android:name=".MiniHelper" />
+        <activity android:name=".RoboticsHelper"></activity>
     </application>
 
 </manifest>

@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:weightSum="10"
         android:id="@+id/linearlayout1"
-        android:background="@drawable/brain">
+        android:background="@drawable/robotics">
 
 
 
@@ -79,7 +79,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/brain_location"
+                            android:src="@drawable/robotics_location"
                             android:layout_margin="10dp"/>
 
                         <TextView
@@ -87,7 +87,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Classroom Complex"
-                            android:textColor="@color/purple"
+                            android:textColor="@color/grey"
                             android:layout_below="@+id/locationIcon"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
@@ -111,7 +111,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/brain_date"
+                            android:src="@drawable/robotics_date"
                             android:layout_margin="10dp"/>
 
                         <TextView
@@ -124,7 +124,7 @@
                             android:layout_marginTop="1dp"
                             android:text="Oct 3, 2017 1 PM onwards"
                             android:textAlignment="center"
-                            android:textColor="@color/purple" />
+                            android:textColor="@color/grey" />
 
 
                     </RelativeLayout>
@@ -146,7 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Contact"
-                        android:textColor="@color/purple"
+                        android:textColor="@color/grey"
                         android:textSize="18dp"
                         android:textStyle="bold"
                         android:layout_centerVertical="true"
@@ -161,7 +161,7 @@
                         android:layout_centerHorizontal="true"
                         android:paddingBottom="13sp"
                         android:text="Ashwin Kulkarni 8987654312"
-                        android:textColor="@color/purple"
+                        android:textColor="@color/grey"
                         android:textSize="16sp" />
 
                 </RelativeLayout>
@@ -201,7 +201,7 @@
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
                                 android:id="@+id/priceLabel"
-                                android:textColor="@color/purple"/>
+                                android:textColor="@color/grey"/>
 
                             <TextView
                                 android:id="@+id/genEventPrice"
@@ -211,7 +211,7 @@
                                 android:textSize="18dp"
                                 android:layout_centerHorizontal="true"
                                 android:layout_below="@+id/priceLabel"
-                                android:textColor="@color/purple"/>
+                                android:textColor="@color/grey"/>
 
                         </RelativeLayout>
 
@@ -232,7 +232,7 @@
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:background="@color/purple"
+                            android:background="@color/grey"
                             android:padding="10dp"
                             android:text="Add to Cart"
                             android:textAppearance="@style/TextAppearance.AppCompat"
@@ -264,7 +264,7 @@
                 android:layout_marginTop="13dp"
                 android:text="Event Description"
                 android:textAlignment="center"
-                android:textColor="@color/purple"
+                android:textColor="@color/grey"
                 android:textSize="18dp"
                 android:textStyle="bold" />
 
@@ -278,7 +278,7 @@
                 android:layout_marginTop="16dp"
                 android:text="nfiufksjnfksdnfkn"
                 android:textAlignment="center"
-                android:textColor="@color/purple" />
+                android:textColor="@color/grey" />
 
         </RelativeLayout>
 
