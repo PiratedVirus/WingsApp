@@ -11,11 +11,10 @@
     android:layout_height="match_parent">
     <ImageView
         android:id="@+id/imageView2"
-
         android:layout_width="match_parent"
-
         android:layout_height="match_parent"
         app:srcCompat="@drawable/success"
+        android:layout_marginTop="75dp"
 
          />
 </ScrollView>

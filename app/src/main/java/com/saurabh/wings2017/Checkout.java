@@ -144,42 +144,29 @@ public class Checkout extends AppCompatActivity {
         finish();
     }
 
-    public void confirmCart(View v){
+    public void  confirmCart(View v){
+        new SweetAlertDialog(Checkout.this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("Are you sure ?")
+                .setContentText("This can't be undone.")
+                .setConfirmText("PURCHASE")
+                .setCancelText("Go back")
+                .setCancelClickListener(null)
+                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sweetAlertDialog) {
+                        printTicket();
+                    }
+                })
+                .show();
+
+    }
+
+    public void printTicket(){
 
         // Initialize Firebase Auth
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-//
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST,
-//                PHP_TRANSFER_CART,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//
-//                    }
-//                },
-//                new Response.ErrorListener(){
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(Checkout.this,error.getMessage(),Toast.LENGTH_LONG).show();
-//
-//                    }
-//                }){
-//            public static final String TAG = "PV";
-//
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String,String> params = new HashMap<>();
-//                params.put("fuserMail", mFirebaseUser.getEmail());
-//                Log.e("PV", "getParams: The userMail is" + mFirebaseUser.getEmail() );
-//                return params;
-//            }
-//
-//
-//        };
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        requestQueue.add(stringRequest);
+
 
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));

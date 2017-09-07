@@ -261,20 +261,75 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openCart(View v) {
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        Intent cartIntent = new Intent(MainActivity.this,Cart.class);
-        cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
-        cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
-        Toast.makeText(this, "Long press on event to delete!", Toast.LENGTH_LONG).show();
-        startActivity(cartIntent);
-        finish();
+
+
+        if (!isNetworkAvailable()) {
+            Log.e("PV", "not connected");
+
+
+            new SweetAlertDialog(MainActivity.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    .setTitleText("No Internet")
+                    .setContentText("Let's fix the satellites !")
+                    .setCustomImage(R.drawable.no_internet)
+                    .setConfirmText("FIX")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+
+                            Intent i = new Intent(Settings.ACTION_SETTINGS);
+                            // i.setClassName("com.android.phone","com.android.phone.NetworkSetting");
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(i);
+                        }
+                    })
+                    .show();
+        } else {
+
+            mFirebaseAuth = FirebaseAuth.getInstance();
+            mFirebaseUser = mFirebaseAuth.getCurrentUser();
+            Intent cartIntent = new Intent(MainActivity.this,Cart.class);
+            cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
+            cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
+            Toast.makeText(this, "Long press on event to delete!", Toast.LENGTH_LONG).show();
+            startActivity(cartIntent);
+            finish();
+        }
+
+
     }
 
     public void viewTickets(View v){
-        Intent TicketIntent = new Intent(MainActivity.this,tickets.class);
-        startActivity(TicketIntent);
-        finish();
+
+        if (!isNetworkAvailable()) {
+            Log.e("PV", "not connected");
+
+
+            new SweetAlertDialog(MainActivity.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    .setTitleText("No Internet")
+                    .setContentText("Let's fix the satellites !")
+                    .setCustomImage(R.drawable.no_internet)
+                    .setConfirmText("FIX")
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+
+                            Intent i = new Intent(Settings.ACTION_SETTINGS);
+                            // i.setClassName("com.android.phone","com.android.phone.NetworkSetting");
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(i);
+                        }
+                    })
+                    .show();
+        } else {
+
+
+            Intent TicketIntent = new Intent(MainActivity.this,tickets.class);
+            startActivity(TicketIntent);
+            finish();
+        }
+
+
+
     }
 
     public void viewProfile(View v){

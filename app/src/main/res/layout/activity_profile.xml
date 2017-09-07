@@ -63,7 +63,7 @@
             app:layout_constraintRight_toRightOf="@+id/imageView10"
             app:layout_constraintTop_toTopOf="@+id/imageView10"
             app:layout_constraintVertical_bias="0.416"
-            app:srcCompat="@drawable/dialoge_cart"
+            app:srcCompat="@drawable/man"
             android:layout_alignTop="@+id/imageView10"
             android:layout_toEndOf="@+id/mailImg" />
 
