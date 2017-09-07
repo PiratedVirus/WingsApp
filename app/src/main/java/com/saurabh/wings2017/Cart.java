@@ -2,7 +2,6 @@ package com.saurabh.wings2017;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -373,8 +372,7 @@ public class Cart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
         Window window = Cart.this.getWindow();
-        //  mAuth = FirebaseAuth.getInstance();
-//        mAuth.addAuthStateListener(mAuthListener);
+
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/mont.ttf", true);
@@ -424,11 +422,6 @@ public class Cart extends AppCompatActivity {
 
     }
 
-    public boolean hasNavBar (Resources resources)
-    {
-        int id = resources.getIdentifier("config_showNavigationBar", "bool", "android");
-        return id > 0 && resources.getBoolean(id);
-    }
 
 
 }

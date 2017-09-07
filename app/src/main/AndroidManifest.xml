@@ -10,6 +10,12 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
+    <service android:name=".MyFirebaseMessagingService">
+        <intent-filter>
+            <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        </intent-filter>
+    </service>
+    AndroidManifest.xml
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -51,7 +57,11 @@
         <activity android:name=".CodeHelper" />
         <activity android:name=".TalentHelper" />
         <activity android:name=".MiniHelper" />
-        <activity android:name=".RoboticsHelper"></activity>
+        <activity android:name=".RoboticsHelper" />
+        <activity android:name=".Schedule" />
+        <activity android:name=".DayOne" />
+        <activity android:name=".DayTwo" />
+        <activity android:name=".DayThree"></activity>
     </application>
 
 </manifest>

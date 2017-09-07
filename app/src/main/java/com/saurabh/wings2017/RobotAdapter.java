@@ -1,11 +1,14 @@
 package com.saurabh.wings2017;
 import android.app.Activity;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -22,12 +25,14 @@ public class RobotAdapter extends ArrayAdapter<String> {
     private final ArrayList eventContactPerson_list;
     private final ArrayList eventContactNum_list;
     private final ArrayList eventDate;
+    private final ArrayList eventprice;
+
 
 
 
     public RobotAdapter(Activity context,
-                        ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate) {
-        super(context, R.layout.content_civil_home, eventName_list);
+                       ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice) {
+        super(context, R.layout.content_mini_single, eventName_list);
         this.context = context;
         this.eventName_list = eventName_list;
         this.eventDetails_list = eventDetails_list;
@@ -35,6 +40,7 @@ public class RobotAdapter extends ArrayAdapter<String> {
         this.eventContactPerson_list = eventContactPerson_list;
         this.eventContactNum_list = eventContactNum_list;
         this.eventDate = eventDate;
+        this.eventprice = eventprice;
 
 
         Log.e("PV","bochya"+eventName_list);
@@ -44,30 +50,57 @@ public class RobotAdapter extends ArrayAdapter<String> {
     public View getView(int position, View view, ViewGroup parent) {
         Log.e("PV","xyz");
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView= inflater.inflate(R.layout.content_civil_home, null, true);
+        View rowView= inflater.inflate(R.layout.content_mini_single, null, true);
         rowView.setMinimumHeight(80);
 
 
+        RelativeLayout rel = (RelativeLayout) rowView.findViewById(R.id.minRel);
 
 
-        TextView EventName = (TextView) rowView.findViewById(R.id.CivilEventName);
-        TextView EventInfo = (TextView) rowView.findViewById(R.id.CivilEventExcerpt);
-        TextView EventLocation = (TextView) rowView.findViewById(R.id.CivilEventLocation);
-        TextView EventDate = (TextView) rowView.findViewById(R.id.eventDate);
-        TextView EventPerson = (TextView) rowView.findViewById(R.id.eventContactPerson);
-        TextView Eventcontact = (TextView) rowView.findViewById(R.id.eventContactNum);
+        final TextView EventName = (TextView) rowView.findViewById(R.id.CivilEventName);
+        final TextView EventInfo = (TextView) rowView.findViewById(R.id.CivilEventExcerpt);
+        final TextView EventLocation = (TextView) rowView.findViewById(R.id.CivilEventLocation);
+        final TextView EventDate = (TextView) rowView.findViewById(R.id.eventDate);
+        final TextView EventPerson = (TextView) rowView.findViewById(R.id.eventContactPerson);
+        final TextView Eventcontact = (TextView) rowView.findViewById(R.id.eventContactNum);
+        final TextView EventPrice = (TextView)  rowView.findViewById(R.id.eventPrice);
 
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont((Activity) getContext(), "fonts/mont.ttf", true);
 
+        final String fullInfo = eventDetails_list.get(position).toString();
+        String smallInfo = fullInfo.substring(0, Math.min(fullInfo.length(), 75));
 
         rowView.setBackgroundResource(R.drawable.card_bg_5_rounded);
-        EventInfo.setText((CharSequence)eventDetails_list.get(position));
+        EventInfo.setText(smallInfo+"....");
         EventName.setText((CharSequence)eventName_list.get(position));
         EventLocation.setText((CharSequence)eventLocation.get(position));
         EventDate.setText((CharSequence)eventDate.get(position));
         EventPerson.setText((CharSequence)eventContactPerson_list.get(position));
         Eventcontact.setText((CharSequence)eventContactNum_list.get(position));
+        EventPrice.setText((CharSequence)eventprice.get(position));
+
+
+        rel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "AdapterClick"+EventName.getText().toString(), Toast.LENGTH_SHORT).show();
+
+                Intent eventi = new Intent(getContext(), RoboticsHelper.class);
+                eventi.putExtra("name", EventName.getText().toString());
+                eventi.putExtra("location", EventLocation.getText().toString());
+                eventi.putExtra("desc", fullInfo);
+                eventi.putExtra("price", EventPrice.getText().toString());
+                eventi.putExtra("date", EventDate.getText().toString());
+                eventi.putExtra("person_name", EventPerson.getText().toString());
+                eventi.putExtra("person_num", Eventcontact.getText().toString());
+//
+
+                ((Activity)getContext()).startActivity(eventi);
+                ((Activity) getContext()).finish();
+
+            }
+        });
 
         Log.e("PV", "yes"+eventName_list.get(position));
         return rowView;

@@ -1,5 +1,7 @@
 package com.saurabh.wings2017;
 
+
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +29,8 @@ import android.widget.Toast;
 import com.dynamitechetan.flowinggradient.FlowingGradientClass;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
 import com.squareup.picasso.Picasso;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -212,6 +217,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
 //    Transition Gradients
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.activity_main);
         FlowingGradientClass grad = new FlowingGradientClass();
@@ -219,7 +226,6 @@ public class MainActivity extends AppCompatActivity {
                 .onRelativeLayout(rl)
                 .setTransitionDuration(4000)
                 .start();
-
 
 
         if(SaveSharedPreferences.getUserPhone(getApplicationContext()).isEmpty())
@@ -249,6 +255,8 @@ public class MainActivity extends AppCompatActivity {
 
         LogOutNew();
         viewCart();
+
+//        onTokenRefresh();
 
     }
 
@@ -300,15 +308,13 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void brain(View v)
-    {
+    public void brain(View v) {
         Intent brainintent = new Intent(getApplicationContext(),Brain.class);
         startActivity(brainintent);
         finish();
     }
 
-    public void code(View v)
-    {
+    public void code(View v) {
         Intent brainintent = new Intent(getApplicationContext(),Code.class);
         startActivity(brainintent);
         finish();
@@ -358,10 +364,53 @@ public class MainActivity extends AppCompatActivity {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
+//
+//    public void onTokenRefresh() {
+//        // Get updated InstanceID token.
+//        String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+//        Log.d("PV", "Refreshed token: " + refreshedToken);
+//
+//        // If you want to send messages to this application instance or
+//        // manage this apps subscriptions on the server side, send the
+//        // Instance ID token to your app server.
+//        sendRegistrationToServer(refreshedToken);
+//    }
+
+    private void sendRegistrationToServer(String token) {
+        // TODO: Implement this method to send token to your app server.
+        Log.e("PV", "sendRegistrationToServer: " + token);
+    }
+
+    public class MyFirebaseMessagingService extends FirebaseMessagingService {
+        @Override
+        public void onMessageReceived(RemoteMessage remoteMessage) {
+            super.onMessageReceived(remoteMessage);
+
+            Firebase_class fb = new Firebase_class();
+            fb.onMessageReceived(remoteMessage);
+            Log.d("msg", "onMessageReceived: " + remoteMessage.getData().get("message"));
+            NotificationCompat.Builder builder = new  NotificationCompat.Builder(this)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setContentTitle("Wings App")
+                    .setContentText(remoteMessage.getData().get("message"));
+            NotificationManager manager = (NotificationManager)     getSystemService(NOTIFICATION_SERVICE);
+            manager.notify(0, builder.build());
+
+        }
+
+    }
+
+    public void viewSchedule(View v){
+        Intent iSchedule = new Intent(MainActivity.this,Schedule.class);
+        startActivity(iSchedule);
+    }
+
     private void setupWindowAnimations() {
         Transition fade = TransitionInflater.from(this).inflateTransition(R.transition.fade);
         getWindow().setEnterTransition(fade);
     }
+
+
 
 
 }

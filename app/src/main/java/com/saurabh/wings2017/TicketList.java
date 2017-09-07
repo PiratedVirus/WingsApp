@@ -82,7 +82,7 @@ public class TicketList extends ArrayAdapter<String> {
 
 
         rowView.setBackgroundColor(Color.WHITE);
-        CartEventInfo.setText((CharSequence)userName_ticket.get(position));
+        CartEventInfo.setText((CharSequence)eventID_ticket.get(position));
         CartEventName.setText((CharSequence)eventName_ticket.get(position));
         CartEventLocation.setText((CharSequence)eventID_ticket.get(position));
         pricetag.setText((CharSequence)eventPrice_ticket.get(position));

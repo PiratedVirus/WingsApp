@@ -53,7 +53,7 @@ public class CustomList extends ArrayAdapter<String> {
 
 
         rowView.setBackgroundColor(Color.WHITE);
-        CartEventInfo.setText((CharSequence)userName_list.get(position));
+        CartEventInfo.setText((CharSequence)eventID_list.get(position));
         CartEventName.setText((CharSequence)eventName_list.get(position));
         CartEventLocation.setText((CharSequence)eventID_list.get(position));
         pricetag.setText((CharSequence)eventPrice_list.get(position));

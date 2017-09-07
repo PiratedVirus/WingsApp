@@ -118,7 +118,7 @@ public class GenericEventHome extends AppCompatActivity {
                 params.put("fuserMail", mUsermail);
                 params.put("fuserMob", mobNum);
                 params.put("eventName", getIntent().getStringExtra("name"));
-                params.put("eventID", "CSG101");
+                params.put("eventID", getIntent().getStringExtra("date"));
                 params.put("eventPrice", getIntent().getStringExtra("price"));
                 return params;
             }
@@ -173,10 +173,6 @@ public class GenericEventHome extends AppCompatActivity {
         gen_person_name.setText(contactDetails);
 //        gen_person_num.setText(getIntent().getStringExtra("person_num"));
         gen_Date.setText(getIntent().getStringExtra("date"));
-
-
-
-
 
 
 

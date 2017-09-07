@@ -3,8 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:weightSum="10">
+    android:orientation="vertical"
+    android:weightSum="15">
 
     <ImageView
         android:layout_width="fill_parent"
@@ -13,6 +13,14 @@
         android:layout_weight="5"
         android:background="@drawable/card_modi_copy">
 
+    </ImageView>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_weight="5"
+        android:background="@drawable/card_modi_copy">
     </ImageView>
 
     <ImageView
