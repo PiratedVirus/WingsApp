@@ -175,43 +175,7 @@ public class GenericEventHome extends AppCompatActivity {
         gen_Date.setText(getIntent().getStringExtra("date"));
 
 
-//        fab  = (FabSpeedDial) findViewById(R.id.fab);
-//
-//        fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
-//            @Override
-//            public void onStateChange(boolean open) {
-//                // do something
-//            }
-//        });
-//
-//        fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
-//            @Override
-//            public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
-//                Log.e("PV", "itemID: " + itemId);
-//
-//                switch(textView.getText().toString()){
-//                    case "Tickets":
-//                        Intent iticket = new Intent(getApplicationContext(),tickets.class);
-//                        startActivity(iticket);
-//                        finish();
-//                        break;
-//                    case "Cart":
-//                        Intent iCart = new Intent(getApplicationContext(),Cart.class);
-//                        startActivity(iCart);
-//                        finish();
-//                        break;
-//                    default:
-//                        break;
-//                }
-//
-//
-//            }
-//        });fab.addOnStateChangeListener(new FabSpeedDial.OnStateChangeListener() {
-//            @Override
-//            public void onStateChange(boolean open) {
-//
-//            }
-//        });
+
 
 
 

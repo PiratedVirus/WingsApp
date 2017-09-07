@@ -169,8 +169,8 @@ public class Brain extends AppCompatActivity  {
 
 
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt lskddjasli fjsdfljdfiods jsjhfkdsjhflkjsahesNV OIV OeifjfNSDJ NODISHENFNJSAF sdvds vldskvn slknsdlndsiv disVldnvlds knlsVD LSDK");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
+        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt.amet, consectetur adipisicing elit. Sunt, amet, consectetur adipisicing elit. Sunt");
+        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur, amet, consectetur adipisicing elit. Suntm amet, consectetur adipisicing elit. Sunt adipisicing elit. Sunt");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");

@@ -1,7 +1,6 @@
 package com.saurabh.wings2017;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -201,34 +200,21 @@ public class Cart extends AppCompatActivity {
                         while ((line = reader.readLine()) != null) {
                             sb.append(line + "\n");
                         }
-                        result = sb.toString();
 
+                        result = sb.toString();
 
                         runOnUiThread(new Runnable() {
                             public void run() {
-                       // tv.setText("Response from PHP : " + response);
+                                // tv.setText("Response from PHP : " + response);
 //                                dialog.dismiss();
                                 pDialog.dismissWithAnimation();
 
-                                pDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                                    @Override
-                                    public void onDismiss(DialogInterface dialog) {
-                                        handler.removeCallbacks(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Toast.makeText(Cart.this, "Ghusla aat", Toast.LENGTH_SHORT).show();
-                                            }
-                                        });
-                                    }
-                                });
-
-                                handler.postDelayed(this, 5000);
-
                             }
-
-
-
                         });
+
+
+
+
 
                         if (!(result.startsWith("F"))) {
                             Log.i("andro", result);
