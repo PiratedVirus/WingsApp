@@ -85,6 +85,7 @@ public class Cart extends AppCompatActivity {
     String result;
     JSONObject jso;
     ListView cart;
+    TextView cart_single;
     int total_cart_sum;
     CustomList ad;
     int positionlist,cart_sum;
@@ -281,7 +282,8 @@ public class Cart extends AppCompatActivity {
             t.start();
 
             try {
-                cart = (ListView)findViewById(R.id.cart_list_show);
+                cart = (ListView) findViewById(R.id.removeBtn);
+
                 cart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {

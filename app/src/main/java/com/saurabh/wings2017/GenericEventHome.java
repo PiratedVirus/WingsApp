@@ -120,6 +120,7 @@ public class GenericEventHome extends AppCompatActivity {
                 params.put("eventName", getIntent().getStringExtra("name"));
                 params.put("eventID", getIntent().getStringExtra("date"));
                 params.put("eventPrice", getIntent().getStringExtra("price"));
+//                params.put("eventLocation", getIntent().getStringExtra("location"));
                 return params;
             }
 
@@ -237,7 +238,6 @@ public class GenericEventHome extends AppCompatActivity {
                                                 }
                                             })
                                             .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-//                                sDialog.findViewById(R.id.confirm_button).setVisibility(View.GONE);
                                 }
 
 

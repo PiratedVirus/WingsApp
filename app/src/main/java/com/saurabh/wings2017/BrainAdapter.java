@@ -95,6 +95,7 @@ public class BrainAdapter extends ArrayAdapter<String> {
                         eventi.putExtra("date", EventDate.getText().toString());
                         eventi.putExtra("person_name", EventPerson.getText().toString());
                         eventi.putExtra("person_num", Eventcontact.getText().toString());
+
 //
 
                         ((Activity)getContext()).startActivity(eventi);
