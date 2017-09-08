@@ -19,10 +19,11 @@ public class CustomList extends ArrayAdapter<String> {
     private final ArrayList eventID_list;
     private final ArrayList eventPrice_list;
     private final ArrayList uniqueID_list;
+    private final ArrayList eventLocation;
 
 
     public CustomList(Activity context,
-                      ArrayList userName_list, ArrayList eventName_list, ArrayList eventID_list, ArrayList eventPrice_list, ArrayList uniqueID_list) {
+                      ArrayList userName_list, ArrayList eventName_list, ArrayList eventID_list, ArrayList eventPrice_list, ArrayList uniqueID_list, ArrayList eventLocation) {
         super(context, R.layout.cart_list, userName_list);
         this.context = context;
         this.userName_list = userName_list;
@@ -30,6 +31,7 @@ public class CustomList extends ArrayAdapter<String> {
         this.eventID_list = eventID_list;
         this.eventPrice_list = eventPrice_list;
         this.uniqueID_list = uniqueID_list;
+        this.eventLocation = eventLocation;
         Log.e("PV","bochya"+userName_list+eventName_list);
     }
 
@@ -52,10 +54,11 @@ public class CustomList extends ArrayAdapter<String> {
 
 
 
+
         rowView.setBackgroundColor(Color.WHITE);
         CartEventInfo.setText((CharSequence)eventID_list.get(position));
         CartEventName.setText((CharSequence)eventName_list.get(position));
-        CartEventLocation.setText((CharSequence)eventID_list.get(position));
+        CartEventLocation.setText((CharSequence)eventLocation.get(position));
         pricetag.setText((CharSequence)eventPrice_list.get(position));
         uniqueID.setText((CharSequence)uniqueID_list.get(position));
 

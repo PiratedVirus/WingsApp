@@ -21,7 +21,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="bottom"
         android:layout_weight="5"
-        android:background="@drawable/committee">
+        android:background="@drawable/committee"
+        android:onClick="commitee">
     </ImageView>
 
 </LinearLayout>

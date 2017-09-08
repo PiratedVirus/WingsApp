@@ -15,8 +15,6 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -215,7 +213,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setupWindowAnimations();
+
 
 
 
@@ -249,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
         countDots();
 
         viewPager.setClipToPadding(false);
-        viewPager.setPadding(170, 60, 170, 0);
+        viewPager.setPadding(170 , 60, 170, 0);
         viewPager.setPageMargin(90);
         viewPager.setCurrentItem(0);
 
@@ -463,10 +461,13 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    private void setupWindowAnimations() {
-        Transition fade = TransitionInflater.from(this).inflateTransition(R.transition.fade);
-        getWindow().setEnterTransition(fade);
+    public void elegance(View v){
+        Intent iSchedule = new Intent(MainActivity.this,Elegance.class);
+        startActivity(iSchedule);
+        finish();
     }
+
+
 
 
 

@@ -24,7 +24,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,34 +36,86 @@
         <activity
             android:name=".CivilHome"
             android:label="@string/title_activity_civil_home"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".signIn"
             android:label="@string/title_activity_civil_home"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".GenericEventHome" />
-        <activity android:name=".Cart" />
-        <activity android:name=".Checkout" />
-        <activity android:name=".confirmOrder" />
-        <activity android:name=".tickets" />
-        <activity android:name=".Profile" />
-        <activity android:name=".Details" />
-        <activity android:name=".Team" />
-        <activity android:name=".Developer" />
-        <activity android:name=".Brain" />
-        <activity android:name=".Code" />
-        <activity android:name=".Mini" />
-        <activity android:name=".Talent" />
-        <activity android:name=".Robotics" />
-        <activity android:name=".CivilHelper" />
-        <activity android:name=".CodeHelper" />
-        <activity android:name=".TalentHelper" />
-        <activity android:name=".MiniHelper" />
-        <activity android:name=".RoboticsHelper" />
-        <activity android:name=".Schedule" />
-        <activity android:name=".DayOne" />
-        <activity android:name=".DayTwo" />
-        <activity android:name=".DayThree"></activity>
+        <activity
+            android:name=".GenericEventHome"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Cart"
+            android:screenOrientation="portrait" />
+        />
+        <activity
+            android:name=".Checkout"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".confirmOrder"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".tickets"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Details"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Team"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Developer"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Brain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Code"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Mini"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Talent"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Robotics"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CivilHelper"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CodeHelper"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".TalentHelper"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MiniHelper"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".RoboticsHelper"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Schedule"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DayOne"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DayTwo"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DayThree"
+            android:screenOrientation="portrait" />
+        <activity android:name=".Commitee" />
+        <activity android:name=".Elegance" />
+        <activity android:name=".EleganceHelper"></activity>
     </application>
 
 </manifest>

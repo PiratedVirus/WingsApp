@@ -95,12 +95,13 @@ public class Cart extends AppCompatActivity {
     TextView cartText,secText;
     JSONArray cart_user_list;
     FabSpeedDial fab;
-    String 	userName, eventName, eventID, eventPrice;
+    String 	userName, eventName, eventID, eventPrice,eventLocationString;
     ArrayList<String> userName_list = new ArrayList<String>();
     ArrayList<String> eventName_list = new ArrayList<String>();
     ArrayList<String> eventID_list = new ArrayList<String>();
     ArrayList<String> eventPrice_list = new ArrayList<String>();
     ArrayList<String> uniqueID_list = new ArrayList<String>();
+    ArrayList<String> eventLocation = new ArrayList<String>();
 
 
     //    Getting Details
@@ -165,7 +166,7 @@ public class Cart extends AppCompatActivity {
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
         pDialog.setTitleText("Please wait!");
         pDialog.setContentText("We're building the buildings as fast as possible");
-        pDialog.setCancelable(false);
+        pDialog.setCancelable(true);
         pDialog.show();
 
 
@@ -232,19 +233,21 @@ public class Cart extends AppCompatActivity {
                                     eventName = c.getString("eventName");
                                     eventID = c.getString("eventID");
                                     eventPrice = c.getString("eventPrice");
-                                    Log.e("result",userName+eventName+eventID+eventPrice);
+                                    eventLocationString = c.getString("eventLocation");
+                                    Log.e("result",userName+eventName+eventID+eventPrice+eventLocationString);
                                     userName_list.add(userName);
                                     eventName_list.add(eventName);
                                     eventID_list.add(eventID);
                                     eventPrice_list.add(eventPrice);
                                     uniqueID_list.add(uniqueID);
+                                    eventLocation.add(eventLocationString);
                                 }
 
                                 Cart.this.runOnUiThread(new Runnable() {
                                     @Override
                                     public void run() {
 
-                                        ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list);
+                                        ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list, eventLocation);
                                         cart = (ListView)findViewById(R.id.cart_list_show);
                                         cart.setAdapter(ad);
                                         total = (TextView) findViewById(R.id.total);
@@ -282,8 +285,7 @@ public class Cart extends AppCompatActivity {
             t.start();
 
             try {
-                cart = (ListView) findViewById(R.id.removeBtn);
-
+                cart = (ListView) findViewById(R.id.cart_list_show);
                 cart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
@@ -304,6 +306,7 @@ public class Cart extends AppCompatActivity {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
                                         try {
+                                            sDialog.cancel();
                                             eventName_list.remove(positionlist);
                                             eventID_list.remove(positionlist);
                                             eventPrice_list.remove(positionlist);
@@ -415,6 +418,8 @@ public class Cart extends AppCompatActivity {
 
 
         } else {
+
+
             fetchData();
         }
     }

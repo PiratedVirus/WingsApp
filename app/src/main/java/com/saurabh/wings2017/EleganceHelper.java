@@ -1,6 +1,5 @@
 package com.saurabh.wings2017;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -33,7 +32,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
-public class GenericEventHome extends AppCompatActivity {
+public class EleganceHelper extends AppCompatActivity {
 
     TextView gen_Name, gen_Location, gen_Info, gen_Date, gen_person_name, gen_Price, gen_person_num ;
     Button add_to_cart;
@@ -55,7 +54,7 @@ public class GenericEventHome extends AppCompatActivity {
 
     String eventprice;
 
-    ProgressDialog progressDialog;
+
 
 
 
@@ -101,7 +100,7 @@ public class GenericEventHome extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(GenericEventHome.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
 
                     }
                 }) {
@@ -110,7 +109,7 @@ public class GenericEventHome extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 getUserDetails();
-                mobNum = SaveSharedPreferences.getUserPhone(GenericEventHome.this);
+                mobNum = SaveSharedPreferences.getUserPhone(EleganceHelper.this);
                 eventprice = getIntent().getStringExtra("EventCriteria");
                 Log.d(TAG, "price: " + eventprice);
                 Map<String, String> params = new HashMap<>();
@@ -118,10 +117,8 @@ public class GenericEventHome extends AppCompatActivity {
                 params.put("fuserMail", mUsermail);
                 params.put("fuserMob", mobNum);
                 params.put("eventName", getIntent().getStringExtra("name"));
-                params.put("eventID", getIntent().getStringExtra("date"));
+                params.put("eventID", "CSG101");
                 params.put("eventPrice", getIntent().getStringExtra("price"));
-                params.put("eventLocation", getIntent().getStringExtra("location"));
-                Log.e("PVT", "Location hagla = "+getIntent().getStringExtra("location"));
                 return params;
             }
 
@@ -142,7 +139,7 @@ public class GenericEventHome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_generic_event_home);
+        setContentView(R.layout.activity_civil_helper);
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/mont.ttf", true);
@@ -188,7 +185,7 @@ public class GenericEventHome extends AppCompatActivity {
                     Log.e("PV", "not connected");
 
 
-                    new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    new SweetAlertDialog(EleganceHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                             .setTitleText("No Internet")
                             .setContentText("Let's fix the satellites !")
                             .setCustomImage(R.drawable.no_internet)
@@ -208,7 +205,7 @@ public class GenericEventHome extends AppCompatActivity {
                 } else {
 
 
-                    new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    new SweetAlertDialog(EleganceHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                             .setTitleText("Are you sure to add event?")
 //                        .setContentText("Events later can be changed through cart.")
                             .setConfirmText("Yeah")
@@ -260,7 +257,7 @@ public class GenericEventHome extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(GenericEventHome.this, Brain.class);
+        Intent i = new Intent(EleganceHelper.this, CivilHome.class);
         startActivity(i);
         finish();
     }
