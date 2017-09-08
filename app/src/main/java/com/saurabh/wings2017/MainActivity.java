@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent civilIntent = new Intent(MainActivity.this,CivilHome.class);
                 startActivity(civilIntent);
+                finish();
             }
         });
 
@@ -201,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
                 cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
                 startActivity(cartIntent);
+                finish();
 
             }
         });
@@ -458,6 +460,7 @@ public class MainActivity extends AppCompatActivity {
     public void viewSchedule(View v){
         Intent iSchedule = new Intent(MainActivity.this,Schedule.class);
         startActivity(iSchedule);
+        finish();
     }
 
     private void setupWindowAnimations() {

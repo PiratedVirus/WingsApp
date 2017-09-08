@@ -161,6 +161,7 @@ public class signIn extends AppCompatActivity {
                 @Override
                 public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                     if (firebaseAuth.getCurrentUser() != null) {
+                        pDialog.dismissWithAnimation();
                         Intent fireBaseIntent = new Intent(signIn.this, MainActivity.class);
                         startActivity(fireBaseIntent);
                         finish();
@@ -218,7 +219,7 @@ public class signIn extends AppCompatActivity {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             Log.e(TAG, "onActivityResult: " + String.valueOf(result.isSuccess()) );
 //            mConnectionProgressDialog.dismiss();
-            pDialog.dismissWithAnimation();
+
             if (result.isSuccess()) {
                 // Google Sign In was successful, authenticate with Firebase
                 GoogleSignInAccount account = result.getSignInAccount();

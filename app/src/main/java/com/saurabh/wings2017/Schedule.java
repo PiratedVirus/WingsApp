@@ -33,16 +33,19 @@ public class Schedule extends AppCompatActivity {
     public void dayOne(View v){
         Intent one = new Intent(Schedule.this,DayOne.class);
         startActivity(one);
+        finish();
     }
 
     public void dayTwo(View v){
         Intent one = new Intent(Schedule.this,DayTwo.class);
         startActivity(one);
+        finish();
     }
 
     public void dayThree(View v){
         Intent one = new Intent(Schedule.this,DayThree.class);
         startActivity(one);
+        finish();
     }
 
     @Override
