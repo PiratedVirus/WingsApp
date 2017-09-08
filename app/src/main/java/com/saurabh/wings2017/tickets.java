@@ -67,7 +67,7 @@ public class tickets extends AppCompatActivity {
     ImageView noTickets;
     TextView cartText,secText;
     JSONArray cart_user_ticket;
-    String 	userName, eventName, eventID, eventPrice;
+    String 	userName, eventName, eventID, eventPrice, eventLocation;
     ArrayList<String> userName_ticket = new ArrayList<String>();
     ArrayList<String> eventName_ticket = new ArrayList<String>();
     ArrayList<String> eventID_ticket = new ArrayList<String>();
@@ -75,6 +75,7 @@ public class tickets extends AppCompatActivity {
     ArrayList<String> uniqueID_ticket = new ArrayList<String>();
     ArrayList<String> paid_ticket = new ArrayList<String>();
     ArrayList<String> played_ticket = new ArrayList<String>();
+    ArrayList<String> eventLocation_ticket = new ArrayList<String>();
 
     FirebaseAuth mFirebaseAuth;
     FirebaseUser mFirebaseUser;
@@ -156,24 +157,27 @@ public class tickets extends AppCompatActivity {
                                 eventPrice = c.getString("eventPrice");
                                 paid = c.getString("paid");
                                 played = c.getString("played");
+                                eventLocation = c.getString("eventLocation");
                                 Log.e("result",userName+eventName+eventID+eventPrice+"paid_php"+paid);
+
                                 userName_ticket.add(userName);
                                 eventName_ticket.add(eventName);
                                 eventID_ticket.add(eventID);
                                 eventPrice_ticket.add(eventPrice);
-                                //uniqueID_ticket.add(uniqueID);
                                 paid_ticket.add(paid);
                                 played_ticket.add(played);
+                                eventLocation_ticket.add(eventLocation);
                             }
 
                             tickets.this.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
 
-                                    ad = new TicketList(tickets.this, userName_ticket, eventName_ticket, eventID_ticket, eventPrice_ticket,  played_ticket, paid_ticket);
+                                    ad = new TicketList(tickets.this, userName_ticket, eventName_ticket, eventID_ticket, eventPrice_ticket,  played_ticket, paid_ticket, eventLocation_ticket);
                                     ticket = (ListView)findViewById(R.id.ticket_list_show);
                                     ticket.setAdapter(ad);
                                     total = (Button) findViewById(R.id.total);
+                                    Log.e("PV", "bocha tanla");
                                     for(int i=0;i<eventPrice_ticket.size();i++)
                                     {
                                         Log.e("PV","sum="+eventPrice_ticket.get(i));

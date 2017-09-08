@@ -24,10 +24,11 @@ public class TicketList extends ArrayAdapter<String> {
     private final ArrayList eventPrice_ticket;
     private final ArrayList played;
     private final ArrayList paid;
+    private final ArrayList eventLocation_ticket;
 
 
     public TicketList(Activity context,
-                      ArrayList userName_ticket, ArrayList eventName_ticket, ArrayList eventID_ticket, ArrayList eventPrice_ticket, ArrayList played, ArrayList paid) {
+                      ArrayList userName_ticket, ArrayList eventName_ticket, ArrayList eventID_ticket, ArrayList eventPrice_ticket, ArrayList played, ArrayList paid, ArrayList eventLocation_ticket) {
         super(context, R.layout.ticket_list, userName_ticket);
         this.context = context;
         this.userName_ticket = userName_ticket;
@@ -37,6 +38,7 @@ public class TicketList extends ArrayAdapter<String> {
        // this.uniqueID_ticket = uniqueID_ticket;
         this.played = played;
         this.paid = paid;
+        this.eventLocation_ticket = eventLocation_ticket;
 
         Log.e("PV","bochya"+userName_ticket+eventName_ticket);
     }
@@ -84,7 +86,7 @@ public class TicketList extends ArrayAdapter<String> {
         rowView.setBackgroundColor(Color.WHITE);
         CartEventInfo.setText((CharSequence)eventID_ticket.get(position));
         CartEventName.setText((CharSequence)eventName_ticket.get(position));
-        CartEventLocation.setText((CharSequence)eventID_ticket.get(position));
+        CartEventLocation.setText((CharSequence)eventLocation_ticket.get(position));
         pricetag.setText((CharSequence)eventPrice_ticket.get(position));
 
 
