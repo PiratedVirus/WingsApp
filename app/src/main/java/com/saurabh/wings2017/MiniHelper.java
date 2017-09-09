@@ -117,8 +117,10 @@ public class MiniHelper extends AppCompatActivity {
                 params.put("fuserMail", mUsermail);
                 params.put("fuserMob", mobNum);
                 params.put("eventName", getIntent().getStringExtra("name"));
-                params.put("eventID", "CSG101");
+                params.put("eventID", getIntent().getStringExtra("date"));
                 params.put("eventPrice", getIntent().getStringExtra("price"));
+                params.put("eventLocation", getIntent().getStringExtra("location"));
+                Log.e("PVT", "Location hagla = "+getIntent().getStringExtra("location"));
                 return params;
             }
 

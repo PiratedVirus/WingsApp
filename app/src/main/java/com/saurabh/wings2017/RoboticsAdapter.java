@@ -67,9 +67,12 @@ public class RoboticsAdapter extends ArrayAdapter<String> {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont((Activity) getContext(), "fonts/mont.ttf", true);
 
+        final String fullInfo = eventDetails_list.get(position).toString();
+        String smallInfo = fullInfo.substring(0, Math.min(fullInfo.length(), 75));
+
 
         rowView.setBackgroundResource(R.drawable.card_bg_5_rounded);
-        EventInfo.setText((CharSequence)eventDetails_list.get(position));
+        EventInfo.setText(smallInfo+"......");
         EventName.setText((CharSequence)eventName_list.get(position));
         EventLocation.setText((CharSequence)eventLocation.get(position));
         EventDate.setText((CharSequence)eventDate.get(position));
@@ -86,7 +89,7 @@ public class RoboticsAdapter extends ArrayAdapter<String> {
                 Intent eventi = new Intent(getContext(), RoboticsHelper.class);
                 eventi.putExtra("name", EventName.getText().toString());
                 eventi.putExtra("location", EventLocation.getText().toString());
-                eventi.putExtra("desc", EventInfo.getText().toString());
+                eventi.putExtra("desc", fullInfo);
                 eventi.putExtra("price", EventPrice.getText().toString());
                 eventi.putExtra("date", EventDate.getText().toString());
                 eventi.putExtra("person_name", EventPerson.getText().toString());
