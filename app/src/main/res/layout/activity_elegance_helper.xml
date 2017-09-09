@@ -1,9 +1,291 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.saurabh.wings2017.EleganceHelper">
 
-</android.support.constraint.ConstraintLayout>
+
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/cardview_light_background"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:weightSum="10"
+        android:id="@+id/linearlayout1"
+        android:background="@drawable/code_gamble">
+
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="250sp"
+            android:layout_gravity="top"
+            android:layout_weight="3.5"
+            android:textAlignment="center">
+
+            <TextView
+                android:id="@+id/genEventName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="Counter Strike"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="36dp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/EventDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Oct 5,2017"
+                android:textColor="@color/cardview_light_background"
+                android:layout_below="@+id/genEventName"
+                android:layout_centerHorizontal="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_weight="2.4">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/dateLocHolder"
+                    android:orientation="horizontal"
+                    android:weightSum="10">
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="5"
+                        android:gravity="center_horizontal"
+                        android:padding="20dp"
+                        android:layout_marginRight="1dp"
+                        android:background="@color/cardview_light_background">
+
+                        <ImageView
+                            android:id="@+id/locationIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/code_location"
+                            android:layout_margin="10dp"/>
+
+                        <TextView
+                            android:id="@+id/genEventLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/locationIcon"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="1dp"
+                            android:text="Classroom Complex"
+                            android:textAlignment="center"
+                            android:textColor="@color/green" />
+
+                    </RelativeLayout>
+
+
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="5"
+                        android:gravity="center_horizontal"
+                        android:padding="20dp"
+                        android:layout_marginRight="1dp"
+                        android:background="@color/cardview_light_background">
+
+                        <ImageView
+                            android:id="@+id/calednerIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:src="@drawable/code_date"
+                            android:layout_margin="10dp"/>
+
+                        <TextView
+                            android:id="@+id/dateTime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/calednerIcon"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="1dp"
+                            android:text="Oct 3, 2017 1 PM onwards"
+                            android:textAlignment="center"
+                            android:textColor="@color/green" />
+
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dateLocHolder"
+                    android:id="@+id/contactHolder"
+                    android:padding="10dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/cardview_light_background">
+
+                    <TextView
+                        android:id="@+id/cnctLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact"
+                        android:textColor="@color/green"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:layout_centerHorizontal="true"
+                        android:paddingBottom="22dp"/>
+
+                    <TextView
+                        android:id="@+id/genEventContactPerson"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cnctLabel"
+                        android:layout_centerHorizontal="true"
+                        android:paddingBottom="13sp"
+                        android:text="Ashwin Kulkarni 8987654312"
+                        android:textAlignment="center"
+                        android:textColor="@color/green"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_below="@+id/contactHolder"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    xmlns:tools="http://schemas.android.com/tools"
+                    android:id="@+id/cartPriceHolder"
+                    android:orientation="horizontal"
+                    android:weightSum="10"
+                    android:layout_marginTop="1dp"
+
+                    android:background="@color/cardview_light_background"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="top"
+                        android:layout_weight="5"
+                        >
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_centerHorizontal="true">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Ticket Price"
+                                android:textStyle="bold"
+                                android:paddingBottom="18dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_centerVertical="true"
+                                android:id="@+id/priceLabel"
+                                android:textColor="@color/green"/>
+
+                            <TextView
+                                android:id="@+id/genEventPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rs.50"
+                                android:textSize="18dp"
+                                android:layout_centerHorizontal="true"
+                                android:layout_below="@+id/priceLabel"
+                                android:textColor="@color/green"/>
+
+                        </RelativeLayout>
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_weight="5"
+                        >
+
+                        <Button
+                            android:id="@+id/addToCart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:background="@color/green"
+                            android:padding="10dp"
+                            android:text="Add to Cart"
+                            android:textAppearance="@style/TextAppearance.AppCompat"
+                            android:textColor="#FFF"
+                            android:textStyle="bold" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:background="@color/cardview_light_background"
+            >
+
+            <TextView
+                android:id="@+id/eventDescriptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="13dp"
+                android:text="Event Description"
+                android:textAlignment="center"
+                android:textColor="@color/green"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/genEventInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/eventDescriptionLabel"
+                android:layout_centerHorizontal="true"
+                android:layout_marginRight="31dp"
+                android:layout_marginTop="16dp"
+                android:text="nfiufksjnfksdnfkn"
+                android:textAlignment="center"
+                android:textColor="@color/green" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
+

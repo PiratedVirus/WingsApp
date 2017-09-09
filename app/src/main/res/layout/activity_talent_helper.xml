@@ -91,7 +91,6 @@
                             android:layout_centerVertical="true"
                             android:layout_marginTop="1dp"
                             android:text="Classroom Complex"
-                            android:textAlignment="center"
                             android:textColor="@color/blue" />
 
                     </RelativeLayout>
@@ -162,6 +161,7 @@
                         android:layout_centerHorizontal="true"
                         android:paddingBottom="13sp"
                         android:text="Ashwin Kulkarni 8987654312"
+                        android:textAlignment="center"
                         android:textColor="@color/blue"
                         android:textSize="16sp" />
 
@@ -277,7 +277,6 @@
                 android:layout_marginRight="31dp"
                 android:layout_marginTop="16dp"
                 android:text="nfiufksjnfksdnfkn"
-                android:textAlignment="center"
                 android:textColor="@color/blue" />
 
         </RelativeLayout>

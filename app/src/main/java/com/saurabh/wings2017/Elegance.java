@@ -176,7 +176,7 @@ public class Elegance extends AppCompatActivity  {
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
 
-        eventLocation.add("Classroom Complex");
+        eventLocation.add("Elegance");
         eventLocation.add("CSE Department");
         eventLocation.add("Workshop");
         eventLocation.add("The Grounds");

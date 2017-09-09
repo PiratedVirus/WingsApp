@@ -139,7 +139,7 @@ public class EleganceHelper extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_civil_helper);
+        setContentView(R.layout.activity_elegance_helper);
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/mont.ttf", true);
@@ -257,7 +257,7 @@ public class EleganceHelper extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(EleganceHelper.this, CivilHome.class);
+        Intent i = new Intent(EleganceHelper.this, Elegance.class);
         startActivity(i);
         finish();
     }

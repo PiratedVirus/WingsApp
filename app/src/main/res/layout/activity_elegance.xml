@@ -1,9 +1,63 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.saurabh.wings2017.Elegance">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@drawable/brain">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Brain Drill"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:textColor="#fff"
+
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginBottom="30dp"
+
+
+        android:id="@+id/textView3" />
+
+
+
+    <ListView
+        android:id="@+id/cart_list_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:dividerHeight="30dp"
+        android:divider="@null"
+        android:scrollbars="none"
+        android:scrollbarSize="0dp"
+        android:layout_above="@+id/linearLayout"
+        android:background="@color/float_transparent"
+        android:layout_marginLeft="30sp"
+        android:layout_marginRight="30sp"
+        android:layout_marginBottom="8sp"
+        android:layout_below="@+id/textView3" />
+
+    <io.github.kobakei.materialfabspeeddial.FabSpeedDial
+        android:id="@+id/fab"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:fab_menu="@menu/fab"
+        app:useCompatPadding="true"
+        app:fab_extraMargin="-10sp"
+        app:fab_fabBackgroundColor="@color/purple_bright"
+        app:fab_miniFabBackgroundColor="@color/purple_bright"
+        app:fab_miniFabTextColor="@color/cardview_light_background"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+
+        />
+
+
+
+
+
+
+
+
+</RelativeLayout>

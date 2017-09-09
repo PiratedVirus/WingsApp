@@ -53,7 +53,7 @@ public class EleganceAdapter extends ArrayAdapter<String> {
         View rowView= inflater.inflate(R.layout.content_elegance_single_list, null, true);
         rowView.setMinimumHeight(80);
 
-        RelativeLayout rel = (RelativeLayout) rowView.findViewById(R.id.brainRel);
+        RelativeLayout rel = (RelativeLayout) rowView.findViewById(R.id.eleganceRel);
 
 
         final TextView EventName = (TextView) rowView.findViewById(R.id.CivilEventName);
