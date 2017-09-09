@@ -160,7 +160,7 @@ public class Details extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(MYPREFERENCES, Context.MODE_PRIVATE);
 
         Calligrapher calligrapher = new Calligrapher(this);
-        calligrapher.setFont(this, "fonts/mont.ttf", true);
+        calligrapher.setFont(this, "fonts/Montserrat600.ttf", true);
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

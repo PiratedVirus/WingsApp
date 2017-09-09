@@ -2,61 +2,97 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg"
     android:id="@+id/relative_layout_details"
-    tools:context="com.saurabh.wings2017.Details">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:layout_editor_absoluteX="8dp"
+    tools:layout_editor_absoluteY="8dp">
 
-    <EditText
-        android:id="@+id/nameInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/mobileInput"
-        android:layout_alignStart="@+id/mobileInput"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/name_input_box"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF" />
 
-    <EditText
-        android:id="@+id/mobileInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/updateInfo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="74dp"
-        android:background="@drawable/name_input_box"
-        android:ems="10"
-        android:hint="Enter Mobile number"
-        android:inputType="phone"
-        android:phoneNumber="true"
-        android:soundEffectsEnabled="true"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textColorHint="#c1c1c1"
-        android:textStyle="bold" />
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
-    <ImageView
-        android:id="@+id/updateInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="83dp"
-        app:srcCompat="@drawable/update_info"
-        android:onClick="updateInfo"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        tools:context="com.saurabh.wings2017.Details">
 
-    <ImageView
-        android:id="@+id/imageView9"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="104dp"
-        app:srcCompat="@drawable/details_text"
-        android:layout_marginStart="43dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        <EditText
+            android:id="@+id/nameInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/name_input_box"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/mobileInput"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <EditText
+            android:id="@+id/mobileInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/name_input_box"
+            android:ems="10"
+            android:hint="Enter Mobile number"
+            android:inputType="phone"
+            android:phoneNumber="true"
+            android:soundEffectsEnabled="true"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#c1c1c1"
+            android:textStyle="bold"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/updateInfo"
+            app:layout_constraintRight_toRightOf="@+id/nameInput"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="74dp"
+            app:layout_constraintLeft_toLeftOf="@+id/nameInput" />
+
+        <ImageView
+            android:id="@+id/updateInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/update_info"
+            android:onClick="updateInfo"
+            tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            tools:layout_constraintLeft_creator="1"
+            android:layout_marginBottom="84dp"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Few more details...."
+            android:textColor="#FFFFFF"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintVertical_bias="0.104"
+            android:layout_marginLeft="24dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintHorizontal_bias="0.289" />
+
+    </android.support.constraint.ConstraintLayout>
+
 </RelativeLayout>
