@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -233,61 +232,7 @@ public class Brain extends AppCompatActivity  {
         civil.setAdapter(ad);
 
 
-        try {
 
-            civil.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-                public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-                                        long arg3) {
-                    // For Long Duration Toast
-//                    https://stackoverflow.com/questions/6766625/listview-getchildat-returning-null-for-visible-children
-
-
-
-
-                    try {
-
-                        TextView name = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventName);
-                        TextView location = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventLocation);
-                        TextView desc = (TextView) civil.getChildAt(arg2).findViewById(R.id.CivilEventExcerpt);
-                        TextView price = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventPrice);
-                        TextView date = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventDate);
-                        TextView person_name = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventContactPerson);
-                        TextView person_num = (TextView) civil.getChildAt(arg2).findViewById(R.id.eventContactNum);
-
-
-
-
-                        Toast.makeText(getApplicationContext(), name.getText().toString(), Toast.LENGTH_LONG).show();
-
-                        Intent eventi = new Intent(Brain.this, GenericEventHome.class);
-                        eventi.putExtra("name", name.getText().toString());
-                        eventi.putExtra("location", location.getText().toString());
-                        eventi.putExtra("desc", desc.getText().toString());
-                        eventi.putExtra("price", price.getText().toString());
-                        eventi.putExtra("date", date.getText().toString());
-                        eventi.putExtra("person_name", person_name.getText().toString());
-                        eventi.putExtra("person_num", person_num.getText().toString());
-
-                        startActivity(eventi);
-                        finish();
-                        // For Long Short Toast
-                        Log.e("PV","pachkan hagla + wanted child" +arg2);
-
-                    }
-                    catch (NullPointerException n)
-                    {
-                        Log.e("PV","pachkan hagla catch madhye "+arg2);
-                        n.printStackTrace();
-                    }
-
-                }
-            });
-
-        } catch (NullPointerException n)
-        {
-            n.printStackTrace();
-        }
 
 
 

@@ -55,7 +55,7 @@ public class Robotics extends AppCompatActivity  {
     ArrayList<String>  eventContactNum_list = new ArrayList<>();
     ArrayList<String>  eventDate = new ArrayList<>();
     ArrayList<String>  eventprice = new ArrayList<>();
-    ArrayList<Integer> back = new ArrayList<>();
+    ArrayList<String> group_limit = new ArrayList<>();
 
 
 
@@ -202,9 +202,16 @@ public class Robotics extends AppCompatActivity  {
         eventprice.add("25");
         eventprice.add("50");
 
+        group_limit.add("0");
+        group_limit.add("4");
+        group_limit.add("2");
+        group_limit.add("8");
+        group_limit.add("2");
 
 
-        RoboticsAdapter ad = new RoboticsAdapter(Robotics.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice);
+
+
+        RoboticsAdapter ad = new RoboticsAdapter(Robotics.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
         civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 
@@ -232,6 +239,7 @@ public class Robotics extends AppCompatActivity  {
                 eventi.putExtra("date",date.getText().toString());
                 eventi.putExtra("person_name",person_name.getText().toString());
                 eventi.putExtra("person_num",person_num.getText().toString());
+
 
                 startActivity(eventi);
                 finish();

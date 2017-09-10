@@ -129,7 +129,6 @@ public class CustomList extends ArrayAdapter<String> {
                                 sweetAlertDialog.dismissWithAnimation();
 
 
-                                //delete from db
 
                                 pDialog = new SweetAlertDialog(getContext(), SweetAlertDialog.PROGRESS_TYPE);
                                 pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
@@ -185,6 +184,15 @@ public class CustomList extends ArrayAdapter<String> {
                                 t.setText("Amount   ₹" + String.valueOf(cart_sum));
                                 uniqueID_list.remove(position);
                                 notifyDataSetChanged();
+
+                                if(cart_sum==0)
+                                {
+                                    emptycart.setVisibility(View.VISIBLE);
+                                    explore.setVisibility(View.VISIBLE);
+                                    add_event.setVisibility(View.VISIBLE);
+                                    checkout.setVisibility(View.GONE);
+                                    t.setVisibility(View.GONE);
+                                }
 
                             }
                         })

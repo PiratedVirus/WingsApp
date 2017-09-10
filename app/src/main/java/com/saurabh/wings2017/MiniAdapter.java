@@ -26,12 +26,13 @@ public class MiniAdapter extends ArrayAdapter<String> {
     private final ArrayList eventContactNum_list;
     private final ArrayList eventDate;
     private final ArrayList eventprice;
+    private final ArrayList group_list;
 
 
 
 
     public MiniAdapter(Activity context,
-                       ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice) {
+                       ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice, ArrayList group_list) {
         super(context, R.layout.content_mini_single, eventName_list);
         this.context = context;
         this.eventName_list = eventName_list;
@@ -41,13 +42,14 @@ public class MiniAdapter extends ArrayAdapter<String> {
         this.eventContactNum_list = eventContactNum_list;
         this.eventDate = eventDate;
         this.eventprice = eventprice;
+        this.group_list = group_list;
 
 
         Log.e("PV","bochya"+eventName_list);
     }
 
     @Override
-    public View getView(int position, View view, ViewGroup parent) {
+    public View getView(final int position, View view, ViewGroup parent) {
         Log.e("PV","xyz");
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView= inflater.inflate(R.layout.content_mini_single, null, true);
@@ -94,6 +96,7 @@ public class MiniAdapter extends ArrayAdapter<String> {
                 eventi.putExtra("date", EventDate.getText().toString());
                 eventi.putExtra("person_name", EventPerson.getText().toString());
                 eventi.putExtra("person_num", Eventcontact.getText().toString());
+                eventi.putExtra("members", (String)group_list.get(position));
 //
 
                 ((Activity)getContext()).startActivity(eventi);

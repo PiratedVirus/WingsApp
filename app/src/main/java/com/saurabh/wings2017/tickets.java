@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.ilyagh.TypewriterRefreshLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -41,6 +42,8 @@ import java.util.List;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
+import static com.saurabh.wings2017.R.id.pullToRefresh;
+
 public class tickets extends AppCompatActivity {
 
     public static final String PHP_GET_TICKETS = "https://scouncilgeca.com/WingsApp/getTickets.php";
@@ -57,7 +60,7 @@ public class tickets extends AppCompatActivity {
     ProgressDialog dialog;
     JSONArray stu = null;
     SweetAlertDialog pDialog;
-
+    TypewriterRefreshLayout tr;
     String result;
     JSONObject jso;
     ListView ticket;
@@ -100,6 +103,7 @@ public class tickets extends AppCompatActivity {
 
     public void printTickets(){
 
+
         getUserDetails();
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
@@ -107,6 +111,8 @@ public class tickets extends AppCompatActivity {
         pDialog.setContentText("Waiting for more ink to print your Tickets !");
         pDialog.setCancelable(false);
         pDialog.show();
+
+
         Thread t = new Thread(new Runnable() {
             public void run() {
 
@@ -140,6 +146,7 @@ public class tickets extends AppCompatActivity {
                             // tv.setText("Response from PHP : " + response);
                            // dialog.dismiss();
                             pDialog.dismissWithAnimation();
+                           // tr.setRefreshing(false);
                         }
                     });
 
@@ -218,6 +225,7 @@ public class tickets extends AppCompatActivity {
         calligrapher.setFont(this, "fonts/mont.ttf", true);
         setContentView(R.layout.activity_tickets);
 
+        tr = (TypewriterRefreshLayout)findViewById(pullToRefresh);
 
         if (!isNetworkAvailable()) {
             Log.e("PV", "not connected");
@@ -242,6 +250,29 @@ public class tickets extends AppCompatActivity {
         } else {
             printTickets();
         }
+
+
+        tr.setOnRefreshListener(new TypewriterRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                tr.setRefreshing(true);
+
+
+                tr.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        tr.setRefreshing(false);
+                        Intent i = new Intent(tickets.this, tickets.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }, 4000);
+
+
+            }
+        });
+
+
     }
 
     private boolean isNetworkAvailable() {

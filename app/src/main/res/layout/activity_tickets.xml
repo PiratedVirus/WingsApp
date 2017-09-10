@@ -1,3 +1,4 @@
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,7 +8,10 @@
     android:background="#F5F5F4"
     tools:context="com.saurabh.wings2017.Cart">
 
-
+    <com.github.ilyagh.TypewriterRefreshLayout android:id="@+id/pullToRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ListView
         android:id="@+id/ticket_list_show"
@@ -18,6 +22,7 @@
         tools:layout_editor_absoluteY="8dp">
 
     </ListView>
+    </com.github.ilyagh.TypewriterRefreshLayout>
 
     <Button
         android:id="@+id/total"
@@ -26,7 +31,7 @@
         android:layout_alignParentBottom="true"
         android:text="Chekout"
         android:visibility="invisible"
-        />
+        android:layout_alignParentTop="true" />
 
 
     <TextView

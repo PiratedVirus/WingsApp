@@ -47,6 +47,7 @@ dependencies {
     compile 'com.google.android.gms:play-services-auth:10.0.1'
     compile 'com.android.support:support-v4:22.2.1'
     compile 'me.anwarshahriar:calligrapher:1.0'
+    compile 'com.github.Ilya-Gh:Typewriter:v1.0.0'
     compile 'com.firebase:firebase-jobdispatcher:0.5.2'
     testCompile 'junit:junit:4.12'
 }
