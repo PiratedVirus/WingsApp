@@ -14,7 +14,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -263,10 +262,12 @@ public class Cart extends AppCompatActivity {
                                     @Override
                                     public void run() {
 
-                                        ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list, eventLocation);
+                                        total = (TextView) findViewById(R.id.total);
+                                        ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list,
+                                                eventLocation, total, emptyCart, exploreBtn, checkout, secText);
                                         cart = (ListView)findViewById(R.id.cart_list_show);
                                         cart.setAdapter(ad);
-                                        total = (TextView) findViewById(R.id.total);
+
                                         for(int i=0;i<eventPrice_list.size();i++)
                                         {
                                             Log.e("PV","sum="+eventPrice_list.get(i));
@@ -299,118 +300,117 @@ public class Cart extends AppCompatActivity {
                 }
             });
             t.start();
-
-            try {
-                cart = (ListView) findViewById(R.id.cart_list_show);
-                cart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                        positionlist = position;
-                        Log.e("PV","Dabla maza jorat"+positionlist);
-
-                        for(int i=0;i<uniqueID_list.size();i++)
-                        {
-                            Log.e("PV","gdsjh="+uniqueID_list.get(i));
-                        }
-                        new SweetAlertDialog(Cart.this, SweetAlertDialog.WARNING_TYPE)
-                                .setTitleText("Cancel Event !")
-                                .setContentText("Do your really want to cancel this event?")
-                                .setConfirmText("DELETE")
-                                .setCancelText("Go back")
-                                .setCancelClickListener(null)
-                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sDialog) {
-                                        try {
-                                            sDialog.cancel();
-                                            eventName_list.remove(positionlist);
-                                            eventID_list.remove(positionlist);
-                                            eventPrice_list.remove(positionlist);
-                                            userName_list.remove(positionlist);
-
-                                            try {
-
-
-                                                // uniqueID_list.remove(positionlist);
-                                                unique = (TextView)cart.getChildAt(positionlist).findViewById(R.id.uniqueID);
-
-
-                                                EventNum = unique.getText().toString();
-                                                Toast.makeText(Cart.this, "deleted" + EventNum, Toast.LENGTH_SHORT).show();
-
-//                                            cart_sum = Integer.parseInt((String)total.getText());
-                                                DeleteEvent(EventNum);
-
-                                                //deleting event directly from cart class;
-
-                                                runOnUiThread(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        ad.notifyDataSetChanged();
-                                                    }
-                                                });
-
-
-
-                                                TextView temp_price = (TextView) cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
-                                                Log.e("PV", (String) temp_price.getText());
-                                                cart_sum = cart_sum - Integer.parseInt((String) temp_price.getText());
-                                                total.setText("Amount   ₹" + String.valueOf(cart_sum));
-                                                Toast.makeText(Cart.this, "Cart_sum = " + cart_sum, Toast.LENGTH_LONG).show();
-
-                                                if (cart_sum == 0) {
-                                                    emptyCart.setVisibility(View.VISIBLE);
-                                                    cartText.setVisibility(View.VISIBLE);
-                                                    exploreBtn.setVisibility(View.VISIBLE);
-                                                    secText.setVisibility(View.VISIBLE);
-                                                    total.setVisibility(View.GONE);
-                                                    checkout.setVisibility(View.GONE);
-                                                    Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                            catch (NullPointerException e)
-                                            {
-                                                Toast.makeText(Cart.this, "Network Error : Unable to Delete this event! Try Again", Toast.LENGTH_SHORT).show();
-                                            }
-
-
-                                        }
-                                        catch (IndexOutOfBoundsException r)
-                                        {
-                                            if(positionlist!=0)
-                                            {
-                                                cart_sum = Integer.parseInt((String)total.getText());
-                                                total.setVisibility(View.VISIBLE);
-                                                TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
-                                                cart_sum = cart_sum-Integer.parseInt((String)temp_price.getText());
-                                                total.setText("Amount   ₹"+String.valueOf(cart_sum));
-
-                                            }
-                                            else{
-                                                total.setVisibility(View.GONE);
-
-                                                Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
-                                                r.printStackTrace();}
-                                        }
-
-                                    }
-
-                                })
-                                .show();
-                        return true;
-
-                    }
-                });
-            }
-            catch(NullPointerException e)
-            {
-                e.printStackTrace();
-            }
-
+//
+//            try {
+//                cart = (ListView) findViewById(R.id.cart_list_show);
+//                cart.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//                    @Override
+//                    public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
+//                        positionlist = position;
+//                        Log.e("PV","Dabla maza jorat"+positionlist);
+//
+//
+//                        new SweetAlertDialog(Cart.this, SweetAlertDialog.WARNING_TYPE)
+//                                .setTitleText("Cancel Event !")
+//                                .setContentText("Do your really want to cancel this event?")
+//                                .setConfirmText("DELETE")
+//                                .setCancelText("Go back")
+//                                .setCancelClickListener(null)
+//                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                                    @Override
+//                                    public void onClick(SweetAlertDialog sDialog) {
+//                                        try {
+//                                            sDialog.cancel();
+//                                            eventName_list.remove(positionlist);
+//                                            eventID_list.remove(positionlist);
+//                                            eventPrice_list.remove(positionlist);
+//                                            userName_list.remove(positionlist);
+//
+//
+//                                            try {
+//
+//
+//                                                // uniqueID_list.remove(positionlist);
+//                                                unique = (TextView)cart.getChildAt(positionlist).findViewById(R.id.uniqueID);
+//
+//
+//                                                EventNum = unique.getText().toString();
+//                                                Toast.makeText(Cart.this, "deleted" + EventNum, Toast.LENGTH_SHORT).show();
+//
+////                                            cart_sum = Integer.parseInt((String)total.getText());
+//                                                DeleteEvent(EventNum);
+//
+//                                                //deleting event directly from cart class;
+//
+//                                                runOnUiThread(new Runnable() {
+//                                                    @Override
+//                                                    public void run() {
+//                                                        ad.notifyDataSetChanged();
+//                                                    }
+//                                                });
+//
+//                                                uniqueID_list.remove(positionlist);
+//
+//
+//                                                TextView temp_price = (TextView) cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
+//                                                Log.e("PV", (String) temp_price.getText());
+//                                                cart_sum = cart_sum - Integer.parseInt((String) temp_price.getText());
+//                                                total.setText("Amount   ₹" + String.valueOf(cart_sum));
+//                                                Toast.makeText(Cart.this, "Cart_sum = " + cart_sum, Toast.LENGTH_LONG).show();
+//
+//                                                if (cart_sum == 0) {
+//                                                    emptyCart.setVisibility(View.VISIBLE);
+//                                                    cartText.setVisibility(View.VISIBLE);
+//                                                    exploreBtn.setVisibility(View.VISIBLE);
+//                                                    secText.setVisibility(View.VISIBLE);
+//                                                    total.setVisibility(View.GONE);
+//                                                    checkout.setVisibility(View.GONE);
+//                                                    Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+//                                                }
+//                                            }
+//                                            catch (NullPointerException e)
+//                                            {
+//                                                Toast.makeText(Cart.this, "Network Error : Unable to Delete this event! Try Again", Toast.LENGTH_SHORT).show();
+//                                            }
+//
+//
+//                                        }
+//                                        catch (IndexOutOfBoundsException r)
+//                                        {
+//                                            if(positionlist!=0)
+//                                            {
+//                                                cart_sum = Integer.parseInt((String)total.getText());
+//                                                total.setVisibility(View.VISIBLE);
+//                                                TextView temp_price = (TextView)cart.getChildAt(positionlist).findViewById(R.id.PriceTag);
+//                                                cart_sum = cart_sum-Integer.parseInt((String)temp_price.getText());
+//                                                total.setText("Amount   ₹"+String.valueOf(cart_sum));
+//
+//                                            }
+//                                            else{
+//                                                total.setVisibility(View.GONE);
+//
+//                                                Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+//                                                r.printStackTrace();}
+//                                        }
+//
+//                                    }
+//
+//                                })
+//                                .show();
+//                        return true;
+//
+//                    }
+//                });
+//            }
+//            catch(NullPointerException e)
+//            {
+//                e.printStackTrace();
+//            }
 
 
 
-    };
+
+    }
 
 
     @Override
