@@ -8,7 +8,8 @@
     tools:context="com.saurabh.wings2017.confirmOrder">
 <ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_above="@+id/linearLayout">
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="match_parent"

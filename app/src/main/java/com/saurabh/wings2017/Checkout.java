@@ -154,7 +154,76 @@ public class Checkout extends AppCompatActivity {
                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                     @Override
                     public void onClick(SweetAlertDialog sweetAlertDialog) {
-                        printTicket();
+                       // printTicket();
+
+                        mFirebaseAuth = FirebaseAuth.getInstance();
+                        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+
+
+                        pDialog = new SweetAlertDialog(Checkout.this, SweetAlertDialog.PROGRESS_TYPE);
+                        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+                        pDialog.setTitleText("Please wait!");
+                        pDialog.setContentText("Confirming your events...");
+                        pDialog.setCancelable(false);
+                        pDialog.show();
+
+                        Thread t = new Thread(new Runnable() {
+                            public void run() {
+
+                                try {
+                                    httpclient = new DefaultHttpClient();
+                                    httppost = new HttpPost(PHP_TRANSFER_CART); // make sure the url is correct.
+                                    //add your data
+                                    nameValuePairs = new ArrayList<NameValuePair>(1);
+                                    // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
+                                    nameValuePairs.add(new BasicNameValuePair("fuserMail", mFirebaseUser.getEmail()));
+
+                                    // $Edittext_value = $_POST['Edittext_value'];
+                                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                                    Log.d("andro", "1" + mUsermail);
+                                    //Execute HTTP Post Requ
+                                    response = httpclient.execute(httppost);
+                                    Log.d("andro", "2");
+                                    httpentity = response.getEntity();
+                                    isr = httpentity.getContent();
+
+
+                                    runOnUiThread(new Runnable() {
+                                        public void run() {
+                                            // tv.setText("Response from PHP : " + response);
+//                                dialog.dismiss();
+                                            pDialog.dismissWithAnimation();
+
+                                        }
+                                    });
+                                } catch (Exception e) {
+                                }
+
+                            }
+                        });
+                        t.start();
+                        sendMail();
+
+
+
+
+
+
+
+
+
+
+
+
+                        Intent confirmCartIntent = new Intent(Checkout.this,confirmOrder.class);
+                        startActivity(confirmCartIntent);
+                        finish();
+
+
+
+
+
+
                     }
                 })
                 .show();
@@ -164,60 +233,60 @@ public class Checkout extends AppCompatActivity {
     public void printTicket(){
 
         // Initialize Firebase Auth
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseUser = mFirebaseAuth.getCurrentUser();
-
-
-        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("Please wait!");
-        pDialog.setContentText("We're building the buildings as fast as possible");
-        pDialog.setCancelable(false);
-        pDialog.show();
-
-        Thread t = new Thread(new Runnable() {
-            public void run() {
-
-                try {
-                    httpclient = new DefaultHttpClient();
-                    httppost = new HttpPost(PHP_TRANSFER_CART); // make sure the url is correct.
-                    //add your data
-                    nameValuePairs = new ArrayList<NameValuePair>(1);
-                    // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
-                    nameValuePairs.add(new BasicNameValuePair("fuserMail", mFirebaseUser.getEmail()));
-
-                    // $Edittext_value = $_POST['Edittext_value'];
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                    Log.d("andro", "1" + mUsermail);
-                    //Execute HTTP Post Requ
-                    response = httpclient.execute(httppost);
-                    Log.d("andro", "2");
-                    httpentity = response.getEntity();
-                    isr = httpentity.getContent();
-
-
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            // tv.setText("Response from PHP : " + response);
-//                                dialog.dismiss();
-                            pDialog.dismissWithAnimation();
-
-                        }
-                    });
-                } catch (Exception e) {
-                }
-
-            }
-        });
-        t.start();
-        sendMail();
-
-
-
-
-        Intent confirmCartIntent = new Intent(Checkout.this,confirmOrder.class);
-        startActivity(confirmCartIntent);
-        finish();
+//        mFirebaseAuth = FirebaseAuth.getInstance();
+//        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+//
+//
+//        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
+//        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+//        pDialog.setTitleText("Please wait!");
+//        pDialog.setContentText("We're building the buildings as fast as possible");
+//        pDialog.setCancelable(false);
+//        pDialog.show();
+//
+//        Thread t = new Thread(new Runnable() {
+//            public void run() {
+//
+//                try {
+//                    httpclient = new DefaultHttpClient();
+//                    httppost = new HttpPost(PHP_TRANSFER_CART); // make sure the url is correct.
+//                    //add your data
+//                    nameValuePairs = new ArrayList<NameValuePair>(1);
+//                    // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
+//                    nameValuePairs.add(new BasicNameValuePair("fuserMail", mFirebaseUser.getEmail()));
+//
+//                    // $Edittext_value = $_POST['Edittext_value'];
+//                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//                    Log.d("andro", "1" + mUsermail);
+//                    //Execute HTTP Post Requ
+//                    response = httpclient.execute(httppost);
+//                    Log.d("andro", "2");
+//                    httpentity = response.getEntity();
+//                    isr = httpentity.getContent();
+//
+//
+//                    runOnUiThread(new Runnable() {
+//                        public void run() {
+//                            // tv.setText("Response from PHP : " + response);
+////                                dialog.dismiss();
+//                            pDialog.dismissWithAnimation();
+//
+//                        }
+//                    });
+//                } catch (Exception e) {
+//                }
+//
+//            }
+//        });
+//        t.start();
+//        sendMail();
+//
+//
+//
+//
+//        Intent confirmCartIntent = new Intent(Checkout.this,confirmOrder.class);
+//        startActivity(confirmCartIntent);
+//        finish();
     }
     @Override
     public void onBackPressed() {

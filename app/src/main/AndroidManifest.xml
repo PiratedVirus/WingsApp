@@ -115,7 +115,8 @@
             android:screenOrientation="portrait" />
         <activity android:name=".Commitee" />
         <activity android:name=".Elegance" />
-        <activity android:name=".EleganceHelper"></activity>
+        <activity android:name=".EleganceHelper" />
+        <activity android:name=".Group"></activity>
     </application>
 
 </manifest>

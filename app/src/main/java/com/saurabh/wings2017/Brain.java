@@ -55,7 +55,8 @@ public class Brain extends AppCompatActivity  {
     ArrayList<String>  eventContactNum_list = new ArrayList<>();
     ArrayList<String>  eventDate = new ArrayList<>();
     ArrayList<String>  eventprice = new ArrayList<>();
-    ArrayList<Integer> back = new ArrayList<>();
+    ArrayList<String> group_limit = new ArrayList<>();
+
 
 
 
@@ -168,6 +169,7 @@ public class Brain extends AppCompatActivity  {
         eventName_list.add("Pattal zali mala");
 
 
+
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt lskddjasli fjsdfljdfiods jsjhfkdsjhflkjsahesNV OIV OeifjfNSDJ NODISHENFNJSAF sdvds vldskvn slknsdlndsiv disVldnvlds knlsVD LSDK");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt.amet, consectetur adipisicing elit. Sunt, amet, consectetur adipisicing elit. Sunt");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur, amet, consectetur adipisicing elit. Suntm amet, consectetur adipisicing elit. Sunt adipisicing elit. Sunt");
@@ -216,8 +218,17 @@ public class Brain extends AppCompatActivity  {
         eventprice.add("90");
         eventprice.add("90");
 
+        group_limit.add("0");
+        group_limit.add("4");
+        group_limit.add("2");
+        group_limit.add("8");
+        group_limit.add("2");
+        group_limit.add("10");
+        group_limit.add("0");
 
-        BrainAdapter ad = new BrainAdapter(Brain.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice);
+
+
+        BrainAdapter ad = new BrainAdapter(Brain.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
         civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 

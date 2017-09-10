@@ -62,6 +62,8 @@ public class CustomList extends ArrayAdapter<String> {
         pricetag.setText((CharSequence)eventPrice_list.get(position));
         uniqueID.setText((CharSequence)uniqueID_list.get(position));
 
+
+
         Log.e("PV", "yes"+userName_list.get(position)+eventName_list.get(position));
         return rowView;
     }
