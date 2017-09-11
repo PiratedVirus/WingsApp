@@ -159,54 +159,77 @@ public class Robotics extends AppCompatActivity  {
         });
 
 
-        eventName_list.add("Bridge");
-        eventName_list.add("Paper Bridge");
-        eventName_list.add("Building");
-        eventName_list.add("Paper Bridge");
-        eventName_list.add("Paper Bridge");
+        eventName_list.add(" Pick N Place");
+        eventName_list.add("Robo Race");
 
 
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
 
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
+        eventDetails_list.add("Pick n Place is a technical event which will test participant’s robotic skill in the electronics field.\n" +
+                "It is a three round team event. Each team will have minimum 2 and maximum of 4 members per team. \n" +
+                "\n" +
+                "Procedure:\n\n" +
+                "In Pick n Place, The bot is required to pick the object and place, at their respective places and the team will get the points accordingly. Points depends on the type of the object picked and it will have its specific place to be placed. There will be 2 types of objects with points 5.10. Small objects will carry 5 points each which will be awarded when picked up and dropped in respective barrels. After each barrel is filled, the bot can approach the object having 10 points. Dropping the bigger object into the final hoop will award 10 points and finish the turn.\n" +
+                "Problem Statement:\n" +
+                "2 spaceships from two planets AP and BP respectively got lost while on their space research. So to get their astronauts back, they have to approach another planet C to rescue them.\n" +
+                "You belong to Planet C and you have to launch your spaceship to rescue them.\n" +
+                "No. of Rounds: 2\n" +
+                "\n" +
+                "Duration: All Day.\n" +
+                "\n" +
+                "Rules:\n\n" +
+                "Each team should arrive at the venue at least 15 minutes before the start of the event.\n" +
+                "Each and every team member must be present during the event.\n" +
+                "Team: Minimum 2 and maximum 4 members per team.\n" +
+                "Use of Internet or other means of communication is strictly prohibited.\n" +
+                "Once a team is registered, same team members should be carried till the end.\n");
 
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
 
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
+        eventDetails_list.add("Provide a platform for students to showcase their creative and innovative skills in problem solving. \n" +
+                "\n" +
+                "Rules & Regulations: \n\n" +
+                "Task: \n" +
+                "1. The robots build by given dimension and specification will be allowed for game. 2. The event will conduct in three rounds. 3. Rounds will declare on the spot. 4. The robot which gains maximum points will be the winner. 5. Track will be declared before 10 days of the event. \n" +
+                "\n" +
+                "Rules: \n\n" +
+                "1. The team should not consist of more than 4 members. \n" +
+                "2. Each member from same college is not mandatory. \n" +
+                "3. The robot should follow the robot specifications provided. Any deviation from the mentioned specifications will lead to disqualification. \n" +
+                "4. Once the race begins, three hand touches are allowed, if you are using hand touch, you will have to start from last check point. \n" +
+                "5. No test practice will be allowed on the main arena. \n" +
+                "6. Terminals for charging the battery will not be provided in the college. \n" +
+                "7. The arena may subject to change before the commencement of any round. \n" +
+                "8. If the Robot crosses a checkpoint, and moves off track, then the Robot would be placed back on the previous checkpoint crossed. \n" +
+                "9. The decision of the judges will be final and abiding. Argument with judges in any form will lead to the disqualification of the team. \n" +
+                "\n" +
+                "Robot specifications:\n\n" +
+                "1. The L X B X H should not exceed 25 X 25 X 25. \n" +
+                "2. The net weight should not exceed 3 kgs. \n" +
+                "3. However a tolerance of 5% is acceptable. \n");
 
+
+        eventLocation.add("Front of Civil");
+        eventLocation.add("BasketBall Court");
+
+
+        eventContactPerson_list.add("Yashodeep Kacholiya");
+        eventContactPerson_list.add("Prabhat Shahare");
+
+
+        eventContactNum_list.add("8275861835");
+        eventContactNum_list.add("9405248469");
+
+
+        eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
-        eventDate.add("5 OCT 2017");
-        eventDate.add("5 OCT 2017");
-        eventDate.add("5 OCT 2017");
-        eventDate.add("5 OCT 2017");
 
-        eventprice.add("35");
-        eventprice.add("45");
-        eventprice.add("50");
-        eventprice.add("25");
-        eventprice.add("50");
 
-        group_limit.add("0");
+        eventprice.add("200");
+        eventprice.add("250");
+
+
         group_limit.add("4");
-        group_limit.add("2");
-        group_limit.add("8");
-        group_limit.add("2");
+        group_limit.add("4");
+
 
 
 

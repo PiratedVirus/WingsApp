@@ -159,14 +159,14 @@ public class Talent extends AppCompatActivity  {
         });
 
 
-        eventName_list.add("Bridge");
+        eventName_list.add("Mindscape");
         eventName_list.add("Paper Bridge");
         eventName_list.add("Building");
         eventName_list.add("Paper Bridge");
         eventName_list.add("Paper Bridge");
 
 
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
+        eventDetails_list.add("");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
         eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
@@ -211,7 +211,7 @@ public class Talent extends AppCompatActivity  {
 
 
 
-        TalentAdapter ad = new TalentAdapter(Talent.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice);
+        TalentAdapter ad = new TalentAdapter(Talent.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
         civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 

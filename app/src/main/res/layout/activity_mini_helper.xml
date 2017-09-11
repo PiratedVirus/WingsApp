@@ -260,10 +260,11 @@
 
             <TextView
                 android:id="@+id/eventDescriptionLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="13dp"
+                android:gravity="center"
                 android:text="Event Description"
                 android:textAlignment="center"
                 android:textColor="@color/red"
@@ -272,8 +273,9 @@
 
             <TextView
                 android:id="@+id/genEventInfo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:layout_below="@+id/eventDescriptionLabel"
                 android:layout_centerHorizontal="true"
                 android:layout_marginRight="31dp"

@@ -2,6 +2,7 @@ package com.saurabh.wings2017;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class CustomList extends ArrayAdapter<String> {
 
@@ -77,12 +79,27 @@ public class CustomList extends ArrayAdapter<String> {
         rowView.setMinimumHeight(80);
         rowView.setBackgroundColor(Color.WHITE);
 
+        Calligrapher calligrapher = new Calligrapher(getContext());
+        calligrapher.setFont((Activity) getContext(), "fonts/mont.ttf", true);
+
+
+
+        Typeface mont = Typeface.createFromAsset(getContext().getAssets(),  "fonts/mont.ttf");
+
+
+
         cart_sum = 0;
         TextView CartEventName = (TextView) rowView.findViewById(R.id.CartEventName);
         TextView CartEventInfo = (TextView) rowView.findViewById(R.id.CartEventInfo);
         TextView CartEventLocation = (TextView) rowView.findViewById(R.id.CartEventLocation);
         final TextView pricetag = (TextView) rowView.findViewById(R.id.PriceTag);
         final TextView uniqueID = (TextView) rowView.findViewById(R.id.uniqueID);
+
+        CartEventInfo.setTypeface(mont);
+        CartEventName.setTypeface(mont);
+        CartEventLocation.setTypeface(mont);
+        pricetag.setTypeface(mont);
+
 
 
         for(int i=0;i<eventPrice_list.size();i++)

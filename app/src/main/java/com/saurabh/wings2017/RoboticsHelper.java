@@ -50,7 +50,7 @@ public class RoboticsHelper extends AppCompatActivity {
     String mUsername, mobNum;
     String mPhotoUrl;
     String mUsermail;
-
+    String member;
     String eventprice;
 
 
@@ -173,7 +173,7 @@ public class RoboticsHelper extends AppCompatActivity {
         gen_person_name.setText(contactDetails);
 //        gen_person_num.setText(getIntent().getStringExtra("person_num"));
         gen_Date.setText(getIntent().getStringExtra("date"));
-
+        member = getIntent().getStringExtra("members");
 
 
 
@@ -205,43 +205,92 @@ public class RoboticsHelper extends AppCompatActivity {
 
                 } else {
 
+                    if (Integer.parseInt(member) != 0) {
 
-                    new SweetAlertDialog(RoboticsHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
-                            .setTitleText("Are you sure to add event?")
+                        new SweetAlertDialog(RoboticsHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                                .setTitleText("Add Group Members")
+                                .setContentText("Add your Buddies or Play single!")
+                                .setCustomImage(R.drawable.no_internet)
+                                .setConfirmText("Add Group")
+                                .setCancelText("Continue Single")
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        Intent i = new Intent(getApplicationContext(), Group.class);
+                                        i.putExtra("member", member);
+                                        i.putExtra("fuserName", mUsername);
+                                        i.putExtra("fuserMail", mUsermail);
+                                        i.putExtra("fuserMob", mobNum);
+                                        i.putExtra("eventName", getIntent().getStringExtra("name"));
+                                        i.putExtra("eventID", getIntent().getStringExtra("date"));
+                                        i.putExtra("eventPrice", getIntent().getStringExtra("price"));
+                                        i.putExtra("eventLocation", getIntent().getStringExtra("location"));
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                })
+                                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        fetchData();
+                                        sDialog
+                                                .setTitleText("Success!")
+                                                .setContentText("Event added to Cart!")
+                                                .setConfirmText("OK")
+                                                .setCancelText("View Cart")
+                                                .setConfirmClickListener(null)
+                                                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                    @Override
+                                                    public void onClick(SweetAlertDialog sDialog) {
+                                                        Intent i = new Intent(getApplicationContext(), Cart.class);
+                                                        startActivity(i);
+                                                        finish();
+                                                    }
+                                                })
+                                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                    }
+                                })
+                                .show();
+
+                    }
+                    else if(Integer.parseInt(member)==0) {
+                        new SweetAlertDialog(RoboticsHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                                .setTitleText("Are you sure to add event?")
 //                        .setContentText("Events later can be changed through cart.")
-                            .setConfirmText("Yeah")
-                            .setCancelText("No")
-                            .showCancelButton(true)
-                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sDialog) {
-                                    sDialog.cancel();
-                                }
-                            })
-                            .setCustomImage(R.drawable.dialoge_cart)
-                            .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                @Override
-                                public void onClick(SweetAlertDialog sDialog) {
-                                    fetchData();
-                                    sDialog
-                                            .setTitleText("Success!")
-                                            .setContentText("Event added to Cart!")
-                                            .setConfirmText("OK")
-                                            .setCancelText("View Cart")
-                                            .setConfirmClickListener(null)
-                                            .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                                @Override
-                                                public void onClick(SweetAlertDialog sDialog) {
-                                                    Intent i = new Intent(getApplicationContext(),Cart.class);
-                                                    startActivity(i);
-                                                }
-                                            })
-                                            .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                                }
+                                .setConfirmText("Yeah")
+                                .setCancelText("No")
+                                .showCancelButton(true)
+                                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        sDialog.cancel();
+                                    }
+                                })
+                                .setCustomImage(R.drawable.dialoge_cart)
+                                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                    @Override
+                                    public void onClick(SweetAlertDialog sDialog) {
+                                        fetchData();
+                                        sDialog
+                                                .setTitleText("Success!")
+                                                .setContentText("Event added to Cart!")
+                                                .setConfirmText("OK")
+                                                .setCancelText("View Cart")
+                                                .setConfirmClickListener(null)
+                                                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                                    @Override
+                                                    public void onClick(SweetAlertDialog sDialog) {
+                                                        Intent i = new Intent(getApplicationContext(), Cart.class);
+                                                        startActivity(i);
+                                                    }
+                                                })
+                                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                                    }
 
 
-                            })
-                            .show();
+                                })
+                                .show();
+                    }
                 }
             }
         });

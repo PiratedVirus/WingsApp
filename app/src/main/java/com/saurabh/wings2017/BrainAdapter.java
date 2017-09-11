@@ -71,6 +71,8 @@ public class BrainAdapter extends ArrayAdapter<String> {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont((Activity) getContext(), "fonts/mont.ttf", true);
 
+
+
         final String fullInfo = eventDetails_list.get(position).toString();
         String smallInfo = fullInfo.substring(0, Math.min(fullInfo.length(), 75));
 

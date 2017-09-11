@@ -159,54 +159,136 @@ public class Mini extends AppCompatActivity  {
         });
 
 
-        eventName_list.add("Bridge");
-        eventName_list.add("Paper Bridge");
-        eventName_list.add("Building");
-        eventName_list.add("Paper Bridge");
-        eventName_list.add("Paper Bridge");
+        eventName_list.add("Treasure Hunt");
+        eventName_list.add("FunMania");
+        eventName_list.add("Lan Gaming (COD)");
+        eventName_list.add("Lan Gaming (NFS)");
+        eventName_list.add("GFAM Quiz");
+        eventName_list.add("Beg, Borrow & Steal");
 
 
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
 
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
+        eventDetails_list.add("This is a group event in which the job of individual in any group is to complete all the tasks so that the group will be eligible for the next round and in turn will win the game.\n" +
+                "\n" +
+                "Rules:\n\n" +
+                "There are five round conducted across the span of two days.\n" +
+                "Each participant will be assigned to a group of other participants.\n" +
+                "Each group will change 10 participants.\n" +
+                "Certain tasks will be given to each group and they have to complete them to be eligible to the next round.\n" +
+                "Groups will be formed by organizers/coordinators.\n" +
+                "There will be one coordinator assigned to each group.\n" +
+                "Each group has to report to their respective coordinator.\n" +
+                "The duration of the event will be two days 4 hours each.\n" +
+                "Event will be conducted in the free space behind Civil Department.\n\n" +
+                "Moto:\n To develop the camaraderie among the participants.\n\n" +
+                "Rules for participants:\n\n" +
+                "Fees will not be refunded.\n" +
+                "Any misbehavior with other participants, organizers, coordinators or any other person will not be entertained and will lead to disqualification of the individual participant.\n" +
+                "Participants will have to present before the given time otherwise they will be disqualified.\n" +
+                "We may change or modify the rules and regulations at any time and will be made available, the terms indicate that you agree to such changes. Organizers reserve the right to modify, suspend, and keep the rules, tasks.\n");
 
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
 
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
+        eventDetails_list.add("Here is the opportunity to show your knowledge and coding skill together. Come to event have fun with gaming and coding.\n" +
+                "\n" +
+                "Rounds:\n\n" +
+                "Round 1 (Lan Gaming):\n" +
+                "Candidate will play bike racing, they will race to finishing line. The candidates which will come at position 1st,2nd& 3rd will qualify for second round that is Picture Perfect.\n" +
+                "\n" +
+                "Round 2 (Mobile Photography):\n" +
+                "Candidate will have use their Camera Phones to click pictures from our college campus, pictures can be Abstract, Nature, etc. Candidate should bring their own Mobile Phone with atleast 5MP Camera.\n" +
+                "\n" +
+                "Round 3 (TechQuiz):\n" +
+                "Candidate will compete in a classic quiz competition. Question will be based on C,C++,Java, HTML, CSS,etc.\n" +
+                "\n" +
+                "Judging Criteria:\n\n" +
+                "Participants will be judged purely on the amount of time they require to perform a given task at hand. \n" +
+                "Also, in case of failure or partial success of all the participants, the portion of the task completed and time it required to do so will be taken into account. \n" +
+                "Organizers reserve all the rights to make a decision and that decision will be final.\n" +
+                "The scope and construct of competition is dynamic and organizers reserve the rights to change both at any time without prior notice to participants.\n");
 
+        eventDetails_list.add("Rounds:  Call of Duty Modern Welfare\n" +
+                "The game consists of three rounds.\n" +
+                "First two rounds will be free for all\n" +
+                "Third round is survival round.\n\n" +
+                "Rules:\n\n" +
+                "Double entries are allowed.\n" +
+                "If you miss any round then you will not be allowed for next round.\n" +
+                "Fees once paid will not be refundable. \n" +
+                "All rights are reserved for authority/ management.\n");
+
+        eventDetails_list.add("The popular computer game NFS is here for you.\n" +
+                "Need for Speed: Most Wanted is an open world racing game.\n\n" +
+                "Rules for participants: \n\n" +
+                "Fees will not be refunded once paid.\n" +
+                "Any misbehaviour with other participants, organizers, coordinators or any other person will not be entertained and will lead to disqualification of the individual participant.\n" +
+                "Participants will have to present before the given time otherwise they will be disqualified.\n" +
+                "We may change or modify the rules and regulations at any time and will be made available, the terms indicate that you agree to such changes. Organizers reserve the right to modify, suspend, and keep the rules, tasks.\n");
+
+        eventDetails_list.add("GFAM = Game of Thrones. Friends, Anime, Movies \n" +
+                "It will test your knowledge on the most watched TV series through various rounds including aptitude tests and duels. Participants have to choose their own series out of the allotted ones and multiple selections are allowed however each round will be having separate payments.\n" +
+                "\n" +
+                "Rules:\n\n" +
+                "Each team should arrive at the venue at least 15 minutes before the start of the event.\n" +
+                "Each and every team member must be present during the event.\n" +
+                "Team: Minimum 1 and maximum 2 members per team.\n" +
+                "Use of Internet or other means of communication is strictly prohibited.\n" +
+                "Once a team is registered, same team members should be carried till the end.\n");
+
+        eventDetails_list.add("Fun event.\n" +
+                "Rules:\n" +
+                "Each member can participate individually .\n" +
+                "If Team is participating, then it  should consist of maximum 3 members.\n" +
+                "Final Introduction and instruction will be provided by organizing team on time.\n" +
+                "The decision of organizers will be final. \n" +
+                "Participant or team cannot seek help of others, if found in such case team will be debarred.\n\n" +
+                "      Round 1:\n\n" +
+                "Task 1 –\n" +
+                "             Participants will be given list of items, participants have to collect the given items in the given time.\n" +
+                "\n" +
+                "Task – 2 \n\n" +
+                "             Participants Presence of mind will be judged on the basis of given condition, to see how JUGAD you can do \n" +
+                "       Round 2: Surprise round.\n");
+
+        eventLocation.add("Civil Ground");
+        eventLocation.add("MCA Dept");
+        eventLocation.add("MCA Dept");
+        eventLocation.add("Computer Science Dept (CF Lab)");
+        eventLocation.add("IT Dept");
+        eventLocation.add("Electrical Department");
+
+        eventContactPerson_list.add("Darshan Chobarkar");
+        eventContactPerson_list.add("Karamjeet Singh");
+        eventContactPerson_list.add("Vivek Yeljale");
+        eventContactPerson_list.add("Kshitij Choudhari");
+        eventContactPerson_list.add("Neha Rathod");
+        eventContactPerson_list.add("Kaustubh kangale8857838327");
+
+        eventContactNum_list.add("9404168827");
+        eventContactNum_list.add("8087141667");
+        eventContactNum_list.add("7385424799");
+        eventContactNum_list.add("9765256110");
+        eventContactNum_list.add("968944417");
+        eventContactNum_list.add("8857838327");
+
+        eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
-        eventDate.add("5 OCT 2017");
-        eventDate.add("5 OCT 2017");
-        eventDate.add("5 OCT 2017");
+        eventDate.add("4 OCT 2017");
+        eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
 
-        eventprice.add("35");
-        eventprice.add("45");
         eventprice.add("50");
-        eventprice.add("25");
+        eventprice.add("30");
+        eventprice.add("50");
+        eventprice.add("40");
+        eventprice.add("50");
         eventprice.add("50");
 
         group_limit.add("0");
-        group_limit.add("4");
+        group_limit.add("0");
+        group_limit.add("0");
+        group_limit.add("0");
         group_limit.add("2");
-        group_limit.add("8");
-        group_limit.add("2");
+        group_limit.add("3");
 
 
 
