@@ -32,14 +32,15 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
-public class TalentHelper extends AppCompatActivity {
+public class MechanicoHelper extends AppCompatActivity {
 
     TextView gen_Name, gen_Location, gen_Info, gen_Date, gen_person_name, gen_Price, gen_person_num ;
     Button add_to_cart;
     public static final String PHP_URL = "https://scouncilgeca.com/WingsApp/sendEventData.php";
 
     // Firebase instance variables
-
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
     FirebaseAuth mFirebaseAuth;
     FirebaseUser mFirebaseUser;
     SweetAlertDialog pDialog;
@@ -108,7 +109,7 @@ public class TalentHelper extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 getUserDetails();
-                mobNum = SaveSharedPreferences.getUserPhone(TalentHelper.this);
+                mobNum = SaveSharedPreferences.getUserPhone(MechanicoHelper.this);
                 eventprice = getIntent().getStringExtra("EventCriteria");
                 Log.d(TAG, "price: " + eventprice);
                 Map<String, String> params = new HashMap<>();
@@ -140,7 +141,7 @@ public class TalentHelper extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_talent_helper);
+        setContentView(R.layout.activity_mechanico_helper);
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/mont.ttf", true);
@@ -187,7 +188,7 @@ public class TalentHelper extends AppCompatActivity {
                     Log.e("PV", "not connected");
 
 
-                    new SweetAlertDialog(TalentHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    new SweetAlertDialog(MechanicoHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                             .setTitleText("No Internet")
                             .setContentText("Let's fix the satellites !")
                             .setCustomImage(R.drawable.no_internet)
@@ -206,10 +207,9 @@ public class TalentHelper extends AppCompatActivity {
 
                 } else {
 
-
                     if (Integer.parseInt(member) != 0) {
 
-                        new SweetAlertDialog(TalentHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                        new SweetAlertDialog(MechanicoHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                                 .setTitleText("Add Group Members")
                                 .setContentText("This Event Contents at max "+member+" members!")
                                 .setCustomImage(R.drawable.no_internet)
@@ -254,10 +254,11 @@ public class TalentHelper extends AppCompatActivity {
                                 })
                                 .show();
 
-                    }
-                    else if(Integer.parseInt(member)==0) {
 
-                        new SweetAlertDialog(TalentHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    } else if (Integer.parseInt(member) == 0)
+
+                    {
+                        new SweetAlertDialog(MechanicoHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                                 .setTitleText("Are you sure to add event?")
 //                        .setContentText("Events later can be changed through cart.")
                                 .setConfirmText("Yeah")
@@ -310,7 +311,7 @@ public class TalentHelper extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(TalentHelper.this, Talent.class);
+        Intent i = new Intent(MechanicoHelper.this, Mechanico.class);
         startActivity(i);
         finish();
     }

@@ -1,6 +1,7 @@
 package com.saurabh.wings2017;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +69,11 @@ public class TalentAdapter extends ArrayAdapter<String> {
 
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont((Activity) getContext(), "fonts/mont.ttf", true);
+
+        Typeface mont = Typeface.createFromAsset(getContext().getAssets(),  "fonts/mont.ttf");
+        EventName.setTypeface(mont);
+        EventInfo.setTypeface(mont);
+        EventLocation.setTypeface(mont);
 
         final String fullInfo = eventDetails_list.get(position).toString();
         String smallInfo = fullInfo.substring(0, Math.min(fullInfo.length(), 75));

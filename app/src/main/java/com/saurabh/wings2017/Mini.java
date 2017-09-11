@@ -163,6 +163,7 @@ public class Mini extends AppCompatActivity  {
         eventName_list.add("FunMania");
         eventName_list.add("Lan Gaming (COD)");
         eventName_list.add("Lan Gaming (NFS)");
+        eventName_list.add("Lan Gaming (CS)");
         eventName_list.add("GFAM Quiz");
         eventName_list.add("Beg, Borrow & Steal");
 
@@ -224,6 +225,61 @@ public class Mini extends AppCompatActivity  {
                 "Participants will have to present before the given time otherwise they will be disqualified.\n" +
                 "We may change or modify the rules and regulations at any time and will be made available, the terms indicate that you agree to such changes. Organizers reserve the right to modify, suspend, and keep the rules, tasks.\n");
 
+
+        eventDetails_list.add("This is an event where participants (Team of 5) will have to eliminate other team and vice versa in order to be eligible for the next rounds and in turn will win the competition.\n" +
+                "\n" +
+                "Rules & Regulations:\n\n" +
+                "Game Version: Counter Strike Global Offensive\n" +
+                "Players can bring their own mouse, keyboards, headphones and other peripherals to stimulate their own best playing environment (Optional).\n" +
+                "\n" +
+                "5 vs 5 (Team Play, 5 players per team)\n\n" +
+                "Winning a round:\n\n" +
+                "Team that kills all the members of the opposite team wins the round.\n" +
+                "If the Terrorists successfully bomb a base, then they will win the round.\n" +
+                "If the bomb is successfully diffused, then the Counter Terrorist will win the round.\n" +
+                "A limited amount of time will be given to configure the system as per your wish.\n" +
+                "A Pistol round will decide which map to play first by the winning team and the map in which the Pistol round will be played is randomly selected by the coordinator.\n" +
+                "The losing team will decide which team gets to play Counter Terrorist/Terrorist first.\n" +
+                "Team switch sides at the halfway mark (i.e. Terrorists become Counter Terrorists and Counter Terrorist become Terrorists). This information will be announced at the start of each match.\n" +
+                "Boosting (stepping on top on own team player) is permitted.\n" +
+                "De dust and De dust 2 are banned.\n" +
+                "Hyper Sniper is banned (GSSG11 and SCAR-20).\n" +
+                "In case of a tie after the regulation round ends, 6 extra rounds will be played as a tie breaker (3 rounds as Terrorist and 3 rounds as Counter Terrorist). The first team to win 4 rounds wins the game.\n" +
+                "\n" +
+                "1 vs 1 (1 player per team)\n\n" +
+                "Player that kills the opponent wins the round.\n" +
+                "A limited amount of time will be given to configure the system as per your wish.\n" +
+                "A Pistol round will decide which map to play first by the winning team.\n" +
+                "Hyper Sniper is banned (GSSG11 and SCAR-20).\n" +
+                "\n" +
+                "Rounds:\n\n" +
+                "1. 5 vs 5 (Team Play, 5 players per team)\n" +
+                "Total 20 rounds (Max Rounds): 10 rounds as Terrorists and 10 rounds as Counter Terrorists per team (If a team scores 11 rounds first, the match is ended immediately).\n" +
+                "Victory Condition: The first team to win 11 rounds.\n" +
+                "Round Time: 2 minutes.\n" +
+                "In the case of a tie after regulation rounds end, 6 extra rounds will be played (3 rounds as Terrorists/ 3 rounds as Counter Terrorists).\n" +
+                "Friendly Fire is On.\n" +
+                " 2. 1 vs 1 (1 Player per team)\n" +
+                "Total 10 rounds (Max Rounds): If a player scores 6 first, the match is ended immediately.\n" +
+                "Victory Condition: The first player to win 6 rounds.\n\n" +
+                "Round Time: 1 minute 30 seconds.\n" +
+                "In the case of a tie after regulation rounds end, 3 extra rounds will be played.\n\n" +
+                "General Settings:\n\n" +
+                "Start Money: $1000/-\n" +
+                "Spectate is off, fade to block is on.\n" +
+                "C4 Timer: 45 seconds\n" +
+                "Freeze Time: 6 seconds\n" +
+                "Buy Time: 25 seconds\n" +
+                "Friendly Fire: On\n" +
+                "\n" +
+                "Disconnections:\n\n" +
+                "Any disconnection of the connection between match players due to System, Network, PC and/or Power problem issues.\n" +
+                "Intentional: Upon judgement by the referee, any offending player will be charged with a loss by forfeit.\n" +
+                "Unintentional: If the disconnection is to be unintentional by the referee, the match will be restarted. If any player does not agree to a match restart, the player will lose by default.\n" +
+                "Note:\n" +
+                "As the rounds held are as per knockout matches, therefore the losing team will not be allowed to re-enter in the event.\n");
+
+
         eventDetails_list.add("GFAM = Game of Thrones. Friends, Anime, Movies \n" +
                 "It will test your knowledge on the most watched TV series through various rounds including aptitude tests and duels. Participants have to choose their own series out of the allotted ones and multiple selections are allowed however each round will be having separate payments.\n" +
                 "\n" +
@@ -254,12 +310,14 @@ public class Mini extends AppCompatActivity  {
         eventLocation.add("MCA Dept");
         eventLocation.add("Computer Science Dept (CF Lab)");
         eventLocation.add("IT Dept");
+        eventLocation.add("IT Dept");
         eventLocation.add("Electrical Department");
 
         eventContactPerson_list.add("Darshan Chobarkar");
         eventContactPerson_list.add("Karamjeet Singh");
         eventContactPerson_list.add("Vivek Yeljale");
         eventContactPerson_list.add("Kshitij Choudhari");
+        eventContactPerson_list.add("Abhinay Koreti");
         eventContactPerson_list.add("Neha Rathod");
         eventContactPerson_list.add("Kaustubh kangale8857838327");
 
@@ -267,11 +325,14 @@ public class Mini extends AppCompatActivity  {
         eventContactNum_list.add("8087141667");
         eventContactNum_list.add("7385424799");
         eventContactNum_list.add("9765256110");
+        eventContactNum_list.add("9422568063");
         eventContactNum_list.add("968944417");
         eventContactNum_list.add("8857838327");
 
         eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
+        eventDate.add("4 OCT 2017");
+        eventDate.add("4 OCT 2017");
         eventDate.add("4 OCT 2017");
         eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
@@ -280,6 +341,7 @@ public class Mini extends AppCompatActivity  {
         eventprice.add("30");
         eventprice.add("50");
         eventprice.add("40");
+        eventprice.add("250");
         eventprice.add("50");
         eventprice.add("50");
 
@@ -287,6 +349,7 @@ public class Mini extends AppCompatActivity  {
         group_limit.add("0");
         group_limit.add("0");
         group_limit.add("0");
+        group_limit.add("5");
         group_limit.add("2");
         group_limit.add("3");
 

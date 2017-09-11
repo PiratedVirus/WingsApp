@@ -457,6 +457,24 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
+    public void faq(View v){
+        Intent iSchedule = new Intent(MainActivity.this,Faq.class);
+        startActivity(iSchedule);
+        finish();
+    }
+
+    public void volt(View v){
+        Intent iSchedule = new Intent(MainActivity.this,Volt.class);
+        startActivity(iSchedule);
+        finish();
+    }
+
+    public void mechanico(View v){
+        Intent iSchedule = new Intent(MainActivity.this,Mechanico.class);
+        startActivity(iSchedule);
+        finish();
+    }
+
 
 
 

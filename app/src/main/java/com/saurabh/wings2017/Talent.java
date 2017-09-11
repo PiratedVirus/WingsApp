@@ -159,54 +159,78 @@ public class Talent extends AppCompatActivity  {
         });
 
 
-        eventName_list.add("Mindscape");
-        eventName_list.add("Paper Bridge");
-        eventName_list.add("Building");
-        eventName_list.add("Paper Bridge");
-        eventName_list.add("Paper Bridge");
+        eventName_list.add("Energy Contraption");
+        eventName_list.add("Technobuzz");
+//        eventName_list.add("Paper Presesntation");
+//        eventName_list.add("Paper Bridge");
+//        eventName_list.add("Paper Bridge");
 
 
-        eventDetails_list.add("");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
-        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
+        eventDetails_list.add("Energy contraption is a chain of different energy conversion steps in which one step triggers the next one leading to completion of final task.\n" +
+                "\n" +
+                "Rules:\n\n" +
+                "Each team should consist of maximum 5 members.\n" +
+                "You will be given set up time of 2 hours.\n" +
+                "Area of set up should not be more than 4mx4m\n" +
+                "There is marking for energy conversion step.\n" +
+                "Maximum 3 hand touches are allowed.\n" +
+                "Marks will be deducted for more than 3 hand touches.\n" +
+                "Project must be carried out safely. NO chemical explosions are allowed.\n" +
+                "Dominos are acceptable.\n" +
+                "Marks will be deducted for repeated energy conversion.\n" +
+                "While actual working of set up judges will decide type of each energy conversion at each step.\n" +
+                "Decision of judges will be final.\n\n" +
+                "Round: There will be only one round.\n\n" +
+                "Note: Only one attempt is allowed.\n");
 
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Classroom Complex");
+        eventDetails_list.add("Technobuzz is a technical event which will test participant’s regular study skill in the electronics field. It is a three round team event taken in two groups: junior group and senior group.\n" +
+                "\n" +
+                "Rules:\n\n" +
+                "Each team should arrive at the venue at least 15 minutes before the start of the event.\n" +
+                "Each and every team member must be present during the event.\n\n" +
+                "Team: Minimum 1 and maximum 2 members per team.\n\n" +
+                "Use of Internet or other means of communication is strictly prohibited.\n" +
+                "Once a team is registered, same team members should be carried till the end.\n");
 
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
-        eventContactPerson_list.add("Ashwin Kulkarni");
+//        eventDetails_list.add("");
+//        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
+//        eventDetails_list.add("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt");
 
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
-        eventContactNum_list.add("7798080437");
+        eventLocation.add("Electrical Dept");
+        eventLocation.add("E&TC Dept");
+//        eventLocation.add("Classroom Complex");
+//        eventLocation.add("Classroom Complex");
+//        eventLocation.add("Classroom Complex");
+
+        eventContactPerson_list.add("Rushikesh Andil");
+        eventContactPerson_list.add("Shubham Pardeshi");
+//        eventContactPerson_list.add("Ashwin Kulkarni");
+//        eventContactPerson_list.add("Ashwin Kulkarni");
+//        eventContactPerson_list.add("Ashwin Kulkarni");
+
+        eventContactNum_list.add("9860585933");
+        eventContactNum_list.add("9552894182");
+//        eventContactNum_list.add("7798080437");
+//        eventContactNum_list.add("7798080437");
+//        eventContactNum_list.add("7798080437");
 
         eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
-        eventDate.add("5 OCT 2017");
-        eventDate.add("5 OCT 2017");
-        eventDate.add("5 OCT 2017");
+//        eventDate.add("5 OCT 2017");
+//        eventDate.add("5 OCT 2017");
+//        eventDate.add("5 OCT 2017");
 
-        eventprice.add("35");
-        eventprice.add("45");
+        eventprice.add("250");
         eventprice.add("50");
-        eventprice.add("25");
-        eventprice.add("50");
+//        eventprice.add("50");
+//        eventprice.add("25");
+//        eventprice.add("50");
 
-        group_limit.add("0");
-        group_limit.add("4");
+        group_limit.add("5");
         group_limit.add("2");
-        group_limit.add("8");
-        group_limit.add("2");
+//        group_limit.add("2");
+//        group_limit.add("8");
+//        group_limit.add("2");
 
 
 

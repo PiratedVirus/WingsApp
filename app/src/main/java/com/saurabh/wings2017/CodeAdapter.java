@@ -1,6 +1,7 @@
 package com.saurabh.wings2017;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,11 @@ public class CodeAdapter extends ArrayAdapter<String> {
         final String fullInfo = eventDetails_list.get(position).toString();
         String smallInfo = fullInfo.substring(0, Math.min(fullInfo.length(), 75));
 
+
+        Typeface mont = Typeface.createFromAsset(getContext().getAssets(),  "fonts/mont.ttf");
+        EventName.setTypeface(mont);
+        EventInfo.setTypeface(mont);
+        EventLocation.setTypeface(mont);
 
         rowView.setBackgroundResource(R.drawable.card_bg_5_rounded);
         EventInfo.setText(smallInfo+"....");

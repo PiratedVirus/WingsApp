@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 
-public class MiniAdapter extends ArrayAdapter<String> {
+public class VoltAdapter extends ArrayAdapter<String> {
 
 
     private final Activity context;
@@ -31,10 +31,9 @@ public class MiniAdapter extends ArrayAdapter<String> {
 
 
 
-
-    public MiniAdapter(Activity context,
-                       ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice, ArrayList group_list) {
-        super(context, R.layout.content_mini_single, eventName_list);
+    public VoltAdapter(Activity context,
+                         ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice, ArrayList group_list) {
+        super(context, R.layout.content_talent_single, eventName_list);
         this.context = context;
         this.eventName_list = eventName_list;
         this.eventDetails_list = eventDetails_list;
@@ -53,11 +52,11 @@ public class MiniAdapter extends ArrayAdapter<String> {
     public View getView(final int position, View view, ViewGroup parent) {
         Log.e("PV","xyz");
         LayoutInflater inflater = context.getLayoutInflater();
-        View rowView= inflater.inflate(R.layout.content_mini_single, null, true);
+        View rowView= inflater.inflate(R.layout.content_volt_single, null, true);
         rowView.setMinimumHeight(80);
 
 
-        RelativeLayout rel = (RelativeLayout) rowView.findViewById(R.id.minRel);
+        RelativeLayout rel = (RelativeLayout) rowView.findViewById(R.id.talentRel);
 
 
         final TextView EventName = (TextView) rowView.findViewById(R.id.CivilEventName);
@@ -71,16 +70,17 @@ public class MiniAdapter extends ArrayAdapter<String> {
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont((Activity) getContext(), "fonts/mont.ttf", true);
 
-
         Typeface mont = Typeface.createFromAsset(getContext().getAssets(),  "fonts/mont.ttf");
         EventName.setTypeface(mont);
         EventInfo.setTypeface(mont);
         EventLocation.setTypeface(mont);
+
         final String fullInfo = eventDetails_list.get(position).toString();
         String smallInfo = fullInfo.substring(0, Math.min(fullInfo.length(), 75));
 
+
         rowView.setBackgroundResource(R.drawable.card_bg_5_rounded);
-        EventInfo.setText(smallInfo+"....");
+        EventInfo.setText(smallInfo);
         EventName.setText((CharSequence)eventName_list.get(position));
         EventLocation.setText((CharSequence)eventLocation.get(position));
         EventDate.setText((CharSequence)eventDate.get(position));
@@ -94,7 +94,7 @@ public class MiniAdapter extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Toast.makeText(context, "AdapterClick"+EventName.getText().toString(), Toast.LENGTH_SHORT).show();
 
-                Intent eventi = new Intent(getContext(), MiniHelper.class);
+                Intent eventi = new Intent(getContext(), TalentHelper.class);
                 eventi.putExtra("name", EventName.getText().toString());
                 eventi.putExtra("location", EventLocation.getText().toString());
                 eventi.putExtra("desc", fullInfo);
@@ -103,7 +103,6 @@ public class MiniAdapter extends ArrayAdapter<String> {
                 eventi.putExtra("person_name", EventPerson.getText().toString());
                 eventi.putExtra("person_num", Eventcontact.getText().toString());
                 eventi.putExtra("members", (String)group_list.get(position));
-//
 
                 ((Activity)getContext()).startActivity(eventi);
                 ((Activity) getContext()).finish();

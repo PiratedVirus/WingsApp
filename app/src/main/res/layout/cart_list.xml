@@ -10,17 +10,16 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="4dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:paddingBottom="0dp"
         android:id="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginRight="8dp"
+        android:layout_marginRight="4dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="4dp"
-        app:layout_constraintHorizontal_bias="1.0"
-        android:layout_marginTop="0dp">
+        app:layout_constraintHorizontal_bias="1.0">
 
 
 
@@ -38,7 +37,6 @@
             app:layout_constraintHorizontal_bias="0.03"
             android:id="@+id/CartEventName"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="8dp"
             app:layout_constraintVertical_bias="0.120000005"
@@ -51,7 +49,7 @@
             android:layout_height="wrap_content"
             android:text="Oct 2, 2017. 3 PM onwards"
             android:textColor="#4A4A4A"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:layout_marginTop="7dp"
             app:layout_constraintTop_toBottomOf="@+id/CartEventName"
             android:layout_marginRight="8dp"
@@ -76,23 +74,25 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintRight_toLeftOf="@+id/CartEventLocation"
-            app:layout_constraintHorizontal_chainStyle="spread"
             android:contentDescription="" />
 
         <TextView
             android:id="@+id/CartEventLocation"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:text="Classroom Complex"
             android:textColor="#4a4a4a"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:layout_constraintTop_toBottomOf="@+id/CartEventInfo"
             android:layout_marginRight="8dp"
             app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="20dp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintHorizontal_bias="0.142" />
+            app:layout_constraintHorizontal_bias="0.142"
+            android:layout_marginStart="3dp"
+            android:paddingLeft="30sp"
+            android:layout_marginEnd="8dp" />
 
         <TextView
             android:id="@+id/textView11"
@@ -119,21 +119,19 @@
             android:id="@+id/removeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="0dp"
             android:text="LONG PRESS TO DELETE"
             android:textColor="#F31909"
             android:textSize="9sp"
             android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintLeft_toLeftOf="@+id/constraintLayout"
-            app:layout_constraintRight_toRightOf="@+id/constraintLayout"
-            app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.873" />
 
         <TextView
@@ -160,7 +158,9 @@
         <TextView
             android:id="@+id/uniqueID"
             android:layout_width="0dp"
-            android:layout_height="0dp" />
+            android:layout_height="0dp"
+            tools:layout_editor_absoluteY="25dp"
+            tools:layout_editor_absoluteX="0dp" />
 
     </android.support.constraint.ConstraintLayout>
 

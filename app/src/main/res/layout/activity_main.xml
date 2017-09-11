@@ -130,6 +130,16 @@
                 android:elevation="4dp" />
 
             <Button
+                android:id="@+id/MechBtn"
+                android:layout_width="300sp"
+                android:layout_height="72sp"
+                android:onClick="mechanico"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/mechanico_btn"
+                android:elevation="4dp" />
+
+            <Button
                 android:id="@+id/talentBtn"
                 android:layout_width="300sp"
                 android:layout_height="72sp"
@@ -137,6 +147,26 @@
                 android:layout_marginBottom="10sp"
                 android:layout_marginTop="10sp"
                 android:background="@drawable/talent_btn"
+                android:elevation="4dp" />
+
+            <Button
+                android:id="@+id/VoltBtn"
+                android:layout_width="300sp"
+                android:layout_height="72sp"
+                android:onClick="volt"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/volt_btn"
+                android:elevation="4dp" />
+
+            <Button
+                android:id="@+id/FaqBtn"
+                android:layout_width="300sp"
+                android:layout_height="72sp"
+                android:onClick="faq"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/faq_btn"
                 android:elevation="4dp" />
 
 

@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@drawable/mini_games">
+    android:background="@drawable/mechanico">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fun Zone"
+        android:text="Mechanico"
         android:textStyle="bold"
         android:textSize="30sp"
         android:textColor="#fff"
@@ -45,8 +45,8 @@
         app:fab_menu="@menu/fab"
         app:useCompatPadding="true"
         app:fab_extraMargin="-10sp"
-        app:fab_fabBackgroundColor="@color/red_bright"
-        app:fab_miniFabBackgroundColor="@color/red_bright"
+        app:fab_fabBackgroundColor="#84FAB0"
+        app:fab_miniFabBackgroundColor="#84FAB0"
         app:fab_miniFabTextColor="@color/cardview_light_background"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"

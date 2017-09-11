@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -15,6 +16,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,13 +34,16 @@ public class Group extends AppCompatActivity {
     FirebaseUser mFirebaseUser;
     String mUsername, mobNum;
     String mPhotoUrl;
+    EditText groupname;
+    String xyz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group);
 
-        String xyz = getIntent().getStringExtra("member");
+        xyz = getIntent().getStringExtra("member");
+        groupname = (EditText)findViewById(R.id.grouptext);
 
         Log.e("Bochu", "info = "+ getIntent().getStringExtra("fuserName")+getIntent().getStringExtra("fuserMail")+getIntent().getStringExtra("eventName")+getIntent().getStringExtra("eventID"));
 
@@ -95,7 +101,8 @@ public class Group extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 getUserDetails();
                 mobNum = SaveSharedPreferences.getUserPhone(Group.this);
-
+                groupname = (EditText)findViewById(R.id.grouptext);
+                String temp = groupname.getText().toString().trim();
                 Map<String, String> params = new HashMap<>();
                 params.put("fuserName", mUsername);
                 params.put("fuserMail", mUsermail);
@@ -104,6 +111,7 @@ public class Group extends AppCompatActivity {
                 params.put("eventID", getIntent().getStringExtra("eventID"));
                 params.put("eventPrice", getIntent().getStringExtra("eventPrice"));
                 params.put("eventLocation", getIntent().getStringExtra("eventLocation"));
+                params.put("teamMember",temp);
                 Log.e("PVT", "Location hagla = "+getIntent().getStringExtra("location"));
                 return params;
             }
@@ -132,42 +140,58 @@ public class Group extends AppCompatActivity {
 
     public void addcart(View v)
     {
-        new SweetAlertDialog(Group.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
-                .setTitleText("Are you sure to add event?")
+
+        groupname = (EditText)findViewById(R.id.grouptext);
+        String temp = groupname.getText().toString().trim();
+
+        String name[] = temp.split(",");
+
+        if(name.length > Integer.parseInt(xyz))
+        {
+            YoYo.with(Techniques.Shake)
+                    .duration(500)
+                    .playOn(groupname);
+            Toast.makeText(this, "Oops! You've exceeded group member limit!", Toast.LENGTH_SHORT).show();
+        }
+
+        else {
+            new SweetAlertDialog(Group.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+                    .setTitleText("Are you sure to add event?")
 //                        .setContentText("Events later can be changed through cart.")
-                .setConfirmText("Yeah")
-                .setCancelText("No")
-                .showCancelButton(true)
-                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        sDialog.cancel();
-                    }
-                })
-                .setCustomImage(R.drawable.dialoge_cart)
-                .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                    @Override
-                    public void onClick(SweetAlertDialog sDialog) {
-                        fetchData();
-                        sDialog
-                                .setTitleText("Success!")
-                                .setContentText("Event added to Cart!")
-                                .setConfirmText("OK")
-                                .setCancelText("View Cart")
-                                .setConfirmClickListener(null)
-                                .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                                    @Override
-                                    public void onClick(SweetAlertDialog sDialog) {
-                                        Intent i = new Intent(getApplicationContext(), Cart.class);
-                                        startActivity(i);
-                                        finish();
-                                    }
-                                })
-                                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                    }
+                    .setConfirmText("Yeah")
+                    .setCancelText("No")
+                    .showCancelButton(true)
+                    .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            sDialog.cancel();
+                        }
+                    })
+                    .setCustomImage(R.drawable.dialoge_cart)
+                    .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sDialog) {
+                            fetchData();
+                            sDialog
+                                    .setTitleText("Success!")
+                                    .setContentText("Event added to Cart!")
+                                    .setConfirmText("OK")
+                                    .setCancelText("View Cart")
+                                    .setConfirmClickListener(null)
+                                    .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                                        @Override
+                                        public void onClick(SweetAlertDialog sDialog) {
+                                            Intent i = new Intent(getApplicationContext(), Cart.class);
+                                            startActivity(i);
+                                            finish();
+                                        }
+                                    })
+                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                        }
 
 
-                })
-                .show();
+                    })
+                    .show();
+        }
     }
 }

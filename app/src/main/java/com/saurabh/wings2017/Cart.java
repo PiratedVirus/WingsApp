@@ -18,13 +18,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -41,12 +34,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
@@ -56,7 +48,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 public class Cart extends AppCompatActivity {
 
 
-    public static final String PHP_GET_CART = "https://scouncilgeca.com/WingsApp/getCartData.php";
+    public static final String PHP_GET_CART = "https://scouncilgeca.com/wingsapp/getcartdata.php";
     public static final String PHP_DELETE_CART = "https://scouncilgeca.com/WingsApp/deleteEventCart.php";
 
     FirebaseAuth mFirebaseAuth;
@@ -67,6 +59,7 @@ public class Cart extends AppCompatActivity {
     TextView unique;
     HttpPost httppost;
     HttpResponse response;
+    final InputStream[] is = {null};
     HttpClient httpclient;
     HttpEntity httpentity;
     List<NameValuePair> nameValuePairs;
@@ -113,57 +106,7 @@ public class Cart extends AppCompatActivity {
 
 
 
-    public void DeleteEvent(final String uniqueID){
 
-        pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("Please wait!");
-        pDialog.setContentText("Deleting Event from Cart...");
-        pDialog.setCancelable(false);
-        pDialog.show();
-
-
-       // Log.e("PV","BOcha is " +uniqueID);
-        StringRequest stringRequest = new StringRequest(Request.Method.POST,
-                PHP_DELETE_CART,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-
-                    }
-                },
-                new Response.ErrorListener(){
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Cart.this,error.getMessage(),Toast.LENGTH_LONG).show();
-
-                    }
-                }){
-            public static final String TAG = "PV";
-
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-
-                Map<String,String> params = new HashMap<>();
-                params.put("uniqueId", EventNum);
-
-                return params;
-            }
-
-
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
-            @Override
-            public void onRequestFinished(Request<String> request) {
-                pDialog.dismissWithAnimation();
-
-            }
-        });
-
-    }
 
 
     public void fetchData(){
@@ -189,9 +132,10 @@ public class Cart extends AppCompatActivity {
             Thread t = new Thread(new Runnable() {
                 public void run() {
 
+
                     try {
                         httpclient = new DefaultHttpClient();
-                        httppost = new HttpPost(PHP_GET_CART); // make sure the url is correct.
+                        httppost = new HttpPost(serverUrl); // make sure the url is correct.
                         //add your data
                         nameValuePairs = new ArrayList<NameValuePair>(1);
                         // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
@@ -199,30 +143,31 @@ public class Cart extends AppCompatActivity {
 
                         // $Edittext_value = $_POST['Edittext_value'];
                         httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                        Log.d("andro", "1" + mUsermail);
-                        //Execute HTTP Post Requ
+                        Log.e("andro", "1" + mUsermail);
+                        //Execute HTTP Post Request
                         response = httpclient.execute(httppost);
-                        Log.d("andro", "2");
+
+                        Log.e("andro", "2");
                         httpentity = response.getEntity();
-                        isr = httpentity.getContent();
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(isr, "UTF-8"), 8);
+                        is[0] = httpentity.getContent();
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(is[0], "UTF-8"), 8);
                         StringBuilder sb = new StringBuilder();
                         String line = null;
                         while ((line = reader.readLine()) != null) {
                             sb.append(line + "\n");
                         }
-
                         result = sb.toString();
+//            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+//            final String response = httpclient.execute(httppost, responseHandler);
+//            System.out.println("Response : " + response);
 
                         runOnUiThread(new Runnable() {
                             public void run() {
                                 // tv.setText("Response from PHP : " + response);
-//                                dialog.dismiss();
-                                pDialog.dismissWithAnimation();
-
+                                pDialog.dismiss();
                             }
                         });
-
+                        Log.e("PV","3+"+result);
 
                         if (!(result.startsWith("F"))) {
                             Log.i("andro", result);
@@ -371,6 +316,17 @@ public class Cart extends AppCompatActivity {
         Intent i = new Intent(Cart.this,MainActivity.class);
         startActivity(i);
         finish();
+
+    }
+    private static String convertInputStreamToString(InputStream inputStream) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader( new InputStreamReader(inputStream));
+        String line = "";
+        String result = "";
+        while((line = bufferedReader.readLine()) != null)
+            result += line;
+
+        inputStream.close();
+        return result;
 
     }
 

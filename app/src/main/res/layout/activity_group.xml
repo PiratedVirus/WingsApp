@@ -32,7 +32,7 @@
         android:layout_marginEnd="8dp" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/grouptext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/team_box"

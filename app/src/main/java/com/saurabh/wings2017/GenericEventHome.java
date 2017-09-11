@@ -213,7 +213,7 @@ public class GenericEventHome extends AppCompatActivity {
 
                         new SweetAlertDialog(GenericEventHome.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                                 .setTitleText("Add Group Members")
-                                .setContentText("Add your Buddies or Play single!")
+                                .setContentText("This Event Contents at max "+member+" members!")
                                 .setCustomImage(R.drawable.no_internet)
                                 .setConfirmText("Add Group")
                                 .setCancelText("Continue Single")

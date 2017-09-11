@@ -84,7 +84,7 @@ public class CustomList extends ArrayAdapter<String> {
 
 
 
-        Typeface mont = Typeface.createFromAsset(getContext().getAssets(),  "fonts/mont.ttf");
+
 
 
 
@@ -95,6 +95,8 @@ public class CustomList extends ArrayAdapter<String> {
         final TextView pricetag = (TextView) rowView.findViewById(R.id.PriceTag);
         final TextView uniqueID = (TextView) rowView.findViewById(R.id.uniqueID);
 
+
+        Typeface mont = Typeface.createFromAsset(getContext().getAssets(),  "fonts/mont.ttf");
         CartEventInfo.setTypeface(mont);
         CartEventName.setTypeface(mont);
         CartEventLocation.setTypeface(mont);

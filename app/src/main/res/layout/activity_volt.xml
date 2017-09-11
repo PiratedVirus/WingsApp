@@ -4,21 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@drawable/mini_games">
+    android:background="@drawable/brain">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fun Zone"
+        android:text="Volt Zilla"
         android:textStyle="bold"
         android:textSize="30sp"
         android:textColor="#fff"
-
         android:layout_marginTop="60dp"
         android:layout_marginLeft="60dp"
         android:layout_marginBottom="30dp"
-
-
         android:id="@+id/textView3" />
 
 
@@ -45,19 +42,10 @@
         app:fab_menu="@menu/fab"
         app:useCompatPadding="true"
         app:fab_extraMargin="-10sp"
-        app:fab_fabBackgroundColor="@color/red_bright"
-        app:fab_miniFabBackgroundColor="@color/red_bright"
+        app:fab_fabBackgroundColor="@color/purple_bright"
+        app:fab_miniFabBackgroundColor="@color/purple_bright"
         app:fab_miniFabTextColor="@color/cardview_light_background"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-
-        />
-
-
-
-
-
-
-
+        android:layout_alignParentRight="true" />
 
 </RelativeLayout>
