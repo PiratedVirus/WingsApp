@@ -40,7 +40,7 @@
         android:gravity="top"
         android:ellipsize="end"
         android:hint="Eg. Ashwin Kulkarni,Saurabh Kulkarni"
-        android:padding="5sp"
+        android:padding="15sp"
         android:textColor="@color/grey_bright"
         android:textAlignment="viewStart"
         android:layout_marginRight="8dp"

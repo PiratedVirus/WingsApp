@@ -18,6 +18,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -25,10 +32,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -38,7 +42,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.github.kobakei.materialfabspeeddial.FabSpeedDial;
@@ -49,7 +55,7 @@ public class Cart extends AppCompatActivity {
 
 
     public static final String PHP_GET_CART = "https://scouncilgeca.com/wingsapp/getcartdata.php";
-    public static final String PHP_DELETE_CART = "https://scouncilgeca.com/WingsApp/deleteEventCart.php";
+    public static final String PHP_DELETE_CART = "https://scouncilgeca.com/wingsapp/deleteEventCart.php";
 
     FirebaseAuth mFirebaseAuth;
     FirebaseUser mFirebaseUser;
@@ -129,115 +135,217 @@ public class Cart extends AppCompatActivity {
         checkout = (ImageView) findViewById(R.id.chkOutBtn);
 
 
-            Thread t = new Thread(new Runnable() {
-                public void run() {
 
-
-                    try {
-                        httpclient = new DefaultHttpClient();
-                        httppost = new HttpPost(serverUrl); // make sure the url is correct.
-                        //add your data
-                        nameValuePairs = new ArrayList<NameValuePair>(1);
-                        // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
-                        nameValuePairs.add(new BasicNameValuePair("fuserMail", mUsermail));
-
-                        // $Edittext_value = $_POST['Edittext_value'];
-                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                        Log.e("andro", "1" + mUsermail);
-                        //Execute HTTP Post Request
-                        response = httpclient.execute(httppost);
-
-                        Log.e("andro", "2");
-                        httpentity = response.getEntity();
-                        is[0] = httpentity.getContent();
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(is[0], "UTF-8"), 8);
-                        StringBuilder sb = new StringBuilder();
-                        String line = null;
-                        while ((line = reader.readLine()) != null) {
-                            sb.append(line + "\n");
-                        }
-                        result = sb.toString();
-//            ResponseHandler<String> responseHandler = new BasicResponseHandler();
-//            final String response = httpclient.execute(httppost, responseHandler);
-//            System.out.println("Response : " + response);
-
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                // tv.setText("Response from PHP : " + response);
-                                pDialog.dismiss();
-                            }
-                        });
-                        Log.e("PV","3+"+result);
-
-                        if (!(result.startsWith("F"))) {
-                            Log.i("andro", result);
-                            try {
-                                jso = new JSONObject(result);
-                                cart_user_list = jso.getJSONArray("result");
-                                for (int i = 0; i < cart_user_list.length(); i++) {
-                                    JSONObject c = cart_user_list.getJSONObject(i);
-                                    uniqueID = c.getString("uniqueID");
-                                    userName = c.getString("userName");
-                                    eventName = c.getString("eventName");
-                                    eventID = c.getString("eventID");
-                                    eventPrice = c.getString("eventPrice");
-                                    eventLocationString = c.getString("eventLocation");
-                                    Log.e("result",userName+eventName+eventID+eventPrice+eventLocationString);
-                                    userName_list.add(userName);
-                                    eventName_list.add(eventName);
-                                    eventID_list.add(eventID);
-                                    eventPrice_list.add(eventPrice);
-                                    uniqueID_list.add(uniqueID);
-                                    eventLocation.add(eventLocationString);
-                                }
-
-                                Cart.this.runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-
-                                        total = (TextView) findViewById(R.id.total);
-                                        ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list,
-                                                eventLocation, total, emptyCart, exploreBtn, checkout, secText);
-                                        cart = (ListView)findViewById(R.id.cart_list_show);
-                                        cart.setAdapter(ad);
-
-                                        for(int i=0;i<eventPrice_list.size();i++)
-                                        {
-                                            Log.e("PV","sum="+eventPrice_list.get(i));
-                                            cart_sum+=Integer.parseInt(eventPrice_list.get(i));
-                                        }
-                                        Log.e("PV","sum="+cart_sum);
-                                        total.setText("Amount   ₹"+String.valueOf(cart_sum));
-                                        if(cart_sum==0){
-                                            emptyCart.setVisibility(View.VISIBLE);
-                                            cartText.setVisibility(View.VISIBLE);
-                                            exploreBtn.setVisibility(View.VISIBLE);
-                                            secText.setVisibility(View.VISIBLE);
-                                            checkout.setVisibility(View.GONE);
-                                            total.setVisibility(View.GONE);
-                                            Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                });
-
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        } else {
-                            Log.e("PV", "else_case_failed");
-                        }
-                    } catch (Exception e) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                PHP_GET_CART,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        pDialog.dismissWithAnimation();
+                        json(response);
                     }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Cart.this, error.getMessage(), Toast.LENGTH_LONG).show();
 
-                }
-            });
-            t.start();
+                    }
+                }) {
+            public static final String TAG = "PV";
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                getUserDetails();
+
+                Map<String, String> params = new HashMap<>();
+
+                params.put("fuserMail", mUsermail);
+                Log.e("PVT", "Location hagla = "+getIntent().getStringExtra("location"));
+                return params;
+            }
+
+
+        };
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+            @Override
+            public void onRequestFinished(Request<String> request) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+//
+//            Thread t = new Thread(new Runnable() {
+//                public void run() {
+//
+//
+//                    try {
+//                        httpclient = new DefaultHttpClient();
+//                        httppost = new HttpPost(PHP_GET_CART); // make sure the url is correct.
+//                        //add your data
+//                        nameValuePairs = new ArrayList<NameValuePair>(1);
+//                        // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
+//                        nameValuePairs.add(new BasicNameValuePair("year", "fe"));
+//
+//                        // $Edittext_value = $_POST['Edittext_value'];
+//                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//                        Log.e("andro", "1" + mUsermail);
+//                        //Execute HTTP Post Request
+//                        response = httpclient.execute(httppost);
+//
+//                        Log.e("andro", "2");
+//                        httpentity = response.getEntity();
+//                        is[0] = httpentity.getContent();
+//                        BufferedReader reader = new BufferedReader(new InputStreamReader(is[0], "UTF-8"), 8);
+//                        StringBuilder sb = new StringBuilder();
+//                        String line = null;
+//                        while ((line = reader.readLine()) != null) {
+//                            sb.append(line + "\n");
+//                        }
+//                        result = sb.toString();
+////            ResponseHandler<String> responseHandler = new BasicResponseHandler();
+////            final String response = httpclient.execute(httppost, responseHandler);
+////            System.out.println("Response : " + response);
+//
+//                        runOnUiThread(new Runnable() {
+//                            public void run() {
+//                                // tv.setText("Response from PHP : " + response);
+//                                pDialog.dismiss();
+//                            }
+//                        });
+//                        Log.e("PV","3+"+result);
+//
+//                        if (!(result.startsWith("F"))) {
+//                            Log.i("andro", result);
+//                            try {
+//                                jso = new JSONObject(result);
+//                                cart_user_list = jso.getJSONArray("result");
+//                                for (int i = 0; i < cart_user_list.length(); i++) {
+//                                    JSONObject c = cart_user_list.getJSONObject(i);
+//                                    uniqueID = c.getString("uniqueID");
+//                                    userName = c.getString("userName");
+//                                    eventName = c.getString("eventName");
+//                                    eventID = c.getString("eventID");
+//                                    eventPrice = c.getString("eventPrice");
+//                                    eventLocationString = c.getString("eventLocation");
+//                                    Log.e("result",userName+eventName+eventID+eventPrice+eventLocationString);
+//                                    userName_list.add(userName);
+//                                    eventName_list.add(eventName);
+//                                    eventID_list.add(eventID);
+//                                    eventPrice_list.add(eventPrice);
+//                                    uniqueID_list.add(uniqueID);
+//                                    eventLocation.add(eventLocationString);
+//                                }
+//
+//                                Cart.this.runOnUiThread(new Runnable() {
+//                                    @Override
+//                                    public void run() {
+//
+//                                        total = (TextView) findViewById(R.id.total);
+//                                        ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list,
+//                                                eventLocation, total, emptyCart, exploreBtn, checkout, secText);
+//                                        cart = (ListView)findViewById(R.id.cart_list_show);
+//                                        cart.setAdapter(ad);
+//
+//                                        for(int i=0;i<eventPrice_list.size();i++)
+//                                        {
+//                                            Log.e("PV","sum="+eventPrice_list.get(i));
+//                                            cart_sum+=Integer.parseInt(eventPrice_list.get(i));
+//                                        }
+//                                        Log.e("PV","sum="+cart_sum);
+//                                        total.setText("Amount   ₹"+String.valueOf(cart_sum));
+//                                        if(cart_sum==0){
+//                                            emptyCart.setVisibility(View.VISIBLE);
+//                                            cartText.setVisibility(View.VISIBLE);
+//                                            exploreBtn.setVisibility(View.VISIBLE);
+//                                            secText.setVisibility(View.VISIBLE);
+//                                            checkout.setVisibility(View.GONE);
+//                                            total.setVisibility(View.GONE);
+//                                            Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+//                                        }
+//                                    }
+//                                });
+//
+//
+//                            } catch (JSONException e) {
+//                                e.printStackTrace();
+//                            }
+//                        } else {
+//                            Log.e("PV", "else_case_failed");
+//                        }
+//                    } catch (Exception e) {
+//                    }
+//
+//                }
+//            });
+//            t.start();
 
 
 
     }
 
+    public void json(String response) {
+        pDialog.dismissWithAnimation();
+        try {
+            jso = new JSONObject(response);
+            cart_user_list = jso.getJSONArray("result");
+            for (int i = 0; i < cart_user_list.length(); i++) {
+                JSONObject c = cart_user_list.getJSONObject(i);
+                uniqueID = c.getString("uniqueID");
+                userName = c.getString("userName");
+                eventName = c.getString("eventName");
+                eventID = c.getString("eventID");
+                eventPrice = c.getString("eventPrice");
+                eventLocationString = c.getString("eventLocation");
+                Log.e("result", userName + eventName + eventID + eventPrice + eventLocationString);
+                userName_list.add(userName);
+                eventName_list.add(eventName);
+                eventID_list.add(eventID);
+                eventPrice_list.add(eventPrice);
+                uniqueID_list.add(uniqueID);
+                eventLocation.add(eventLocationString);
+            }
+
+            total = (TextView) findViewById(R.id.total);
+            ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list,
+                    eventLocation, total, emptyCart, exploreBtn, checkout, secText);
+            cart = (ListView) findViewById(R.id.cart_list_show);
+            cart.setAdapter(ad);
+
+            for (int i = 0; i < eventPrice_list.size(); i++) {
+                Log.e("PV", "sum=" + eventPrice_list.get(i));
+                cart_sum += Integer.parseInt(eventPrice_list.get(i));
+            }
+            Log.e("PV", "sum=" + cart_sum);
+            total.setText("Amount   ₹" + String.valueOf(cart_sum));
+            if (cart_sum == 0) {
+                emptyCart.setVisibility(View.VISIBLE);
+                cartText.setVisibility(View.VISIBLE);
+                exploreBtn.setVisibility(View.VISIBLE);
+                secText.setVisibility(View.VISIBLE);
+                checkout.setVisibility(View.GONE);
+                total.setVisibility(View.GONE);
+                Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+            }
+
+
+//
+        } catch (JSONException e) {
+                e.printStackTrace();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

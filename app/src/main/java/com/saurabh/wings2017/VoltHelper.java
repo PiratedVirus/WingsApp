@@ -36,7 +36,7 @@ public class VoltHelper extends AppCompatActivity {
 
     TextView gen_Name, gen_Location, gen_Info, gen_Date, gen_person_name, gen_Price, gen_person_num ;
     Button add_to_cart;
-    public static final String PHP_URL = "https://scouncilgeca.com/WingsApp/sendEventData.php";
+    public static final String PHP_URL = "https://scouncilgeca.com/wingsapp/sendEventData.php";
 
     // Firebase instance variables
 
@@ -140,7 +140,7 @@ public class VoltHelper extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_robotics_helper);
+        setContentView(R.layout.activity_volt_helper);
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/mont.ttf", true);

@@ -25,9 +25,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class Group extends AppCompatActivity {
-    public static final String PHP_URL = "https://scouncilgeca.com/WingsApp/sendEventData.php";
+    public static final String PHP_URL = "https://scouncilgeca.com/wingsapp/sendEventData.php";
     String mUsermail;
     SweetAlertDialog pDialog;
     FirebaseAuth mFirebaseAuth;
@@ -41,6 +42,9 @@ public class Group extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_group);
+
+        Calligrapher calligrapher = new Calligrapher(this);
+        calligrapher.setFont(this, "fonts/mont.ttf", true);
 
         xyz = getIntent().getStringExtra("member");
         groupname = (EditText)findViewById(R.id.grouptext);
@@ -151,7 +155,7 @@ public class Group extends AppCompatActivity {
             YoYo.with(Techniques.Shake)
                     .duration(500)
                     .playOn(groupname);
-            Toast.makeText(this, "Oops! You've exceeded group member limit!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Oops! You've exceeded group member limit! Maximum Group Limit : "+xyz, Toast.LENGTH_SHORT).show();
         }
 
         else {

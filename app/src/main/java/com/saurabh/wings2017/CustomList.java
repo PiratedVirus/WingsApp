@@ -41,8 +41,8 @@ public class CustomList extends ArrayAdapter<String> {
     private final ArrayList eventLocation;
     TextView t, add_event;
     ImageView emptycart,explore,checkout;
-    public static final String PHP_GET_CART = "https://scouncilgeca.com/WingsApp/getCartData.php";
-    public static final String PHP_DELETE_CART = "https://scouncilgeca.com/WingsApp/deleteEventCart.php";
+    public static final String PHP_GET_CART = "https://scouncilgeca.com/wingsapp/getCartData.php";
+    public static final String PHP_DELETE_CART = "https://scouncilgeca.com/wingsapp/deleteEventCart.php";
 
 
 

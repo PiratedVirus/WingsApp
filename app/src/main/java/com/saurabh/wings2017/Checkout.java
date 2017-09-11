@@ -42,8 +42,8 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class Checkout extends AppCompatActivity {
 
-    public static final String PHP_TRANSFER_CART = "https://scouncilgeca.com/WingsApp/transferCartData.php";
-    public static final String PHP_SEND_MAIL = "https://scouncilgeca.com/WingsApp/sendMail.php";
+    public static final String PHP_TRANSFER_CART = "https://scouncilgeca.com/wingsapp/transferCartData.php";
+    public static final String PHP_SEND_MAIL = "https://scouncilgeca.com/wingsapp/sendMail.php";
     TextView FinalChkSum,discountPrice,netPrice;
     int totalCnt;
     int Discount;

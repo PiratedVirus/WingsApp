@@ -17,6 +17,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.github.ilyagh.TypewriterRefreshLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,19 +32,16 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.anwarshahriar.calligrapher.Calligrapher;
@@ -46,7 +50,7 @@ import static com.saurabh.wings2017.R.id.pullToRefresh;
 
 public class tickets extends AppCompatActivity {
 
-    public static final String PHP_GET_TICKETS = "https://scouncilgeca.com/WingsApp/getTickets.php";
+    public static final String PHP_GET_TICKETS = "https://scouncilgeca.com/wingsapp/getTickets.php";
 
     String mUsername, mPhotoUrl, mUsermail, uniqueID, EventNum, paid, played;
     TextView unique;
@@ -113,110 +117,203 @@ public class tickets extends AppCompatActivity {
         pDialog.show();
 
 
-        Thread t = new Thread(new Runnable() {
-            public void run() {
 
-                try {
-                    httpclient = new DefaultHttpClient();
-                    httppost = new HttpPost(PHP_GET_TICKETS); // make sure the url is correct.
-                    //add your data
-                    nameValuePairs = new ArrayList<NameValuePair>(1);
-                    // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
-                    nameValuePairs.add(new BasicNameValuePair("fuserMail", mUsermail));
-
-                    // $Edittext_value = $_POST['Edittext_value'];
-                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-                    Log.e("PV", "1" + mUsermail);
-                    //Execute HTTP Post Requ
-                    response = httpclient.execute(httppost);
-                    Log.e("PV", "2");
-                    httpentity = response.getEntity();
-                    isr = httpentity.getContent();
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(isr, "UTF-8"), 8);
-                    StringBuilder sb = new StringBuilder();
-                    String line = null;
-                    while ((line = reader.readLine()) != null) {
-                        sb.append(line + "\n");
+        StringRequest stringRequest = new StringRequest(Request.Method.POST,
+                PHP_GET_TICKETS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        pDialog.dismissWithAnimation();
+                        json(response);
                     }
-                    result = sb.toString();
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(tickets.this, error.getMessage(), Toast.LENGTH_LONG).show();
 
-
-                    runOnUiThread(new Runnable() {
-                        public void run() {
-                            // tv.setText("Response from PHP : " + response);
-                           // dialog.dismiss();
-                            pDialog.dismissWithAnimation();
-                           // tr.setRefreshing(false);
-                        }
-                    });
-
-                    if (!(result.startsWith("F"))) {
-                        Log.i("andro", result);
-                        try {
-                            jso = new JSONObject(result);
-                            cart_user_ticket = jso.getJSONArray("result");
-                            for (int i = 0; i < cart_user_ticket.length(); i++) {
-                                JSONObject c = cart_user_ticket.getJSONObject(i);
-                               // uniqueID = c.getString("uniqueID");
-                                userName = c.getString("userName");
-                                eventName = c.getString("eventName");
-                                eventID = c.getString("eventID");
-                                eventPrice = c.getString("eventPrice");
-                                paid = c.getString("paid");
-                                played = c.getString("played");
-                                eventLocation = c.getString("eventLocation");
-                                Log.e("result",userName+eventName+eventID+eventPrice+"paid_php"+paid);
-
-                                userName_ticket.add(userName);
-                                eventName_ticket.add(eventName);
-                                eventID_ticket.add(eventID);
-                                eventPrice_ticket.add(eventPrice);
-                                paid_ticket.add(paid);
-                                played_ticket.add(played);
-                                eventLocation_ticket.add(eventLocation);
-                            }
-
-                            tickets.this.runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-
-                                    ad = new TicketList(tickets.this, userName_ticket, eventName_ticket, eventID_ticket, eventPrice_ticket,  played_ticket, paid_ticket, eventLocation_ticket);
-                                    ticket = (ListView)findViewById(R.id.ticket_list_show);
-                                    ticket.setAdapter(ad);
-                                    total = (Button) findViewById(R.id.total);
-                                    Log.e("PV", "bocha tanla");
-                                    for(int i=0;i<eventPrice_ticket.size();i++)
-                                    {
-                                        Log.e("PV","sum="+eventPrice_ticket.get(i));
-                                        cart_sum+=Integer.parseInt(eventPrice_ticket.get(i));
-                                    }
-                                    Log.e("PV","sum="+cart_sum);
-                                    total.setText(String.valueOf(cart_sum));
-                                    noTickets = (ImageView) findViewById(R.id.noTicket);
-                                    if(cart_sum==0){
-                                        noTickets.setVisibility(View.VISIBLE);
-                                        Toast.makeText(tickets.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Log.e("PV", "else_case_failed");
                     }
-                } catch (Exception e) {
-                }
+                }) {
+            public static final String TAG = "PV";
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                getUserDetails();
+
+                Map<String, String> params = new HashMap<>();
+
+                params.put("fuserMail", mUsermail);
+                Log.e("PVT", "Location hagla = "+getIntent().getStringExtra("location"));
+                return params;
+            }
+
+
+        };
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+        requestQueue.addRequestFinishedListener(new RequestQueue.RequestFinishedListener<String>() {
+            @Override
+            public void onRequestFinished(Request<String> request) {
 
             }
         });
-        t.start();
+
+
+//        Thread t = new Thread(new Runnable() {
+//            public void run() {
+//
+//                try {
+//                    httpclient = new DefaultHttpClient();
+//                    httppost = new HttpPost(PHP_GET_TICKETS); // make sure the url is correct.
+//                    //add your data
+//                    nameValuePairs = new ArrayList<NameValuePair>(1);
+//                    // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
+//                    nameValuePairs.add(new BasicNameValuePair("fuserMail", mUsermail));
+//
+//                    // $Edittext_value = $_POST['Edittext_value'];
+//                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+//                    Log.e("PV", "1" + mUsermail);
+//                    //Execute HTTP Post Requ
+//                    response = httpclient.execute(httppost);
+//                    Log.e("PV", "2");
+//                    httpentity = response.getEntity();
+//                    isr = httpentity.getContent();
+//                    BufferedReader reader = new BufferedReader(new InputStreamReader(isr, "UTF-8"), 8);
+//                    StringBuilder sb = new StringBuilder();
+//                    String line = null;
+//                    while ((line = reader.readLine()) != null) {
+//                        sb.append(line + "\n");
+//                    }
+//                    result = sb.toString();
+//
+//
+//                    runOnUiThread(new Runnable() {
+//                        public void run() {
+//                            // tv.setText("Response from PHP : " + response);
+//                           // dialog.dismiss();
+//                            pDialog.dismissWithAnimation();
+//                           // tr.setRefreshing(false);
+//                        }
+//                    });
+//
+//                    if (!(result.startsWith("F"))) {
+//                        Log.i("andro", result);
+//                        try {
+//                            jso = new JSONObject(result);
+//                            cart_user_ticket = jso.getJSONArray("result");
+//                            for (int i = 0; i < cart_user_ticket.length(); i++) {
+//                                JSONObject c = cart_user_ticket.getJSONObject(i);
+//                               // uniqueID = c.getString("uniqueID");
+//                                userName = c.getString("userName");
+//                                eventName = c.getString("eventName");
+//                                eventID = c.getString("eventID");
+//                                eventPrice = c.getString("eventPrice");
+//                                paid = c.getString("paid");
+//                                played = c.getString("played");
+//                                eventLocation = c.getString("eventLocation");
+//                                Log.e("result",userName+eventName+eventID+eventPrice+"paid_php"+paid);
+//
+//                                userName_ticket.add(userName);
+//                                eventName_ticket.add(eventName);
+//                                eventID_ticket.add(eventID);
+//                                eventPrice_ticket.add(eventPrice);
+//                                paid_ticket.add(paid);
+//                                played_ticket.add(played);
+//                                eventLocation_ticket.add(eventLocation);
+//                            }
+//
+//                            tickets.this.runOnUiThread(new Runnable() {
+//                                @Override
+//                                public void run() {
+//
+//                                    ad = new TicketList(tickets.this, userName_ticket, eventName_ticket, eventID_ticket, eventPrice_ticket,  played_ticket, paid_ticket, eventLocation_ticket);
+//                                    ticket = (ListView)findViewById(R.id.ticket_list_show);
+//                                    ticket.setAdapter(ad);
+//                                    total = (Button) findViewById(R.id.total);
+//                                    Log.e("PV", "bocha tanla");
+//                                    for(int i=0;i<eventPrice_ticket.size();i++)
+//                                    {
+//                                        Log.e("PV","sum="+eventPrice_ticket.get(i));
+//                                        cart_sum+=Integer.parseInt(eventPrice_ticket.get(i));
+//                                    }
+//                                    Log.e("PV","sum="+cart_sum);
+//                                    total.setText(String.valueOf(cart_sum));
+//                                    noTickets = (ImageView) findViewById(R.id.noTicket);
+//                                    if(cart_sum==0){
+//                                        noTickets.setVisibility(View.VISIBLE);
+//                                        Toast.makeText(tickets.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+//                                    }
+//                                }
+//                            });
+//
+//
+//                        } catch (JSONException e) {
+//                            e.printStackTrace();
+//                        }
+//                    } else {
+//                        Log.e("PV", "else_case_failed");
+//                    }
+//                } catch (Exception e) {
+//                }
+//
+//            }
+//        });
+//        t.start();
 
 
     }
 
+    public void json(String response) {
+        try {
+            jso = new JSONObject(response);
+            cart_user_ticket = jso.getJSONArray("result");
+            for (int i = 0; i < cart_user_ticket.length(); i++) {
+                JSONObject c = cart_user_ticket.getJSONObject(i);
+                // uniqueID = c.getString("uniqueID");
+                userName = c.getString("userName");
+                eventName = c.getString("eventName");
+                eventID = c.getString("eventID");
+                eventPrice = c.getString("eventPrice");
+                paid = c.getString("paid");
+                played = c.getString("played");
+                eventLocation = c.getString("eventLocation");
+                Log.e("result", userName + eventName + eventID + eventPrice + "paid_php" + paid);
+
+                userName_ticket.add(userName);
+                eventName_ticket.add(eventName);
+                eventID_ticket.add(eventID);
+                eventPrice_ticket.add(eventPrice);
+                paid_ticket.add(paid);
+                played_ticket.add(played);
+                eventLocation_ticket.add(eventLocation);
+            }
+
+        {
+            ad = new TicketList(tickets.this, userName_ticket, eventName_ticket, eventID_ticket, eventPrice_ticket,  played_ticket, paid_ticket, eventLocation_ticket);
+            ticket = (ListView)findViewById(R.id.ticket_list_show);
+            ticket.setAdapter(ad);
+            total = (Button) findViewById(R.id.total);
+            Log.e("PV", "bocha tanla");
+            for(int i=0;i<eventPrice_ticket.size();i++)
+            {
+                Log.e("PV","sum="+eventPrice_ticket.get(i));
+                cart_sum+=Integer.parseInt(eventPrice_ticket.get(i));
+            }
+            Log.e("PV","sum="+cart_sum);
+            total.setText(String.valueOf(cart_sum));
+            noTickets = (ImageView) findViewById(R.id.noTicket);
+            if(cart_sum==0){
+                noTickets.setVisibility(View.VISIBLE);
+                Toast.makeText(tickets.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+            }
+            }
+        }catch (JSONException e)
+        {
+
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

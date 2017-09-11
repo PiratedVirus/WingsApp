@@ -37,7 +37,7 @@ public class GenericEventHome extends AppCompatActivity {
 
     TextView gen_Name, gen_Location, gen_Info, gen_Date, gen_person_name, gen_Price, gen_person_num ;
     Button add_to_cart;
-    public static final String PHP_URL = "https://scouncilgeca.com/WingsApp/sendEventData.php";
+    public static final String PHP_URL = "https://scouncilgeca.com/wingsapp/sendEventData.php";
 
     // Firebase instance variables
     private FirebaseAuth mAuth;

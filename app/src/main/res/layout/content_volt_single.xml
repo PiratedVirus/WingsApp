@@ -33,7 +33,7 @@
                 android:paddingRight="85dp"
                 android:text="Jay Hind"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-                android:textColor="#8ECCF6"
+                android:textColor="#6582EC"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -50,7 +50,7 @@
             android:layout_weight="1"
 
             android:textAppearance="@style/Base.TextAppearance.AppCompat"
-            android:textColor="#8ECCF6"
+            android:textColor="#6582EC"
             android:textSize="14sp" />
 
 
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Classroom Complex"
-                android:textColor="#8ECCF6"
+                android:textColor="#6582EC"
                 android:textSize="13sp"
                 android:textStyle="normal" />
 

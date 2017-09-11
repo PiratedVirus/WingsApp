@@ -33,7 +33,7 @@ public class VoltAdapter extends ArrayAdapter<String> {
 
     public VoltAdapter(Activity context,
                          ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice, ArrayList group_list) {
-        super(context, R.layout.content_talent_single, eventName_list);
+        super(context, R.layout.content_volt_single, eventName_list);
         this.context = context;
         this.eventName_list = eventName_list;
         this.eventDetails_list = eventDetails_list;
@@ -80,7 +80,7 @@ public class VoltAdapter extends ArrayAdapter<String> {
 
 
         rowView.setBackgroundResource(R.drawable.card_bg_5_rounded);
-        EventInfo.setText(smallInfo);
+        EventInfo.setText(smallInfo+"...");
         EventName.setText((CharSequence)eventName_list.get(position));
         EventLocation.setText((CharSequence)eventLocation.get(position));
         EventDate.setText((CharSequence)eventDate.get(position));
@@ -94,7 +94,7 @@ public class VoltAdapter extends ArrayAdapter<String> {
             public void onClick(View v) {
                 Toast.makeText(context, "AdapterClick"+EventName.getText().toString(), Toast.LENGTH_SHORT).show();
 
-                Intent eventi = new Intent(getContext(), TalentHelper.class);
+                Intent eventi = new Intent(getContext(), VoltHelper.class);
                 eventi.putExtra("name", EventName.getText().toString());
                 eventi.putExtra("location", EventLocation.getText().toString());
                 eventi.putExtra("desc", fullInfo);

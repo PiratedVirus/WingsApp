@@ -34,7 +34,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class Details extends AppCompatActivity {
 
-    public static final String PHP_SAVE_USER = "https://scouncilgeca.com/WingsApp/saveDetails.php";
+    public static final String PHP_SAVE_USER = "https://scouncilgeca.com/wingsapp/savedetails.php";
     SharedPreferences sharedpreferences;
     public static final String MYPREFERENCES = "MyPrefs";
 
