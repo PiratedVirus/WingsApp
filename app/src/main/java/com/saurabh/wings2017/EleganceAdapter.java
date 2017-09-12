@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -93,7 +92,7 @@ public class EleganceAdapter extends ArrayAdapter<String> {
         rel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, "AdapterClick"+EventName.getText().toString(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "AdapterClick"+EventName.getText().toString(), Toast.LENGTH_SHORT).show();
 
                 Intent eventi = new Intent(getContext(), EleganceHelper.class);
                 eventi.putExtra("name", EventName.getText().toString());

@@ -39,7 +39,7 @@ public class CustomList extends ArrayAdapter<String> {
     private final ArrayList eventPrice_list;
     private final ArrayList uniqueID_list;
     private final ArrayList eventLocation;
-    TextView t, add_event,remove;
+    TextView t, add_event;
     ImageView emptycart,explore,checkout;
     public static final String PHP_GET_CART = "https://scouncilgeca.com/wingsapp/getCartData.php";
     public static final String PHP_DELETE_CART = "https://scouncilgeca.com/wingsapp/deleteEventCart.php";
@@ -50,7 +50,7 @@ public class CustomList extends ArrayAdapter<String> {
 
     public CustomList(Activity context,
                       ArrayList userName_list, ArrayList eventName_list, ArrayList eventID_list, ArrayList eventPrice_list, ArrayList uniqueID_list, ArrayList eventLocation, TextView t,
-                                ImageView emptycart , ImageView explore, ImageView checkout, TextView add_event, TextView remove ) {
+                                ImageView emptycart , ImageView explore, ImageView checkout, TextView add_event) {
         super(context, R.layout.cart_list, userName_list);
         this.context = context;
         this.userName_list = userName_list;
@@ -60,7 +60,6 @@ public class CustomList extends ArrayAdapter<String> {
         this.uniqueID_list = uniqueID_list;
         this.eventLocation = eventLocation;
         this.t = t;
-        this.remove = remove;
         this.emptycart = emptycart;
         this.explore = explore;
         this.checkout = checkout;
@@ -95,6 +94,7 @@ public class CustomList extends ArrayAdapter<String> {
         TextView CartEventLocation = (TextView) rowView.findViewById(R.id.CartEventLocation);
         final TextView pricetag = (TextView) rowView.findViewById(R.id.PriceTag);
         final TextView uniqueID = (TextView) rowView.findViewById(R.id.uniqueID);
+        TextView remove = (TextView)rowView.findViewById(R.id.removeBtn);
 
 
         Typeface mont = Typeface.createFromAsset(getContext().getAssets(),  "fonts/mont.ttf");
@@ -102,7 +102,7 @@ public class CustomList extends ArrayAdapter<String> {
         CartEventName.setTypeface(mont);
         CartEventLocation.setTypeface(mont);
         pricetag.setTypeface(mont);
-//        remove.setTypeface(mont);
+        remove.setTypeface(mont);
 
 
 

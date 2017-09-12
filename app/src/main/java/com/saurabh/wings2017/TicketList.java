@@ -69,7 +69,7 @@ public class TicketList extends ArrayAdapter<String> {
         CartEventName.setTypeface(mont);
         CartEventLocation.setTypeface(mont);
         pricetag.setTypeface(mont);
-//        remove.setTypeface(mont);
+
 
 
         Log.e("PV", "paid bochesh = "+paid.get(position));

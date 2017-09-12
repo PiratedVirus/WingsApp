@@ -1,7 +1,6 @@
 package com.saurabh.wings2017;
 
 
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -11,7 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -22,12 +20,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dynamitechetan.flowinggradient.FlowingGradientClass;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.messaging.FirebaseMessagingService;
-import com.google.firebase.messaging.RemoteMessage;
 import com.squareup.picasso.Picasso;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
@@ -330,6 +327,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent TicketIntent = new Intent(MainActivity.this,tickets.class);
             startActivity(TicketIntent);
+            Toast.makeText(this, "Swipe down to Refresh", Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -431,24 +429,24 @@ public class MainActivity extends AppCompatActivity {
         Log.e("PV", "sendRegistrationToServer: " + token);
     }
 
-    public class MyFirebaseMessagingService extends FirebaseMessagingService {
-        @Override
-        public void onMessageReceived(RemoteMessage remoteMessage) {
-            super.onMessageReceived(remoteMessage);
-
-            Firebase_class fb = new Firebase_class();
-            fb.onMessageReceived(remoteMessage);
-            Log.d("msg", "onMessageReceived: " + remoteMessage.getData().get("message"));
-            NotificationCompat.Builder builder = new  NotificationCompat.Builder(this)
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setContentTitle("Wings App")
-                    .setContentText(remoteMessage.getData().get("message"));
-            NotificationManager manager = (NotificationManager)     getSystemService(NOTIFICATION_SERVICE);
-            manager.notify(0, builder.build());
-
-        }
-
-    }
+//    public class MyFirebaseMessagingService extends FirebaseMessagingService {
+//        @Override
+//        public void onMessageReceived(RemoteMessage remoteMessage) {
+//            super.onMessageReceived(remoteMessage);
+//
+//            Firebase_class fb = new Firebase_class();
+//            fb.onMessageReceived(remoteMessage);
+//            Log.d("msg", "onMessageReceived: " + remoteMessage.getData().get("message"));
+//            NotificationCompat.Builder builder = new  NotificationCompat.Builder(this)
+//                    .setSmallIcon(R.mipmap.ic_launcher)
+//                    .setContentTitle("Wings App")
+//                    .setContentText(remoteMessage.getData().get("message"));
+//            NotificationManager manager = (NotificationManager)     getSystemService(NOTIFICATION_SERVICE);
+//            manager.notify(0, builder.build());
+//
+//        }
+//
+//    }
 
     public void viewSchedule(View v){
         Intent iSchedule = new Intent(MainActivity.this,BinarySchedule.class);

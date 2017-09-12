@@ -85,7 +85,7 @@ public class Cart extends AppCompatActivity {
     TextView total;
     SweetAlertDialog pDialog;
     ImageView emptyCart,exploreBtn,checkout;
-    TextView cartText,secText,removeText;
+    TextView cartText,secText;
     JSONArray cart_user_list;
     FabSpeedDial fab;
     String 	userName, eventName, eventID, eventPrice,eventLocationString;
@@ -133,7 +133,7 @@ public class Cart extends AppCompatActivity {
         exploreBtn = (ImageView) findViewById(R.id.exploreBtn);
         secText = (TextView) findViewById(R.id.cart_sec_text);
         checkout = (ImageView) findViewById(R.id.chkOutBtn);
-        removeText = (TextView) findViewById(R.id.removeBtn);
+
 
 
 
@@ -185,116 +185,6 @@ public class Cart extends AppCompatActivity {
 
 
 
-
-
-//
-//            Thread t = new Thread(new Runnable() {
-//                public void run() {
-//
-//
-//                    try {
-//                        httpclient = new DefaultHttpClient();
-//                        httppost = new HttpPost(PHP_GET_CART); // make sure the url is correct.
-//                        //add your data
-//                        nameValuePairs = new ArrayList<NameValuePair>(1);
-//                        // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
-//                        nameValuePairs.add(new BasicNameValuePair("year", "fe"));
-//
-//                        // $Edittext_value = $_POST['Edittext_value'];
-//                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-//                        Log.e("andro", "1" + mUsermail);
-//                        //Execute HTTP Post Request
-//                        response = httpclient.execute(httppost);
-//
-//                        Log.e("andro", "2");
-//                        httpentity = response.getEntity();
-//                        is[0] = httpentity.getContent();
-//                        BufferedReader reader = new BufferedReader(new InputStreamReader(is[0], "UTF-8"), 8);
-//                        StringBuilder sb = new StringBuilder();
-//                        String line = null;
-//                        while ((line = reader.readLine()) != null) {
-//                            sb.append(line + "\n");
-//                        }
-//                        result = sb.toString();
-////            ResponseHandler<String> responseHandler = new BasicResponseHandler();
-////            final String response = httpclient.execute(httppost, responseHandler);
-////            System.out.println("Response : " + response);
-//
-//                        runOnUiThread(new Runnable() {
-//                            public void run() {
-//                                // tv.setText("Response from PHP : " + response);
-//                                pDialog.dismiss();
-//                            }
-//                        });
-//                        Log.e("PV","3+"+result);
-//
-//                        if (!(result.startsWith("F"))) {
-//                            Log.i("andro", result);
-//                            try {
-//                                jso = new JSONObject(result);
-//                                cart_user_list = jso.getJSONArray("result");
-//                                for (int i = 0; i < cart_user_list.length(); i++) {
-//                                    JSONObject c = cart_user_list.getJSONObject(i);
-//                                    uniqueID = c.getString("uniqueID");
-//                                    userName = c.getString("userName");
-//                                    eventName = c.getString("eventName");
-//                                    eventID = c.getString("eventID");
-//                                    eventPrice = c.getString("eventPrice");
-//                                    eventLocationString = c.getString("eventLocation");
-//                                    Log.e("result",userName+eventName+eventID+eventPrice+eventLocationString);
-//                                    userName_list.add(userName);
-//                                    eventName_list.add(eventName);
-//                                    eventID_list.add(eventID);
-//                                    eventPrice_list.add(eventPrice);
-//                                    uniqueID_list.add(uniqueID);
-//                                    eventLocation.add(eventLocationString);
-//                                }
-//
-//                                Cart.this.runOnUiThread(new Runnable() {
-//                                    @Override
-//                                    public void run() {
-//
-//                                        total = (TextView) findViewById(R.id.total);
-//                                        ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list,
-//                                                eventLocation, total, emptyCart, exploreBtn, checkout, secText);
-//                                        cart = (ListView)findViewById(R.id.cart_list_show);
-//                                        cart.setAdapter(ad);
-//
-//                                        for(int i=0;i<eventPrice_list.size();i++)
-//                                        {
-//                                            Log.e("PV","sum="+eventPrice_list.get(i));
-//                                            cart_sum+=Integer.parseInt(eventPrice_list.get(i));
-//                                        }
-//                                        Log.e("PV","sum="+cart_sum);
-//                                        total.setText("Amount   ₹"+String.valueOf(cart_sum));
-//                                        if(cart_sum==0){
-//                                            emptyCart.setVisibility(View.VISIBLE);
-//                                            cartText.setVisibility(View.VISIBLE);
-//                                            exploreBtn.setVisibility(View.VISIBLE);
-//                                            secText.setVisibility(View.VISIBLE);
-//                                            checkout.setVisibility(View.GONE);
-//                                            total.setVisibility(View.GONE);
-//                                            Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
-//                                        }
-//                                    }
-//                                });
-//
-//
-//                            } catch (JSONException e) {
-//                                e.printStackTrace();
-//                            }
-//                        } else {
-//                            Log.e("PV", "else_case_failed");
-//                        }
-//                    } catch (Exception e) {
-//                    }
-//
-//                }
-//            });
-//            t.start();
-
-
-
     }
 
     public void json(String response) {
@@ -321,7 +211,7 @@ public class Cart extends AppCompatActivity {
 
             total = (TextView) findViewById(R.id.total);
             ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list,
-                    eventLocation, total, emptyCart, exploreBtn, checkout, secText, removeText);
+                    eventLocation, total, emptyCart, exploreBtn, checkout, secText);
             cart = (ListView) findViewById(R.id.cart_list_show);
             cart.setAdapter(ad);
 

@@ -337,16 +337,16 @@ public class Elegance extends AppCompatActivity  {
         eventprice.add("100");
         eventprice.add("100");
 
-        group_limit.add("1");
-        group_limit.add("4");
-        group_limit.add("5");
-        group_limit.add("6");
         group_limit.add("0");
         group_limit.add("0");
+        group_limit.add("20");
+        group_limit.add("0");
+        group_limit.add("12");
+        group_limit.add("0");
+        group_limit.add("8");
         group_limit.add("0");
         group_limit.add("0");
-        group_limit.add("0");
-        group_limit.add("0");
+        group_limit.add("2");
 
 
 

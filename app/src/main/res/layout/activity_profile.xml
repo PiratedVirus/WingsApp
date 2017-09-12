@@ -1,241 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical">
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="0dp"
+    android:layout_marginTop="8dp"
+    app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.347">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:foregroundGravity="center_horizontal"
+        app:srcCompat="@drawable/img_frame"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp" />
+
+    <TextView
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Saurabh Kulkarni"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/imageView10"
+
+        android:layout_marginTop="23dp" />
+
+    <ImageView
+        android:id="@+id/userImage"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+
+        app:srcCompat="@drawable/man"
 
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="368dp"
-        android:layout_height="551dp"
-        android:fillViewport="true"
-        app:layout_collapseParallaxMultiplier="1.0"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
-        <RelativeLayout
-            android:id="@+id/relate"
-            android:layout_width="395dp"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="58dp">
+        android:layout_marginTop="17dp"
+        android:layout_alignTop="@+id/imageView10"
+        android:layout_alignStart="@+id/imageView10" />
 
-            <ImageView
-                android:id="@+id/imageView10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="28dp"
-                app:layout_constraintHorizontal_bias="0.509"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/img_frame" />
+    <ImageView
+        android:id="@+id/mailImg"
+        android:layout_width="35dp"
+        android:layout_height="25dp"
 
-            <TextView
-                android:id="@+id/userName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        app:srcCompat="@drawable/mail"
 
+        android:layout_alignTop="@+id/userNameLabel"
+        android:layout_alignEnd="@+id/imageView14"
+        android:layout_marginTop="9dp" />
 
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/userImage"
-                android:layout_marginTop="14dp"
+    <TextView
+        android:id="@+id/userNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="95dp"
+        android:text="Mail Address"
+        android:textAlignment="center"
+        android:textColor="#E40046"
+        android:textSize="16sp"
 
-                android:text="Saurabh Kulkarni"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@+id/imageView10" />
+        android:layout_below="@+id/userName"
 
-            <ImageView
-                android:id="@+id/userImage"
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:layout_alignTop="@+id/imageView10"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="28dp"
-                android:layout_toEndOf="@+id/mailImg"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView10"
-                app:layout_constraintHorizontal_bias="0.479"
-                app:layout_constraintLeft_toLeftOf="@+id/imageView10"
-                app:layout_constraintRight_toRightOf="@+id/imageView10"
-                app:layout_constraintTop_toTopOf="@+id/imageView10"
-                app:layout_constraintVertical_bias="0.416"
-                app:srcCompat="@drawable/man" />
+        android:layout_marginTop="20dp" />
 
-            <ImageView
-                android:id="@+id/mailImg"
-                android:layout_width="35dp"
-                android:layout_height="25dp"
-                android:layout_alignStart="@+id/imageView14"
-                android:layout_alignTop="@+id/userNameLabel"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="10sp"
-                app:layout_constraintLeft_toLeftOf="parent"
+    <TextView
+        android:id="@+id/userMail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
+        android:layout_marginRight="8dp"
 
-                app:layout_constraintRight_toRightOf="parent"
-                app:srcCompat="@drawable/mail" />
+        android:text="saurabhk201@gmail.com"
+        android:textColor="#4A4A4A"
+        android:textSize="18sp"
 
-            <TextView
-                android:id="@+id/userNameLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/userName"
-                android:layout_marginLeft="17dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="18dp"
-                android:layout_marginTop="27dp"
-                android:layout_toEndOf="@+id/mailImg"
-                android:text="Mail Address"
-                android:textAlignment="center"
-                android:textColor="#E40046"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toRightOf="@+id/mailImg"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.635" />
+        android:layout_below="@+id/userNameLabel"
+        android:layout_alignStart="@+id/userNameLabel" />
 
-            <TextView
-                android:id="@+id/userMail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/userNameLabel"
-                android:layout_below="@+id/userNameLabel"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="5sp"
-                android:text="saurabhk201@gmail.com"
-                android:textColor="#4A4A4A"
-                android:textSize="18sp"
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:paddingLeft="25sp"
+        android:layout_marginTop="30sp"
+        android:paddingRight="25sp"
+        android:layout_below="@id/userMail"
+        app:srcCompat="@drawable/bill_line"
+         />
 
-                app:layout_constraintBottom_toTopOf="@+id/imageView13"
-                app:layout_constraintLeft_toRightOf="@+id/mailImg"
-                app:layout_constraintTop_toBottomOf="@+id/userNameLabel" />
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="25dp"
+        android:layout_height="35dp"
 
-            <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/userMail"
-                android:layout_marginTop="15sp"
-                android:paddingLeft="25sp"
-                android:paddingRight="25sp"
-                app:srcCompat="@drawable/bill_line" />
+        app:srcCompat="@drawable/phone"
+        android:layout_marginBottom="70sp"
+        android:layout_above="@+id/linearLayout2"
+        android:layout_toStartOf="@+id/textView9"
+        android:layout_marginEnd="25dp" />
 
-            <ImageView
-                android:id="@+id/imageView14"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
-                android:layout_alignBottom="@+id/userMobile"
-                android:layout_alignParentStart="true"
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView13"
+        android:text="Phone Number"
+        android:textColor="#E40046"
+        android:textSize="16sp"
 
-                android:layout_marginLeft="20dp"
+        android:layout_alignTop="@+id/imageView14"
+        android:layout_alignStart="@+id/userNameLabel" />
 
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="34dp"
-                app:srcCompat="@drawable/phone" />
+    <TextView
+        android:id="@+id/userMobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/linearLayout2"
+        android:text="8149306224"
+        android:textColor="#4A4A4A"
+        android:textSize="18sp"
 
-            <TextView
-                android:id="@+id/textView9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                android:layout_alignStart="@+id/userMail"
-                android:layout_below="@+id/imageView13"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="17dp"
-                android:text="Phone Number"
-                android:textColor="#E40046"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toRightOf="@+id/imageView14"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.798" />
-
-            <TextView
-                android:id="@+id/userMobile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignStart="@+id/textView9"
-                android:layout_below="@+id/textView9"
-                android:layout_marginTop="5sp"
-                android:text="8149306224"
-                android:textColor="#4A4A4A"
-                android:textSize="18sp"
-                app:layout_constraintLeft_toRightOf="@+id/imageView14"
-                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/textView9"
+        android:layout_alignStart="@+id/textView9" />
 
 
-        </RelativeLayout>
-    </ScrollView>
+    <!--</android.support.constraint.ConstraintLayout>-->
+    <!--</ScrollView>-->
 
 
-        <LinearLayout
-            android:layout_width="411dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/list_item"
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/linearLayout2"
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/list_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        tools:layout_constraintLeft_creator="1">
+
+        <ImageView
+            android:id="@+id/home_btn"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_alignStart="@+id/imageView10"
+            android:layout_alignTop="@+id/logoutBtn"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="5sp"
+            android:layout_toStartOf="@+id/logoutBtn"
+            android:onClick="home"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:layout_conversion_absoluteHeight="60dp"
-            tools:layout_conversion_absoluteWidth="411dp"
-            tools:layout_conversion_absoluteX="0dp"
-            tools:layout_conversion_absoluteY="598dp"
-            tools:layout_editor_absoluteX="0dp">
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/logoutBtn"
+            app:srcCompat="@drawable/home" />
 
-            <ImageView
-                android:id="@+id/home_btn"
-                android:layout_width="170dp"
-                android:layout_height="50dp"
-                android:layout_alignStart="@+id/imageView10"
-                android:layout_alignTop="@+id/logoutBtn"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginTop="5sp"
-                android:layout_toStartOf="@+id/logoutBtn"
-                android:onClick="home"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/logoutBtn"
-                app:srcCompat="@drawable/home" />
-
-            <ImageView
-                android:id="@+id/logoutBtn"
-                android:layout_width="170dp"
-                android:layout_height="50dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="5dp"
-                android:layout_marginEnd="11dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="5sp"
-                android:onClick="logout"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:srcCompat="@drawable/logout_btn" />
+        <ImageView
+            android:id="@+id/logoutBtn"
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="5sp"
+            android:onClick="logout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:srcCompat="@drawable/logout_btn" />
 
 
-        </LinearLayout>
+    </LinearLayout>
 
-    </android.support.constraint.ConstraintLayout>
+</RelativeLayout>
+
 
 
 

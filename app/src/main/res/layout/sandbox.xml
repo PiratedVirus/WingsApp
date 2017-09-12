@@ -3,17 +3,25 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:weightSum="15">
+    android:weightSum="10">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="top"
-        android:layout_weight="5"
-        android:background="@drawable/card_modi_copy">
+        android:layout_gravity="center"
+        android:layout_weight="5">
 
-    </ImageView>
+        <ImageView
+            android:layout_gravity="center"
+
+            android:id="@+id/userImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/man" />
+
+    </LinearLayout>
 
     <ImageView
         android:layout_width="fill_parent"
@@ -23,12 +31,7 @@
         android:background="@drawable/card_modi_copy">
     </ImageView>
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="bottom"
-        android:layout_weight="5"
-        android:background="@drawable/card_modi_copy">
-    </ImageView>
+
+
 
 </LinearLayout>

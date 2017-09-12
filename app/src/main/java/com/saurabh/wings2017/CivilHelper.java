@@ -212,7 +212,7 @@ public class CivilHelper extends AppCompatActivity {
                         new SweetAlertDialog(CivilHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                                 .setTitleText("Add Group Members")
                                 .setContentText("This event contains at max "+member+" members!")
-                                .setCustomImage(R.drawable.no_internet)
+                                .setCustomImage(R.drawable.team_group)
                                 .setConfirmText("Add Group")
                                 .setCancelText("Continue Single")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {

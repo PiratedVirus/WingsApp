@@ -210,8 +210,7 @@ public class CodeHelper extends AppCompatActivity {
 
                         new SweetAlertDialog(CodeHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                                 .setTitleText("Add Group Members")
-                                .setContentText("This event contains at max "+member+" members!")
-                                .setCustomImage(R.drawable.no_internet)
+                                .setContentText("This event contains at max "+member+" members!")                                 .setCustomImage(R.drawable.team_group)
                                 .setConfirmText("Add Group")
                                 .setCancelText("Continue Single")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {

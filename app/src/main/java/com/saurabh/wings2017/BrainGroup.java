@@ -152,7 +152,7 @@ public class BrainGroup extends AppCompatActivity {
             YoYo.with(Techniques.Shake)
                     .duration(500)
                     .playOn(groupname);
-            Toast.makeText(this, "Oops! You've exceeded group member limit! Maximum BrainGroup Limit : "+xyz, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Oops! You've exceeded group member limit! Maximum Group Limit : "+xyz, Toast.LENGTH_SHORT).show();
         }
 
         else {

@@ -16,9 +16,9 @@
     AndroidManifest.xml
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
@@ -122,24 +122,32 @@
         <activity android:name=".Faq" />
         <activity android:name=".Mechanico" />
         <activity android:name=".MechanicoHelper" />
-        <activity android:name=".CivilGroup"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".CodeGroup"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".FunGroup"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".MechGroup"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".TalentGroup"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".RobotGroup"
-            android:windowSoftInputMode="adjustPan"/>
-        <activity android:name=".VoltGroup"
-            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".CivilGroup"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".CodeGroup"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".FunGroup"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".MechGroup"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".TalentGroup"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".RobotGroup"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".VoltGroup"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".BinarySchedule" />
         <activity android:name=".EleganceSchedule" />
         <activity android:name=".EleganceDayOne" />
-        <activity android:name=".EleganceDayTwo"></activity>
+        <activity android:name=".EleganceDayTwo" />
+        <activity android:name=".EleganceGroup"></activity>
     </application>
 
 </manifest>
