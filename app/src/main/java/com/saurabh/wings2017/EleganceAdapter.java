@@ -2,6 +2,7 @@ package com.saurabh.wings2017;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,11 +28,12 @@ public class EleganceAdapter extends ArrayAdapter<String> {
     private final ArrayList eventContactNum_list;
     private final ArrayList eventDate;
     private final ArrayList eventprice;
+    private final ArrayList group_list;
 
 
 
     public EleganceAdapter(Activity context,
-                        ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice) {
+                           ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice, ArrayList group_list) {
         super(context, R.layout.content_elegance_single_list, eventName_list);
         this.context = context;
         this.eventName_list = eventName_list;
@@ -41,6 +43,7 @@ public class EleganceAdapter extends ArrayAdapter<String> {
         this.eventContactNum_list = eventContactNum_list;
         this.eventDate = eventDate;
         this.eventprice = eventprice;
+        this.group_list = group_list;
 
 
         Log.e("PV","bochya"+eventName_list);
@@ -66,6 +69,11 @@ public class EleganceAdapter extends ArrayAdapter<String> {
 
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont((Activity) getContext(), "fonts/mont.ttf", true);
+
+        Typeface mont = Typeface.createFromAsset(getContext().getAssets(),  "fonts/mont.ttf");
+        EventName.setTypeface(mont);
+        EventInfo.setTypeface(mont);
+        EventLocation.setTypeface(mont);
 
         final String fullInfo = eventDetails_list.get(position).toString();
         String smallInfo = fullInfo.substring(0, Math.min(fullInfo.length(), 75));
@@ -95,6 +103,7 @@ public class EleganceAdapter extends ArrayAdapter<String> {
                 eventi.putExtra("date", EventDate.getText().toString());
                 eventi.putExtra("person_name", EventPerson.getText().toString());
                 eventi.putExtra("person_num", Eventcontact.getText().toString());
+                eventi.putExtra("members", (String)group_list.get(position));
 
 //
 

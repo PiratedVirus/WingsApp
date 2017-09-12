@@ -245,8 +245,14 @@ public class MainActivity extends AppCompatActivity {
         printUserDetails();
         countDots();
 
+        float scale = getResources().getDisplayMetrics().density;
+
+        int top = (int)(55*scale + 0.5f);
+        int bottom = (int)(10*scale + 0.5f);
+        int left = (int)(55*scale + 0.5f);
+
         viewPager.setClipToPadding(false);
-        viewPager.setPadding(170 , 60, 170, 0);
+        viewPager.setPadding(top , bottom, left, 0);
         viewPager.setPageMargin(90);
         viewPager.setCurrentItem(0);
 

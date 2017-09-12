@@ -208,13 +208,6 @@ public class Checkout extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
                         Intent confirmCartIntent = new Intent(Checkout.this,confirmOrder.class);
                         startActivity(confirmCartIntent);
                         finish();
