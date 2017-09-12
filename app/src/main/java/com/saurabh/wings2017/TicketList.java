@@ -2,6 +2,7 @@ package com.saurabh.wings2017;
 
 import android.app.Activity;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +49,6 @@ public class TicketList extends ArrayAdapter<String> {
 
 
 
-
         Log.e("PV","TicketList");
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView= inflater.inflate(R.layout.ticket_list, null, true);
@@ -63,6 +63,13 @@ public class TicketList extends ArrayAdapter<String> {
         TextView CartEventInfo = (TextView) rowView.findViewById(R.id.CartEventInfo);
         TextView CartEventLocation = (TextView) rowView.findViewById(R.id.CartEventLocation);
         TextView pricetag = (TextView) rowView.findViewById(R.id.PriceTag);
+
+        Typeface mont = Typeface.createFromAsset(getContext().getAssets(),  "fonts/mont.ttf");
+        CartEventInfo.setTypeface(mont);
+        CartEventName.setTypeface(mont);
+        CartEventLocation.setTypeface(mont);
+        pricetag.setTypeface(mont);
+//        remove.setTypeface(mont);
 
 
         Log.e("PV", "paid bochesh = "+paid.get(position));

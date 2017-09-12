@@ -85,7 +85,7 @@ public class Cart extends AppCompatActivity {
     TextView total;
     SweetAlertDialog pDialog;
     ImageView emptyCart,exploreBtn,checkout;
-    TextView cartText,secText;
+    TextView cartText,secText,removeText;
     JSONArray cart_user_list;
     FabSpeedDial fab;
     String 	userName, eventName, eventID, eventPrice,eventLocationString;
@@ -133,6 +133,7 @@ public class Cart extends AppCompatActivity {
         exploreBtn = (ImageView) findViewById(R.id.exploreBtn);
         secText = (TextView) findViewById(R.id.cart_sec_text);
         checkout = (ImageView) findViewById(R.id.chkOutBtn);
+        removeText = (TextView) findViewById(R.id.removeBtn);
 
 
 
@@ -320,7 +321,7 @@ public class Cart extends AppCompatActivity {
 
             total = (TextView) findViewById(R.id.total);
             ad = new CustomList(Cart.this, userName_list, eventName_list, eventID_list, eventPrice_list, uniqueID_list,
-                    eventLocation, total, emptyCart, exploreBtn, checkout, secText);
+                    eventLocation, total, emptyCart, exploreBtn, checkout, secText, removeText);
             cart = (ListView) findViewById(R.id.cart_list_show);
             cart.setAdapter(ad);
 
