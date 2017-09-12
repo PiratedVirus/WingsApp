@@ -337,7 +337,7 @@ public class Cart extends AppCompatActivity {
                 secText.setVisibility(View.VISIBLE);
                 checkout.setVisibility(View.GONE);
                 total.setVisibility(View.GONE);
-                Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(Cart.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
             }
 
 

@@ -79,7 +79,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/talent_location"
+                            android:src="@drawable/volt_location"
                             android:layout_margin="10dp"/>
 
                         <TextView
@@ -111,7 +111,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/talent_date"
+                            android:src="@drawable/volt_date"
                             android:layout_margin="10dp"/>
 
                         <TextView

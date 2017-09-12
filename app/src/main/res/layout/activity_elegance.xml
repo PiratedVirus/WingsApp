@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:background="@drawable/brain">
+    android:background="@drawable/elegance">
 
     <TextView
         android:layout_width="match_parent"
@@ -45,8 +45,8 @@
         app:fab_menu="@menu/fab"
         app:useCompatPadding="true"
         app:fab_extraMargin="-10sp"
-        app:fab_fabBackgroundColor="@color/purple_bright"
-        app:fab_miniFabBackgroundColor="@color/purple_bright"
+        app:fab_fabBackgroundColor="#FF2A6A"
+        app:fab_miniFabBackgroundColor="#FF2A6A"
         app:fab_miniFabTextColor="@color/cardview_light_background"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"

@@ -131,7 +131,7 @@ public class Brain extends AppCompatActivity  {
         fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
             @Override
             public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
-                Toast.makeText(getApplicationContext(), "Itemid = "+textView.getText().toString(), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getApplicationContext(), "Itemid = "+textView.getText().toString(), Toast.LENGTH_SHORT).show();
                 Log.e("PV", "itemID: " + itemId);
 
                 switch(textView.getText().toString()){
@@ -181,7 +181,7 @@ public class Brain extends AppCompatActivity  {
                 "Round 1: Aptitude \n" +
                 "                 On basic reasoning, logical thinking, multiple choice question will be on general studies and current events,  There will be 30-40 question for 30 to 45 minutes.\n" +
                 "\n\n" +
-                "Round 2: Group Discussion\n" +
+                "Round 2: BrainGroup Discussion\n" +
                 "               You will be given one topic at the instant and you have to speak on it and make good points. Only DISCUSSION no DEBATE.\n" +
                 "\n\n" +
                 "Round 3: Personal Interview\n" +

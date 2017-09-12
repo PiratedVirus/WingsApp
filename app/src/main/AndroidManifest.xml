@@ -4,8 +4,6 @@
     package="com.saurabh.wings2017">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
-
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -116,12 +114,32 @@
         <activity android:name=".Commitee" />
         <activity android:name=".Elegance" />
         <activity android:name=".EleganceHelper" />
-        <activity android:name=".Group" />
+        <activity
+            android:name=".BrainGroup"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".Volt" />
         <activity android:name=".VoltHelper" />
         <activity android:name=".Faq" />
         <activity android:name=".Mechanico" />
-        <activity android:name=".MechanicoHelper"></activity>
+        <activity android:name=".MechanicoHelper" />
+        <activity android:name=".CivilGroup"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".CodeGroup"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".FunGroup"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".MechGroup"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".TalentGroup"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".RobotGroup"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".VoltGroup"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity android:name=".BinarySchedule" />
+        <activity android:name=".EleganceSchedule" />
+        <activity android:name=".EleganceDayOne" />
+        <activity android:name=".EleganceDayTwo"></activity>
     </application>
 
 </manifest>

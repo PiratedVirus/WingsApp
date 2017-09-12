@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:layout_weight="5"
+        android:background="@drawable/day2"
+        android:gravity="center"
+        android:onClick="wingsSchedule">
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="180dp"
+            android:src="@drawable/wings_emboss"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:layout_weight="5"
+        android:background="@drawable/day1"
+        android:gravity="center"
+        android:onClick="eleganceSchedule">
+
+
+        <ImageView
+            android:layout_width="139dp"
+            android:layout_height="191dp"
+            android:src="@drawable/elegance_emboss"
+            />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingRight="6dp"
-                app:srcCompat="@drawable/code_location" />
+                app:srcCompat="@drawable/mechanico_location" />
 
             <TextView
                 android:id="@+id/CivilEventLocation"

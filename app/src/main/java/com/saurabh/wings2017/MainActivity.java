@@ -22,7 +22,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dynamitechetan.flowinggradient.FlowingGradientClass;
 import com.google.firebase.auth.FirebaseAuth;
@@ -121,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
             mUsername = mFirebaseUser.getDisplayName();
             mUsermail = mFirebaseUser.getEmail();
             mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
-            Toast.makeText(MainActivity.this,mUsername,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MainActivity.this,mUsername,Toast.LENGTH_SHORT).show();
 
             fireName.setText(mUsername);
             fireMail.setText(mUsermail);
@@ -290,7 +289,7 @@ public class MainActivity extends AppCompatActivity {
             Intent cartIntent = new Intent(MainActivity.this,Cart.class);
             cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
             cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
-            Toast.makeText(this, "Long press on event to delete!", Toast.LENGTH_LONG).show();
+           // Toast.makeText(this, "Long press on event to delete!", Toast.LENGTH_LONG).show();
             startActivity(cartIntent);
             finish();
         }
@@ -446,7 +445,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void viewSchedule(View v){
-        Intent iSchedule = new Intent(MainActivity.this,Schedule.class);
+        Intent iSchedule = new Intent(MainActivity.this,BinarySchedule.class);
         startActivity(iSchedule);
         finish();
     }

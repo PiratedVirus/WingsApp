@@ -80,7 +80,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/civil_location"
+                            android:src="@drawable/mechanico_location"
                             android:layout_margin="10dp"/>
 
                         <TextView
@@ -113,7 +113,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/civil_date"
+                            android:src="@drawable/mechanico_date"
                             android:layout_margin="10dp"/>
 
                         <TextView

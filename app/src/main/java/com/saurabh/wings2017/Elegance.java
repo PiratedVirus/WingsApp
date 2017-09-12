@@ -131,7 +131,7 @@ public class Elegance extends AppCompatActivity  {
         fab.addOnMenuItemClickListener(new FabSpeedDial.OnMenuItemClickListener() {
             @Override
             public void onMenuItemClick(FloatingActionButton fab, TextView textView, int itemId) {
-                Toast.makeText(getApplicationContext(), "Itemid = "+textView.getText().toString(), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(getApplicationContext(), "Itemid = "+textView.getText().toString(), Toast.LENGTH_SHORT).show();
                 Log.e("PV", "itemID: " + itemId);
 
                 switch(textView.getText().toString()){

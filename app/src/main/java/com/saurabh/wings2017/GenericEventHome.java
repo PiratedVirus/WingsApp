@@ -177,7 +177,7 @@ public class GenericEventHome extends AppCompatActivity {
         gen_Date.setText(getIntent().getStringExtra("date"));
         member = getIntent().getStringExtra("members");
 
-        Toast.makeText(this, "Memberlimit"+member, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Memberlimit"+member, Toast.LENGTH_SHORT).show();
 
 
 
@@ -220,7 +220,7 @@ public class GenericEventHome extends AppCompatActivity {
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
-                                        Intent i = new Intent(getApplicationContext(), Group.class);
+                                        Intent i = new Intent(getApplicationContext(), BrainGroup.class);
                                         i.putExtra("member",member);
                                         i.putExtra("fuserName", mUsername);
                                         i.putExtra("fuserMail", mUsermail);

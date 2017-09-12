@@ -11,7 +11,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.saurabh.wings2017.Group">
+    tools:context="com.saurabh.wings2017.BrainGroup">
 
 
     <ImageView
@@ -38,8 +38,9 @@
         android:background="@drawable/team_box"
         android:inputType="text|textMultiLine|textCapSentences"
         android:gravity="top"
+        android:ems="10"
         android:ellipsize="end"
-        android:hint="Eg. Ashwin Kulkarni,Saurabh Kulkarni"
+        android:hint="Eg. John Sand, John Doe"
         android:padding="15sp"
         android:textColor="@color/grey_bright"
         android:textAlignment="viewStart"

@@ -105,7 +105,7 @@ public class Details extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(Details.this,"Data Saved",Toast.LENGTH_LONG).show();
+                       // Toast.makeText(Details.this,"Data Saved",Toast.LENGTH_LONG).show();
 
                     }
                 },
@@ -189,6 +189,7 @@ public class Details extends AppCompatActivity {
             fetchData();
             Intent updateInfoIntent  = new Intent(Details.this,MainActivity.class);
             startActivity(updateInfoIntent);
+            Toast.makeText(this, "Welcome "+mUsername, Toast.LENGTH_SHORT).show();
             finish();
         }
 

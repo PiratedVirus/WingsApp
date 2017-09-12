@@ -210,14 +210,14 @@ public class MiniHelper extends AppCompatActivity {
 
                         new SweetAlertDialog(MiniHelper.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                                 .setTitleText("Add Group Members")
-                                .setContentText("This Event Contents at max "+member+" members!")
+                                .setContentText("This event contains at max "+member+" members!")
                                 .setCustomImage(R.drawable.no_internet)
                                 .setConfirmText("Add Group")
                                 .setCancelText("Continue Single")
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
-                                        Intent i = new Intent(getApplicationContext(), Group.class);
+                                        Intent i = new Intent(getApplicationContext(), FunGroup.class);
                                         i.putExtra("member", member);
                                         i.putExtra("fuserName", mUsername);
                                         i.putExtra("fuserMail", mUsermail);

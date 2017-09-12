@@ -51,7 +51,7 @@ public class Schedule extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(Schedule.this,MainActivity.class);
+        Intent i = new Intent(Schedule.this,BinarySchedule.class);
         startActivity(i);
         finish();
 

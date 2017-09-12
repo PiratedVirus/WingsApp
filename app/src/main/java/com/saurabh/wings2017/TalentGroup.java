@@ -27,7 +27,7 @@ import java.util.Map;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import me.anwarshahriar.calligrapher.Calligrapher;
 
-public class Group extends AppCompatActivity {
+public class TalentGroup extends AppCompatActivity {
     public static final String PHP_URL = "https://scouncilgeca.com/wingsapp/sendEventData.php";
     String mUsermail;
     SweetAlertDialog pDialog;
@@ -41,7 +41,7 @@ public class Group extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_group);
+        setContentView(R.layout.activity_talent_group);
 
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "fonts/mont.ttf", true);
@@ -49,10 +49,7 @@ public class Group extends AppCompatActivity {
         xyz = getIntent().getStringExtra("member");
         groupname = (EditText)findViewById(R.id.grouptext);
 
-        Log.e("Bochu", "info = "+ getIntent().getStringExtra("fuserName")+getIntent().getStringExtra("fuserMail")+getIntent().getStringExtra("eventName")+getIntent().getStringExtra("eventID"));
 
-
-        Toast.makeText(this, "Member limit = "+xyz, Toast.LENGTH_SHORT).show();
     }
 
     public void getUserDetails(){
@@ -95,7 +92,7 @@ public class Group extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Group.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(TalentGroup.this, error.getMessage(), Toast.LENGTH_LONG).show();
 
                     }
                 }) {
@@ -104,7 +101,7 @@ public class Group extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 getUserDetails();
-                mobNum = SaveSharedPreferences.getUserPhone(Group.this);
+                mobNum = SaveSharedPreferences.getUserPhone(TalentGroup.this);
                 groupname = (EditText)findViewById(R.id.grouptext);
                 String temp = groupname.getText().toString().trim();
                 Map<String, String> params = new HashMap<>();
@@ -137,7 +134,7 @@ public class Group extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i = new Intent(Group.this, Brain.class);
+        Intent i = new Intent(TalentGroup.this, Talent.class);
         startActivity(i);
         finish();
     }
@@ -155,11 +152,11 @@ public class Group extends AppCompatActivity {
             YoYo.with(Techniques.Shake)
                     .duration(500)
                     .playOn(groupname);
-            Toast.makeText(this, "Oops! You've exceeded group member limit! Maximum Group Limit : "+xyz, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Oops! You've exceeded group member limit! Maximum BrainGroup Limit : "+xyz, Toast.LENGTH_SHORT).show();
         }
 
         else {
-            new SweetAlertDialog(Group.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
+            new SweetAlertDialog(TalentGroup.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                     .setTitleText("Are you sure to add event?")
 //                        .setContentText("Events later can be changed through cart.")
                     .setConfirmText("Yeah")
