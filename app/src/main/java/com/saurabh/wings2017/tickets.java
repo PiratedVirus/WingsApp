@@ -113,7 +113,7 @@ public class tickets extends AppCompatActivity {
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
         pDialog.setTitleText("Please wait!");
         pDialog.setContentText("Waiting for more ink to print your Tickets !");
-        pDialog.setCancelable(false);
+        pDialog.setCancelable(true);
         pDialog.show();
 
 
@@ -206,6 +206,7 @@ public class tickets extends AppCompatActivity {
             noTickets = (ImageView) findViewById(R.id.noTicket);
             Log.e("PV","ticketsum="+cart_sum);
             if(cart_sum==0){
+                Log.e("PV","AAt ghusla");
                 noTickets.setVisibility(View.VISIBLE);
                 Toast.makeText(tickets.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
             }
@@ -284,6 +285,7 @@ public class tickets extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(tickets.this,MainActivity.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(i);
         finish();
 

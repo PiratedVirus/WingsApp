@@ -57,8 +57,32 @@
             app:layout_constraintBottom_toTopOf="@+id/updateInfo"
             app:layout_constraintRight_toRightOf="@+id/nameInput"
             tools:layout_constraintLeft_creator="1"
-            android:layout_marginBottom="74dp"
-            app:layout_constraintLeft_toLeftOf="@+id/nameInput" />
+            android:layout_marginBottom="174dp"
+            app:layout_constraintLeft_toLeftOf="@+id/nameInput"
+            app:layout_constraintHorizontal_bias="0.0" />
+
+        <EditText
+            android:id="@+id/colgtext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="73dp"
+            android:background="@drawable/name_input_box"
+            android:ems="10"
+            android:hint="Enter College name"
+            android:inputType="text"
+            android:phoneNumber="true"
+            android:soundEffectsEnabled="true"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#c1c1c1"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/updateInfo"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintLeft_toLeftOf="@+id/nameInput"
+            app:layout_constraintRight_toRightOf="@+id/nameInput"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintLeft_creator="1"
+            tools:layout_constraintRight_creator="1" />
 
         <ImageView
             android:id="@+id/updateInfo"

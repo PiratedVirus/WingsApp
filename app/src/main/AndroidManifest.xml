@@ -34,7 +34,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/wings_app_icon" />
+            android:resource="@drawable/notif_icon" />
 
 
         <activity

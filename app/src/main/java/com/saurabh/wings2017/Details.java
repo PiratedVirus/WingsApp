@@ -99,6 +99,8 @@ public class Details extends AppCompatActivity {
         userNameInput = (EditText) findViewById(R.id.nameInput);
         savedUserName = userNameInput.getText().toString();
         savedMobileNumber = mobileNum.getText().toString();
+        final EditText college = (EditText)findViewById(R.id.colgtext);
+
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST,
                 PHP_SAVE_USER,
@@ -132,6 +134,7 @@ public class Details extends AppCompatActivity {
                 params.put("fuserName", savedUserName);
                 params.put("fuserMail", mUsermail);
                 params.put("fuserMob", String.valueOf(savedMobileNumber));
+                params.put("fuserClg",college.getText().toString());
 
 
 
@@ -187,9 +190,10 @@ public class Details extends AppCompatActivity {
 
         else{
             fetchData();
+            final EditText college = (EditText)findViewById(R.id.colgtext);
             Intent updateInfoIntent  = new Intent(Details.this,MainActivity.class);
             startActivity(updateInfoIntent);
-            Toast.makeText(this, "Welcome "+mUsername, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Welcome "+college.getText().toString(), Toast.LENGTH_SHORT).show();
             finish();
         }
 
@@ -202,6 +206,7 @@ public class Details extends AppCompatActivity {
         fireName = (EditText) findViewById(R.id.nameInput);
         mobileNum = (EditText) findViewById(R.id.mobileInput);
         updateInfo = (ImageView) findViewById(R.id.updateInfo);
+        final EditText college = (EditText)findViewById(R.id.colgtext);
 
 
         if(mobileNum.getText().toString().length()!=10)
@@ -218,6 +223,15 @@ public class Details extends AppCompatActivity {
         {
             valid = false;
             fireName.setError("Please Enter a  good name for your certificate");
+        }
+
+        if(college.getText().toString().isEmpty() || fireName.getText().toString().length() < 3)
+        {
+            valid = false;
+            fireName.setError("Please Enter your College name");
+            YoYo.with(Techniques.Shake)
+                    .duration(500)
+                    .playOn(mobileNum);
         }
 
         return valid;

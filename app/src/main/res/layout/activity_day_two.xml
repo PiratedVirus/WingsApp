@@ -12,7 +12,7 @@
             android:scaleType="fitXY"
 
             android:adjustViewBounds="true"
-            android:src="@drawable/wings_day_two">
+            android:src="@drawable/day_2_final">
 
         </ImageView>
 

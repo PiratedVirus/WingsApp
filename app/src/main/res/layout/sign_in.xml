@@ -17,7 +17,7 @@
 
         <ImageView
             android:id="@+id/wings_logo"
-            android:layout_width="290dp"
+            android:layout_width="match_parent"
             android:layout_height="190dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
@@ -32,7 +32,7 @@
 
         <ImageView
             android:id="@+id/imageView12"
-            android:layout_width="253dp"
+            android:layout_width="match_parent"
             android:layout_height="152dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
@@ -67,16 +67,17 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView12"
             app:layout_constraintVertical_bias="0.301" />
 
-        <ImageView
-            android:id="@+id/imageView15"
-            android:layout_width="395dp"
-            android:layout_height="90sp"
-            android:layout_marginTop="56dp"
-            android:foregroundGravity="center_horizontal"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/geca_logo"
-            tools:layout_editor_absoluteX="8dp" />
+
 
     </android.support.constraint.ConstraintLayout>
 
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="match_parent"
+        android:layout_height="90sp"
+        android:layout_marginTop="56dp"
+        android:foregroundGravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/geca_logo"
+         />
 </RelativeLayout>

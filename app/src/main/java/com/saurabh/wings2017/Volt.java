@@ -292,6 +292,7 @@ public class Volt extends AppCompatActivity  {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(Volt.this, MainActivity.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(i);
         finish();
     }

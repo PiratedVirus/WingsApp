@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.Selection;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -48,6 +50,10 @@ public class VoltGroup extends AppCompatActivity {
 
         xyz = getIntent().getStringExtra("member");
         groupname = (EditText)findViewById(R.id.grouptext);
+        groupname.setText(SaveSharedPreferences.getUserName(VoltGroup.this)+", ");
+        int position = groupname.length();
+        Editable etext = groupname.getText();
+        Selection.setSelection(etext, position);
 
 
     }
@@ -135,6 +141,7 @@ public class VoltGroup extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(VoltGroup.this, Volt.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(i);
         finish();
     }

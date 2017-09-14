@@ -208,7 +208,8 @@ public class Mini extends AppCompatActivity  {
                 "Organizers reserve all the rights to make a decision and that decision will be final.\n" +
                 "The scope and construct of competition is dynamic and organizers reserve the rights to change both at any time without prior notice to participants.\n");
 
-        eventDetails_list.add("Rounds:  Call of Duty Modern Welfare\n" +
+        eventDetails_list.add("200/-per team (Team of 4)\n" +
+                "50/- (single)\nRounds:  Call of Duty Modern Welfare\n" +
                 "The game consists of three rounds.\n" +
                 "First two rounds will be free for all\n" +
                 "Third round is survival round.\n\n" +
@@ -218,7 +219,7 @@ public class Mini extends AppCompatActivity  {
                 "Fees once paid will not be refundable. \n" +
                 "All rights are reserved for authority/ management.\n");
 
-        eventDetails_list.add("The popular computer game NFS is here for you.\n" +
+        eventDetails_list.add("\nThe popular computer game NFS is here for you.\n" +
                 "Need for Speed: Most Wanted is an open world racing game.\n\n" +
                 "Rules for participants: \n\n" +
                 "Fees will not be refunded once paid.\n" +
@@ -227,7 +228,8 @@ public class Mini extends AppCompatActivity  {
                 "We may change or modify the rules and regulations at any time and will be made available, the terms indicate that you agree to such changes. Organizers reserve the right to modify, suspend, and keep the rules, tasks.\n");
 
 
-        eventDetails_list.add("This is an event where participants (Team of 5) will have to eliminate other team and vice versa in order to be eligible for the next rounds and in turn will win the competition.\n" +
+        eventDetails_list.add("250/-per team (Team of 5)\n" +
+                "50/- 1 vs 1 (single)\nThis is an event where participants (Team of 5) will have to eliminate other team and vice versa in order to be eligible for the next rounds and in turn will win the competition.\n" +
                 "\n" +
                 "Rules & Regulations:\n\n" +
                 "Game Version: Counter Strike Global Offensive\n" +
@@ -291,20 +293,21 @@ public class Mini extends AppCompatActivity  {
                 "Use of Internet or other means of communication is strictly prohibited.\n" +
                 "Once a team is registered, same team members should be carried till the end.\n");
 
-        eventDetails_list.add("Fun event.\n" +
+        eventDetails_list.add("50/- (per participant)\n" +
+                "100/-(for team of 3)\n Fun event.\n" +
                 "Rules:\n" +
                 "Each member can participate individually .\n" +
                 "If Team is participating, then it  should consist of maximum 3 members.\n" +
                 "Final Introduction and instruction will be provided by organizing team on time.\n" +
                 "The decision of organizers will be final. \n" +
                 "Participant or team cannot seek help of others, if found in such case team will be debarred.\n\n" +
-                "      Round 1:\n\n" +
+                "Round 1:\n\n" +
                 "Task 1 –\n" +
-                "             Participants will be given list of items, participants have to collect the given items in the given time.\n" +
+                "Participants will be given list of items, participants have to collect the given items in the given time.\n" +
                 "\n" +
                 "Task – 2 \n\n" +
-                "             Participants Presence of mind will be judged on the basis of given condition, to see how JUGAD you can do \n" +
-                "       Round 2: Surprise round.\n");
+                "Participants Presence of mind will be judged on the basis of given condition, to see how JUGAD you can do \n" +
+                "Round 2: Surprise round.\n");
 
         eventLocation.add("Civil Ground");
         eventLocation.add("MCA Dept, TR");
@@ -340,15 +343,15 @@ public class Mini extends AppCompatActivity  {
 
         eventprice.add("50");
         eventprice.add("30");
-        eventprice.add("50");
+        eventprice.add("200");
         eventprice.add("40");
         eventprice.add("250");
         eventprice.add("50");
-        eventprice.add("50");
+        eventprice.add("100");
 
         group_limit.add("0");
         group_limit.add("0");
-        group_limit.add("0");
+        group_limit.add("4");
         group_limit.add("0");
         group_limit.add("5");
         group_limit.add("2");
@@ -410,6 +413,7 @@ public class Mini extends AppCompatActivity  {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(Mini.this, MainActivity.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(i);
         finish();
     }

@@ -33,6 +33,7 @@ public class EleganceDayTwo extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(EleganceDayTwo.this,EleganceSchedule.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(i);
         finish();
 

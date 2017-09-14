@@ -184,7 +184,8 @@ public class Talent extends AppCompatActivity  {
                 "Round: There will be only one round.\n\n" +
                 "Note: Only one attempt is allowed.\n");
 
-        eventDetails_list.add("Test your knowledge about latest technology, explore your general technical knowledge about current innovations.  \n" +
+        eventDetails_list.add("30/- single\n" +
+                "50/- team of two\nTest your knowledge about latest technology, explore your general technical knowledge about current innovations.  \n" +
                 "\n" +
                 "Rules:\n\n" +
                 "Time slots will be allotted and participants are expected to follow them strictly.\n" +
@@ -341,6 +342,7 @@ public class Talent extends AppCompatActivity  {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(Talent.this, MainActivity.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(i);
         finish();
     }

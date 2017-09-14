@@ -292,7 +292,7 @@ public class Mechanico extends AppCompatActivity  {
 
 
         group_limit.add("3");
-        group_limit.add("0");
+        group_limit.add("3");
         group_limit.add("0");
         group_limit.add("3");
 
@@ -321,6 +321,7 @@ public class Mechanico extends AppCompatActivity  {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(Mechanico.this, MainActivity.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(i);
         finish();
     }

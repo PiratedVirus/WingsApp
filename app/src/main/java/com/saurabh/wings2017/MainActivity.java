@@ -5,8 +5,10 @@ import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -200,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent cartIntent = new Intent(MainActivity.this,Cart.class);
                 cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
                 cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 startActivity(cartIntent);
                 finish();
 
@@ -231,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
         if(SaveSharedPreferences.getUserPhone(getApplicationContext()).isEmpty())
         {
             Intent TicketIntent = new Intent(MainActivity.this,Details.class);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             startActivity(TicketIntent);
             finish();
 
@@ -274,12 +278,17 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onMessageReceived(RemoteMessage remoteMessage) {
             super.onMessageReceived(remoteMessage);
+            Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
             Notification notification = new NotificationCompat.Builder(this)
                     .setContentTitle(remoteMessage.getNotification().getTitle())
                     .setContentText(remoteMessage.getNotification().getBody())
-                    .setSmallIcon(R.drawable.wings_app_icon)
-
+                    .setSmallIcon(R.drawable.notif_icon)
+                    .setSound(alarmSound)
                     .build();
+
+
+
             NotificationManagerCompat manager = NotificationManagerCompat.from(getApplicationContext());
             manager.notify(123, notification);
         }
@@ -319,6 +328,7 @@ public class MainActivity extends AppCompatActivity {
             cartIntent.putExtra("userName",mFirebaseUser.getDisplayName());
             cartIntent.putExtra("userMail",mFirebaseUser.getEmail());
            // Toast.makeText(this, "Long press on event to delete!", Toast.LENGTH_LONG).show();
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             startActivity(cartIntent);
             finish();
         }
@@ -352,6 +362,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             Intent TicketIntent = new Intent(MainActivity.this,tickets.class);
+            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             startActivity(TicketIntent);
             Toast.makeText(this, "Swipe down to Refresh", Toast.LENGTH_SHORT).show();
             finish();
@@ -410,6 +421,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.addCategory(Intent.CATEGORY_HOME);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);//***Change Here***
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(intent);
         finish();
         System.exit(0);

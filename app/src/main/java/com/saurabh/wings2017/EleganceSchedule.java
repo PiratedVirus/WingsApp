@@ -47,6 +47,7 @@ public class EleganceSchedule extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(EleganceSchedule.this,BinarySchedule.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(i);
         finish();
 

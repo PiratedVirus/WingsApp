@@ -170,6 +170,7 @@ public class Elegance extends AppCompatActivity  {
         eventName_list.add("T-Shirt Painting");
         eventName_list.add("Get. Set.. Paint...");
         eventName_list.add("Masquerade");
+        eventName_list.add("Click");
 
         eventDetails_list.add("Cause theatres were created to tell the truth about life! \n" +
                 "\n RULES:\n\n" +
@@ -282,6 +283,18 @@ public class Elegance extends AppCompatActivity  {
                 "\uF071 Registration fees : ₹100/- per TEAM.\n" +
                 "\uF071 Time limit : 60 minutes \n \nPrizes : We are not gonna reveal this . 3 best painting with some proper cash prizes & gift hampers\n");
 
+        eventDetails_list.add("This is an individual competition.\n" +
+                "Participants should have their own digital cameras or DSLRís.\n" +
+                "Pictures clicked with mobile phone will be disqualified.\n\n" +
+                "Theme\n\n Moments of the fest, portraits.\n" +
+                "The participants will have to submit her/his best 3 pictures of the fest within 2 hrs at 3 pm on the registration desk.\n" +
+                "Decision of the judges will be final and binding.\n" +
+                "All submitted photos must be in JPEG format.\n" +
+                "You are required to provide a unique title and description for each photo submitted.\n" +
+                "There must no border(s),logo(s),copyright marks or any other visible references and/or marks on submitted photo.\n" +
+                "Photos that portray or otherwise include inappropriate and/or offensive content will be immediately discarded.");
+
+
         eventLocation.add("Electrical seminar hall");
         eventLocation.add("Electrical seminar hall");
         eventLocation.add("In front of Applied Mechanics");
@@ -292,6 +305,7 @@ public class Elegance extends AppCompatActivity  {
         eventLocation.add("Applied Mechanics");
         eventLocation.add("Applied Mechanics");
         eventLocation.add("Applied Mechanics");
+        eventLocation.add("Front of Classroom Complex");
 
         eventContactPerson_list.add("Priyanka Rajput");
         eventContactPerson_list.add("Dipam Chaudhari");
@@ -303,6 +317,7 @@ public class Elegance extends AppCompatActivity  {
         eventContactPerson_list.add("Pramita Shahare");
         eventContactPerson_list.add("Amruta Kulkarni");
         eventContactPerson_list.add("Amruta Kulkarni");
+        eventContactPerson_list.add("Prasad Warad");
 
         eventContactNum_list.add("8805895988");
         eventContactNum_list.add("7798040995");
@@ -314,6 +329,7 @@ public class Elegance extends AppCompatActivity  {
         eventContactNum_list.add("9975531168");
         eventContactNum_list.add("8087966802");
         eventContactNum_list.add("8087966802");
+        eventContactNum_list.add("9168207305");
 
         eventDate.add("7 OCT 2017");
         eventDate.add("8 OCT 2017");
@@ -324,6 +340,7 @@ public class Elegance extends AppCompatActivity  {
         eventDate.add("7 OCT 2017");
         eventDate.add("7 OCT 2017");
         eventDate.add("8 OCT 2017");
+        eventDate.add("7 OCT 2017");
         eventDate.add("7 OCT 2017");
 
 
@@ -337,6 +354,7 @@ public class Elegance extends AppCompatActivity  {
         eventprice.add("150");
         eventprice.add("100");
         eventprice.add("100");
+        eventprice.add("100");
 
         group_limit.add("0");
         group_limit.add("0");
@@ -348,6 +366,7 @@ public class Elegance extends AppCompatActivity  {
         group_limit.add("0");
         group_limit.add("0");
         group_limit.add("2");
+        group_limit.add("0");
 
 
         time_list.add("7 OCT, 2017\n1 pm onwards");
@@ -360,6 +379,7 @@ public class Elegance extends AppCompatActivity  {
         time_list.add("7 OCT, 2017\n1 pm onwards");
         time_list.add("8 OCT, 2017\n10 am onwards");
         time_list.add("7 OCT, 2017\n3 pm onwards");
+        time_list.add("7 OCT, 2017\n1 pm onwards");
 
 
 
@@ -434,6 +454,7 @@ public class Elegance extends AppCompatActivity  {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(Elegance.this, MainActivity.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(i);
         finish();
     }

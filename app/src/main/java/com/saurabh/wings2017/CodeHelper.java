@@ -78,7 +78,7 @@ public class CodeHelper extends AppCompatActivity {
     }
 
 
-    public void fetchData() {
+    public void fetchData(final String price) {
 
         pDialog = new SweetAlertDialog(this, SweetAlertDialog.PROGRESS_TYPE);
         pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
@@ -117,7 +117,7 @@ public class CodeHelper extends AppCompatActivity {
                 params.put("fuserMob", mobNum);
                 params.put("eventName", getIntent().getStringExtra("name"));
                 params.put("eventID", getIntent().getStringExtra("date"));
-                params.put("eventPrice", getIntent().getStringExtra("price"));
+                params.put("eventPrice", price);
                 params.put("eventLocation", getIntent().getStringExtra("location"));
                 Log.e("PVT", "Location hagla = "+getIntent().getStringExtra("location"));
                 return params;
@@ -235,7 +235,13 @@ public class CodeHelper extends AppCompatActivity {
                                 .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
-                                        fetchData();
+
+                                        if(("Game of Codes".equals(getIntent().getStringExtra("name"))) || ("Codesprint 2.0".equals(getIntent().getStringExtra("name"))) || ("Code Junkie 4.0".equals(getIntent().getStringExtra("name")))) {
+                                            fetchData("30");
+                                        }
+                                        else
+                                            fetchData(getIntent().getStringExtra("price"));
+
                                         sDialog
                                                 .setTitleText("Success!")
                                                 .setContentText("Event added to Cart!")
@@ -275,7 +281,10 @@ public class CodeHelper extends AppCompatActivity {
                                 .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                     @Override
                                     public void onClick(SweetAlertDialog sDialog) {
-                                        fetchData();
+
+                                            fetchData(getIntent().getStringExtra("price"));
+
+
                                         sDialog
                                                 .setTitleText("Success!")
                                                 .setContentText("Event added to Cart!")
@@ -313,6 +322,7 @@ public class CodeHelper extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         Intent i = new Intent(CodeHelper.this, Code.class);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         startActivity(i);
         finish();
     }

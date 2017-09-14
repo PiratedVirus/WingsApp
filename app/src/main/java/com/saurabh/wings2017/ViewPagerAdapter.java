@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 
 
@@ -43,11 +42,11 @@ public class ViewPagerAdapter extends PagerAdapter {
             public void onClick(View v) {
 
                 if(position == 0){
-                    Toast.makeText(context, "Slide 1 Clicked", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "Slide 1 Clicked", Toast.LENGTH_SHORT).show();
                 } else if(position == 1){
-                    Toast.makeText(context, "Slide 2 Clicked", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "Slide 2 Clicked", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(context, "Slide 3 Clicked", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "Slide 3 Clicked", Toast.LENGTH_SHORT).show();
                 }
 
             }
