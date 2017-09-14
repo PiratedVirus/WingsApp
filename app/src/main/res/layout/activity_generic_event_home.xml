@@ -36,15 +36,17 @@
                 android:textColor="@color/cardview_light_background"
                 android:textSize="36dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/EventDate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/genEventName"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
                 android:text="Oct 5,2017"
-                android:textColor="@color/cardview_light_background"
-                android:layout_below="@+id/genEventName"
-                android:layout_centerHorizontal="true"/>
+                android:textAlignment="center"
+                android:textColor="@color/cardview_light_background" />
 
         </RelativeLayout>
 

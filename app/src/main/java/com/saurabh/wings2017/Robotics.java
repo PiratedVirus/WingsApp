@@ -56,6 +56,7 @@ public class Robotics extends AppCompatActivity  {
     ArrayList<String>  eventDate = new ArrayList<>();
     ArrayList<String>  eventprice = new ArrayList<>();
     ArrayList<String> group_limit = new ArrayList<>();
+    ArrayList<String> eventtime = new ArrayList<>();
 
 
 
@@ -207,8 +208,8 @@ public class Robotics extends AppCompatActivity  {
                 "3. However a tolerance of 5% is acceptable. \n");
 
 
-        eventLocation.add("Front of Civil");
-        eventLocation.add("BasketBall Court");
+        eventLocation.add("Front of E&TC Dept");
+        eventLocation.add("Basketball Court");
 
 
         eventContactPerson_list.add("Yashodeep Kacholiya");
@@ -219,7 +220,7 @@ public class Robotics extends AppCompatActivity  {
         eventContactNum_list.add("9405248469");
 
 
-        eventDate.add("4 OCT 2017");
+        eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
 
 
@@ -230,11 +231,14 @@ public class Robotics extends AppCompatActivity  {
         group_limit.add("4");
         group_limit.add("4");
 
+        eventtime.add("5th Oct, 2017\n 2 pm onwards");
+        eventtime.add("5th Oct, 2017\n 1 pm onwards");
 
 
 
 
-        RoboticsAdapter ad = new RoboticsAdapter(Robotics.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
+
+        RoboticsAdapter ad = new RoboticsAdapter(Robotics.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit, eventtime);
         civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 

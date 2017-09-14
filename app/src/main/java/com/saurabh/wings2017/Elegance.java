@@ -56,6 +56,7 @@ public class Elegance extends AppCompatActivity  {
     ArrayList<String>  eventDate = new ArrayList<>();
     ArrayList<String>  eventprice = new ArrayList<>();
     ArrayList<String> group_limit = new ArrayList<>();
+    ArrayList<String> time_list = new ArrayList<>();
 
 
 
@@ -349,11 +350,22 @@ public class Elegance extends AppCompatActivity  {
         group_limit.add("2");
 
 
+        time_list.add("7 OCT, 2017\n1 pm onwards");
+        time_list.add("8 OCT, 2017\n10 am onwards");
+        time_list.add("8 OCT, 2017\n10 am onwards");
+        time_list.add("8 OCT, 2017\n12 pm onwards");
+        time_list.add("8 OCT, 2017\n2 pm onwards");
+        time_list.add("7 OCT, 2017\n1.30 pm onwards");
+        time_list.add("7 OCT, 2017\n5 pm onwards");
+        time_list.add("7 OCT, 2017\n1 pm onwards");
+        time_list.add("8 OCT, 2017\n10 am onwards");
+        time_list.add("7 OCT, 2017\n3 pm onwards");
 
 
 
 
-        EleganceAdapter ad = new EleganceAdapter(Elegance.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
+
+        EleganceAdapter ad = new EleganceAdapter(Elegance.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit, time_list);
         civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 

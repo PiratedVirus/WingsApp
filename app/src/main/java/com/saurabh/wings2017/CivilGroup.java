@@ -105,7 +105,7 @@ public class CivilGroup extends AppCompatActivity {
                 groupname = (EditText)findViewById(R.id.grouptext);
                 String temp = groupname.getText().toString().trim();
                 Map<String, String> params = new HashMap<>();
-                params.put("fuserName", mUsername);
+                params.put("fuserName",SaveSharedPreferences.getUserName(CivilGroup.this));
                 params.put("fuserMail", mUsermail);
                 params.put("fuserMob", mobNum);
                 params.put("eventName", getIntent().getStringExtra("eventName"));

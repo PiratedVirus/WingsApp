@@ -16,6 +16,15 @@
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintVertical_bias="0.347">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/linearLayout2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="match_parent"
@@ -111,28 +120,28 @@
         android:layout_height="35dp"
 
         app:srcCompat="@drawable/phone"
-        android:layout_marginBottom="70sp"
-        android:layout_above="@+id/linearLayout2"
-        android:layout_toStartOf="@+id/textView9"
-        android:layout_marginEnd="25dp" />
+
+        android:layout_marginEnd="25dp"
+        android:layout_alignTop="@+id/textView9"
+        android:layout_toStartOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView13"
         android:text="Phone Number"
         android:textColor="#E40046"
         android:textSize="16sp"
 
-        android:layout_alignTop="@+id/imageView14"
-        android:layout_alignStart="@+id/userNameLabel" />
+        android:layout_marginTop="35dp"
+        android:layout_below="@+id/imageView13"
+        android:layout_alignStart="@+id/userMail" />
 
     <TextView
         android:id="@+id/userMobile"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/linearLayout2"
+
         android:text="8149306224"
         android:textColor="#4A4A4A"
         android:textSize="18sp"
@@ -141,10 +150,9 @@
         android:layout_below="@+id/textView9"
         android:layout_alignStart="@+id/textView9" />
 
+    </RelativeLayout>
 
-    <!--</android.support.constraint.ConstraintLayout>-->
-    <!--</ScrollView>-->
-
+    </ScrollView>
 
     <LinearLayout
         android:layout_alignParentBottom="true"

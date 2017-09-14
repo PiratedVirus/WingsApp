@@ -112,7 +112,7 @@ public class CodeHelper extends AppCompatActivity {
                 eventprice = getIntent().getStringExtra("EventCriteria");
                 Log.d(TAG, "price: " + eventprice);
                 Map<String, String> params = new HashMap<>();
-                params.put("fuserName", mUsername);
+                params.put("fuserName", SaveSharedPreferences.getUserName(CodeHelper.this));
                 params.put("fuserMail", mUsermail);
                 params.put("fuserMob", mobNum);
                 params.put("eventName", getIntent().getStringExtra("name"));
@@ -175,7 +175,10 @@ public class CodeHelper extends AppCompatActivity {
         gen_Date.setText(getIntent().getStringExtra("date"));
         member = getIntent().getStringExtra("members");
 
+        String time = getIntent().getStringExtra("time");
+        TextView gen_time = (TextView)findViewById(R.id.dateTime);
 
+        gen_time.setText(time);
 
 
 //        OnClick Listner. Adding data to Database.
@@ -218,7 +221,7 @@ public class CodeHelper extends AppCompatActivity {
                                     public void onClick(SweetAlertDialog sDialog) {
                                         Intent i = new Intent(getApplicationContext(), CodeGroup.class);
                                         i.putExtra("member", member);
-                                        i.putExtra("fuserName", mUsername);
+                                        i.putExtra("fuserName",SaveSharedPreferences.getUserName(CodeHelper.this));
                                         i.putExtra("fuserMail", mUsermail);
                                         i.putExtra("fuserMob", mobNum);
                                         i.putExtra("eventName", getIntent().getStringExtra("name"));

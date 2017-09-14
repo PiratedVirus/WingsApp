@@ -53,6 +53,7 @@ public class CivilHome extends AppCompatActivity  {
     ArrayList<String>  eventDate = new ArrayList<>();
     ArrayList<String> eventprice = new ArrayList<>();
     ArrayList<String> group_limit = new ArrayList<>();
+    ArrayList<String> time_list = new ArrayList<>();
 
 
     public void printUserDetails(){
@@ -156,7 +157,7 @@ public class CivilHome extends AppCompatActivity  {
 
 
        eventName_list.add("Plan It!");
-        eventName_list.add("Dextro");
+        eventName_list.add("Deckstro");
         eventName_list.add("Routage Intelligent");
         eventName_list.add("Deflexion");
 
@@ -243,10 +244,10 @@ public class CivilHome extends AppCompatActivity  {
                 "Use of mobile internet is strictly prohibited during the event.\n");
 
 
+        eventLocation.add("Front of Civil Dept");
+        eventLocation.add("Behind Classroom Comlex");
+        eventLocation.add("DH-1 Civil Dept");
         eventLocation.add("Civil Dept");
-        eventLocation.add("Civil Dept");
-        eventLocation.add("Workshop");
-        eventLocation.add("The Grounds");
 
 
         eventContactPerson_list.add("Dhruti Bawaskar");
@@ -261,10 +262,10 @@ public class CivilHome extends AppCompatActivity  {
         eventContactNum_list.add("959549598");
 
 
-        eventDate.add("4 OCT 2017");
-        eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
-        eventDate.add("4 OCT 2017");
+        eventDate.add("6 OCT 2017");
+        eventDate.add("6 OCT 2017");
+        eventDate.add("6 OCT 2017");
 
 
         eventprice.add("50");
@@ -279,9 +280,13 @@ public class CivilHome extends AppCompatActivity  {
         group_limit.add("2");
 
 
+        time_list.add("6th Oct, 2017\n 3 pm onwards");
+        time_list.add("6th Oct, 2017\n 1 pm onwards");
+        time_list.add("6th Oct, 2017\n 9 am onwards");
+        time_list.add("6th Oct, 2017\n 1 pm onwards");
 
 
-        CivilEventAdapter ad = new CivilEventAdapter(CivilHome.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
+        CivilEventAdapter ad = new CivilEventAdapter(CivilHome.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit, time_list);
         ListView civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 

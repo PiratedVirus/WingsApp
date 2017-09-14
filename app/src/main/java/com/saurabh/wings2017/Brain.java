@@ -55,6 +55,7 @@ public class Brain extends AppCompatActivity  {
     ArrayList<String>  eventDate = new ArrayList<>();
     ArrayList<String>  eventprice = new ArrayList<>();
     ArrayList<String> group_limit = new ArrayList<>();
+    ArrayList<String> time_list = new ArrayList<>();
 
 
 
@@ -159,52 +160,14 @@ public class Brain extends AppCompatActivity  {
         });
 
 
-        eventName_list.add("Virtual Campus");
-        eventName_list.add("Aqualaunchia");
+
         eventName_list.add("Spell UR Brain");
         eventName_list.add("Murder Mystery");
+        eventName_list.add("Web Quest 4.0");
 
 
 
 
-        eventDetails_list.add(
-                "Explore your skills with aptitude, discussion as well as interview to challenge the potential within.\n" +
-                "\n\n" +
-                "Rules: \n\n" +
-                "One person can take part for a single entry.\t\t\t\t\n" +
-                "All rounds will be taken as per the campus rules,some rules may change .\n" +
-                "Time pattern is there for each round which is expected to be followed.\n" +
-                "Participant are expected to give their contact details correctly, so as to informed them event and event results.\n" +
-                "For each round word of judges will be final.\n" +
-                "\n" +
-                "Structure:\n\n" +
-                "Round 1: Aptitude \n" +
-                "                 On basic reasoning, logical thinking, multiple choice question will be on general studies and current events,  There will be 30-40 question for 30 to 45 minutes.\n" +
-                "\n\n" +
-                "Round 2: BrainGroup Discussion\n" +
-                "               You will be given one topic at the instant and you have to speak on it and make good points. Only DISCUSSION no DEBATE.\n" +
-                "\n\n" +
-                "Round 3: Personal Interview\n" +
-                "             PI will be conducted by judges and general questions will be asked.Your skills will be judged.\n");
-
-        eventDetails_list.add("Utilize the knowledge of Engineering Mechanics and Hydrodynamics. \n" +
-                "\n" +
-                "Rules: \n\n" +
-                "1. Team should consist of maximum three members. \n" +
-                "2. Each member can participate in only team. \n" +
-                "3. Team has to come with their own rocket, only fins will be provided at the event site. \n" +
-                "4. Final instructions will be given by the organizers at the beginning of each round. \n" +
-                "5. The decision of organizers will be final. \n" +
-                "\n" +
-                "Rounds: \n\n" +
-                "Round 1: Water rocket must be launched for maximum range. \n" +
-                "\n" +
-                "Round 2: Water rocket is to be launched for particular decided range.\n" +
-                " \n" +
-                "Round 3: Surprise round. \n" +
-                "\n" +
-                "Note: \n" +
-                "Only one attempt is allowed. \n");
 
 
         eventDetails_list.add("Spell UR Brain is a non-technical event which will test participant’s general knowledge and presence of mind. It is a three round team event. Each team will have 2 members per team.\n" +
@@ -230,46 +193,61 @@ public class Brain extends AppCompatActivity  {
                 "Event Structure: \n\n" +
                 "All teams will be given a booklet consisting of murder details & police investigation report fron the desk. The team which solves given question(s) accurately & reports back to desk within min. time will be winners.\n");
 
+        eventDetails_list.add("WebQuest 4.0 is an event, which consists of an individual participant to decode the given web based application in a given time limit. This contest will consist of individual participant. Each competing to decode the ultimate web quest.\n" +
+                "\n" +
+                "Rules:\n\n" +
+                "The participant completing all the hacks within shortest time will qualify for the next round.\n" +
+                "For the in campus challenge rules will be same as above with slight different of time limit.\n" +
+                "For in campus challenge any technical glitches with the participants' system will fetch an extra time of two minutes.\n" +
+                "Organizers reserve right to modify, change or suspend rules and regulations at any time if required. Decisions of the organizers will be final.\n" +
+                "Any misbehavior with other participants, coordinators or organizers will not be entertained and will lead to immediate disqualification. \n");
 
-        eventLocation.add("Classroom Complex");
-        eventLocation.add("Main playground, GECA.");
+
+
+
         eventLocation.add("IT Dept");
         eventLocation.add("Front of CC");
+        eventLocation.add("Computer Science Dept");
 
 
-        eventContactPerson_list.add("Vyankatesh Kulkarni");
-        eventContactPerson_list.add("Apoorva Rahatkar");
+
         eventContactPerson_list.add("Siddhi Sharma");
         eventContactPerson_list.add("Madhura Tayade");
+        eventContactPerson_list.add("Ashutosh Gajre");
 
 
-        eventContactNum_list.add("9527500921");
-        eventContactNum_list.add("9049313795");
         eventContactNum_list.add("8600042536");
         eventContactNum_list.add("9975491679");
+        eventContactNum_list.add("9561002599");
 
 
-        eventDate.add("4 OCT 2017");
+
         eventDate.add("5 OCT 2017");
-        eventDate.add("4 OCT 2017");
-        eventDate.add("6 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+
+
 
 
         eventprice.add("50");
-        eventprice.add("100");
         eventprice.add("50");
         eventprice.add("50");
 
 
-        group_limit.add("0");
-        group_limit.add("3");
+
         group_limit.add("2");
         group_limit.add("0");
+        group_limit.add("0");
 
 
 
+        time_list.add("5th Oct, 2017\n 1.30 pm onwards");
+        time_list.add("5th Oct, 2017\n 1 pm onwards");
+        time_list.add("5 OCT, 2017\n 4 pm onwards");
 
-        BrainAdapter ad = new BrainAdapter(Brain.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
+
+
+        BrainAdapter ad = new BrainAdapter(Brain.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit, time_list);
         civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 

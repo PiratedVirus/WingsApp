@@ -27,12 +27,13 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
     private final ArrayList eventDate;
     private final ArrayList eventprice;
     private final ArrayList group_list;
+    private final ArrayList time_list;
 
 
 
 
     public CivilEventAdapter(Activity context,
-                             ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice, ArrayList group_list) {
+                             ArrayList eventName_list, ArrayList eventDetails_list, ArrayList eventLocation, ArrayList eventContactPerson_list, ArrayList eventContactNum_list, ArrayList eventDate, ArrayList eventprice, ArrayList group_list, ArrayList time_list) {
         super(context, R.layout.content_civil_home, eventName_list);
         this.context = context;
         this.eventName_list = eventName_list;
@@ -43,6 +44,7 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
         this.eventDate = eventDate;
         this.eventprice = eventprice;
         this.group_list = group_list;
+        this.time_list = time_list;
 
 
         Log.e("PV","bochya"+eventName_list);
@@ -64,6 +66,7 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
         final TextView EventPerson = (TextView) rowView.findViewById(R.id.eventContactPerson);
         final TextView Eventcontact = (TextView) rowView.findViewById(R.id.eventContactNum);
         final TextView EventPrice = (TextView)  rowView.findViewById(R.id.eventPrice);
+
 
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont((Activity) getContext(), "fonts/mont.ttf", true);
@@ -87,6 +90,7 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
         EventPrice.setText((CharSequence)eventprice.get(position));
 
 
+
         rel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +105,7 @@ public class CivilEventAdapter extends ArrayAdapter<String> {
                 eventi.putExtra("person_name", EventPerson.getText().toString());
                 eventi.putExtra("person_num", Eventcontact.getText().toString());
                 eventi.putExtra("members", (String)group_list.get(position));
+                eventi.putExtra("time",(String)time_list.get(position));
 
 //
 

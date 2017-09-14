@@ -1,15 +1,22 @@
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:scrollbars="none"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/day_3">
+        android:layout_height="match_parent">
 
-    </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
 
-</ScrollView>
+            android:adjustViewBounds="true"
+            android:src="@drawable/wings_day_three">
+
+        </ImageView>
+
+    </ScrollView>
+
+</RelativeLayout>
+

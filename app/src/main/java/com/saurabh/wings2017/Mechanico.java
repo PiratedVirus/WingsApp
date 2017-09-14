@@ -55,6 +55,7 @@ public class Mechanico extends AppCompatActivity  {
     ArrayList<String>  eventDate = new ArrayList<>();
     ArrayList<String>  eventprice = new ArrayList<>();
     ArrayList<String> group_limit = new ArrayList<>();
+    ArrayList<String> time_list = new ArrayList<>();
 
 
 
@@ -160,8 +161,9 @@ public class Mechanico extends AppCompatActivity  {
 
 
         eventName_list.add("Lathe War");
-        eventName_list.add("3D-Structural");
+        eventName_list.add("3D Structial");
         eventName_list.add("Cad-Ster (CATIA)");
+        eventName_list.add("Aqualaunchia");
 
 
 
@@ -237,45 +239,74 @@ public class Mechanico extends AppCompatActivity  {
                 "5. The participants are expected to be present at the venue before the event commences.\n");
 
 
+        eventDetails_list.add("Utilize the knowledge of Engineering Mechanics and Hydrodynamics. \n" +
+                "\n" +
+                "Rules: \n\n" +
+                "1. Team should consist of maximum three members. \n" +
+                "2. Each member can participate in only team. \n" +
+                "3. Team has to come with their own rocket, only fins will be provided at the event site. \n" +
+                "4. Final instructions will be given by the organizers at the beginning of each round. \n" +
+                "5. The decision of organizers will be final. \n" +
+                "\n" +
+                "Rounds: \n\n" +
+                "Round 1: Water rocket must be launched for maximum range. \n" +
+                "\n" +
+                "Round 2: Water rocket is to be launched for particular decided range.\n" +
+                " \n" +
+                "Round 3: Surprise round. \n" +
+                "\n" +
+                "Note: \n" +
+                "Only one attempt is allowed. \n");
+
         eventLocation.add("Workshop Mechanical Dept");
-        eventLocation.add("Mechanical Engineering Dept");
-        eventLocation.add("CAME Lab (Mechanical Engg. Dept)");
-
-
+        eventLocation.add("Classroom M3, Mechanical Engg. Dept");
+        eventLocation.add("Classroom M2, Mechanical Engg. Dept");
+        eventLocation.add("Main playground, GECA.");
 
         eventContactPerson_list.add("Totaram Murumkar");
         eventContactPerson_list.add("Sampada Ahale");
         eventContactPerson_list.add("Dhanshri Bansule");
+        eventContactPerson_list.add("Apoorva Rahatkar");
 
 
 
         eventContactNum_list.add("8482930057 ");
         eventContactNum_list.add("9850954067");
         eventContactNum_list.add("9765614935");
+        eventContactNum_list.add("9049313795");
 
 
 
         eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
         eventDate.add("4 OCT 2017");
+        eventDate.add("5 OCT 2017");
 
 
 
         eventprice.add("100");
         eventprice.add("100");
         eventprice.add("50");
+        eventprice.add("100");
 
 
 
         group_limit.add("3");
         group_limit.add("0");
         group_limit.add("0");
+        group_limit.add("3");
+
+        time_list.add("5 OCT, 2017\n1pm onwards");
+        time_list.add("5 OCT, 2017\n3pm onwards");
+        time_list.add("5 OCT, 2017\n3pm onwards");
+        time_list.add("5th Oct, 2017\n 1 pm onwards");
 
 
 
 
 
-        MechanicoAdapter ad = new MechanicoAdapter(Mechanico.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
+
+        MechanicoAdapter ad = new MechanicoAdapter(Mechanico.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit, time_list);
         civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 

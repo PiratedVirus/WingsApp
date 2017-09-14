@@ -54,6 +54,7 @@ public class Code extends AppCompatActivity  {
     ArrayList<String>  eventDate = new ArrayList<>();
     ArrayList<String> eventprice = new ArrayList<>();
     ArrayList<String> group_limit = new ArrayList<>();
+    ArrayList<String> time_list = new ArrayList<>();
 
 
 
@@ -158,10 +159,11 @@ public class Code extends AppCompatActivity  {
 
 
         eventName_list.add("Code Junkie 4.0");
-        eventName_list.add("Cosesprint 2.0");
-        eventName_list.add("Web Quest 4.0");
+        eventName_list.add("Codesprint 2.0");
+        eventName_list.add("Game of Codes");
         eventName_list.add("C-Ladder");
         eventName_list.add("Web Sutra");
+        eventName_list.add("Hi-Tech Fair");
 
 
         eventDetails_list.add("This is an event where the participants participate in team of 2 or as individual and face the different Aptitude questions related to programming languages, logical round and coding round. Anyone who clears all the rounds with highest points will be the winner.\n" +
@@ -217,14 +219,21 @@ public class Code extends AppCompatActivity  {
                 "Compiler: Codeblocks/turboc Programming language: C ,C++\n" +
                 "Time allotment for round will be around 1-1.25 hrs.\n");
 
-        eventDetails_list.add("WebQuest 4.0 is an event, which consists of an individual participant to decode the given web based application in a given time limit. This contest will consist of individual participant. Each competing to decode the ultimate web quest.\n" +
+
+        eventDetails_list.add("Test Your Programming Skill, Its a Debugging Contest, Let’s Experience the world of Competitors in Designing The Best Algorithm.\n" +
                 "\n" +
                 "Rules:\n\n" +
-                "The participant completing all the hacks within shortest time will qualify for the next round.\n" +
-                "For the in campus challenge rules will be same as above with slight different of time limit.\n" +
-                "For in campus challenge any technical glitches with the participants' system will fetch an extra time of two minutes.\n" +
-                "Organizers reserve right to modify, change or suspend rules and regulations at any time if required. Decisions of the organizers will be final.\n" +
-                "Any misbehavior with other participants, coordinators or organizers will not be entertained and will lead to immediate disqualification. \n");
+                "Team should be consists of maximum 2 members.\t\t\t\t\n" +
+                "In the event if  there is online misuse of Internet,it will lead to Disqualification.\n" +
+                "Time slots will be allotted  and participant are expected to follow them strictly.\n" +
+                "Participant are expected to give their contact details correctly, so as to informed them event and event results.\n" +
+                "Rules may be changed without prior intimation. \n" +
+                "\n" +
+                "Structure:\n\n" +
+                "Round 1: Quiz.\n" +
+                "This round will have a quiz based on basic programming, logical thinking, multiple choicequestions on error finding, language will be in C, C++, Java. There will be 30-40 questions.\n" +
+                "Rounds 2: Debugging. \n" +
+                "You will be given problem statements with program but the code contents error. Find out error and submit the correct code. Language will be in C,C++,and java .\n");
 
         eventDetails_list.add("To test and improve computer knowledge and programming skills.\n" +
                 "\n" +
@@ -272,30 +281,65 @@ public class Code extends AppCompatActivity  {
                 "Coding skills\n" +
                 "Design\n");
 
+        eventDetails_list.add("Hi tech fair is the web programming contest for participants. A small web page is to create in given time. You can use the HTML, CSS in it. \n" +
+                "\n" +
+                "Description:  It has 3 rounds. \n\n" +
+                "1) Web Puzzle\n" +
+                "2) Web Page Design\n" +
+                "3) Surprise round\n\n" +
+                "Round 1:\n" +
+                "After solving the puzzle candidates will be eligible for 2nd round.\n" +
+                "Round 2:\n" +
+                "In this round participants will design web page.\n" +
+                "After judging these web pages panelist will select candidates for next round.\n" +
+                "Round 3:\n" +
+                "In this round we will ask some questions to candidates.  And if candidate knows the   answer of the questions then he/she has blown the buzzer and answer the question.\n" +
+                "            Note:-1 Negative marking will be applied. \n\n" +
+                "Specifications:\n" +
+                "1. Individual entry is mandatory.\n" +
+                "2. Taking the help form another and use of any electronic device are restricted.\n" +
+                "3. Anyone found who will be doing cheating will be immediately disqualified and registration will be canceled.\n" +
+                "4. All rights are reserved for authority/ management.\n" +
+                "5. Fees once paid will not refundable \n" +
+                "\n" +
+                "Testing Conditions:\n\n" +
+                "Logical thinking, web designing skills, presence of mind, presentational skill.\n" +
+                "\n" +
+                "Judging Criteria:\n\n" +
+                "Participants will be judged purely on the amount of time taken to complete given task.\n" +
+                "Also, in case of failure or partial success of all the participants, the portion of the task completed and time it required to do so will be taken into account. \n" +
+                "c.    Judging panel reserve all the rights to make a decision and that decision will be final.\n" +
+                "d.   The scope and construct of competition is dynamic and organizers reserve the rights to change both at any time without prior notice to participants.\n");
+
+        eventLocation.add("Classroom 12 CSE Dept");
+        eventLocation.add("Classroom Complex");
+        eventLocation.add("Project Lab, IT Dept");
+        eventLocation.add("Near Coffee Shop");
         eventLocation.add("Computer Science Dept");
-        eventLocation.add("IT Dept");
-        eventLocation.add("Computer Science Dept");
-        eventLocation.add("MCA");
-        eventLocation.add("Computer Science Dept");
+        eventLocation.add("MCA Lab");
 
         eventContactPerson_list.add("Aniket Kulkarni");
         eventContactPerson_list.add("Pawan Kadadi");
-        eventContactPerson_list.add("Ashutosh Gajre");
+        eventContactPerson_list.add("Anand Ingle");
         eventContactPerson_list.add("Rajkumar Andhale");
         eventContactPerson_list.add("Abhishek Raut");
+        eventContactPerson_list.add("Sachin Jadhav");
 
         eventContactNum_list.add("9881477360");
         eventContactNum_list.add("8421348474");
-        eventContactNum_list.add("9561002599");
+        eventContactNum_list.add("8668723196");
         eventContactNum_list.add("9011159596");
         eventContactNum_list.add("9096795298");
+        eventContactNum_list.add("7798968772");
 
-        eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
-        eventDate.add("4 OCT 2017");
-        eventDate.add("4 OCT 2017");
-        eventDate.add("4 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("6 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
 
+        eventprice.add("50");
         eventprice.add("50");
         eventprice.add("50");
         eventprice.add("50");
@@ -304,14 +348,24 @@ public class Code extends AppCompatActivity  {
 
         group_limit.add("2");
         group_limit.add("2");
+        group_limit.add("2");
         group_limit.add("0");
         group_limit.add("0");
         group_limit.add("0");
 
+        time_list.add("5 OCT, 2017\n 4 pm onwards");
+        time_list.add("5 OCT, 2017\n 1 pm onwards");
+        time_list.add("6 OCT, 2017\n 1.30 pm onwards");
+        time_list.add("5 OCT, 2017\n 2 pm onwards");
+        time_list.add("5 OCT, 2017\n 4 pm onwards");
+        time_list.add("5 OCT, 2017\n 1.30 pm onwards");
 
 
 
-        CodeAdapter ad = new CodeAdapter(Code.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
+
+
+
+        CodeAdapter ad = new CodeAdapter(Code.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit, time_list);
         ListView civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 

@@ -56,6 +56,7 @@ public class Mini extends AppCompatActivity  {
     ArrayList<String>  eventDate = new ArrayList<>();
     ArrayList<String>  eventprice = new ArrayList<>();
     ArrayList<String> group_limit = new ArrayList<>();
+    ArrayList<String> time_list = new ArrayList<>();
 
 
 
@@ -306,11 +307,11 @@ public class Mini extends AppCompatActivity  {
                 "       Round 2: Surprise round.\n");
 
         eventLocation.add("Civil Ground");
-        eventLocation.add("MCA Dept");
-        eventLocation.add("MCA Dept");
-        eventLocation.add("Computer Science Dept (CF Lab)");
-        eventLocation.add("IT Dept");
-        eventLocation.add("IT Dept");
+        eventLocation.add("MCA Dept, TR");
+        eventLocation.add("MCA Dept, Lab 2");
+        eventLocation.add("Computer Science Dept (CC Lab)");
+        eventLocation.add("Programming Fundamentals Lab, IT Dept");
+        eventLocation.add("Classroom Complex");
         eventLocation.add("Electrical Department");
 
         eventContactPerson_list.add("Darshan Chobarkar");
@@ -329,12 +330,12 @@ public class Mini extends AppCompatActivity  {
         eventContactNum_list.add("968944417");
         eventContactNum_list.add("8857838327");
 
-        eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
-        eventDate.add("4 OCT 2017");
-        eventDate.add("4 OCT 2017");
-        eventDate.add("4 OCT 2017");
-        eventDate.add("4 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
 
         eventprice.add("50");
@@ -353,10 +354,18 @@ public class Mini extends AppCompatActivity  {
         group_limit.add("2");
         group_limit.add("3");
 
+        time_list.add("5 OCT, 2017 \n 2 pm onwards");
+        time_list.add("5 OCT, 2017 \n 2 pm onwards");
+        time_list.add("5 OCT, 2017 \n 1 pm onwards");
+        time_list.add("5 OCT, 2017 \n 2 pm onwards");
+        time_list.add("5 OCT, 2017 \n 1 pm onwards");
+        time_list.add("5 OCT, 2017 \n 1.30 pm onwards");
+        time_list.add("5 OCT, 2017 \n 2.30 pm onwards");
 
 
 
-        MiniAdapter ad = new MiniAdapter(Mini.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
+
+        MiniAdapter ad = new MiniAdapter(Mini.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit, time_list);
         civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 

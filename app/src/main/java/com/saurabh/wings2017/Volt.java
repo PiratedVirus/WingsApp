@@ -55,6 +55,7 @@ public class Volt extends AppCompatActivity  {
     ArrayList<String>  eventDate = new ArrayList<>();
     ArrayList<String>  eventprice = new ArrayList<>();
     ArrayList<String> group_limit = new ArrayList<>();
+    ArrayList<String> time_list = new ArrayList<>();
 
 
 
@@ -160,8 +161,7 @@ public class Volt extends AppCompatActivity  {
         eventName_list.add("Technobuzz");
         eventName_list.add("Electroma");
         eventName_list.add("Tantradyana");
-
-
+        eventName_list.add("Battle of Microcontroller");
 
 
 
@@ -218,46 +218,66 @@ public class Volt extends AppCompatActivity  {
                 "Separate time will be provided for model setup before the start of demonstration.\n");
 
 
+        eventDetails_list.add("Battle of 8051 based projects will be kept in exhibition where professors will judge and rate the projects.\n" +
+                "\n" +
+                "Rules:\n\n" +
+                "Each team should arrive at the venue at least 15 minutes before the start of the event.\n" +
+                "Each and every team member must be present during the event.\n\n" +
+                "Team: Minimum 2 and maximum 4 members per team.\n\n" +
+                "Once a team is registered, same team members should be carried till the end.\n" +
+                "Project should be feasible, innovative and application based.\n" +
+                "Projects will be limited to only Microcontroller family(8051, Raspberry pi etc.)\n");
 
-        eventLocation.add("E&TC Dept");
+        eventLocation.add("Computer Lab, E&TC Dept");
         eventLocation.add("Electrical Dept");
         eventLocation.add("Electrical Dept");
+        eventLocation.add("Computer Lab, E&TC Dept");
+
 
 
 
         eventContactPerson_list.add("Shubham Pardeshi");
         eventContactPerson_list.add("Rushabh Patil");
         eventContactPerson_list.add("Sarang Suryawanshi");
-
+        eventContactPerson_list.add("Trupti Hagawane");
 
 
         eventContactNum_list.add("9552894182");
         eventContactNum_list.add("9421573616");
         eventContactNum_list.add("9764635669");
+        eventContactNum_list.add("9890749405");
 
 
 
-        eventDate.add("4 OCT 2017");
         eventDate.add("5 OCT 2017");
-        eventDate.add("4 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("5 OCT 2017");
+        eventDate.add("6 OCT 2017");
 
 
 
         eventprice.add("50");
         eventprice.add("60");
         eventprice.add("150");
+        eventprice.add("50");
 
 
 
         group_limit.add("2");
         group_limit.add("2");
         group_limit.add("3");
+        group_limit.add("4");
+
+        time_list.add("5 OCT 2017, 4 pm onwards");
+        time_list.add("5 OCT 2017, 1.30 pm onwards");
+        time_list.add("5 OCT 2017, 4.25 pm onwards");
+        time_list.add("6 OCT 2017, 2 pm onwards");
 
 
 
 
 
-        VoltAdapter ad = new VoltAdapter(Volt.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit);
+        VoltAdapter ad = new VoltAdapter(Volt.this, eventName_list, eventDetails_list, eventLocation, eventContactPerson_list, eventContactNum_list, eventDate, eventprice, group_limit, time_list);
         civil = (ListView)findViewById(R.id.cart_list_show);
         civil.setAdapter(ad);
 

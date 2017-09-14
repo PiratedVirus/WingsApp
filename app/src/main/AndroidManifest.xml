@@ -8,20 +8,35 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    <service android:name=".MyFirebaseMessagingService">
-        <intent-filter>
-            <action android:name="com.google.firebase.MESSAGING_EVENT" />
-        </intent-filter>
-    </service>
+    <service android:name=".NotificationService">
+    <intent-filter>
+        <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+    </intent-filter>
+</service>
+
+    <!--<service android:name=".MyFirebaseMessagingService">-->
+        <!--<intent-filter>-->
+            <!--<action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+        <!--</intent-filter>-->
+    <!--</service>-->
+
+
+
     AndroidManifest.xml
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/wings_app_icon"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_launcher"
+        android:roundIcon="@drawable/wings_app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/wings_app_icon" />
+
+
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
@@ -149,5 +164,7 @@
         <activity android:name=".EleganceDayTwo" />
         <activity android:name=".EleganceGroup"></activity>
     </application>
+
+
 
 </manifest>

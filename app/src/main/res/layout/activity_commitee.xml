@@ -1,14 +1,23 @@
-<ScrollView
-    android:layout_width="match_parent"
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="none"
-    android:background="@drawable/day1"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/commitee">
-    </LinearLayout>
+        android:layout_height="match_parent">
 
-</ScrollView>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+
+            android:adjustViewBounds="true"
+            android:src="@drawable/commitee">
+
+        </ImageView>
+
+    </ScrollView>
+
+</RelativeLayout>
+
+

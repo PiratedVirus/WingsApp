@@ -161,106 +161,6 @@ public class tickets extends AppCompatActivity {
         });
 
 
-//        Thread t = new Thread(new Runnable() {
-//            public void run() {
-//
-//                try {
-//                    httpclient = new DefaultHttpClient();
-//                    httppost = new HttpPost(PHP_GET_TICKETS); // make sure the url is correct.
-//                    //add your data
-//                    nameValuePairs = new ArrayList<NameValuePair>(1);
-//                    // Always use the same variable name for posting i.e the android side variable name and php side variable name should be similar,
-//                    nameValuePairs.add(new BasicNameValuePair("fuserMail", mUsermail));
-//
-//                    // $Edittext_value = $_POST['Edittext_value'];
-//                    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-//                    Log.e("PV", "1" + mUsermail);
-//                    //Execute HTTP Post Requ
-//                    response = httpclient.execute(httppost);
-//                    Log.e("PV", "2");
-//                    httpentity = response.getEntity();
-//                    isr = httpentity.getContent();
-//                    BufferedReader reader = new BufferedReader(new InputStreamReader(isr, "UTF-8"), 8);
-//                    StringBuilder sb = new StringBuilder();
-//                    String line = null;
-//                    while ((line = reader.readLine()) != null) {
-//                        sb.append(line + "\n");
-//                    }
-//                    result = sb.toString();
-//
-//
-//                    runOnUiThread(new Runnable() {
-//                        public void run() {
-//                            // tv.setText("Response from PHP : " + response);
-//                           // dialog.dismiss();
-//                            pDialog.dismissWithAnimation();
-//                           // tr.setRefreshing(false);
-//                        }
-//                    });
-//
-//                    if (!(result.startsWith("F"))) {
-//                        Log.i("andro", result);
-//                        try {
-//                            jso = new JSONObject(result);
-//                            cart_user_ticket = jso.getJSONArray("result");
-//                            for (int i = 0; i < cart_user_ticket.length(); i++) {
-//                                JSONObject c = cart_user_ticket.getJSONObject(i);
-//                               // uniqueID = c.getString("uniqueID");
-//                                userName = c.getString("userName");
-//                                eventName = c.getString("eventName");
-//                                eventID = c.getString("eventID");
-//                                eventPrice = c.getString("eventPrice");
-//                                paid = c.getString("paid");
-//                                played = c.getString("played");
-//                                eventLocation = c.getString("eventLocation");
-//                                Log.e("result",userName+eventName+eventID+eventPrice+"paid_php"+paid);
-//
-//                                userName_ticket.add(userName);
-//                                eventName_ticket.add(eventName);
-//                                eventID_ticket.add(eventID);
-//                                eventPrice_ticket.add(eventPrice);
-//                                paid_ticket.add(paid);
-//                                played_ticket.add(played);
-//                                eventLocation_ticket.add(eventLocation);
-//                            }
-//
-//                            tickets.this.runOnUiThread(new Runnable() {
-//                                @Override
-//                                public void run() {
-//
-//                                    ad = new TicketList(tickets.this, userName_ticket, eventName_ticket, eventID_ticket, eventPrice_ticket,  played_ticket, paid_ticket, eventLocation_ticket);
-//                                    ticket = (ListView)findViewById(R.id.ticket_list_show);
-//                                    ticket.setAdapter(ad);
-//                                    total = (Button) findViewById(R.id.total);
-//                                    Log.e("PV", "bocha tanla");
-//                                    for(int i=0;i<eventPrice_ticket.size();i++)
-//                                    {
-//                                        Log.e("PV","sum="+eventPrice_ticket.get(i));
-//                                        cart_sum+=Integer.parseInt(eventPrice_ticket.get(i));
-//                                    }
-//                                    Log.e("PV","sum="+cart_sum);
-//                                    total.setText(String.valueOf(cart_sum));
-//                                    noTickets = (ImageView) findViewById(R.id.noTicket);
-//                                    if(cart_sum==0){
-//                                        noTickets.setVisibility(View.VISIBLE);
-//                                        Toast.makeText(tickets.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
-//                                    }
-//                                }
-//                            });
-//
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                        }
-//                    } else {
-//                        Log.e("PV", "else_case_failed");
-//                    }
-//                } catch (Exception e) {
-//                }
-//
-//            }
-//        });
-//        t.start();
 
 
     }
@@ -304,6 +204,7 @@ public class tickets extends AppCompatActivity {
             Log.e("PV","sum="+cart_sum);
             total.setText(String.valueOf(cart_sum));
             noTickets = (ImageView) findViewById(R.id.noTicket);
+            Log.e("PV","ticketsum="+cart_sum);
             if(cart_sum==0){
                 noTickets.setVisibility(View.VISIBLE);
                 Toast.makeText(tickets.this, "Your Cart is Empty", Toast.LENGTH_SHORT).show();
