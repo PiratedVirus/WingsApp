@@ -193,7 +193,7 @@ public class Details extends AppCompatActivity {
             final EditText college = (EditText)findViewById(R.id.colgtext);
             Intent updateInfoIntent  = new Intent(Details.this,MainActivity.class);
             startActivity(updateInfoIntent);
-            Toast.makeText(this, "Welcome "+college.getText().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Welcome "+SaveSharedPreferences.getUserName(Details.this), Toast.LENGTH_SHORT).show();
             finish();
         }
 

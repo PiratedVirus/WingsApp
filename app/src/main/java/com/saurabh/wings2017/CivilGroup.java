@@ -161,6 +161,13 @@ public class CivilGroup extends AppCompatActivity {
                     .playOn(groupname);
             Toast.makeText(this, "Oops! You've exceeded group member limit! Maximum Group Limit : "+xyz, Toast.LENGTH_SHORT).show();
         }
+        else if(groupname.getText().toString().isEmpty())
+        {
+            YoYo.with(Techniques.Shake)
+                    .duration(500)
+                    .playOn(groupname);
+            Toast.makeText(this, "Please add group members", Toast.LENGTH_SHORT).show();
+        }
 
         else {
             new SweetAlertDialog(CivilGroup.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)

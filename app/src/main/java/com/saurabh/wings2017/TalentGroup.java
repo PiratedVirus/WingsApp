@@ -162,6 +162,14 @@ public class TalentGroup extends AppCompatActivity {
             Toast.makeText(this, "Oops! You've exceeded group member limit! Maximum Limit : "+xyz, Toast.LENGTH_SHORT).show();
         }
 
+        else if(groupname.getText().toString().isEmpty())
+        {
+            YoYo.with(Techniques.Shake)
+                    .duration(500)
+                    .playOn(groupname);
+            Toast.makeText(this, "Please add group members", Toast.LENGTH_SHORT).show();
+        }
+
         else {
             new SweetAlertDialog(TalentGroup.this, SweetAlertDialog.CUSTOM_IMAGE_TYPE)
                     .setTitleText("Are you sure to add event?")

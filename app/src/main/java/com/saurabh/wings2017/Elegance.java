@@ -224,7 +224,7 @@ public class Elegance extends AppCompatActivity  {
                 "\uF071Only dances which clears auditions are allowed to perform\n" +
                 "\uF071Participant teams have to report before 1 hour of the competition to avoid disqualification. \uF071 Props are allowed.\n" +
                 "\uF071The limit of performance – 3-5 minutes (+1 preparation & stage clearance)\n" +
-                "\uF071Registration Fee : ₹700\n" +
+                "\uF071Registration Fee : ₹600\n" +
                 "\uF071No. of Participants : 7-12.\n" +
                 "\uF071\nPrizes : ₹ 5000, ₹ 4000\n");
         eventDetails_list.add("“Sing your feelings.. Not just words!”\n" +

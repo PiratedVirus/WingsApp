@@ -1,6 +1,6 @@
 <LinearLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/devloper"
+    android:background="@drawable/devloper_final"
     xmlns:android="http://schemas.android.com/apk/res/android">
     </LinearLayout>
 
