@@ -245,7 +245,7 @@ public class CivilHome extends AppCompatActivity  {
 
 
         eventLocation.add("Front of Civil Dept");
-        eventLocation.add("Behind Classroom Comlex");
+        eventLocation.add("Behind Classroom Complex");
         eventLocation.add("DH-1 Civil Dept");
         eventLocation.add("Civil Dept");
 

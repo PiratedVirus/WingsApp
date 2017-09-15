@@ -170,17 +170,17 @@ public class Brain extends AppCompatActivity  {
 
 
 
-        eventDetails_list.add("Spell UR Brain is a non-technical event which will test participant’s general knowledge and presence of mind. It is a three round team event. Each team will have 2 members per team.\n" +
-                "\n" +
-                "Rules:\n\n" +
-                "Each team should arrive at the venue at least 15 minutes before the start of the event.\n" +
-                "Each and every team member must be present during the event.\n" +
-                "Team: 2 members per team.\n" +
-                "Use of Internet or other means of communication is strictly prohibited.\n" +
-                "Once a team is registered, same team members should be carried till the end.\n" +
-                "\n" +
-                "Event Details:\n\n" +
-                "Spell UR Brain will be a three round event. First round will be based on grammar. Second round is related to GK. Third and final is surprise round. Three teams will be rewarded 1st, 2nd and 3rd prize.\n");
+        eventDetails_list.add("It is a team event, consists of three rounds.\n A team will have 2 members.\n\n"+
+        "Rules\n\n" +
+                "1. Each team should arrive at the venue at least 15 mins before the start of the event.\n" +
+                "2. Both members of the team must be present during the event.\n" +
+                "3. Use of cellphones, accessing internet through any means is strictly prohibited.\n" +
+                "4. Once a team is registered, same team members should attend all the rounds.\n\n" +
+                "Details\n\n" +
+                "There are 3 rounds in the event.\n" +
+                "First round will include logo guessing, dictation and visual clues.\n" +
+                "Further rounds will be based on simple english and general knowledge.\n" +
+                "Final round will be surprise round.\n");
 
         eventDetails_list.add("To solve a mysterious murder case & find the murderer(s) with the help of given police investigation report and other details.\n" +
                 "\n" +

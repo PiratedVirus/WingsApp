@@ -198,7 +198,7 @@ public class Elegance extends AppCompatActivity  {
                 "\uF071 The team size represents the number of people registered as a team. Only these shall be allowed to perform the street play. \uF071 Music accompanists are included in the team size stated above.\n" +
                 "\uF071 The act has to be performed on a circular (8 meter in diameter) stage with audience on all the sides.\n" +
                 "\uF071 The stage must be cleared by the participants to avoid problems for the next team or else heavy penalties will be imposed. \uF071 Teams have to report 1 hour before the competition or else that team faces disqualification.\n" +
-                "\uF071 \nRegistration Fees : ₹700\n" +
+                "\uF071 \nRegistration Fees : ₹500\n" +
                 "\uF071 \nNo. of participants per team: 8-20.\n" +
                 "\uF071 \nPrizes : ₹ 5000, ₹ 4000\n" +
                 "\uF071 \n Time Duration: 15 minutes (including the entry and clearance time)\n");
@@ -266,7 +266,7 @@ public class Elegance extends AppCompatActivity  {
                 "\uF071Any copied or printed material is strictly prohibited. However, any source inspired idea is welcome. \uF071 Participants have to report 1 hr before the competition to avoid disqualification.\n" +
                 "\uF071Registration Fee : ₹120/-\n" +
                 "\uF071\n Time Duration : 60 minutes \n" +
-                "\uF071\nPrizes : We are not gonna reveal this . 3 best painting with some proper cash prizes & gift hampers \n");
+                "\uF071\nPrizes : 3 best painting with some proper cash prizes & gift hampers \n");
 
         eventDetails_list.add("This event consists of one round.\n" +
                 "\n RULES:\n\n" +
@@ -281,7 +281,7 @@ public class Elegance extends AppCompatActivity  {
                 "\uF071 Participants will be judged on the basis of creativity, innovation & design.\n" +
                 "\uF071 Decision of the judges will be final & binding.\n" +
                 "\uF071 Registration fees : ₹100/- per TEAM.\n" +
-                "\uF071 Time limit : 60 minutes \n \nPrizes : We are not gonna reveal this . 3 best painting with some proper cash prizes & gift hampers\n");
+                "\uF071 Time limit : 60 minutes \n \nPrizes : 3 best painting with some proper cash prizes & gift hampers\n");
 
         eventDetails_list.add("This is an individual competition.\n" +
                 "Participants should have their own digital cameras or DSLRís.\n" +
@@ -350,8 +350,8 @@ public class Elegance extends AppCompatActivity  {
         eventprice.add("200");
         eventprice.add("600");
         eventprice.add("150");
-        eventprice.add("800");
-        eventprice.add("150");
+        eventprice.add("1000");
+        eventprice.add("120");
         eventprice.add("100");
         eventprice.add("100");
         eventprice.add("100");

@@ -159,15 +159,15 @@ public class Code extends AppCompatActivity  {
 
 
         eventName_list.add("Code Junkie 4.0");
-        eventName_list.add("Codesprint 2.0");
+        eventName_list.add("Codesprint 3.0");
         eventName_list.add("Game of Codes");
         eventName_list.add("C-Ladder");
         eventName_list.add("Web Sutra");
         eventName_list.add("Hi-Tech Fair");
 
 
-        eventDetails_list.add("30/- single\n"  +
-                "50/- team of two\nThis is an event where the participants participate in team of 2 or as individual and face the different Aptitude questions related to programming languages, logical round and coding round. Anyone who clears all the rounds with highest points will be the winner.\n" +
+        eventDetails_list.add("30/- Single\n"  +
+                "50/- Team of two\nThis is an event where the participants participate in team of 2 or as individual and face the different Aptitude questions related to programming languages, logical round and coding round. Anyone who clears all the rounds with highest points will be the winner.\n" +
                 "\n" +
                 "Rules:\n\n" +
                 "There are 3 rounds conducted across the span of 2 days.\n" +
@@ -190,8 +190,8 @@ public class Code extends AppCompatActivity  {
                 "Round 3: Surprise round\n" +
                 "         This will be surprise for participants but based on pure competitive coding.\n");
 
-        eventDetails_list.add("30/- single\n"  +
-                "50/- team of two\nThe objective of this event is to test the students’ knowledge in basic C Programming. This event is for beginners and intermediates, and will try to cover general aspects of the basic programming languages.\n" +
+        eventDetails_list.add("30/- Single\n"  +
+                "50/- Team of two\nThe objective of this event is to test the students’ knowledge in basic C Programming. This event is for beginners and intermediates, and will try to cover general aspects of the basic programming languages.\n" +
                 "\n" +
                 "Rules:\n\n The event consist of 3 rounds .\n" +
                 "Only one paper will be provided for team. \n" +
@@ -222,8 +222,8 @@ public class Code extends AppCompatActivity  {
                 "Time allotment for round will be around 1-1.25 hrs.\n");
 
 
-        eventDetails_list.add("30/- single\n"  +
-                "50/- team of two\nTest Your Programming Skill, Its a Debugging Contest, Let’s Experience the world of Competitors in Designing The Best Algorithm.\n" +
+        eventDetails_list.add("30/- Single\n"  +
+                "50/- Team of two\nTest Your Programming Skill, Its a Debugging Contest, Let’s Experience the world of Competitors in Designing The Best Algorithm.\n" +
                 "\n" +
                 "Rules:\n\n" +
                 "Team should be consists of maximum 2 members.\t\t\t\t\n" +
@@ -337,7 +337,7 @@ public class Code extends AppCompatActivity  {
 
         eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
-        eventDate.add("6 OCT 2017");
+        eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
@@ -358,7 +358,7 @@ public class Code extends AppCompatActivity  {
 
         time_list.add("5 OCT, 2017\n 4 pm onwards");
         time_list.add("5 OCT, 2017\n 1 pm onwards");
-        time_list.add("6 OCT, 2017\n 1.30 pm onwards");
+        time_list.add("5 OCT, 2017\n 1.30 pm onwards");
         time_list.add("5 OCT, 2017\n 2 pm onwards");
         time_list.add("5 OCT, 2017\n 4 pm onwards");
         time_list.add("5 OCT, 2017\n 1.30 pm onwards");

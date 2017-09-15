@@ -139,6 +139,7 @@
                     android:layout_below="@+id/dateLocHolder"
                     android:id="@+id/contactHolder"
                     android:padding="10dp"
+                    android:onClick="call"
                     android:layout_marginTop="1dp"
                     android:background="@color/cardview_light_background">
 

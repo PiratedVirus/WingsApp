@@ -182,7 +182,7 @@ public class Mini extends AppCompatActivity  {
                 "Each group has to report to their respective coordinator.\n" +
                 "The duration of the event will be two days 4 hours each.\n" +
                 "Event will be conducted in the free space behind Civil Department.\n\n" +
-                "Moto:\n To develop the camaraderie among the participants.\n\n" +
+                "Motto:\n To develop the camaraderie among the participants.\n\n" +
                 "Rules for participants:\n\n" +
                 "Fees will not be refunded.\n" +
                 "Any misbehavior with other participants, organizers, coordinators or any other person will not be entertained and will lead to disqualification of the individual participant.\n" +
@@ -228,8 +228,8 @@ public class Mini extends AppCompatActivity  {
                 "We may change or modify the rules and regulations at any time and will be made available, the terms indicate that you agree to such changes. Organizers reserve the right to modify, suspend, and keep the rules, tasks.\n");
 
 
-        eventDetails_list.add("250/-per team (Team of 5)\n" +
-                "50/- 1 vs 1 (single)\nThis is an event where participants (Team of 5) will have to eliminate other team and vice versa in order to be eligible for the next rounds and in turn will win the competition.\n" +
+        eventDetails_list.add("250/- 5 vs 5 (Team of 5)\n" +
+                "50/- 1 vs 1 (Single)\nThis is an event where participants (Team of 5) will have to eliminate other team and vice versa in order to be eligible for the next rounds and in turn will win the competition.\n" +
                 "\n" +
                 "Rules & Regulations:\n\n" +
                 "Game Version: Counter Strike Global Offensive\n" +
@@ -256,13 +256,13 @@ public class Mini extends AppCompatActivity  {
                 "Hyper Sniper is banned (GSSG11 and SCAR-20).\n" +
                 "\n" +
                 "Rounds:\n\n" +
-                "1. 5 vs 5 (Team Play, 5 players per team)\n" +
+                "1) 5 vs 5 (Team Play, 5 players per team)\n" +
                 "Total 20 rounds (Max Rounds): 10 rounds as Terrorists and 10 rounds as Counter Terrorists per team (If a team scores 11 rounds first, the match is ended immediately).\n" +
                 "Victory Condition: The first team to win 11 rounds.\n" +
                 "Round Time: 2 minutes.\n" +
                 "In the case of a tie after regulation rounds end, 6 extra rounds will be played (3 rounds as Terrorists/ 3 rounds as Counter Terrorists).\n" +
                 "Friendly Fire is On.\n" +
-                " 2. 1 vs 1 (1 Player per team)\n" +
+                "2) 1 vs 1 (1 Player per team)\n" +
                 "Total 10 rounds (Max Rounds): If a player scores 6 first, the match is ended immediately.\n" +
                 "Victory Condition: The first player to win 6 rounds.\n\n" +
                 "Round Time: 1 minute 30 seconds.\n" +
@@ -278,8 +278,8 @@ public class Mini extends AppCompatActivity  {
                 "Disconnections:\n\n" +
                 "Any disconnection of the connection between match players due to System, Network, PC and/or Power problem issues.\n" +
                 "Intentional: Upon judgement by the referee, any offending player will be charged with a loss by forfeit.\n" +
-                "Unintentional: If the disconnection is to be unintentional by the referee, the match will be restarted. If any player does not agree to a match restart, the player will lose by default.\n" +
-                "Note:\n" +
+                "Unintentional: If the disconnection is to be unintentional by the referee, the match will be restarted. If any player does not agree to a match restart, the player will lose by default.\n\n" +
+                "Note:\n\n" +
                 "As the rounds held are as per knockout matches, therefore the losing team will not be allowed to re-enter in the event.\n");
 
 
@@ -322,15 +322,15 @@ public class Mini extends AppCompatActivity  {
         eventContactPerson_list.add("Vivek Yeljale");
         eventContactPerson_list.add("Kshitij Choudhari");
         eventContactPerson_list.add("Abhinay Koreti");
-        eventContactPerson_list.add("Neha Rathod");
-        eventContactPerson_list.add("Kaustubh kangale8857838327");
+        eventContactPerson_list.add("Vaibhav Thorat");
+        eventContactPerson_list.add("Kaustubh kangale");
 
         eventContactNum_list.add("9404168827");
         eventContactNum_list.add("8087141667");
         eventContactNum_list.add("7385424799");
         eventContactNum_list.add("9765256110");
         eventContactNum_list.add("9422568063");
-        eventContactNum_list.add("968944417");
+        eventContactNum_list.add("8087735739");
         eventContactNum_list.add("8857838327");
 
         eventDate.add("5 OCT 2017");

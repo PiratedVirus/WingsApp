@@ -3,9 +3,11 @@ package com.saurabh.wings2017;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -174,7 +176,10 @@ public class Details extends AppCompatActivity {
         }
         printUserDetails();
 
-        RelativeLayout rl = (RelativeLayout) findViewById(R.id.relative_layout_details);
+
+
+
+       RelativeLayout rl = (RelativeLayout) findViewById(R.id.relative_layout_details);
         FlowingGradientClass grad = new FlowingGradientClass();
         grad.setBackgroundResource(R.drawable.translate)
                 .onRelativeLayout(rl)
@@ -182,6 +187,46 @@ public class Details extends AppCompatActivity {
                 .start();
 
 
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+
+            case 1: {
+
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(getApplicationContext(), "Permission granted", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
+
+    public  boolean isPermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.CALL_PHONE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("TAG","Permission is granted");
+                return true;
+            } else {
+
+                Log.v("TAG","Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.CALL_PHONE}, 1);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("TAG","Permission is granted");
+            return true;
+        }
     }
 
     public void updateInfo(View v){
@@ -191,10 +236,13 @@ public class Details extends AppCompatActivity {
         else{
             fetchData();
             final EditText college = (EditText)findViewById(R.id.colgtext);
-            Intent updateInfoIntent  = new Intent(Details.this,MainActivity.class);
-            startActivity(updateInfoIntent);
-            Toast.makeText(this, "Welcome "+SaveSharedPreferences.getUserName(Details.this), Toast.LENGTH_SHORT).show();
-            finish();
+
+            if(isPermissionGranted()) {
+                Intent updateInfoIntent = new Intent(Details.this, MainActivity.class);
+                startActivity(updateInfoIntent);
+                Toast.makeText(this, "Welcome " + SaveSharedPreferences.getUserName(Details.this), Toast.LENGTH_SHORT).show();
+                finish();
+            }
         }
 
     }
@@ -228,10 +276,10 @@ public class Details extends AppCompatActivity {
         if(college.getText().toString().isEmpty() || fireName.getText().toString().length() < 3)
         {
             valid = false;
-            fireName.setError("Please Enter your College name");
+            college.setError("Please Enter your College name");
             YoYo.with(Techniques.Shake)
                     .duration(500)
-                    .playOn(mobileNum);
+                    .playOn(college);
         }
 
         return valid;

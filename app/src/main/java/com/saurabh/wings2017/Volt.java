@@ -174,7 +174,7 @@ public class Volt extends AppCompatActivity  {
                 "Use of Internet or other means of communication is strictly prohibited.\n" +
                 "Once a team is registered, same team members should be carried till the end.\n");
 
-        eventDetails_list.add("To increase the knowledge of circuit desgning.\n" +
+        eventDetails_list.add("To increase the knowledge of circuit designing.\n" +
                 "Rules:\n\n" +
                 "Each member can participate individually.\n" +
                 "Participating team should consist of maximum 2 members.\n" +
@@ -218,7 +218,7 @@ public class Volt extends AppCompatActivity  {
                 "Separate time will be provided for model setup before the start of demonstration.\n");
 
 
-        eventDetails_list.add("Battle of 8051 based projects will be kept in exhibition where professors will judge and rate the projects.\n" +
+        eventDetails_list.add("Battle of Microcontroller based projects will be kept in exhibition where professors will judge and rate the projects.\n" +
                 "\n" +
                 "Rules:\n\n" +
                 "Each team should arrive at the venue at least 15 minutes before the start of the event.\n" +

@@ -136,25 +136,26 @@
                 </LinearLayout>
 
                 <RelativeLayout
+                    android:id="@+id/contactHolder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/dateLocHolder"
-                    android:id="@+id/contactHolder"
-                    android:padding="10dp"
                     android:layout_marginTop="1dp"
-                    android:background="@color/cardview_light_background">
+                    android:onClick="call"
+                    android:background="@color/cardview_light_background"
+                    android:padding="10dp">
 
                     <TextView
                         android:id="@+id/cnctLabel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:paddingBottom="22dp"
                         android:text="Contact"
                         android:textColor="#F5A623"
                         android:textSize="18dp"
-                        android:textStyle="bold"
-                        android:layout_centerVertical="true"
-                        android:layout_centerHorizontal="true"
-                        android:paddingBottom="22dp"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/genEventContactPerson"

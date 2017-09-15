@@ -160,7 +160,7 @@ public class Robotics extends AppCompatActivity  {
         });
 
 
-        eventName_list.add(" Pick N Place");
+        eventName_list.add("Pick N Place");
         eventName_list.add("Robo Race");
 
 
@@ -208,7 +208,7 @@ public class Robotics extends AppCompatActivity  {
                 "3. However a tolerance of 5% is acceptable. \n");
 
 
-        eventLocation.add("Front of E&TC Dept");
+        eventLocation.add("E&TC Dept");
         eventLocation.add("Basketball Court");
 
 

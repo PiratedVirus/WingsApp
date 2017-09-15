@@ -102,13 +102,7 @@ public class signIn extends AppCompatActivity {
         Animation zoom1 = AnimationUtils.loadAnimation(signIn.this, R.anim.zoomin);
         button.setAnimation(zoom1);
 
-//        YoYo.with(Techniques.ZoomInUp)
-//                .duration(1000)
-//                .playOn(findViewById(R.id.wings_logo));
 
-//        YoYo.with(Techniques.ZoomIn)
-//                .duration(1000)
-//                .playOn(findViewById(R.id.text_login));
 
 
         RelativeLayout rl = (RelativeLayout) findViewById(R.id.relative_layout);
@@ -117,6 +111,7 @@ public class signIn extends AppCompatActivity {
                 .onRelativeLayout(rl)
                 .setTransitionDuration(4000)
                 .start();
+
 
 
 
@@ -186,6 +181,7 @@ public class signIn extends AppCompatActivity {
                     })
                     .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                     .build();
+
 
             mConnectionProgressDialog = new ProgressDialog(this);
             mConnectionProgressDialog.setMessage("Signing in...");

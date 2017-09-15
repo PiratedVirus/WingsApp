@@ -79,47 +79,6 @@
                 android:onClick="elegance"/>
 
             <Button
-                android:id="@+id/brainBtn"
-                android:layout_width="300sp"
-                android:layout_height="72sp"
-                android:layout_marginBottom="10sp"
-                android:layout_marginTop="10sp"
-                android:background="@drawable/brain_btn"
-                android:elevation="3dp"
-                android:onClick="brain"/>
-
-            <Button
-                android:id="@+id/civilBtn"
-                android:layout_width="300sp"
-                android:layout_height="72sp"
-                android:layout_marginBottom="10sp"
-                android:layout_marginTop="10sp"
-                android:background="@drawable/civil_btn"
-                android:elevation="4dp" />
-
-            <Button
-                android:id="@+id/codeBtn"
-                android:layout_width="300sp"
-                android:layout_height="72sp"
-                android:layout_marginBottom="10sp"
-                android:layout_marginTop="10sp"
-                android:onClick="code"
-                android:background="@drawable/code_btn"
-                android:elevation="4dp" />
-
-            <Button
-                android:id="@+id/minigameBtn"
-                android:layout_width="300sp"
-                android:layout_height="72sp"
-                android:layout_marginBottom="10sp"
-                android:layout_marginTop="10sp"
-                android:onClick="mini"
-                android:background="@drawable/games_btn"
-                android:elevation="4dp" />
-
-
-
-            <Button
                 android:id="@+id/roboBtn"
                 android:layout_width="300sp"
                 android:layout_height="72sp"
@@ -128,6 +87,7 @@
                 android:onClick="robot"
                 android:background="@drawable/robots_btn"
                 android:elevation="4dp" />
+
 
             <Button
                 android:id="@+id/MechBtn"
@@ -139,15 +99,28 @@
                 android:background="@drawable/mechanico_btn"
                 android:elevation="4dp" />
 
+
+
             <Button
-                android:id="@+id/talentBtn"
+                android:id="@+id/codeBtn"
                 android:layout_width="300sp"
                 android:layout_height="72sp"
-                android:onClick="talent"
                 android:layout_marginBottom="10sp"
                 android:layout_marginTop="10sp"
-                android:background="@drawable/talent_btn"
+                android:onClick="code"
+                android:background="@drawable/code_btn"
                 android:elevation="4dp" />
+
+
+            <Button
+                android:id="@+id/civilBtn"
+                android:layout_width="300sp"
+                android:layout_height="72sp"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/civil_btn"
+                android:elevation="4dp" />
+
 
             <Button
                 android:id="@+id/VoltBtn"
@@ -158,6 +131,42 @@
                 android:layout_marginTop="10sp"
                 android:background="@drawable/volt_btn"
                 android:elevation="4dp" />
+
+
+            <Button
+                android:id="@+id/brainBtn"
+                android:layout_width="300sp"
+                android:layout_height="72sp"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/brain_btn"
+                android:elevation="3dp"
+                android:onClick="brain"/>
+
+
+
+            <Button
+                android:id="@+id/talentBtn"
+                android:layout_width="300sp"
+                android:layout_height="72sp"
+                android:onClick="talent"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10sp"
+                android:background="@drawable/talent_btn"
+                android:elevation="4dp" />
+
+
+
+            <Button
+                android:id="@+id/minigameBtn"
+                android:layout_width="300sp"
+                android:layout_height="72sp"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10sp"
+                android:onClick="mini"
+                android:background="@drawable/games_btn"
+                android:elevation="4dp" />
+
 
             <Button
                 android:id="@+id/FaqBtn"
