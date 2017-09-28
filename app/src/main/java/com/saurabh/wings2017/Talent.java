@@ -164,6 +164,7 @@ public class Talent extends AppCompatActivity  {
         eventName_list.add("TechnoQuiz");
         eventName_list.add("Virtual Campus");
         eventName_list.add("Mindscape");
+        eventName_list.add("Paper Presentation");
 
 
 
@@ -245,10 +246,64 @@ public class Talent extends AppCompatActivity  {
                 "2.  Teams will be evaluated on the basis of skills of marketing and business and the profit output.\n" +
                 "3.  Result of round 2 will be declared within an hour.\n");
 
+
+        eventDetails_list.add("Objective: To provide a platform to young engineering youth for presenting their out of box, unconventional and innovative solutions. Also, a chance to develop stage daring and presentation skills.\n" +
+                "\n" +
+                "Event structure:\n\n" +
+                " Round 1: Participants should submit the abstract of their paper to team email. The email IDs are provided at the end of each event.\n" +
+                " Round 2: Participants should submit their paper to the judges and give Power point presentation of (10+2) minutes, explaining the details of their research paper. \n" +
+                "\n" +
+                "Rules for participants:\n\n" +
+                " 1. Standard Paper format: Paper must be in any STANDARD format. Paper should be essentially in a two-column format & should not exceed 15 pages. Paper should be in Times New Roman font of size 12. For headings, you can use bold and a font of size 16. Paper must contain index, abstract, introduction, point wise description of subject and conclusion and references at the end. Paper must be preceded by a cover page specifying the title of the paper, names of authors, their college names and their contact numbers and email ids.  \n" +
+                "2. All papers should have a bibliography/works-cited page and appropriate footnotes.\n" +
+                " 3. Papers omitting a bibliography or using plagiarized material will be automatically disqualified.\n" +
+                "4. Submitted paper should be strictly in PDF Format.  \n" +
+                "5. For further details - an example paper in IEEE format and the cover page of the paper\n" +
+                " 6. Abstract should not exceed 1 page and Paper should not exceed 15 pages. The subject of the mail with the attached abstract and later, the final paper should be the discipline under which the paper is categorized.  \n" +
+                "7. The mail should contain:   a. Title- theme of the paper.  b. Name of both the authors.  c. Phone no of both the authors.  d. Email ID. \n" +
+                "8. Participants should submit the papers within the due time. (before last day of submission, no late submissions will be entertained) \n" +
+                "9. Teams selected for round two will be contacted personally. \n" +
+                "10. Please bring your power point presentation in a pen drive and mail the power point presentation on your own Email ID. Please bring 2 hard copies of the submitted paper on the day of the event. Paper and Power Point Presentation should be in 2010-2013 format. \n" +
+                "11. The teams will get 10+2 minutes for presentation followed by a Q&A session. \n" +
+                "12. Persons from different institutions can be a part of the same team. However, one person may not be a part of multiple teams for the same event. \n" +
+                " 13. Judges and organizers reserve the right to modify the rules without prior intimation\n" +
+                "14. Participants can choose any number of topics and present their paper on the relevant topic\n" +
+                "15. Participants can present multiple papers, based on number of registrations they have done. Innovativeness of the topic under a theme will be given credit.\n" +
+                "16. Original contribution to the paper will be highly encouraged. Only pure technical papers would be considered for short listing.  \n" +
+                "17. Use your discretion to judge whether your topic fits into the chosen theme. \n" +
+                "18. The list of topics will be made available on site. \n\n" +
+                "Topics:\n\n" +
+                "Demonetization: After RBI report [Sept.2017] \n" +
+                "Effect of GST on real estate sector\n" +
+                "Incorporating sustainable engineering aspects in designing civil structure \n" +
+                "Nanotechnology in construction\n" +
+                "Structural audit of structures\n" +
+                "New construction technologies/Designs for Pavements\n" +
+                "River Linking. \n" +
+                "Environmental Township Planning   \n" +
+                "Life cycle assessment of civil project\n" +
+                "Project Risk Assessment and Management\n" +
+                "Fiber Reinforced Concrete\n" +
+                "Setting out Methods for construction Projects\n" +
+                "Augmented Reality\n" +
+                "Recent challenges in Mechanical Engineering\n" +
+                "Recent development in Advance Manufacturing Technology\n" +
+                "Mechatronics\n" +
+                "Electric Traction\n" +
+                "Regenerative Braking\n" +
+                "Alternative energy sources for coal power plant\n" +
+                "Deep web\n" +
+                "Virtual reality\n" +
+                "Tango\n" +
+                "Sparql\n" +
+                "Upcoming revolution in communication\n" +
+                "Cognitive Radio\n");
+
         eventLocation.add("Electrical Dept");
         eventLocation.add("IT Dept");
         eventLocation.add("Classroom Complex");
         eventLocation.add("Electrical Dept");
+        eventLocation.add("GECA");
 
 
 
@@ -256,6 +311,7 @@ public class Talent extends AppCompatActivity  {
         eventContactPerson_list.add("Aabha Dabhadkar");
         eventContactPerson_list.add("Vyankatesh Kulkarni");
         eventContactPerson_list.add("Suraj Ingole");
+        eventContactPerson_list.add("Abdul Momeen");
 
 
 
@@ -263,11 +319,13 @@ public class Talent extends AppCompatActivity  {
         eventContactNum_list.add("9923629348");
         eventContactNum_list.add("9527500921");
         eventContactNum_list.add("7387025795");
+        eventContactNum_list.add("9168121005");
 
 
 
 
         eventDate.add("6 OCT 2017");
+        eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
         eventDate.add("5 OCT 2017");
@@ -278,12 +336,14 @@ public class Talent extends AppCompatActivity  {
         eventprice.add("50");
         eventprice.add("50");
         eventprice.add("100");
+        eventprice.add("50");
 
 
         group_limit.add("5");
         group_limit.add("2");
         group_limit.add("0");
         group_limit.add("3");
+        group_limit.add("2");
 
 
 
@@ -291,6 +351,7 @@ public class Talent extends AppCompatActivity  {
         time_list.add("5 OCT, 2017\n4 pm onwards");
         time_list.add("5 OCT, 2017\n1 pm onwards");
         time_list.add("5 OCT, 2017\n3.45 pm onwards");
+        time_list.add("5 OCT, 2017\n1 pm onwards");
 
 
 

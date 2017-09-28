@@ -99,6 +99,7 @@
             android:onClick="updateInfo"
             android:foregroundGravity="center_horizontal"
             android:layout_marginTop="35sp"
+            android:layout_marginBottom="30sp"
             android:layout_below="@id/colgtext"
             app:srcCompat="@drawable/update_info"
             android:layout_alignParentBottom="true"

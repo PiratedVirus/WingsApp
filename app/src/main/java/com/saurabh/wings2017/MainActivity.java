@@ -4,6 +4,7 @@ package com.saurabh.wings2017;
 import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.ConnectivityManager;
@@ -13,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -144,8 +146,10 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
 //        Dots count start
         dotscount = viewPagerAdapter.getCount();
+
         dots = new ImageView[dotscount];
 
         for(int i = 0; i < dotscount; i++){
@@ -249,6 +253,14 @@ public class MainActivity extends AppCompatActivity {
 
         printUserDetails();
         countDots();
+
+        int PERMISSION_ALL = 1;
+        String[] PERMISSIONS = {android.Manifest.permission.READ_CONTACTS, android.Manifest.permission.WRITE_CONTACTS, android.Manifest.permission.CALL_PHONE};
+
+        if(!hasPermissions(this, PERMISSIONS)){
+            ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
+        }
+
 
         float scale = getResources().getDisplayMetrics().density;
 
@@ -500,7 +512,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    public static boolean hasPermissions(Context context, String... permissions) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
 
 

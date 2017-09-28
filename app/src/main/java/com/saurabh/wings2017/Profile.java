@@ -21,8 +21,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
@@ -133,7 +136,23 @@ public class Profile extends AppCompatActivity  {
         }
 
 
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
 
+
+        // Build a GoogleApiClient with access to the Google Sign-In API and the
+        // options specified by gso.
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this /* FragmentActivity */, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                        Toast.makeText(Profile.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
 
 
         printUserDetails();
@@ -157,9 +176,6 @@ public class Profile extends AppCompatActivity  {
         };
 
 
-        signOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
                 new SweetAlertDialog(Profile.this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Are you sure?")
@@ -182,13 +198,23 @@ public class Profile extends AppCompatActivity  {
                                 mAuth.getInstance().signOut();
 
 
-                                Toast.makeText(Profile.this, "Logged Out", Toast.LENGTH_SHORT).show();
-                                SaveSharedPreferences.clearUserName(getApplicationContext());
-                                finish();
+                                Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                                        new ResultCallback<Status>() {
+                                            @Override
+                                            public void onResult(Status status) {
+                                                // ...
+                                                Toast.makeText(Profile.this, "Logged Out", Toast.LENGTH_SHORT).show();
+                                                SaveSharedPreferences.clearUserName(getApplicationContext());
+                                                finish();
+                                            }
+                                        });
+
+
+
+
                             }
                         }).show();
-            }
-        });
+
     }
     public void home(View v){
         Intent iHome = new Intent(Profile.this, MainActivity.class);
@@ -237,21 +263,6 @@ public class Profile extends AppCompatActivity  {
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
-    public void handleGoogleLoginResult(Intent data) {
-        if (data != null) {
-            // get result from data received
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            int statusCode = result.getStatus().getStatusCode();
-            if (result.isSuccess() && result.getSignInAccount() != null) {
-                // Signed in successfully
-
-            }
-            // logout
-            if (mGoogleApiClient != null && mGoogleApiClient.isConnected()) {
-                Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-            }
-        }
-    }
 
 
 }

@@ -1,5 +1,7 @@
 package com.saurabh.wings2017;
+
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -43,7 +45,12 @@ public class ViewPagerAdapter extends PagerAdapter {
 
                 if(position == 0){
                     //Toast.makeText(context, "Slide 1 Clicked", Toast.LENGTH_SHORT).show();
+
+
+
                 } else if(position == 1){
+                    Intent readMore = new Intent(v.getContext(), GuestOne.class);
+                    v.getContext().startActivity(readMore);
                     //Toast.makeText(context, "Slide 2 Clicked", Toast.LENGTH_SHORT).show();
                 } else {
                     //Toast.makeText(context, "Slide 3 Clicked", Toast.LENGTH_SHORT).show();

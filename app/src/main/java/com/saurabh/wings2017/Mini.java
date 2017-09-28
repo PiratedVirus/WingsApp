@@ -208,8 +208,8 @@ public class Mini extends AppCompatActivity  {
                 "Organizers reserve all the rights to make a decision and that decision will be final.\n" +
                 "The scope and construct of competition is dynamic and organizers reserve the rights to change both at any time without prior notice to participants.\n");
 
-        eventDetails_list.add("200/-per team (Team of 4)\n" +
-                "50/- (single)\nRounds:  Call of Duty Modern Welfare\n" +
+        eventDetails_list.add("120/-per team (Team of 4)\n" +
+                "30/- (Single)\nRounds:  Call of Duty Modern Welfare\n" +
                 "The game consists of three rounds.\n" +
                 "First two rounds will be free for all\n" +
                 "Third round is survival round.\n\n" +
@@ -301,13 +301,12 @@ public class Mini extends AppCompatActivity  {
                 "Final Introduction and instruction will be provided by organizing team on time.\n" +
                 "The decision of organizers will be final. \n" +
                 "Participant or team cannot seek help of others, if found in such case team will be debarred.\n\n" +
-                "Round 1:\n\n" +
-                "Task 1 –\n" +
+                "Round 1:\n" +
+                "Task - 1\n" +
                 "Participants will be given list of items, participants have to collect the given items in the given time.\n" +
-                "\n" +
-                "Task – 2 \n\n" +
+                "Task - 2\n" +
                 "Participants Presence of mind will be judged on the basis of given condition, to see how JUGAD you can do \n" +
-                "Round 2: Surprise round.\n");
+                "Round 2: \n Surprise round.\n");
 
         eventLocation.add("Civil Ground");
         eventLocation.add("MCA Dept, TR");
@@ -343,7 +342,7 @@ public class Mini extends AppCompatActivity  {
 
         eventprice.add("50");
         eventprice.add("30");
-        eventprice.add("200");
+        eventprice.add("120");
         eventprice.add("40");
         eventprice.add("250");
         eventprice.add("50");

@@ -289,10 +289,11 @@ public class Elegance extends AppCompatActivity  {
                 "Theme\n\n Moments of the fest, portraits.\n" +
                 "The participants will have to submit her/his best 3 pictures of the fest within 2 hrs at 3 pm on the registration desk.\n" +
                 "Decision of the judges will be final and binding.\n" +
+                "Price -  ₹1500/- and Gift Voucher \n"+
                 "All submitted photos must be in JPEG format.\n" +
                 "You are required to provide a unique title and description for each photo submitted.\n" +
                 "There must no border(s),logo(s),copyright marks or any other visible references and/or marks on submitted photo.\n" +
-                "Photos that portray or otherwise include inappropriate and/or offensive content will be immediately discarded.");
+                "Photos that portray or otherwise include inappropriate and/or offensive content will be immediately discarded.\n");
 
 
         eventLocation.add("Electrical seminar hall");

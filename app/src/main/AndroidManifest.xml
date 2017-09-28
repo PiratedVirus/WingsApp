@@ -7,11 +7,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-       <uses-permission android:name="android.permission.CALL_PHONE"/>
-
-
-
-
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     AndroidManifest.xml
     <application
         android:allowBackup="true"
@@ -21,11 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/notif_icon" />
-
 
         <activity
             android:name=".MainActivity"
@@ -68,7 +62,7 @@
         <activity
             android:name=".Details"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Team"
             android:screenOrientation="portrait" />
@@ -153,9 +147,8 @@
         <activity android:name=".EleganceSchedule" />
         <activity android:name=".EleganceDayOne" />
         <activity android:name=".EleganceDayTwo" />
-        <activity android:name=".EleganceGroup"></activity>
+        <activity android:name=".EleganceGroup" />
+        <activity android:name=".GuestOne"></activity>
     </application>
-
-
 
 </manifest>
