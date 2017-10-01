@@ -24,7 +24,7 @@
             android:layout_gravity="top"
             android:layout_weight="3.5"
             android:textAlignment="center"
-            android:background="@drawable/varun_bocha">
+            android:background="@drawable/varun_home">
 
             <TextView
                 android:id="@+id/genEventName"
@@ -32,9 +32,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="Varun Agrwal"
+                android:text="Varun Agarwal"
                 android:textAlignment="center"
-                android:textColor="#FEEECD"
+                android:textColor="#FFF"
                 android:textSize="36dp"
                 android:textStyle="bold" />
 
@@ -75,7 +75,7 @@
                         android:layout_weight="5"
                         android:gravity="center_horizontal"
                         android:padding="20dp"
-                        android:layout_marginRight="1dp"
+                        android:layout_marginRight="0.5dp"
                         android:background="@color/cardview_light_background">
 
                         <ImageView
@@ -108,7 +108,7 @@
                         android:layout_weight="5"
                         android:gravity="center_horizontal"
                         android:padding="20dp"
-                        android:layout_marginRight="1dp"
+                        android:layout_marginLeft="0.5dp"
                         android:background="@color/cardview_light_background">
 
                         <ImageView
@@ -166,8 +166,22 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cnctLabel"
                         android:layout_centerHorizontal="true"
-                        android:paddingBottom="13sp"
+                        android:paddingBottom="0sp"
+                        android:paddingTop="15dp"
                         android:text="Krushna Amilkanthwar 9421906682"
+                        android:textAlignment="center"
+                        android:textColor="@color/red"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/genEventContactInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/genEventContactPerson"
+                        android:layout_centerHorizontal="true"
+                        android:paddingBottom="0sp"
+                        android:paddingTop="5dp"
+                        android:text="Present your RegID at Registration Booth in GECA."
                         android:textAlignment="center"
                         android:textColor="@color/red"
                         android:textSize="16sp" />
@@ -236,7 +250,7 @@
                         >
 
                         <Button
-                            android:id="@+id/addToCart"
+                            android:id="@+id/bookSeat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
@@ -247,21 +261,23 @@
                             android:textAppearance="@style/TextAppearance.AppCompat"
                             android:textColor="#FFF"
                             android:textStyle="bold"
-                            android:onClick="BookTicket"/>
+                            android:onClick="BookTicket"
+                            android:visibility="visible"/>
 
-                        <Button
-                            android:id="@+id/alreadyBooked"
+                        <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="REG ID"
+                            android:id="@+id/regIDText"
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
-                            android:background="@color/red"
-                            android:padding="10dp"
-                            android:text="BOOKED!"
-                            android:textAppearance="@style/TextAppearance.AppCompat"
-                            android:textColor="#FFF"
+                            android:visibility="invisible"
+                            android:textColor="@color/red"
+                            android:textSize="18dp"
                             android:textStyle="bold"
-                            android:visibility="invisible"/>
+                            />
+
+
 
                     </RelativeLayout>
 

@@ -148,7 +148,8 @@
         <activity android:name=".EleganceDayOne" />
         <activity android:name=".EleganceDayTwo" />
         <activity android:name=".EleganceGroup" />
-        <activity android:name=".GuestOne"></activity>
+        <activity android:name=".GuestOne" />
+        <activity android:name=".GuestTwo"></activity>
     </application>
 
 </manifest>
