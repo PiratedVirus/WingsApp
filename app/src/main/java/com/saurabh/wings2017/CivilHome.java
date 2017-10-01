@@ -257,9 +257,9 @@ public class CivilHome extends AppCompatActivity  {
 
 
         eventContactNum_list.add("9923147750");
-        eventContactNum_list.add("770921434");
+        eventContactNum_list.add("7709214345");
         eventContactNum_list.add("9890116736");
-        eventContactNum_list.add("959549598");
+        eventContactNum_list.add("9595495980");
 
 
         eventDate.add("5 OCT 2017");

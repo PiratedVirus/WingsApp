@@ -303,7 +303,7 @@ public class Talent extends AppCompatActivity  {
         eventLocation.add("IT Dept");
         eventLocation.add("Classroom Complex");
         eventLocation.add("Electrical Dept");
-        eventLocation.add("GECA");
+        eventLocation.add("Civil Seminar Hall");
 
 
 

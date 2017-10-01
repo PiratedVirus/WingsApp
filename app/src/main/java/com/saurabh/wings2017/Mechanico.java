@@ -322,7 +322,7 @@ public class Mechanico extends AppCompatActivity  {
         eventLocation.add("Classroom M3, Mechanical Engg. Dept");
         eventLocation.add("Classroom M2, Mechanical Engg. Dept");
         eventLocation.add("Main playground, GECA.");
-        eventLocation.add("GECA");
+        eventLocation.add("Vollyball Ground");
 
         eventContactPerson_list.add("Totaram Murumkar");
         eventContactPerson_list.add("Sampada Ahale");
@@ -366,7 +366,7 @@ public class Mechanico extends AppCompatActivity  {
         time_list.add("5 OCT, 2017\n3pm onwards");
         time_list.add("5 OCT, 2017\n3pm onwards");
         time_list.add("5 OCT, 2017\n1 pm onwards");
-        time_list.add("5 OCT, 2017\n4 pm onwards");
+        time_list.add("5 OCT, 2017\n1 pm onwards");
 
 
 

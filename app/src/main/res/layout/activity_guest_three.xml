@@ -24,7 +24,7 @@
             android:layout_gravity="top"
             android:layout_weight="3.5"
             android:textAlignment="center"
-            android:background="@drawable/varun_home">
+            android:background="@drawable/shanky">
 
             <TextView
                 android:id="@+id/genEventName"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="Varun Agarwal"
+                android:text="Sankarshan Karhade"
                 android:textAlignment="center"
                 android:textColor="#FFF"
                 android:textSize="36dp"
@@ -45,9 +45,9 @@
                 android:layout_below="@+id/genEventName"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="2dp"
-                android:text="6 OCT 2017"
+                android:text="7 OCT 2017"
                 android:textAlignment="center"
-                android:textColor="@color/cardview_light_background" />
+                android:textColor="#FEB149" />
 
         </RelativeLayout>
 
@@ -127,7 +127,7 @@
                             android:layout_centerHorizontal="true"
                             android:layout_centerVertical="true"
                             android:layout_marginTop="1dp"
-                            android:text="6 OCT, 2017 10.30 AM onwards"
+                            android:text="7 OCT, 2017 10.30 AM onwards"
                             android:textAlignment="center"
                             android:textColor="@color/red" />
 

@@ -63,7 +63,7 @@ public class GuestOne extends AppCompatActivity {
                 "Varun Agarwal is 29 years old, and has three companies to his credit. He’s now turned into an author with his first " +
                 "book “How I Braved Anu Aunty and Co-founded a Million Dollar Company“.\n" +
                 "\n" +
-                "About Varun\n" +
+                "Q&A about Varun\n" +
                 "\n" +
                 "So whats your age and qualification?\n" +
                 "\n" +
@@ -132,7 +132,7 @@ public class GuestOne extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(GuestOne.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(GuestOne.this,"the error is" +error.getMessage(), Toast.LENGTH_LONG).show();
 
                     }
                 }) {

@@ -45,15 +45,15 @@ public class ViewPagerAdapter extends PagerAdapter {
 
                 if(position == 0){
                     //Toast.makeText(context, "Slide 1 Clicked", Toast.LENGTH_SHORT).show();
-
-
-
+                    Intent gTwo = new Intent(v.getContext(), GuestTwo.class);
+                    v.getContext().startActivity(gTwo);
                 } else if(position == 1){
                     Intent readMore = new Intent(v.getContext(), GuestOne.class);
                     v.getContext().startActivity(readMore);
                     //Toast.makeText(context, "Slide 2 Clicked", Toast.LENGTH_SHORT).show();
-                } else {
-                    //Toast.makeText(context, "Slide 3 Clicked", Toast.LENGTH_SHORT).show();
+                } else if(position == 2) {
+                    Intent gThree = new Intent(v.getContext(), GuestThree.class);
+                    v.getContext().startActivity(gThree);
                 }
 
             }
